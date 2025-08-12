@@ -1,0 +1,1450 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 6, 27, 52;
+  --background-end-rgb: 6, 27, 52;
+
+  /* VL Brand Colors - Updated with new primary color #061B34 */
+  --vl-blue: #061b34; /* New primary color */
+  --vl-blue-light: #0f172a; /* Slightly lighter variant */
+  --vl-blue-dark: #030712; /* Darker variant */
+  --vl-blue-darker: #020617; /* Darkest variant */
+  --vl-blue-muted: #374151; /* Muted variant for secondary text */
+  --vl-yellow: #ffd396;
+  --vl-yellow-dark: #f59e0b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 6, 27, 52;
+    --background-end-rgb: 6, 27, 52;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: url("/background.webp") center center / cover no-repeat fixed;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Remove the overlay that was obscuring the background */
+/* body::before removed to show background clearly */
+
+/* Global background override - Make transparent to show background */
+main {
+  background: transparent !important;
+  position: relative;
+}
+
+/* Card styling updates - More transparent to show background */
+.card,
+[data-card],
+.bg-white {
+  background: rgba(6, 27, 52, 0.3) !important;
+  backdrop-filter: blur(5px) !important;
+  border: 1px solid rgba(255, 211, 150, 0.3) !important;
+  color: white !important;
+}
+
+/* Text color adjustments for readability */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--vl-yellow) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Comprehensive text visibility fixes */
+
+span,
+div,
+li,
+a,
+label,
+button {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Specific text elements that need white color */
+.text-black,
+.text-gray-900,
+.text-gray-800 {
+  color: white !important;
+}
+
+/* Specific overrides for better contrast */
+.text-gray-600,
+.text-gray-700,
+.text-gray-500 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.text-vl-blue {
+  color: var(--vl-blue) !important;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* VL Brand Colors - Updated with new primary color */
+
+
+.text-vl-blue-light {
+  color: var(--vl-blue-light);
+}
+
+.text-vl-blue-dark {
+  color: var(--vl-blue-dark);
+}
+
+.text-vl-blue-darker {
+  color: var(--vl-blue-darker);
+}
+
+.text-vl-blue-muted {
+  color: var(--vl-blue-muted);
+}
+
+.text-vl-yellow {
+  color: var(--vl-yellow);
+}
+
+.text-v-yellow {
+  color: var(--vl-yellow);
+}
+
+.text-vl-yellow-dark {
+  color: var(--vl-yellow-dark);
+}
+
+.bg-vl-blue {
+  background-color: var(--vl-blue);
+}
+
+.bg-vl-blue-light {
+  background-color: var(--vl-blue-light);
+}
+
+.bg-vl-blue-dark {
+  background-color: var(--vl-blue-dark);
+}
+
+.bg-vl-yellow {
+  background-color: var(--vl-yellow);
+}
+
+.bg-vl-yellow-dark {
+  background-color: var(--vl-yellow-dark);
+}
+
+.border-vl-blue {
+  border-color: var(--vl-blue);
+}
+
+.border-vl-yellow {
+  border-color: var(--vl-yellow);
+}
+
+/* Hero gradient - Updated with new primary color */
+.vl-hero-gradient {
+  background: linear-gradient(135deg, rgba(6, 27, 52, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+  backdrop-filter: blur(5px);
+}
+
+/* Glassmorphism effect - Reduced opacity */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Font families */
+.font-heading {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.font-arabic {
+  font-family: var(--font-cairo), sans-serif !important;
+}
+
+/* Sansumi font classes (available but not used yet) */
+.font-sansumi-ultralight {
+  font-family: var(--font-sansumi-ultralight), sans-serif;
+  font-weight: 200;
+}
+
+.font-sansumi-regular {
+  font-family: var(--font-sansumi-regular), sans-serif;
+  font-weight: 400;
+}
+
+.font-sansumi-demibold {
+  font-family: var(--font-sansumi-demibold), sans-serif;
+  font-weight: 600;
+}
+
+.font-sansumi-bold {
+  font-family: var(--font-sansumi-bold), sans-serif;
+  font-weight: 700;
+}
+
+.font-sansumi {
+  font-family: var(--font-sansumi-regular), var(--font-sansumi-demibold), var(--font-sansumi-bold),
+    var(--font-sansumi-ultralight), sans-serif;
+}
+
+/* Noto Sans Mono font classes for Russian text */
+.font-noto-sans-mono-regular {
+  font-family: var(--font-noto-sans-mono-regular), monospace;
+  font-weight: 400;
+}
+
+.font-noto-sans-mono-bold {
+  font-family: var(--font-noto-sans-mono-bold), monospace;
+  font-weight: 700;
+}
+
+.font-noto-sans-mono-semibold {
+  font-family: var(--font-noto-sans-mono-semibold), monospace;
+  font-weight: 600;
+}
+
+.font-noto-sans-mono {
+  font-family: var(--font-noto-sans-mono-regular), var(--font-noto-sans-mono-semibold), var(--font-noto-sans-mono-bold),
+    monospace;
+}
+
+/* Language-specific font assignments */
+
+/* Russian text - Use Noto Sans Mono */
+:lang(ru),
+[lang="ru"],
+.lang-ru,
+html[lang="ru"] *,
+html[lang="ru-RU"] *,
+[data-lang="ru"] *,
+[data-lang="ru-RU"] * {
+  font-family: var(--font-noto-sans-mono-regular), var(--font-noto-sans-mono-semibold), var(--font-noto-sans-mono-bold),
+    monospace !important;
+}
+
+/* Russian headings - Use Noto Sans Mono Bold */
+:lang(ru) h1,
+:lang(ru) h2,
+:lang(ru) h3,
+:lang(ru) h4,
+:lang(ru) h5,
+:lang(ru) h6,
+[lang="ru"] h1,
+[lang="ru"] h2,
+[lang="ru"] h3,
+[lang="ru"] h4,
+[lang="ru"] h5,
+[lang="ru"] h6,
+.lang-ru h1,
+.lang-ru h2,
+.lang-ru h3,
+.lang-ru h4,
+.lang-ru h5,
+.lang-ru h6,
+html[lang="ru"] h1,
+html[lang="ru"] h2,
+html[lang="ru"] h3,
+html[lang="ru"] h4,
+html[lang="ru"] h5,
+html[lang="ru"] h6,
+html[lang="ru-RU"] h1,
+html[lang="ru-RU"] h2,
+html[lang="ru-RU"] h3,
+html[lang="ru-RU"] h4,
+html[lang="ru-RU"] h5,
+html[lang="ru-RU"] h6 {
+  font-family: var(--font-noto-sans-mono-bold), monospace !important;
+}
+
+/* Arabic text - Use Cairo */
+:lang(ar),
+[lang="ar"],
+.lang-ar,
+html[lang="ar"] *,
+html[lang="ar-SA"] *,
+[data-lang="ar"] *,
+[data-lang="ar-SA"] *,
+[dir="rtl"] {
+  font-family: var(--font-cairo), sans-serif !important;
+}
+
+/* Arabic headings - Use Cairo */
+:lang(ar) h1,
+:lang(ar) h2,
+:lang(ar) h3,
+:lang(ar) h4,
+:lang(ar) h5,
+:lang(ar) h6,
+[lang="ar"] h1,
+[lang="ar"] h2,
+[lang="ar"] h3,
+[lang="ar"] h4,
+[lang="ar"] h5,
+[lang="ar"] h6,
+.lang-ar h1,
+.lang-ar h2,
+.lang-ar h3,
+.lang-ar h4,
+.lang-ar h5,
+.lang-ar h6,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar-SA"] h1,
+html[lang="ar-SA"] h2,
+html[lang="ar-SA"] h3,
+html[lang="ar-SA"] h4,
+html[lang="ar-SA"] h5,
+html[lang="ar-SA"] h6,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: var(--font-cairo), sans-serif !important;
+}
+
+/* RTL Support - Updated to use Cairo for Arabic */
+[dir="rtl"] {
+  font-family: var(--font-cairo), sans-serif !important;
+}
+
+[dir="ltr"] {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Override for Russian text in RTL context */
+[dir="rtl"]:lang(ru),
+[dir="rtl"] [lang="ru"],
+[dir="rtl"] .lang-ru {
+  font-family: var(--font-noto-sans-mono-regular), var(--font-noto-sans-mono-semibold), var(--font-noto-sans-mono-bold),
+    monospace !important;
+}
+
+/* Specific selectors for common text elements */
+/* Russian text elements */
+p:lang(ru),
+span:lang(ru),
+div:lang(ru),
+li:lang(ru),
+a:lang(ru),
+label:lang(ru),
+button:lang(ru),
+input:lang(ru),
+textarea:lang(ru),
+p[lang="ru"],
+span[lang="ru"],
+div[lang="ru"],
+li[lang="ru"],
+a[lang="ru"],
+label[lang="ru"],
+button[lang="ru"],
+input[lang="ru"],
+textarea[lang="ru"] {
+  font-family: var(--font-noto-sans-mono-regular), monospace !important;
+}
+
+/* Arabic text elements */
+p:lang(ar),
+span:lang(ar),
+div:lang(ar),
+li:lang(ar),
+a:lang(ar),
+label:lang(ar),
+button:lang(ar),
+input:lang(ar),
+textarea:lang(ar),
+p[lang="ar"],
+span[lang="ar"],
+div[lang="ar"],
+li[lang="ar"],
+a[lang="ar"],
+label[lang="ar"],
+button[lang="ar"],
+input[lang="ar"],
+textarea[lang="ar"] {
+  font-family: var(--font-cairo), sans-serif !important;
+}
+
+/* Utility classes for manual font assignment */
+.font-russian {
+  font-family: var(--font-noto-sans-mono-regular), monospace !important;
+}
+
+.font-russian-bold {
+  font-family: var(--font-noto-sans-mono-bold), monospace !important;
+}
+
+.font-russian-semibold {
+  font-family: var(--font-noto-sans-mono-semibold), monospace !important;
+}
+
+/* Enhanced Counter Animations */
+.text-shadow-glow {
+  text-shadow: 0 0 20px rgba(255, 211, 150, 0.6), 0 0 40px rgba(255, 211, 150, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.animate-completion-pulse {
+  animation: completion-pulse 0.6s ease-out;
+}
+
+@keyframes completion-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    text-shadow: 0 0 30px rgba(255, 211, 150, 0.8), 0 0 60px rgba(255, 211, 150, 0.6), 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Floating particle animations */
+@keyframes float-particle-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(10px, -15px) rotate(90deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-5px, -25px) rotate(180deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(-15px, -10px) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes float-particle-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(-12px, -20px) rotate(120deg);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translate(8px, -30px) rotate(240deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float-particle-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.5;
+  }
+  20% {
+    transform: translate(15px, -10px) rotate(72deg);
+    opacity: 0.7;
+  }
+  40% {
+    transform: translate(5px, -25px) rotate(144deg);
+    opacity: 0.3;
+  }
+  60% {
+    transform: translate(-10px, -20px) rotate(216deg);
+    opacity: 0.6;
+  }
+  80% {
+    transform: translate(-20px, -5px) rotate(288deg);
+    opacity: 0.4;
+  }
+}
+
+.animate-float-particle-1 {
+  animation: float-particle-1 3s ease-in-out infinite;
+}
+
+.animate-float-particle-2 {
+  animation: float-particle-2 4s ease-in-out infinite;
+}
+
+.animate-float-particle-3 {
+  animation: float-particle-3 5s ease-in-out infinite;
+}
+
+/* Counter digits styling */
+.counter-digits {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ENHANCED LANGUAGE DROPDOWN STYLING */
+
+/* Language Trigger Button */
+.language-trigger {
+  position: relative;
+  overflow: hidden;
+}
+
+.language-trigger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 211, 150, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.language-trigger:hover::before {
+  left: 100%;
+}
+
+.language-trigger:hover .lucide-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Desktop Language Dropdown Content */
+.language-dropdown-content {
+  background: rgba(6, 27, 52, 0.98) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 211, 150, 0.4) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6), 0 8px 16px -4px rgba(0, 0, 0, 0.3), inset 0 1px 0
+    rgba(255, 211, 150, 0.2) !important;
+  padding: 8px !important;
+  animation: language-dropdown-appear 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: top right;
+}
+
+@keyframes language-dropdown-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Desktop Language Dropdown Items */
+.language-dropdown-item {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 12px !important;
+  margin: 2px 0 !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.language-dropdown-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 211, 150, 0.05), transparent);
+  transition: left 0.4s ease;
+  z-index: 0;
+}
+
+.language-dropdown-item:hover::before {
+  left: 100%;
+}
+
+.language-dropdown-item-inactive {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.language-dropdown-item-inactive:hover {
+  background: rgba(255, 211, 150, 0.12) !important;
+  color: var(--vl-yellow) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 12px rgba(255, 211, 150, 0.15), inset 0 1px 0 rgba(255, 211, 150, 0.1) !important;
+}
+
+.language-dropdown-item-active {
+  background: rgba(255, 211, 150, 0.18) !important;
+  color: var(--vl-yellow) !important;
+  box-shadow: 0 4px 16px rgba(255, 211, 150, 0.25), inset 0 1px 0 rgba(255, 211, 150, 0.2) !important;
+  border: 1px solid rgba(255, 211, 150, 0.3) !important;
+}
+
+.language-dropdown-item-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--vl-yellow), var(--vl-yellow-dark));
+  border-radius: 0 2px 2px 0;
+}
+
+/* Mobile Language Trigger */
+.mobile-language-trigger {
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+}
+
+.mobile-language-trigger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 211, 150, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.mobile-language-trigger:hover::before {
+  left: 100%;
+}
+
+/* Mobile Language Dropdown Content */
+.mobile-language-dropdown-content {
+  background: rgba(6, 27, 52, 0.98) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 211, 150, 0.5) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.7), 0 6px 12px -2px rgba(0, 0, 0, 0.4), inset 0 1px 0
+    rgba(255, 211, 150, 0.3) !important;
+  padding: 6px !important;
+  animation: mobile-language-dropdown-appear 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: top center;
+}
+
+@keyframes mobile-language-dropdown-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Mobile Language Dropdown Items */
+.mobile-language-dropdown-item {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 8px !important;
+  margin: 1px 0 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+}
+
+.mobile-language-dropdown-item-inactive {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.mobile-language-dropdown-item-inactive:hover {
+  background: rgba(255, 211, 150, 0.1) !important;
+  color: var(--vl-yellow) !important;
+  transform: translateX(2px) !important;
+}
+
+.mobile-language-dropdown-item-active {
+  background: rgba(255, 211, 150, 0.15) !important;
+  color: var(--vl-yellow) !important;
+  box-shadow: 0 2px 8px rgba(255, 211, 150, 0.2) !important;
+  border: 1px solid rgba(255, 211, 150, 0.2) !important;
+}
+
+/* Language dropdown z-index management */
+.language-dropdown-content,
+.mobile-language-dropdown-content {
+  z-index: 200 !important;
+}
+
+/* Ensure proper text rendering in language dropdowns */
+.language-dropdown-item *,
+.mobile-language-dropdown-item * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Parallax effect */
+.parallax-slow {
+  transform: translateY(calc(var(--scroll-y) * 0.5px));
+}
+
+/* Text stroke utility - Updated for better visibility */
+.text-stroke {
+  -webkit-text-stroke: 2px var(--vl-blue);
+  text-stroke: 2px var(--vl-blue);
+  paint-order: stroke fill;
+}
+
+.text-stroke-blue {
+  -webkit-text-stroke: 2px var(--vl-blue);
+  text-stroke: 2px var(--vl-blue);
+  paint-order: stroke fill;
+  text-shadow: 0 0 4px rgba(6, 27, 52, 0.3);
+}
+
+/* Enhanced text stroke for price display */
+.text-stroke-price {
+  -webkit-text-stroke: 1.5px var(--vl-blue);
+  text-stroke: 1.5px var(--vl-blue);
+  paint-order: stroke fill;
+  text-shadow: 0 2px 4px rgba(6, 27, 52, 0.2);
+  font-weight: 700;
+}
+
+/* Navigation Active State - Modern Yellow Glow Effect */
+.nav-active {
+  color: var(--vl-yellow) !important;
+  text-shadow: 0 0 8px rgba(255, 211, 150, 0.6), 0 0 16px rgba(255, 211, 150, 0.4), 0 0 24px rgba(255, 211, 150, 0.2);
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--vl-yellow), transparent);
+  border-radius: 1px;
+  opacity: 0.8;
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% {
+    box-shadow: 0 0 4px rgba(255, 211, 150, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(255, 211, 150, 0.6);
+  }
+}
+
+/* Enhanced hover effect for non-active nav items */
+.nav-item {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  color: white !important;
+}
+
+.nav-item:hover:not(.nav-active) {
+  color: var(--vl-yellow) !important;
+  text-shadow: 0 0 4px rgba(255, 211, 150, 0.3);
+}
+
+.nav-item:hover:not(.nav-active)::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 1px;
+  background: var(--vl-yellow);
+  transition: width 0.3s ease-in-out;
+  animation: expand-line 0.3s ease-in-out forwards;
+}
+
+@keyframes expand-line {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Logo visibility fixes */
+.nav-logo,
+.nav-logo img,
+header img,
+header svg {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Ensure logo is white on all backgrounds */
+[src*="logo"],
+[src*="Logo"],
+[src*="LOGO"] {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Mobile navigation active state */
+.nav-mobile-active {
+  color: var(--vl-yellow) !important;
+  text-shadow: 0 0 6px rgba(255, 211, 150, 0.5), 0 0 12px rgba(255, 211, 150, 0.3);
+  font-weight: 600;
+  background: rgba(255, 211, 150, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0 -12px;
+}
+
+/* Header background fixes - Updated with new primary color */
+header {
+  background: rgba(6, 27, 52, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(255, 211, 150, 0.2) !important;
+}
+
+header.scrolled {
+  background: rgba(6, 27, 52, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+/* Interactive elements visibility */
+button:not(.bg-vl-yellow):not(.btn-primary),
+.btn:not(.bg-vl-yellow):not(.btn-primary) {
+  color: white !important;
+  background-color: transparent !important;
+  border-color: var(--vl-yellow) !important;
+}
+
+a:not(.nav-active):not(.text-vl-yellow) {
+  color: white !important;
+}
+
+a:hover {
+  color: var(--vl-yellow) !important;
+}
+
+/* Scroll-triggered fade animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-left {
+  opacity: 0;
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.fade-in-visible {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(6, 27, 52, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vl-yellow);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vl-yellow-dark);
+}
+
+.dashboard {
+  color: rgb(var(--foreground-rgb));
+}
+
+/* Dashboard specific styles - Updated with new primary color */
+.dashboard-container {
+  min-height: 100vh;
+  background: rgba(6, 27, 52, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.dashboard-sidebar {
+  background: rgba(6, 27, 52, 0.4);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 211, 150, 0.2);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-main {
+  background: transparent;
+  min-height: calc(100vh - 4rem);
+}
+
+.dashboard-card {
+  background: rgba(6, 27, 52, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 211, 150, 0.2);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.15s ease-in-out;
+  color: white;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/*Coin-like effect*/
+@keyframes coin-reflection {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    background-position: -200% center;
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    background-position: 200% center;
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    background-position: -200% center;
+  }
+}
+.coin-reflect {
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 250% 100%;
+  background-color: var(--vl-blue);
+  animation: coin-reflection 3s ease-in-out infinite;
+}
+
+/* MODERN DROPDOWN STYLING - Updated with new primary color */
+[data-radix-select-content],
+.radix-select-content,
+[role="listbox"],
+.search-dropdown,
+.location-dropdown,
+.hero-search-dropdown,
+div[class*="dropdown"] {
+  background: rgba(6, 27, 52, 0.95) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  color: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 211, 150, 0.2) !important;
+  z-index: 90 !important;
+  padding: 8px !important;
+  animation: dropdown-appear 0.2s ease-out !important;
+}
+
+/* Do not animate/transform the Radix popper wrapper to avoid initial mis-position flicker */
+[data-radix-popper-content-wrapper] {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  animation: none !important;
+  z-index: 9999 !important;
+}
+
+/* Ensure direct children of dropdown content are transparent to prevent layering */
+[data-radix-select-content] > *,
+.radix-select-content > *,
+[role="listbox"] > *,
+[data-radix-popper-content-wrapper] > *,
+.search-dropdown > *,
+.location-dropdown > *,
+.hero-search-dropdown > *,
+div[class*="dropdown"] > * {
+  background: transparent !important;
+}
+
+@keyframes dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+[data-radix-select-item],
+.radix-select-item,
+[role="option"],
+.search-dropdown-item,
+.location-dropdown-item,
+div[class*="dropdown-item"] {
+  background: transparent !important;
+  color: white !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  border: none !important;
+  border-radius: 12px !important;
+  margin: 2px 0 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 500 !important;
+  position: relative !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-radix-select-item]:hover,
+[data-radix-select-item][data-highlighted],
+.radix-select-item:hover,
+.radix-select-item[data-highlighted],
+[role="option"]:hover,
+[role="option"][data-highlighted],
+.search-dropdown-item:hover,
+.location-dropdown-item:hover,
+div[class*="dropdown-item"]:hover {
+  background: rgba(255, 211, 150, 0.15) !important;
+  color: var(--vl-yellow) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 12px rgba(255, 211, 150, 0.2) !important;
+  border-bottom-color: transparent !important;
+}
+
+[data-radix-select-item][data-state="checked"],
+.radix-select-item[data-state="checked"],
+[role="option"][aria-selected="true"] {
+  background: rgba(255, 211, 150, 0.2) !important;
+  color: var(--vl-yellow) !important;
+  box-shadow: 0 4px 12px rgba(255, 211, 150, 0.3) !important;
+}
+
+[data-radix-select-item][data-state="checked"]::before,
+.radix-select-item[data-state="checked"]::before,
+[role="option"][aria-selected="true"]::before {
+  content: "✓" !important;
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  font-weight: bold !important;
+  color: var(--vl-yellow) !important;
+}
+
+/* Modern Select Trigger Styling - Updated with new primary color */
+[data-radix-select-trigger],
+.select-trigger {
+  background: rgba(6, 27, 52, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 211, 150, 0.3) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-radix-select-trigger]:hover,
+.select-trigger:hover {
+  background: rgba(6, 27, 52, 0.5) !important;
+  border-color: var(--vl-yellow) !important;
+  box-shadow: 0 0 0 3px rgba(255, 211, 150, 0.1) !important;
+}
+
+[data-radix-select-trigger]:focus,
+.select-trigger:focus {
+  outline: none !important;
+  border-color: var(--vl-yellow) !important;
+  box-shadow: 0 0 0 3px rgba(255, 211, 150, 0.2) !important;
+}
+
+.glass {
+  position: relative;
+  background: rgba(6, 27, 52, 0.2);
+  backdrop-filter: blur(8px) saturate(180%);
+  border: 1px solid rgba(255, 211, 150, 0.3);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(6, 27, 52, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+.glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  backdrop-filter: blur(1px);
+  box-shadow: inset -10px -8px 0px -11px rgba(255, 255, 255, 0.1), inset 0px -9px 0px -8px rgba(255, 255, 255, 0.1);
+  opacity: 0.6;
+  z-index: -1;
+  filter: blur(1px) drop-shadow(10px 4px 6px rgba(0, 0, 0, 0.3)) brightness(115%);
+}
+
+/* Mobile Menu Container Specific Styling - Updated with new primary color */
+.mobile-menu-container {
+  background-color: var(--vl-blue) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Dialog and Modal Styling - Updated with new primary color */
+[data-radix-dialog-overlay] {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+[data-radix-dialog-content] {
+  background: rgba(6, 27, 52, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 211, 150, 0.4) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 211, 150, 0.1) !important;
+  color: white !important;
+}
+
+.dialog-content {
+  background: rgba(6, 27, 52, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 211, 150, 0.4) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 211, 150, 0.1) !important;
+  color: white !important;
+}
+
+/* Form Elements in Dialogs */
+.dialog-content input,
+.dialog-content textarea,
+.dialog-content select {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 211, 150, 0.4) !important;
+  border-radius: 12px !important;
+  color: var(--vl-blue) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dialog-content input:focus,
+.dialog-content textarea:focus,
+.dialog-content select:focus {
+  border-color: var(--vl-yellow) !important;
+  box-shadow: 0 0 0 3px rgba(255, 211, 150, 0.2) !important;
+  outline: none !important;
+}
+
+/* Responsive dashboard styles */
+@media (max-width: 1024px) {
+  .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .dashboard-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .dashboard-content-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Mobile Dialog Adjustments */
+  [data-radix-dialog-content] {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    border-radius: 20px !important;
+  }
+
+  /* Mobile Dropdown Adjustments */
+  [data-radix-select-content],
+  .search-dropdown,
+  .location-dropdown {
+    border-radius: 12px !important;
+    margin: 4px !important;
+  }
+
+  /* Mobile Language Dropdown Responsive Adjustments */
+  .mobile-language-dropdown-content {
+    width: 90vw !important;
+    max-width: 280px !important;
+  }
+
+  .mobile-language-trigger {
+    min-width: 140px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-header {
+    padding: 1rem;
+  }
+
+  .dashboard-main {
+    padding: 1rem;
+  }
+
+  /* Extra small mobile adjustments for language dropdown */
+  .language-dropdown-content {
+    min-width: 180px !important;
+    margin-right: 8px !important;
+  }
+
+  .mobile-language-trigger {
+    min-width: 120px;
+    padding: 8px 12px;
+  }
+}
+
+/* Fix for potential z-index conflicts */
+.dashboard-dropdown {
+  z-index: 60;
+}
+
+.dashboard-modal {
+  z-index: 70;
+}
+
+/* Loading states */
+.dashboard-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Button Styling - Updated with new primary color */
+.btn-primary {
+  background: linear-gradient(135deg, var(--vl-yellow) 0%, var(--vl-yellow-dark) 100%) !important;
+  border: none !important;
+  color: var(--vl-blue) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(255, 211, 150, 0.3) !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(255, 211, 150, 0.4) !important;
+}
+
+.btn-secondary {
+  background: rgba(6, 27, 52, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 211, 150, 0.4) !important;
+  color: var(--vl-yellow) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 211, 150, 0.2) !important;
+  border-color: var(--vl-yellow) !important;
+  color: var(--vl-yellow) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Ensure all popups are opaque - Updated with new primary color */
+.popup-container,
+.modal-container,
+.dialog-container {
+  background: rgba(6, 27, 52, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  opacity: 1 !important;
+  color: white !important;
+}
+
+/* Accessibility-focused text classes */
+.text-accessible-primary {
+  color: var(--vl-yellow);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-accessible-secondary {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-accessible-muted {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Focus indicators for accessibility */
+.focus-visible:focus {
+  outline: 2px solid var(--vl-yellow);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support - Updated with new primary color */
+@media (prefers-contrast: high) {
+  :root {
+    --vl-blue: #061b34;
+    --vl-blue-light: #0f172a;
+    --vl-blue-dark: #030712;
+    --vl-blue-muted: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed {
+    animation: none;
+  }
+
+  .transition-all,
+  .transition-colors,
+  .transition-transform {
+    transition: none;
+  }
+
+  .nav-active::after {
+    animation: none;
+  }
+
+  .fade-in-up,
+  .fade-in-left,
+  .fade-in-right {
+    animation: none;
+    opacity: 1;
+  }
+
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 6px rgba(255, 211, 150, 0.5);
+    }
+  }
+
+  @keyframes dropdown-appear {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Disable language dropdown animations for reduced motion */
+  .language-dropdown-content,
+  .mobile-language-dropdown-content {
+    animation: none !important;
+  }
+
+  .language-dropdown-item::before,
+  .language-trigger::before,
+  .mobile-language-trigger::before {
+    transition: none !important;
+  }
+}
