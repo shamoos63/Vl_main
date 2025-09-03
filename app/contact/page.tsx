@@ -41,7 +41,7 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-vl-yellow mr-3" />
                     <div>
                       <p className="font-medium text-vl-yellow dark:text-white">{t("contact.info.email")}</p>
-                      <p className="text-gray-600 dark:text-gray-300">victoria@vlrealestate.com</p>
+                      <p className="text-gray-600 dark:text-gray-300">victoria.lancaster@selectproperty.ae</p>
                     </div>
                   </div>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-bold text-vl-yellow dark:text-white mb-4">{t("contact.location.title")}</h3>
                 <div className="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462560.6828842949!2d54.89783!3d25.0657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1703123456789!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28909.339100727015!2d55.1109958!3d25.0792602!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6caafde5834f%3A0x17d88c5f75357c40!2sSelect%20Property!5e0!3m2!1sen!2s!4v1756787851093!5m2!1sen!2s"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

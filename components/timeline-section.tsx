@@ -167,7 +167,7 @@ export default function TimelineSection() {
                           </div>
                           <h3 className="text-xl font-bold text-vl-yellow">{item.title}</h3>
                         </div>
-                        <p className="text-white leading-relaxed">{item.description}</p>
+                        <p className="text-white leading-relaxed text-center">{item.description}</p>
                       </div>
                     </div>
 

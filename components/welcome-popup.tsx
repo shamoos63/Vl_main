@@ -188,16 +188,33 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   <div className="text-center">
                     <div className="text-white whitespace-nowrap font-semibold font-medium mb-1">
                       {welcomeExperience}
-                      <AnimatedCounter end={15} duration={2000} className="inline-block font-bold text-vl-yellow" />
-                      {welcomeExperience2}
                     </div>
-                    <p className="text-white/80 text-sm">{welcomeExperienceDetail}</p>
+                    <AnimatedCounter
+                                      end={585}
+                                      suffix="+"
+                                      decimals={1}
+                                      delay={400}
+                                      duration={3000}
+                                      className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                                      glowEffect={true}
+                                      pulseOnComplete={true}
+                                    />
                   </div>
 
                   {/* Strategic */}
                   <div className="text-center">
                     <div className="text-white font-semibold font-medium mb-1">{welcomeStrategic}</div>
-                    <p className="text-white/80 text-sm">{welcomeStrategicDetail}</p>
+                    <AnimatedCounter
+                                      prefix="AED "
+                                      end={1.7}
+                                      suffix="B+"
+                                      decimals={1}
+                                      delay={400}
+                                      duration={3000}
+                                      className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                                      glowEffect={true}
+                                      pulseOnComplete={true}
+                                    />
                   </div>
                 </div>
               </div>
@@ -231,16 +248,34 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   <div className="text-center">
                     <div className="text-white font-semibold whitespace-nowrap text-lg mb-1">
                       {welcomeExperience}
-                      <AnimatedCounter end={15} duration={2000} className="inline-block font-bold text-vl-yellow" />
-                      {welcomeExperience2}
+                    
                     </div>
-                    <p className="text-white/80 text-sm">{welcomeExperienceDetail}</p>
+                      <AnimatedCounter
+                                      end={585}
+                                      suffix="+"
+                                      decimals={1}
+                                      delay={400}
+                                      duration={3000}
+                                      className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                                      glowEffect={true}
+                                      pulseOnComplete={true}
+                                    />
                   </div>
 
                   {/* Strategic */}
                   <div className="text-center">
                     <div className="text-white font-semibold text-lg mb-1">{welcomeStrategic}</div>
-                    <p className="text-white/80 text-sm">{welcomeStrategicDetail}</p>
+                    <AnimatedCounter
+                                      prefix="AED "
+                                      end={1.7}
+                                      suffix="B+"
+                                      decimals={1}
+                                      delay={400}
+                                      duration={3000}
+                                      className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                                      glowEffect={true}
+                                      pulseOnComplete={true}
+                                    />
                   </div>
                 </div>
               </div>

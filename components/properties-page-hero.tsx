@@ -9,8 +9,17 @@ export default function PropertiesPageHero() {
   return (
     <div dir={isRTL ? "rtl" : "ltr"}>
       <ServerPageHero
-        title={t("properties.page.title")}
-        subtitle={t("properties.page.subtitle")}
+        title={
+  <>
+    {t("properties.page.title")}<br />
+    {t("properties.page.title2")}
+  </>
+}
+        subtitle={
+  <>
+    {t("properties.page.subtitle2")}<br />
+    {t("properties.page.subtitle")}
+  </>}
         backgroundImage="/hero.webp"
         className="font-sansumi"
       />

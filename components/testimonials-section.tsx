@@ -229,12 +229,20 @@ export default function TestimonialsSection() {
               className="bg-transparent relative overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-500 cursor-pointer group border-2 hover:border-vl-yellow/30"
             >
               <CardContent className="p-6">
-                <div className="absolute top-4 right-4 text-vl-yellow opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+               <div
+  className={`absolute top-4 ${
+language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
+  } text-vl-yellow opacity-20 group-hover:opacity-40 transition-opacity duration-300`}
+>
                   <Image src="/comma_sign.svg" alt="Quote" width={32} height={32} />
                 </div>
 
                 <div className="flex items-center mb-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mr-4 text-4xl hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:from-vl-yellow/10 group-hover:to-vl-blue/10 border-2 border-transparent group-hover:border-vl-yellow/20">
+                  <div
+  className={`w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center text-4xl hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl group-hover:from-vl-yellow/10 group-hover:to-vl-blue/10 border-2 border-transparent group-hover:border-vl-yellow/20 ${
+    language === "ar" ? "ml-4" : "mr-5"
+  }`}
+>
                     <span>{testimonial.flag}</span>
                   </div>
                   <div className="group-hover:translate-x-1 transition-transform duration-300">
@@ -280,35 +288,44 @@ export default function TestimonialsSection() {
               {language === "en"
                 ? "Join 585+ Satisfied Investors"
                 : language === "ar"
-                  ? "انضم إلى 585+ مستثمر راضٍ"
+                  ? "انضم إلى 585+ مستثمر ناجح"
                   : "Присоединяйтесь к 585+ довольным инвесторам"}
             </h3>
             <p className="text-white/90 mb-6">
               {language === "en"
                 ? "Ready to start your Dubai property investment journey? Let me help you achieve your goals."
                 : language === "ar"
-                  ? "مستعد لبدء رحلة الاستثمار العقاري في دبي؟ دعني أساعدك في تحقيق أهدافك."
+                  ? "مستعد لتدخل عالم الاستثمار العقاري الذكي. سأرشدك بخبرة تتجاوز 15 عاماً لتتجنّب المخاطر وتكسب الوقت وتضاعف عوائدك"
                   : "Готовы начать свое инвестиционное путешествие в недвижимость Дубая? Позвольте Виктории помочь вам достичь ваших целей."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-12 justify-center">
               <div className="text-center hover:scale-110 transition-transform duration-300">
                 <div className="text-3xl font-bold text-vl-yellow">AED 1.7B+</div>
                 <div className="text-white/80">
                   {language === "en"
                     ? "Total Transaction Value"
                     : language === "ar"
-                      ? "إجمالي قيمة المعاملات"
+                      ? "صفقة عقارية"
                       : "Общая стоимость сделок"}
                 </div>
               </div>
               <div className="text-center hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl font-bold text-vl-yellow">15+</div>
+                <div className="text-3xl font-bold text-vl-yellow">1.7B AED</div>
                 <div className="text-white/80">
-                  {language === "en" ? "Years Experience" : language === "ar" ? "سنوات الخبرة" : "Лет опыта"}
+                  {language === "en" ? "Years Experience" : language === "ar" ? "بإجمالي" : "Лет опыта"}
                 </div>
               </div>
+              
             </div>
+             <h3 className="text-2xl font-bold text-white mt-4">
+              {language === "en"
+                ? "Your trusted partner in the world of real estate… with strong expertise and exclusive investment opportunities."
+                : language === "ar"
+                  ? "شريكك الموثوق في عالم العقارات… بخبرة قوية وفرص استثمارية حصرية"
+                  : "Ваш надёжный партнёр в мире недвижимости… с богатым опытом и эксклюзивными инвестиционными возможностями."}
+            </h3>
           </div>
+          
         </div>
       </div>
     </section>

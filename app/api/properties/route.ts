@@ -109,8 +109,8 @@ export async function POST(request: NextRequest) {
       viewCount: 0,
       lastUpdated: new Date().toISOString().split('T')[0],
       agentName: 'Victoria Lancaster',
-      agentPhone: '+971 50 123 4567',
-      agentEmail: 'victoria@vlrealestate.com'
+      agentPhone: '+971 4 2794 800 50 123 4567',
+      agentEmail: 'victoria.lancaster@selectproperty.ae'
     };
 
     // Insert property

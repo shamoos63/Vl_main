@@ -159,7 +159,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
               </h3>
               <div className="flex items-center justify-center text-sm">
                 <Mail className="h-4 w-4 mr-2 text-vl-yellow" />
-                <span className="text-gray-700">victoria@vlrealestate.com</span>
+                <span className="text-gray-700">victoria.lancaster@selectproperty.ae</span>
               </div>
             </div>
 

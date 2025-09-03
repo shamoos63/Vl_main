@@ -34,7 +34,7 @@ interface PropertyDetailsClientProps {
 }
 
 export default function PropertyDetailsClient({ propertyId, initialProperty, error }: PropertyDetailsClientProps) {
-  const { t, isRTL } = useI18n()
+  const { t,language, isRTL } = useI18n()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showVideo, setShowVideo] = useState(false)
   const [property, setProperty] = useState<Property | null>(initialProperty || null)
@@ -400,20 +400,20 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                   height={60}
                   className="rounded-full object-cover mr-4"
                 />
-                <div>
-                  <h4 className="font-semibold text-vl-yellow dark:text-white">Victoria Lancaster</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">Senior Real Estate Consultant</p>
+                  <div className={`${language === "ar" ? "mr-4" : "ml-4"}`}>
+                  <h4 className="font-semibold text-vl-yellow dark:text-white">{t("about.name")}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{t("about.tname")}</p>
                 </div>
               </div>
 
               <div className="space-y-3 mb-6">
                 <div className="flex items-center">
                   <Phone className="h-4 w-4 text-vl-yellow mr-3" />
-                  <span className="text-gray-600 dark:text-gray-300">+971-XX-XXX-XXXX</span>
+                  <span className="text-gray-600 dark:text-gray-300">+971 4 2794 800</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-4 w-4 text-vl-yellow mr-3" />
-                  <span className="text-gray-600 dark:text-gray-300">victoria@vlrealestate.com</span>
+                  <span className="text-gray-600 dark:text-gray-300">victoria.lancaster@selectproperty.ae</span>
                 </div>
               </div>
 

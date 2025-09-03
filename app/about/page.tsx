@@ -109,16 +109,12 @@ export default function AboutPage() {
       {/* Quote Section */}
       <section className="py-16 bg-transparent">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-6">
-              <Image src="/comma_sign.svg" alt="Quote" width={30} height={30} className="mx-auto" />
-            </div>
+          <div className="max-w-3xl mx-auto text-center">
+            
             <p className="text-2xl md:text-3xl text-white font-light italic mb-6 leading-relaxed">
-              {t("about.quote")}
+              "{t("about.quote")}"
             </p>
-            <div className="mb-6">
-              <Image src="/comma_sign.svg" alt="Quote" width={30} height={30} className="mx-auto" />
-            </div>
+            
             <p className="text-xl font-semibold text-vl-yellow">{t("about.name")}</p>
             <p className="text-white mt-2">{t("about.title")}</p>
           </div>
@@ -185,7 +181,7 @@ export default function AboutPage() {
           >
             {/* Content Left - Animates from LEFT */}
             <div
-              className={`space-y-8 transition-all duration-700 ease-out ${
+              className={`ml-6 space-y-8 transition-all duration-700 ease-out ${
                 visibleSections.has(1) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
               }`}
             >
@@ -238,7 +234,7 @@ export default function AboutPage() {
             >
               <div className="relative h-96 md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/victoria-photo-3.jpg"
+                  src="/victoria-photo-3 - full.jpg"
                   alt="Victoria Lancaster - Property Showcase"
                   fill
                   className="object-contain"
@@ -272,54 +268,12 @@ export default function AboutPage() {
       </section>
    {/* Timeline Section */}
       <TimelineSection />
-      {/* Academic & Professional Section */}
-      <section className="py-4 bg-transparent">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-vl-yellow mb-8 font-sansumi text-center">
-              {t("about.academic.title")}
-            </h2>
-
-            <div className="bg-transparent border border-vl-yellow p-8 rounded-2xl mb-8 shadow-lg">
-              <div className="flex items-start mb-6">
-                <GraduationCap className="h-8 w-8 text-vl-yellow mr-4 mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-vl-yellow mb-2">{t("about.academic.degree.title")}</h3>
-                  <ul className="list-disc pl-5 space-y-2 text-white">
-                    <li>{t("about.academic.degree.1")}</li>
-                    <li>{t("about.academic.degree.2")}</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <Briefcase className="h-8 w-8 text-vl-yellow mr-4 mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-vl-yellow mb-2">{t("about.professional.title")}</h3>
-                  <p className="text-white mb-2">{t("about.professional.license")}</p>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-lg text-white text-center leading-relaxed">
-              {t("about.academic.text1")}
-            </p>
-            <p className="text-lg text-white text-center leading-relaxed mt-4">
-              {t("about.academic.text2")}
-            </p>
-          </div>
-        </div>
-      </section>
+  
 
       {/* Clients & Values Section */}
       <section className="py-4 text-white bg-transparent">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8 font-sansumi text-vl-yellow">{t("about.excellence.title")}</h2>
-            <p className="text-xl leading-relaxed mb-8 text-white">
-              {t("about.excellence.text")}
-            </p>
-
+          <div className="max-w-4xl mx-auto text-center">      
             <div className="mt-12 p-6 bg-transparent backdrop-blur-sm rounded-2xl border border-vl-yellow">
               <div className="mb-4">
                 <Image src="/comma_sign.svg" alt="Quote" width={40} height={40} className="mx-auto" />
@@ -350,9 +304,16 @@ export default function AboutPage() {
                 <div key={index} className="flex items-center bg-vl-blue border border-vl-yellow p-4 rounded-lg">
                   <Check className="h-5 w-5 text-vl-yellow mr-3 flex-shrink-0" />
                   <span className="text-white">{item}</span>
+                  
                 </div>
+                
               ))}
+         
+              
             </div>
+               <p className="text-xl text-center text-white mb-8">
+              {t("about.expertise.quote2")}
+            </p>
 
             {/* Offices */}
             <h3 className="text-2xl font-bold text-vl-yellow mb-6 font-sansumi text-center">{t("about.offices.title")}</h3>

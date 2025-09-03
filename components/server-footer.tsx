@@ -85,11 +85,11 @@ export default function ServerFooter() {
               </li>
               <li className="flex items-start">
                 <span className="text-vl-yellow mr-2">Phone:</span>
-                <span className="text-gray-300">+971 XX XXX XXXX</span>
+                <span className="text-gray-300">+971 4 2794 800 XX XXX XXXX</span>
               </li>
               <li className="flex items-start">
                 <span className="text-vl-yellow mr-2">Email:</span>
-                <span className="text-gray-300">victoria@vlrealestate.com</span>
+                <span className="text-gray-300">victoria.lancaster@selectproperty.ae</span>
               </li>
               <li className="flex items-start">
                 <span className="text-vl-yellow mr-2">Hours:</span>

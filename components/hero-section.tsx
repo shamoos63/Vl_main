@@ -321,7 +321,7 @@ export default function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl pt-3 lg:text-7xl font-bold text-white mb-6 font-sansumi">
-            {t("hero.title")} <span className="text-white">{t("hero.title.highlight")}</span>
+            {t("hero.title")} 
           </h1>
 
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
@@ -540,9 +540,25 @@ export default function HeroSection() {
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
-                  end={585}
+                  end={15}
                   suffix="+"
                   delay={200}
+                  className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                  glowEffect={true}
+                  pulseOnComplete={true}
+                />
+              </div>
+              <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
+                {t("hero.stats.experience")}
+              </div>
+            </div>
+
+            <div className="text-center group col-span-2 md:col-span-1">
+              <div className="relative">
+                <AnimatedCounter
+                  end={585}
+                  suffix="+"
+                  delay={600}
                   className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
                   glowEffect={true}
                   pulseOnComplete={true}
@@ -553,7 +569,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="text-center group">
+           <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
                   prefix="AED "
@@ -569,22 +585,6 @@ export default function HeroSection() {
               </div>
               <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
                 {t("hero.stats.value")}
-              </div>
-            </div>
-
-            <div className="text-center group col-span-2 md:col-span-1">
-              <div className="relative">
-                <AnimatedCounter
-                  end={15}
-                  suffix="+"
-                  delay={600}
-                  className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
-                  glowEffect={true}
-                  pulseOnComplete={true}
-                />
-              </div>
-              <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
-                {t("hero.stats.experience")}
               </div>
             </div>
           </div>

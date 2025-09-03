@@ -216,8 +216,8 @@ export const ru = {
   "footer.copyright": "© 2025 VL Недвижимость. Все права защищены.",
   "footer.social.follow": "Подписывайтесь на нас",
   "footer.contact.address": "Дубай, ОАЭ",
-  "footer.contact.phone": "+971-XX-XXX-XXXX",
-  "footer.contact.email": "info@vlrealestate.com",
+  "footer.contact.phone": "+971 4 2794 800",
+  "footer.contact.email": "victoria.lancaster@selectproperty.ae",
 
   // Blog
   "blog.page.title": "Инсайты недвижимости",
@@ -453,7 +453,7 @@ export const ru = {
   "welcome.full.name": "Полное имя",
   "welcome.full.name.placeholder": "Ваше полное имя",
   "welcome.phone.number": "Номер телефона",
-  "welcome.phone.placeholder": "+971 XX XXX XXXX",
+  "welcome.phone.placeholder": "+971 4 2794 800 XX XXX XXXX",
   "welcome.email.address": "Адрес электронной почты",
   "welcome.email.placeholder": "your.email@example.com",
   "welcome.details": "Детали",

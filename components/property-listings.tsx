@@ -28,7 +28,7 @@ export default function PropertyListings() {
 
         <div className="text-sm text-gray-500 bg-transparent">
           {t("properties.showing") || "Showing"} {filteredProperties?.length || 0} {t("properties.of") || "of"}{" "}
-          {filteredProperties?.length || 0} {t("properties.results") || "results"}
+          {filteredProperties?.length || 0} 
         </div>
       </div>
 

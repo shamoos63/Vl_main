@@ -310,8 +310,8 @@ export function convertToCurrentPropertyFormat(dbProperty: PropertyWithTranslati
     viewCount: dbProperty.viewCount || 0,
     agent: {
       name: dbProperty.agentName || 'Victoria Lancaster',
-      phone: dbProperty.agentPhone || '+971 50 123 4567',
-      email: dbProperty.agentEmail || 'victoria@vlrealestate.com',
+      phone: dbProperty.agentPhone || '+971 4 2794 800 50 123 4567',
+      email: dbProperty.agentEmail || 'victoria.lancaster@selectproperty.ae',
     },
     coordinates: dbProperty.latitude && dbProperty.longitude 
       ? { lat: dbProperty.latitude, lng: dbProperty.longitude }

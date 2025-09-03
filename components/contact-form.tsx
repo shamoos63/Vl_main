@@ -100,7 +100,7 @@ export default function ContactForm() {
             <div className="space-y-3 text-sm">
               <div className="flex items-center justify-center">
                 <Mail className="h-4 w-4 mr-2 text-vl-yellow" />
-                <span className="text-gray-700">victoria@vlrealestate.com</span>
+                <span className="text-gray-700">victoria.lancaster@selectproperty.ae</span>
               </div>
             </div>
           </div>

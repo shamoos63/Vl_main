@@ -61,6 +61,11 @@ export default function Footer() {
                   {t("nav.areas")}
                 </Link>
               </li>
+                <li>
+                <Link href="/evaluation" className="text-gray-300 hover:text-vl-yellow transition-colors">
+                  {t("nav.evaluation")}
+                </Link>
+              </li>
               <li>
                 <Link href="/blog" className="text-gray-300 hover:text-vl-yellow transition-colors">
                   {t("nav.blog")}
@@ -82,14 +87,14 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-6 flex flex-col items-center">{t("footer.contact.info")}</h3>
-            <ul className="space-y-4 flex flex-col items-center">
+            <ul className="space-y-4 flex flex-col">
               <li className="flex items-center">
                 <MapPin className="h-5 w-5 mr-3 text-vl-yellow" />
                 <span className="text-gray-300">Dubai, UAE</span>
               </li>
       <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-vl-yellow" />
-                <span className="text-gray-300">info@vlrealestate.com</span>
+                <span className="text-gray-300">victoria.lancaster@selectproperty.ae</span>
               </li>
             </ul>
           </div>

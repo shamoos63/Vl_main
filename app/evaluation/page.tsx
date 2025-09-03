@@ -24,12 +24,9 @@ export default function EvaluationPage() {
       {/* Description Section */}
       <section className="py-12 bg-transparent">
         <div className="container mx-auto px-4 max-w-4xl">
-          <p className="text-lg text-white text-center">
+          <p className="text-lg text-white text-center py-4">
             {t("evaluation.description.1")}
-            </p><p className="text-lg text-white text-center mb-6">
-            {t("evaluation.description.2")}
-          </p>
-          <p className="text-lg text-white text-center mb-6">{t("evaluation.description.3")}</p>
+            </p>
          <div className="w-full">
   <ul className="flex flex-col gap-6 md:flex-row md:gap-8">
 
@@ -45,12 +42,14 @@ export default function EvaluationPage() {
       </h3>
     </li>
 
-    <li className="flex flex-1 items-center justify-center rounded-xl glass p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <li className="flex flex-1 flex-col items-center justify-center rounded-xl glass p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <h3 className="text-lg font-medium text-gray-800">
         {t("evaluation.feature.3")}
       </h3>
+      <p className="text-sm text-gray-600 mt-2">
+      {t("evaluation.feature.3+")}
+    </p>
     </li>
-
   </ul>
 </div>
         <p className="text-lg text-white text-center pt-6 font-medium w-full whitespace-nowrap">
@@ -60,7 +59,7 @@ export default function EvaluationPage() {
       </section>
    <EvaluationClient />
       {/* Stats Section */}
-      <section className="py-1">
+      <section className="py-5">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="glass rounded-lg p-6 text-center shadow-md">

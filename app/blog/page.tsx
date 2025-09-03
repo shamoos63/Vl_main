@@ -181,10 +181,6 @@ export default function BlogPage() {
           <p className="text-lg text-white mb-6 text-center">
             {t("blog.description.1")}
           </p>
-          <p className="text-lg text-white mb-6 text-center">
-            {t("blog.description.2")}
-          </p>
-          <p className="text-lg text-white mb-6 text-center">{t("blog.description.3")}</p>
           <ul className="flex flex-col gap-6 md:flex-row md:gap-8">
 
     <li className="flex flex-1 items-center justify-center rounded-xl glass p-6 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">

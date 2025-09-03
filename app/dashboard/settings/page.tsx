@@ -22,8 +22,8 @@ interface ContactSettings {
 
 // Default contact settings
 const defaultSettings: ContactSettings = {
-  phone: "+971-XX-XXX-XXXX",
-  email: "victoria@vlrealestate.com",
+  phone: "+971 4 2794 800-XX-XXX-XXXX",
+  email: "victoria.lancaster@selectproperty.ae",
   address: "Dubai, United Arab Emirates",
   facebook: "https://facebook.com/vlrealestate",
   instagram: "https://instagram.com/vlrealestate",

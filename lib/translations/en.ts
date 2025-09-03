@@ -215,8 +215,8 @@ export const en = {
   "footer.copyright": "© 2025 VL Real Estate. All rights reserved.",
   "footer.social.follow": "Follow Us",
   "footer.contact.address": "Dubai, UAE",
-  "footer.contact.phone": "+971-XX-XXX-XXXX",
-  "footer.contact.email": "info@vlrealestate.com",
+  "footer.contact.phone": "+971 4 2794 800-XX-XXX-XXXX",
+  "footer.contact.email": "victoria.lancaster@selectproperty.ae",
 
   // Blog
   "blog.page.title": "Real Estate Insights",
@@ -450,7 +450,7 @@ export const en = {
   "welcome.full.name": "Full Name",
   "welcome.full.name.placeholder": "Your full name",
   "welcome.phone.number": "Phone Number",
-  "welcome.phone.placeholder": "+971 XX XXX XXXX",
+  "welcome.phone.placeholder": "+971 4 2794 800 XX XXX XXXX",
   "welcome.email.address": "Email Address",
   "welcome.email.placeholder": "your.email@example.com",
   "welcome.details": "Details",

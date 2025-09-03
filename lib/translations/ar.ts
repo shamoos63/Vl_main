@@ -211,8 +211,8 @@ export const ar = {
   "footer.copyright": "© 2025 في إل العقارية. جميع الحقوق محفوظة.",
   "footer.social.follow": "تابعنا",
   "footer.contact.address": "دبي، الإمارات العربية المتحدة",
-  "footer.contact.phone": "+971-XX-XXX-XXXX",
-  "footer.contact.email": "info@vlrealestate.com",
+  "footer.contact.phone": "+971 4 2794 800-XX-XXX-XXXX",
+  "footer.contact.email": "victoria.lancaster@selectproperty.ae",
 
   // Blog
   "blog.page.title": "رؤى العقارات",
@@ -407,10 +407,10 @@ export const ar = {
   "testimonials.try.different": "حاول البحث عن منطقة مختلفة",
 
   // FAQ
-  "faq.title": "الأسئلة الشائعة",
-  "faq.subtitle": "مع فيكتوريا لانكستر",
-  "faq.quote":
-    "اخترت هذه الأسئلة لأنها تعكس ما يسألني الناس حقاً - ليس فقط عن الشراء في دبي، ولكن عن كيف أفكر وكيف أعمل وما أقدره. أؤمن أن الوضوح يبني الثقة. عندما تعرف ما تتوقعه، يمكنك اتخاذ قرارات أفضل.",
+"faq.title": "الأسئلة الأكثر تكرراً",
+    "faq.subtitle": "إجابات فيكتوريا على أكثر الأسئلة شيوعاً في عالم الاستثمار العقاري.",
+    "faq.quote":
+      '"اخترت هذه الأسئلة لأنها تمثّل ما يشغل بال المستثمرين حقاً، ليس فقط عن شراء العقار في دبي، بل عن منهجي في التفكير، وأسلوب عملي، وما أضعه من قيم أساسية.أؤمن أن الشفافية تبني الثقة، وحين يكون أمامك وضوح كامل، تصبح قراراتك الاستثمارية أكثر ذكاءً وأماناً."',
 
   // AI Chat
   "ai.chat.title": "اسأل فيكتوريا",
@@ -444,7 +444,7 @@ export const ar = {
   "welcome.full.name": "الاسم الكامل",
   "welcome.full.name.placeholder": "اسمك الكامل",
   "welcome.phone.number": "رقم الهاتف",
-  "welcome.phone.placeholder": "+971 XX XXX XXXX",
+  "welcome.phone.placeholder": "+971 4 2794 800 XX XXX XXXX",
   "welcome.email.address": "عنوان البريد الإلكتروني",
   "welcome.email.placeholder": "your.email@example.com",
   "welcome.details": "التفاصيل",

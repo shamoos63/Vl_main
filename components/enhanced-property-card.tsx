@@ -64,7 +64,7 @@ export default function EnhancedPropertyCard({
   const [imageError, setImageError] = useState(false)
   const [isSharing, setIsSharing] = useState(false)
   const [favoriteLoading, setFavoriteLoading] = useState(false)
-  const { t, isRTL } = useI18n()
+  const { t, isRTL, language } = useI18n()
 
   // Handle share functionality with proper feedback
   const handleShare = async () => {
@@ -101,6 +101,13 @@ export default function EnhancedPropertyCard({
       setIsSharing(false)
     }
   }
+
+  const statusKeyMap = {
+  "Ready": "property.status.ready",
+  "Off-plan": "property.status.OffPlan",
+  "For Rent": "property.status.ForRent",
+  "Sold": "property.status.Sold",
+};
 
   // Handle favorite toggle with loading state
   const handleFavoriteToggle = async () => {
@@ -256,7 +263,7 @@ export default function EnhancedPropertyCard({
                 !property.status && "bg-vl-blue",
               )}
             >
-              {property.status || "Available"}
+              {t(statusKeyMap[property.status] || "property.status.Available")}
             </Badge>
             {property.featured && (
               <Badge className="bg-vl-yellow text-vl-blue font-medium shadow-lg">
@@ -314,7 +321,15 @@ export default function EnhancedPropertyCard({
         <CardContent className="p-6 flex-1 flex flex-col">
           {/* Header Section */}
           <div className="flex items-start justify-between mb-4">
-    <div className="flex-1"> <h3 className="text-xl font-bold text-vl-yellow mb-1 line-clamp-2 text-left">{property.title}</h3>
+    <div className="flex-1">
+  <h3
+    className={cn(
+      "text-xl font-bold text-vl-yellow mb-1 line-clamp-2",
+      language === "ar" ? "text-right ml-2" : "text-left"
+    )}
+  >
+    {property.title}
+  </h3>
               <div className="flex items-center text-gray-600 mb-2">
                 <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
                 <span className="text-sm">{property.location}</span>
@@ -337,7 +352,7 @@ export default function EnhancedPropertyCard({
               <div className="text-2xl font-heading text-vl-yellow mb-1 font-bold">
                 {formatPrice(property.price)}
               </div>
-              {pricePerSqFt && <div className="text-xs text-gray-500">${pricePerSqFt}/sq ft</div>}
+              {pricePerSqFt && <div className="text-xs text-gray-500">${pricePerSqFt}/{t("property.sqft")}</div>}
             </div>
           </div>
 

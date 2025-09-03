@@ -17,6 +17,7 @@
   --vl-yellow-dark: #f59e0b;
 }
 
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
