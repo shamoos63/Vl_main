@@ -93,7 +93,7 @@ export default function PropertyEvaluationTool() {
 
   if (isSubmitted) {
     return (
-      <div className="mx-auto px-1 pb-10 min-h-screen" dir={isRTL ? "rtl" : "ltr"}>
+      <div className="mx-auto px-1 pb-4 min-h-screen" dir={isRTL ? "rtl" : "ltr"}>
         <div className="max-w-2xl mx-auto text-center pt-8">
           <Card className="p-8 glass border-0 shadow-2xl">
             <CardContent className="p-0">

@@ -44,8 +44,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 flex flex-col items-center">{t("footer.quick.links")}</h3>
-            <ul className="space-y-3 flex flex-col items-center">
+            <h3 className="text-lg font-semibold mb-6 flex flex-col items-left">{t("footer.quick.links")}</h3>
+            <ul className="space-y-3 flex flex-col items-left">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-vl-yellow transition-colors">
                   {t("nav.home")}

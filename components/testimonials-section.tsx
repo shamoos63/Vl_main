@@ -217,7 +217,7 @@ export default function TestimonialsSection() {
             {language === "en"
               ? "Hear from clients who chose strategy, discretion, and results."
               : language === "ar"
-                ? "استمع إلى العملاء الذين اختاروا الاستراتيجية والتقدير والنتائ��."
+                ? "استمع إلى العملاء الذين اختاروا الاستراتيجية والتقدير والنتائج"
                 : "Послушайте мнения клиентов, которые выбрали стратегию, осмотрительность и результаты."}
           </p>
         </div>
@@ -286,10 +286,10 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
           <div className="bg-vl-blue rounded-2xl p-8 max-w-4xl mx-auto hover:shadow-2xl transition-all duration-500 hover:scale-105">
             <h3 className="text-2xl font-bold text-white mb-4">
               {language === "en"
-                ? "Join 585+ Satisfied Investors"
+                ? "Join 500+ Satisfied Investors"
                 : language === "ar"
-                  ? "انضم إلى 585+ مستثمر ناجح"
-                  : "Присоединяйтесь к 585+ довольным инвесторам"}
+                  ? "انضم إلى 500+ مستثمر ناجح"
+                  : "Присоединяйтесь к 500+ довольным инвесторам"}
             </h3>
             <p className="text-white/90 mb-6">
               {language === "en"
@@ -303,27 +303,21 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                 <div className="text-3xl font-bold text-vl-yellow">AED 1.7B+</div>
                 <div className="text-white/80">
                   {language === "en"
-                    ? "Total Transaction Value"
+                    ? "Valued at"
                     : language === "ar"
-                      ? "صفقة عقارية"
+                      ? "بقيمة"
                       : "Общая стоимость сделок"}
                 </div>
               </div>
               <div className="text-center hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl font-bold text-vl-yellow">1.7B AED</div>
+                <div className="text-3xl font-bold text-vl-yellow">585+</div>
                 <div className="text-white/80">
-                  {language === "en" ? "Years Experience" : language === "ar" ? "بإجمالي" : "Лет опыта"}
+                  {language === "en" ? "Proprties Sold" : language === "ar" ? "صفقة عقارية " : "Лет опыта"}
                 </div>
               </div>
               
             </div>
-             <h3 className="text-2xl font-bold text-white mt-4">
-              {language === "en"
-                ? "Your trusted partner in the world of real estate… with strong expertise and exclusive investment opportunities."
-                : language === "ar"
-                  ? "شريكك الموثوق في عالم العقارات… بخبرة قوية وفرص استثمارية حصرية"
-                  : "Ваш надёжный партнёр в мире недвижимости… с богатым опытом и эксклюзивными инвестиционными возможностями."}
-            </h3>
+            
           </div>
           
         </div>

@@ -48,11 +48,11 @@ const translations = {
   "timeline.2005.title": "Academic Foundation",
   "timeline.2005.description": "Graduated with dual Bachelor of Science degrees from Herzen State Pedagogical University and Baltic University of Foreign Languages, establishing a strong analytical foundation.",
   "timeline.2010.title": "Real Estate Entry",
-  "timeline.2010.description": "Started at Select Property Group (UK & UAE), entering real estate with focus on residential sales and building strong market expertise",
+  "timeline.2010.description": "Started at Select Property Group (UK & UAE), entering real estate with focus on residential sales and building strong market expertise.",
   "timeline.2012.title": "Dubai Market Expansion",
   "timeline.2012.description": "Became a trusted advisor, consistently exceeding targets and aligning opportunities with client goals.",
   "timeline.2015.title": "Investment Specialization",
-  "timeline.2015.description": " Awarded MVP (Most Valuable Performer) at Select for outstanding performance and client service.",
+  "timeline.2015.description": " Awarded MVP (Most Valuable Person) at Select for outstanding performance and client service.",
   "timeline.2018.title": "Global Client Base",
   "timeline.2018.description": "Built an international client base across 30+ countries, offering tailored services in English and Russian.",
   "timeline.2020.title": "Select Property Leadership",
@@ -61,7 +61,7 @@ const translations = {
   "timeline.2023.description": "Surpassed 500 successful transactions, trusted by private investors, family offices, and institutions.",
   "timeline.2025.title": "Industry Leadership",
   "timeline.2025.description": "Reached 585+ properties sold, with AED 1.7B+ in transactions. Recognized as a leading real estate investment strategist in Dubai & the UK.",
-  "timeline.quote": "Every milestone represents not just professional growth, but a commitment to excellence and client success that defines my approach to real estate investment.",
+  "timeline.quote": "Every milestone represents not just professional growth, but a commitment to excellence and client success that defines my approach to real estate investment",
   "timeline.signature.name": "Victoria Lancaster",
   "timeline.signature.title": "Investment Director | Licensed Real Estate Advisor",
   "about.expertise.quote2": "Let’s start a conversation built on trust and data, tailored to your goals. Enter your details, and Victoria will personally reach out to guide your next step.",
@@ -118,7 +118,7 @@ const translations = {
     "Considering your next move? Start with knowing exactly what your property is worth, and what it could do for you.",
   "evaluation.description.1": "I offer a confidential, data-driven evaluation for property owners in Dubai and the UK.",
   "evaluation.description.1+": "Whether you're planning to sell, rent, or simply want clarity,",
-  "evaluation.description.2": "you'll receive strategic insight, not just a number.",
+  "evaluation.description.2": "You'll receive strategic insight, not just a number.",
   "evaluation.description.3": "Backed by 15+ years of experience, your evaluation will include:",
   "evaluation.feature.1": "Accurate market value",
   "evaluation.feature.2": "Investment and income potential",
@@ -128,7 +128,7 @@ const translations = {
     "Submit your details below, I will personally evaluate your property and advise on your best next move.",
   "evaluation.stats.1": "Properties Evaluated",
   "evaluation.stats.2": "Total Value Assessed",
-  "evaluation.stats.3": "Years Experience",
+  "evaluation.stats.3": "Years of Experience",
   "evaluation.contact.info": "Contact Information",
   "evaluation.name": "Full Name",
   "evaluation.name.placeholder": "Enter your full name",
@@ -193,7 +193,7 @@ const translations = {
     "hero.search.button": "Search Properties",
     "hero.stats.properties": "Properties Sold",
     "hero.stats.value": "Total Value",
-    "hero.stats.experience": "Years Experience",
+    "hero.stats.experience": "Years of Experience",
     "hero.stats.satisfaction": "Client Satisfaction",
 
     // Search Form
@@ -324,8 +324,8 @@ const translations = {
     "properties.showing": "Showing",
     "properties.of": "of",
     "properties.results": "results",
-    "properties.end.of.results": "You've seen all available properties matching your criteria.",
-    "properties.page.subtitle2": "Every property here has passed specific criteria to be your safe investment",
+    "properties.end.of.results": "Every property here meets strict criteria to ensure a safe investment",
+    "properties.page.subtitle2": "No noise, no random offers, only handpicked real estate opportunities",
 
     // Properties Page Specific
     "properties.page.title": "Personally Selected",
@@ -459,10 +459,10 @@ const translations = {
   "about.academic.text2": "She is known for her direct, no-fluff communication style, a quality her clients value for its transparency and efficiency.",
   "about.excellence.title": "Professional Excellence",
   "about.excellence.text": "Great investments aren't rushed, they're chosen with purpose, timing, and clarity. Victoria brings meticulous attention to detail and unwavering commitment to every client relationship.",
-  "about.excellence.quote": "Great investments aren't rushed, they're chosen with purpose, timing, and clarity.",
+  "about.excellence.quote": "Great investments aren't rushed, they're chosen with purpose, timing, and clarity",
   "about.expertise.title": "Areas of Expertise",
   "about.expertise.quote": "I don't just sell property. I strategize wealth.",
-  "about.expertise.description": "Here's how she support investors in building real estate portfolios with purpose and clarity:",
+  "about.expertise.description": "Here's how I support investors in building real estate portfolios with purpose and clarity:",
   "about.expertise.1": "Off-plan Investments (Dubai & UK)",
   "about.expertise.2": "Selected Residential Properties",
   "about.expertise.3": "Buy-to-Let Strategy",
@@ -473,7 +473,7 @@ const translations = {
   "about.office.dubai": "Dubai, United Arab Emirates",
   "about.office.manchester": "Manchester, United Kingdom",
   "about.cta.title": "Ready to take the next step?",
-  "about.cta.text": "Let's start a conversation built on trust, guided by insight, and tailored to your goals. Share your details below. Victoria will personally review how she can support your next move.",
+  "about.cta.text": "Let's start a conversation built on trust, guided by insight, and tailored to your goals. Share your details below. Victoria will personally review how she can support your next move",
   "about.cta.button": "Send Message",
   "about.achievements.1.number": "585+",
   "about.achievements.1.title": "Properties Sold",
@@ -493,7 +493,9 @@ const translations = {
     "faq.title": "Frequently Asked Questions",
     "faq.subtitle": "with Victoria Lancaster",
     "faq.quote":
-      '"I chose these questions because they reflect what truly matters to investors, not only about buying property in Dubai, but about how I think, how I work, and the values that guide me.I believe transparency builds trust, and when you have clarity, your investment decisions become smarter and more secure."',
+      '"I chose these questions because they reflect what truly matters to investors."',
+       "faq.quote2":
+      '"I  believe transparency builds trust, and when you have clarity, your investment decisions become smarter and more secure."',
     "faq.quote.author": "Victoria Lancaster",
 
     // Testimonials Section
@@ -541,7 +543,7 @@ const translations = {
 
     // Footer
     "footer.description":
-      "Your trusted Dubai real estate partner.",
+      "Your trusted Dubai real estate partner",
     "footer.quick.links": "Quick Links",
     "footer.contact.info": "Contact Info",
     "footer.newsletter": "Stay Updated",
@@ -570,7 +572,8 @@ const translations = {
     "testimonials.try.different": "Try searching for a different area",
 
     // Welcome Popup
-    "welcome.title": "Victoria Lancaster — Investment Director",
+    "welcome.title": "Victoria Lancaster",
+    "welcome.title2": "Investment Director",
     "welcome.subtitle": " For over 15 years, I’ve been entrusted with guiding capital into real estate, turning ambition into lasting value.",
     "welcome.experience": "Properties Sold ",
     "welcome.experience2": "+",
@@ -665,7 +668,7 @@ const translations = {
   "properties.results.title": "نتائج البحث",
   "properties.page.title": "فرص مختارة",
   "properties.page.title2": "  ومدروسة بدقة",
-  "properties.page.subtitle": "بدون ضوضاء ولا عروض عشوائية. فرص عقارية منتقاة فقط، اجتازت معايير محدّدة لتكون استثمارك الآمن",
+  "properties.page.subtitle": "بدون ضوضاء ولا عروض عشوائية.",
   "properties.page.subtitle2": "كل عقار هنا اجتاز معايير محدّدة ليكون استثمارك الآمن",
 
   
@@ -683,12 +686,12 @@ const translations = {
       // Areas
   "areas.page.title": " أهم مناطق الاستثمار في دبي",
   "areas.page.subtitle": "تحليلات مدروسة لمساعدتك على الاختيار بثقة",
-  "areas.description.1": "سوق العقارات في دبي متنوع، وليس كل منطقة تناسب كل مستثمر.",
+  "areas.description.1": "سوق العقارات في دبي متنوع، وليس كل منطقة تناسب كل مستثمر",
   "areas.description.2": "في هذا القسم، أسلّط الضوء على المناطق الرئيسية التي أختار العمل فيها، مشاركة منظوري الصادق حول:",
   "areas.feature.1": "نقاط القوة والإمكانيات",
   "areas.feature.2": "المخاطر التي يجب مراعاتها",
-  "areas.feature.3": "من تناسب المنطقة ",
-  "areas.description.3": "سواء كنت تركز على العائد أو النمو أو نمط الحياة، ستساعدك هذه التّقاريرعلى اتخاذ الخطوات الصحيحة.",
+  "areas.feature.3": "من تناسبه المنطقة ",
+  "areas.description.3": "سواء كنت تركز على العائد أو النمو أو نمط الحياة، ستساعدك هذه التّقاريرعلى اتخاذ الخطوات الصحيحة",
   
   // Area Details
   "areas.dubai.marina.name": "دبي مارينا",
@@ -711,7 +714,7 @@ const translations = {
   "timeline.2012.title": "التوسع في سوق دبي",
   "timeline.2012.description": "ترسّخت مكانتها كمستشارة موثوقة، متميزة بقدرتها على توفيق الفرص مع أهداف العملاء.",
   "timeline.2015.title": "التخصص في الاستثمار",
-  "timeline.2015.description": "حصلت على جائزة MVP – الشخص الأكثر قيمة في Select Property، تقديراً لنتائجها البارزة والخدمة المميزة التي تقدّمها.",
+  "timeline.2015.description": "حصلت على جائزة MVP – الشخص الأكثر أهمية في Select Property، تقديراً لنتائجها البارزة والخدمة المميزة التي تقدّمها.",
   "timeline.2018.title": "قاعدة عملاء عالمية",
   "timeline.2018.description": " أسّست قاعدة عملاء دولية تمتد إلى أكثر من 30 دولة، مقدّمة خدمات مخصصة باللغتين الإنجليزية والروسية.",
   "timeline.2020.title": "قيادة سيلكت بروبرتي",
@@ -727,7 +730,7 @@ const translations = {
     // Evaluation
   "evaluation.form.title": "أداة تقييم العقار",
   "evaluation.page.title": "تقييم عقارك، خطوة نحو ربح أذكى",
-  "evaluation.page.subtitle": "هل  تفكر بخطوتك التالية؟ ابدأ بمعرفة القيمة الحقيقية لعقارك، وما يمكن أن يحققه لك.",
+  "evaluation.page.subtitle": "هل  تفكر بخطوتك التالية؟ ابدأ بمعرفة القيمة الحقيقية لعقارك، وما يمكن أن يحققه لك",
   "evaluation.description.1":
     "سأقدّم لك تقييماً مستنداً إلى بيانات من السّوق وخبرة أكثر من 15عاماً، لعقاراتك في دبي والمملكة المتحدة. لن تحصل على رقم فقط، بل رؤية استراتيجية تشمل:",
   "evaluation.description.2": "ستحصل على رؤية استراتيجية، وليس مجرد رقم.",
@@ -735,10 +738,11 @@ const translations = {
   "evaluation.feature.1": "قيمة الدقيقة في السوق",
   "evaluation.feature.2": "إمكانات الدخل والاستثمار",
   "evaluation.feature.3": "خطة البيع أو الإيجار الأمثل",
-  "evaluation.description.4": "شارك تفاصيلك أدناه، ودعني أقيّم عقارك شخصياً وأوجّهك نحو أفضل خطوة تالية.",
-  "evaluation.stats.1": "العقارات المقيمة",
-  "evaluation.stats.2": "إجمالي القيمة المقدرة",
-  "evaluation.stats.3": "سنوات الخبرة",
+  "evaluation.feature.3+": "(إذا كانت قابلة للتطبيق)",
+  "evaluation.description.4": "شارك تفاصيلك أدناه، ودعني أقيّم عقارك شخصياً وأوجّهك نحو أفضل خطوة تالية",
+  "evaluation.stats.1": "صفقة عقارية",
+  "evaluation.stats.2": "بإجمالي",
+  "evaluation.stats.3": "عاماً من الخبرة",
   "evaluation.contact.info": "معلومات التواصل",
   "evaluation.name": "الاسم الكامل",
   "evaluation.name.placeholder": "أدخل اسمك الكامل",
@@ -778,7 +782,7 @@ const translations = {
      // About
   "about.page.title": "عن فيكتوريا",
   "about.page.subtitle": "استراتيجية واضحة، ثقة راسخة، ونتائج ملموسة",
-  "about.quote": "بالنسبة لي، الاستثمار العقاري ليس مجرد صفقة… بل بناء مستقبل. أتعامل مع كل عقار وكأنه استثماري ال  خاص، بالعناية والدقة نفسها",
+  "about.quote": "بالنسبة لي، الاستثمار العقاري ليس مجرد صفقة… بل بناء مستقبل. أتعامل مع كل عقار وكأنه استثماري الخاص، بالعناية والدقة نفسها",
   "about.name": "فيكتوريا لانكاستر",
   "about.tname":"مدير الاستثمارات العقارية",
   "about.title": "مديرة قسم الاستثمارات العقارية | خبيرة استراتيجيات عقارية | مستشارة موثوقة",
@@ -804,7 +808,7 @@ const translations = {
   "about.academic.text2": "تُعرف بأسلوب تواصلها المباشر وعدم التعقيد، وهي صفة يقدرها عملاؤها لشفافيتها وكفاءتها.",
   "about.excellence.title": "التميز المهني",
   "about.excellence.text": "الاستثمارات العظيمة لا تُستعجل، بل تُختار بغرض وتوقيت ووضوح. تجلب فيكتوريا اهتماماً دقيقاً بالتفاصيل والتزاماً لا يتزعزع لكل علاقة مع العملاء.",
-  "about.excellence.quote": "لاستثمار العظيم لا يُستعجل… بل يُختار بوضوح وبتوقيت صحيح.",
+  "about.excellence.quote": "الاستثمار العظيم لا يُستعجل… بل يُختار بوضوح وبتوقيت صحيح",
   "about.expertise.title": "نقاط أتميز بها لبناء استثماراتك",
   "about.expertise.quote": "أنا لا أبيع العقارات فقط… بل أضع استراتيجيات للثروة.",
   "about.expertise.quote2": "لنبدأ حواراً قائماً على الثقة والأرقام، موجهاً لأهدافك. سجّل بياناتك، وستتواصل معك فيكتوريا شخصياً لتوجيه خطوتك القادمة",
@@ -853,11 +857,11 @@ const translations = {
     "ai.chat.placeholder": "اسألني عن أي شيء عن الاستثمار في العقارات في دبي",
 
     // Hero Section Arabic
-    "hero.title": "دبي ليست خياراً… بل طريق استراتيجي للثروة.",
-    "hero.subtitle":"افهم السوق. اغتنم الفرص الحصرية. وابنِ مستقبلاً يدوم.",
+    "hero.title": "دبي ليست خياراً… بل طريق استراتيجي للثروة",
+    "hero.subtitle":"افهم السوق. اغتنم الفرص الحصرية. وابنِ مستقبلاً يدوم",
     "hero.search.button": "البحث عن العقارات",
-    "hero.stats.properties": "صفقة عقفارية ",
-    "hero.stats.value": "بإجمالي",
+    "hero.stats.properties": "صفقة عقارية ",
+    "hero.stats.value": "بقيمة",
     "hero.stats.experience": "عاماً من الخبرة",
     "hero.stats.satisfaction": "صفقة عقارية",
 
@@ -981,12 +985,12 @@ const translations = {
 
     // Blog
   "blog.page.title": "اتجاهات السوق",
-  "blog.page.subtitle": "تحليلات دقيقة تبقيك متقدّماً بخطوة.",
-  "blog.description.1": "تحليلات مستندة إلى بيانات ومصادر موثوقة تُحوّل الأرقام إلى قرارات واثقة، مرتكزة إلى خبرة تتجاوز 15 عاماً في أسواق دبي والمملكة المتحدة.",
+  "blog.page.subtitle": "تحليلات دقيقة تبقيك متقدّماً بخطوة",
+  "blog.description.1": "تحليلات مستندة إلى بيانات ومصادر موثوقة تُحوّل الأرقام إلى قرارات واثقة، مرتكزة على خبرة تتجاوز 15 عاماً في أسواق دبي والمملكة المتحدة",
   "blog.description.2": "من اتجاهات السوق إلى استراتيجيات الاستثمار، احصل على المعرفة التي تحتاجها لاتخاذ قرارات مدروسة.",
   "blog.description.3": "إرشاد خبير مدعوم بأكثر من 15 عاماً من الخبرة في أسواق دبي والمملكة المتحدة.",
   "blog.feature.1": "تحليلات واتجاهات السوق",
-  "blog.feature.2": "استراتيجيات استراتيجيات استثمار عملية",
+  "blog.feature.2": "استراتيجيات استثمار عملية",
   "blog.feature.3": "استشارات عقارية متخصصة",
   "blog.description.4": "اطّلع على أحدث الرؤى والاستراتيجيات لتعزيز العائد",
   "blog.read.more": "اقرأ المزيد",
@@ -995,7 +999,7 @@ const translations = {
     "faq.title": "الأسئلة الأكثر تكرراً",
     "faq.subtitle": "إجابات فيكتوريا على أكثر الأسئلة شيوعاً في عالم الاستثمار العقاري.",
     "faq.quote":
-      '"اخترت هذه الأسئلة لأنها تمثّل ما يشغل بال المستثمرين حقاً، ليس فقط عن شراء العقار في دبي، بل عن منهجي في التفكير، وأسلوب عملي، وما أضعه من قيم أساسية.أؤمن أن الشفافية تبني الثقة، وحين يكون أمامك وضوح كامل، تصبح قراراتك الاستثمارية أكثر ذكاءً وأماناً."',
+      '"اخترت هذه الأسئلة لأنها تمثّل ما يشغل بال المستثمرين حقاً، ليس فقط عن شراء العقار في دبي، بل عن منهجي في التفكير، وأسلوب عملي.أؤمن أن الشفافية تبني الثقة، وحين يكون أمامك وضوح كامل، تصبح قراراتك الاستثمارية أكثر ذكاءً وأماناً."',
     "faq.quote.author": "— فيكتوريا لانكستر",
 
     // Testimonials Section
@@ -1048,11 +1052,11 @@ const translations = {
     "home.properties.loading": "جاري تحميل مجموعتنا المختارة من العقارات المميزة...",
 
     // Footer Arabic
-    "footer.description": "شريكك الموثوق في الاستثمار العقاري في دبي، نقدم إرشادات شخصية وفرص حصرية.",
+    "footer.description": "شريكك الموثوق في الاستثمار العقاري في دبي، نقدم إرشادات شخصية وفرص حصرية",
     "footer.quick.links": "روابط سريعة",
-    "footer.contact.info": "معلومات الاتصال",
+    "footer.contact.info": "معلومات التواصل",
     "footer.newsletter": "النشرة الإخبارية",
-    "footer.newsletter.description": "اشترك الآن لتصلك أهم الأخبار والأرقام الموثوقة أولاً بأول.",
+    "footer.newsletter.description": "اشترك الآن لتصلك أهم الأخبار والأرقام الموثوقة ",
     "footer.email.placeholder": "عنوان بريدك الإلكتروني",
     "footer.subscribe": "اشتراك",
     "footer.copyright": "© 2025 في إل العقارية. جميع الحقوق محفوظة.",
@@ -1075,8 +1079,9 @@ const translations = {
     "testimonials.try.different": "حاول البحث عن منطقة مختلفة",
 
     // Welcome Popup Arabic
-    "welcome.title": "فيكتوريا لانكستر — مدير الاستثمارات و الثروات العقارية",
-    "welcome.subtitle": "على مدى أكثر من خمسة عشر عاماً، قُدت رؤوس الأموال لمستثمرين من مختلف أنحاء العالم بخطط مدروسة ورؤى استراتيجية، لأحوّل طموحاتهم إلى أصول عقارية ذات قيمة مستدامة وعوائد ملموسة.",
+    "welcome.title": "فيكتوريا لانكستر",
+    "welcome.title2": "مدير الاستثمارات و الثروات العقارية",
+    "welcome.subtitle": "على مدى أكثر من خمسة عشر عاماً، قُدت رؤوس الأموال لمستثمرين من مختلف أنحاء العالم، وقمت بتحويل طموحاتهم إلى أصول عقارية ذات قيمة مستدامة وعوائد ملموسة",
     "welcome.experience": " صفقة عقارية",
     "welcome.experience2": " عاماً من الخبرة",
     "welcome.experience.detail": "في دبي والمملكة المتحدة",
@@ -1239,7 +1244,7 @@ const translations = {
    "about.achievements.4.number": "3",
    "about.achievements.4.title": "Языка",
    "about.achievements.4.description": "Свободно владеет английским, арабским и русским языками",
- "properties.page.subtitle2": "Каждая недвижимость здесь прошла определённые критерии, чтобы стать вашей надёжной инвестицией.",
+ "properties.page.subtitle2": "Каждая недвижимость здесь прошла определённые критерии",
 
     // Navigation Russian
     "nav.home": "Главная",
@@ -1507,7 +1512,7 @@ const translations = {
     "home.properties.loading": "Загружаем нашу тщательно отобранную коллекцию премиальной недвижимости...",
 
     // Footer Russian
-    "footer.description": "Ваш надежный партнер в инвестициях в недвижимость Дубая, предлагающий персональное руководство и эксклюзивные возможности.",
+    "footer.description": "Ваш надежный партнер в инвестициях в недвижимость Дубая, предлагающий персональное руководство и эксклюзивные возможности",
     "footer.quick.links": "Быстрые ссылки",
     "footer.contact.info": "Контактная информация",
     "footer.newsletter": "Рассылка",

@@ -24,8 +24,14 @@ export default function EvaluationPage() {
       {/* Description Section */}
       <section className="py-12 bg-transparent">
         <div className="container mx-auto px-4 max-w-4xl">
-          <p className="text-lg text-white text-center py-4">
+          <p className="text-lg text-white text-center py-1">
             {t("evaluation.description.1")}
+            </p>
+            <p className="text-lg text-white text-center py-1">
+            {t("evaluation.description.1+")}
+            </p>
+            <p className="text-lg text-white text-center py-1 mb-6">
+            {t("evaluation.description.2")}
             </p>
          <div className="w-full">
   <ul className="flex flex-col gap-6 md:flex-row md:gap-8">
@@ -59,7 +65,7 @@ export default function EvaluationPage() {
       </section>
    <EvaluationClient />
       {/* Stats Section */}
-      <section className="py-5">
+      <section className="py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="glass rounded-lg p-6 text-center shadow-md">

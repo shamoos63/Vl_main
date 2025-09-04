@@ -115,6 +115,7 @@ export default function AboutPage() {
               "{t("about.quote")}"
             </p>
             
+            
             <p className="text-xl font-semibold text-vl-yellow">{t("about.name")}</p>
             <p className="text-white mt-2">{t("about.title")}</p>
           </div>
@@ -271,21 +272,7 @@ export default function AboutPage() {
   
 
       {/* Clients & Values Section */}
-      <section className="py-4 text-white bg-transparent">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">      
-            <div className="mt-12 p-6 bg-transparent backdrop-blur-sm rounded-2xl border border-vl-yellow">
-              <div className="mb-4">
-                <Image src="/comma_sign.svg" alt="Quote" width={40} height={40} className="mx-auto" />
-              </div>
-              <p className="text-xl italic mb-4 text-white">
-                {t("about.excellence.quote")}
-              </p>
-              <p className="font-semibold text-vl-yellow">{t("about.name")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Areas of Expertise */}
       <section className="py-4 bg-transparent">
@@ -326,6 +313,22 @@ export default function AboutPage() {
                 <MapPin className="h-6 w-6 text-vl-yellow mr-3" />
                 <span className="text-white">{t("about.office.manchester")}</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <section className="mb-2 text-white bg-transparent">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">      
+            <div className="mt-6 p-6 bg-transparent backdrop-blur-sm rounded-2xl border border-vl-yellow">
+              <div className="mb-4">
+                <Image src="/comma_sign.svg" alt="Quote" width={40} height={40} className="mx-auto" />
+              </div>
+              <p className="text-xl italic mb-4 text-white">
+                {t("about.excellence.quote")}
+              </p>
+              <p className="font-semibold text-vl-yellow">{t("about.name")}</p>
             </div>
           </div>
         </div>

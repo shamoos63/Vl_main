@@ -31,6 +31,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
 
   // Ternary translation for welcome popup content
   const welcomeTitle = t("welcome.title")
+  const welcomeTitle2 = t("welcome.title2")
   const welcomeSubtitle = t("welcome.subtitle")
   const welcomeExperience = t("welcome.experience")
   const welcomeExperience2 = t("welcome.experience2")
@@ -177,6 +178,9 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
               <div className="flex-1 text-center">
                 <CardTitle className="text-xl font-bold text-vl-yellow mb-3 leading-tight">
                   {welcomeTitle}
+                  <p className="text-white text-base leading-relaxed mb-4 font-medium">
+                  {welcomeTitle2}
+                </p>
                 </CardTitle>
                 <p className="text-white text-base leading-relaxed mb-4 font-medium">
                   {welcomeSubtitle}
@@ -237,6 +241,9 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
               <div className="text-center w-full">
                 <CardTitle className="text-2xl font-bold text-vl-yellow mb-4 leading-tight">
                   {welcomeTitle}
+                    <p className="text-white text-lg leading-relaxed mb-6 font-medium max-w-2xl mx-auto">
+                  {welcomeTitle2}
+                </p>
                 </CardTitle>
                 <p className="text-white text-lg leading-relaxed mb-6 font-medium max-w-2xl mx-auto">
                   {welcomeSubtitle}
@@ -253,7 +260,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                       <AnimatedCounter
                                       end={585}
                                       suffix="+"
-                                      decimals={1}
+                                      decimals={0}
                                       delay={400}
                                       duration={3000}
                                       className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
