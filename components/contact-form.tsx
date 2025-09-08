@@ -127,8 +127,8 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="p-8 glass" dir={isRTL ? "rtl" : "ltr"}>
-      <h2 className="text-2xl font-bold text-vl-yellow dark:text-white mb-6">{t("contact.form.title")}</h2>
+    <Card className="p-6 glass" dir={isRTL ? "rtl" : "ltr"}>
+      <h2 className="text-xl font-bold text-vl-yellow dark:text-white mb-4">{t("contact.form.title")}</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

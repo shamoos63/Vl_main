@@ -8,14 +8,14 @@ import { Facebook, Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react
 import { useI18n } from "@/lib/i18n"
 
 export default function Footer() {
-  const { t, isRTL } = useI18n()
+  const { t,language, isRTL } = useI18n()
 
   return (
     <footer className="bg-vl-blue text-white" dir={isRTL ? "rtl" : "ltr"}>
       <div className="space-y-6 p-8 bg-transparent">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1 flex flex-col items-center">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Company Info */}
+  <div className="flex flex-col items-center sm:items-start">
   <div className="mb-6">
     <Image
       src="/VL1_w.svg"
@@ -42,58 +42,63 @@ export default function Footer() {
   </div>
 </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 flex flex-col items-left">{t("footer.quick.links")}</h3>
-            <ul className="space-y-3 flex flex-col items-left">
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.home")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/properties" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.properties")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/areas" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.areas")}
-                </Link>
-              </li>
-                <li>
-                <Link href="/evaluation" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.evaluation")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.blog")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.about")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-300 hover:text-vl-yellow transition-colors">
-                  {t("nav.contact")}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
+         {/* Quick Links */}
+<div  className={`lg:col-span-1 ${
+    language === "ar" ? "mr-[1rem]" : "ml-[1rem]"
+  }`} >
+  <h3 className="text-lg font-semibold mb-6 flex flex-col items-center sm:items-start">
+    {t("footer.quick.links")}
+  </h3>
+  <ul className="space-y-3 flex flex-col items-center sm:items-start">
+    <li>
+      <Link href="/" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.home")}
+      </Link>
+    </li>
+    <li>
+      <Link href="/properties" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.properties")}
+      </Link>
+    </li>
+    <li>
+      <Link href="/areas" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.areas")}
+      </Link>
+    </li>
+    <li>
+      <Link href="/evaluation" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.evaluation")}
+      </Link>
+    </li>
+    <li>
+      <Link href="/blog" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.blog")}
+      </Link>
+    </li>
+    <li>
+      <Link href="/about" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.about")}
+      </Link>
+    </li>
+    <li>
+      <Link href="/contact" className="text-gray-300 hover:text-vl-yellow transition-colors">
+        {t("nav.contact")}
+      </Link>
+    </li>
+  </ul>
+</div>
           {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 flex flex-col items-center">{t("footer.contact.info")}</h3>
-            <ul className="space-y-4 flex flex-col">
-              <li className="flex items-center">
-                <MapPin className="h-5 w-5 mr-3 text-vl-yellow" />
+          <div  className={`lg:col-span-1 ${
+    language === "ar" ? "mr-[-5rem]" : "ml-[-5rem]"
+  }`}>
+            <h3 className="text-lg font-semibold mb-6 flex flex-col items-center sm:items-start">{t("footer.contact.info")}</h3>
+            <ul className="space-y-4 flex flex-col  items-center sm:items-start">
+              <li className="flex">
+                <MapPin className="h-5 w-5 mr-3 ml-3 text-vl-yellow" />
                 <span className="text-gray-300">Dubai, UAE</span>
               </li>
-      <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-3 text-vl-yellow" />
+      <li className="flex">
+                <Mail className="h-5 w-5 mr-3 ml-3 text-vl-yellow" />
                 <span className="text-gray-300">victoria.lancaster@selectproperty.ae</span>
               </li>
             </ul>

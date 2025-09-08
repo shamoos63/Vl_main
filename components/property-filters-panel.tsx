@@ -34,7 +34,7 @@ interface PropertyFiltersPanelProps {
 }
 
 export default function PropertyFiltersPanel({ className = "" }: PropertyFiltersPanelProps) {
-  const { t, isRTL } = useI18n()
+  const { t, isRTL,language } = useI18n()
   const { filters, setFilters, resetFilters, activeFiltersCount, filteredProperties, updateFilter, clearFilter } =
     useFilters()
   const [isExpanded, setIsExpanded] = useState(false)
@@ -278,12 +278,19 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
         </CardHeader>
         <CardContent className="pt-0">
           <Select value={filters.sortBy} onValueChange={handleSortChange}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("filters.sort.default") || "Default"} />
+            <SelectTrigger
+              className={language === "ar" ? "justify-end text-right" : "justify-start text-left"}
+            >
+              <SelectValue
+                placeholder={t("filters.sort.default") || "Default"}
+              />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent
+              align={language === "ar" ? "end" : "start"}
+              className={language === "ar" ? "text-right" : "text-left"}
+            >
               {sortOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem className="select-item-indicator" key={option.value} value={option.value}>
                   {option.label}
                 </SelectItem>
               ))}
@@ -384,10 +391,18 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
             {t("filters.sort.label") || "Sort By"}:
           </Label>
           <Select value={filters.sortBy} onValueChange={handleSortChange}>
-            <SelectTrigger id="quick-sort" className="w-[180px]">
-              <SelectValue placeholder={t("filters.sort.default") || "Default"} />
+            <SelectTrigger
+              id="quick-sort"
+              className={`w-[180px] ${language === "ar" ? "justify-end text-right" : "justify-start text-left"}`}
+            >
+              <SelectValue
+                placeholder={t("filters.sort.default") || "Default"}
+              />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent
+              align={language === "ar" ? "end" : "start"}
+              className={language === "ar" ? "text-right" : "text-left"}
+            >
               {sortOptions.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}

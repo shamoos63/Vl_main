@@ -107,13 +107,16 @@ export default function AboutPage() {
       />
 
       {/* Quote Section */}
-      <section className="py-16 bg-transparent">
+      <section className="py-12 bg-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             
-            <p className="text-2xl md:text-3xl text-white font-light italic mb-6 leading-relaxed">
-              "{t("about.quote")}"
+            <p className="text-2xl md:text-3xl text-white font-light italic mb-2 leading-relaxed">
+              "{t("about.quote")}
             </p>
+            <p className="text-2xl md:text-3xl text-white font-light italic mb-6 leading-relaxed">
+            {t("about.quote+")}"
+                  </p>
             
             
             <p className="text-xl font-semibold text-vl-yellow">{t("about.name")}</p>
@@ -125,7 +128,7 @@ export default function AboutPage() {
    
 
       {/* About Content Section with Reversed Animation Directions */}
-      <section className="py-20 bg-transparent">
+      <section className="py-6 bg-transparent">
         <div className="container mx-auto px-4">
           {/* First Section - Photo Left, Text Right - Photo animates from LEFT, Text animates from RIGHT */}
           <div
@@ -187,9 +190,12 @@ export default function AboutPage() {
               }`}
             >
               <div>
-                <h2 className="text-4xl font-bold text-vl-yellow mb-6 font-sansumi leading-tight">
+                <h2 className="text-4xl font-bold text-vl-yellow mb-1 font-sansumi leading-tight">
                   {t("about.section2.title")}
                 </h2>
+                <p className="text-xl font-bold text-vl-yellow mb-6 font-sansumi leading-tight">
+                  {t("about.section2.Subtitle")}
+                </p>
                 <p className="text-lg text-white leading-relaxed mb-6">
                   {t("about.section2.text1")}
                 </p>
@@ -271,8 +277,7 @@ export default function AboutPage() {
       <TimelineSection />
   
 
-      {/* Clients & Values Section */}
-    
+   
 
       {/* Areas of Expertise */}
       <section className="py-4 bg-transparent">
@@ -289,7 +294,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               {expertise.map((item, index) => (
                 <div key={index} className="flex items-center bg-vl-blue border border-vl-yellow p-4 rounded-lg">
-                  <Check className="h-5 w-5 text-vl-yellow mr-3 flex-shrink-0" />
+                  <Check className="h-5 w-5 ml-3 text-vl-yellow mr-3 flex-shrink-0" />
                   <span className="text-white">{item}</span>
                   
                 </div>
@@ -306,11 +311,11 @@ export default function AboutPage() {
             <h3 className="text-2xl font-bold text-vl-yellow mb-6 font-sansumi text-center">{t("about.offices.title")}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="flex items-center justify-center bg-vl-blue border border-vl-yellow p-6 rounded-lg">
-                <MapPin className="h-6 w-6 text-vl-yellow mr-3" />
+                <MapPin className="h-6 w-6 ml-3 text-vl-yellow mr-3" />
                 <span className="text-white">{t("about.office.dubai")}</span>
               </div>
               <div className="flex items-center justify-center bg-vl-blue border border-vl-yellow p-6 rounded-lg">
-                <MapPin className="h-6 w-6 text-vl-yellow mr-3" />
+                <MapPin className="h-6 w-6 text-vl-yellow ml-3 mr-3" />
                 <span className="text-white">{t("about.office.manchester")}</span>
               </div>
             </div>
@@ -318,7 +323,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-        <section className="mb-2 text-white bg-transparent">
+        <section className="mb-10 text-white bg-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">      
             <div className="mt-6 p-6 bg-transparent backdrop-blur-sm rounded-2xl border border-vl-yellow">
@@ -335,7 +340,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4 bg-transparent">
+      <section className="py-4 bg-transparent mb-4">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-vl-yellow mb-6 font-sansumi">{t("about.cta.title")}</h2>

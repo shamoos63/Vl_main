@@ -329,7 +329,7 @@ export default function ContactsPage() {
                       <span className="font-medium">{selectedContact.name}</span>
                     </div>
                     <div className="flex items-center">
-                      <Mail className="h-4 w-4 mr-2 text-gray-500" />
+                      <Mail className="h-4 w-4 ml-3 mr-2 text-gray-500" />
                       <a href={`mailto:${selectedContact.email}`} className="text-blue-600 hover:underline">
                         {selectedContact.email}
                       </a>

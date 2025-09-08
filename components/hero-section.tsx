@@ -320,8 +320,11 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl pt-3 lg:text-7xl font-bold text-white mb-6 font-sansumi">
+          <h1 className="text-4xl md:text-6xl pt-3 lg:text-7xl font-bold text-white mb-2 font-sansumi">
             {t("hero.title")} 
+          </h1>
+          <h1 className="text-4xl md:text-6xl pt-3 lg:text-4xl font-bold text-white mb-6 font-sansumi">
+            {t("hero.title.highlight")} 
           </h1>
 
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
@@ -536,7 +539,7 @@ export default function HeroSection() {
           </form>
 
           {/* Enhanced Stats with Staggered Animation */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-4 md:grid-cols-3 gap-8 mt-16">
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
@@ -553,7 +556,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <div className="text-center group col-span-2 md:col-span-1">
+            <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
                   end={585}

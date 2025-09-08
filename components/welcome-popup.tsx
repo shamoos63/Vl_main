@@ -33,6 +33,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
   const welcomeTitle = t("welcome.title")
   const welcomeTitle2 = t("welcome.title2")
   const welcomeSubtitle = t("welcome.subtitle")
+  const welcomeSubtitle2 = t("welcome.subtitle2")
   const welcomeExperience = t("welcome.experience")
   const welcomeExperience2 = t("welcome.experience2")
   const welcomeExperienceDetail = t("welcome.experience.detail")
@@ -184,19 +185,27 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 </CardTitle>
                 <p className="text-white text-base leading-relaxed mb-4 font-medium">
                   {welcomeSubtitle}
+                                   {welcomeSubtitle}
+                 {language !== "ar" && (
+    <>
+      <br />
+      {welcomeSubtitle2}
+    </>
+  )}
                 </p>
 
                 {/* Two Column Stats for Mobile */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2 w-full">
+
                   {/* Experience */}
                   <div className="text-center">
                     <div className="text-white whitespace-nowrap font-semibold font-medium mb-1">
                       {welcomeExperience}
                     </div>
-                    <AnimatedCounter
+                      <AnimatedCounter
                                       end={585}
                                       suffix="+"
-                                      decimals={1}
+                                      decimals={0}
                                       delay={400}
                                       duration={3000}
                                       className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
@@ -208,14 +217,14 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   {/* Strategic */}
                   <div className="text-center">
                     <div className="text-white font-semibold font-medium mb-1">{welcomeStrategic}</div>
-                    <AnimatedCounter
+                      <AnimatedCounter
                                       prefix="AED "
                                       end={1.7}
                                       suffix="B+"
                                       decimals={1}
                                       delay={400}
                                       duration={3000}
-                                      className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                                      className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
                                       glowEffect={true}
                                       pulseOnComplete={true}
                                     />
@@ -247,6 +256,12 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 </CardTitle>
                 <p className="text-white text-lg leading-relaxed mb-6 font-medium max-w-2xl mx-auto">
                   {welcomeSubtitle}
+                 {language !== "ar" && (
+    <>
+      <br />
+      {welcomeSubtitle2}
+    </>
+  )}
                 </p>
 
                 {/* Two Column Stats for Laptop - Centered */}

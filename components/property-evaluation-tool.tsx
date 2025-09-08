@@ -107,7 +107,7 @@ export default function PropertyEvaluationTool() {
               </p>
 
               <div className="bg-transparent p-6 rounded-lg mb-6 border-0">
-                <h3 className="font-semibold text-vl-yellow mb-4">
+                <h3 className="font-semibold text-vl-yellow !important mb-4">
                   {t("evaluation.success.contact.title") || "Contact Information"}
                 </h3>
                 <div className="space-y-3 text-sm">
@@ -154,15 +154,15 @@ export default function PropertyEvaluationTool() {
       <div className="max-w-4xl mx-auto pt-8">
         <Card className="glass border-0 shadow-2xl">
           <CardHeader className="bg-transparent text-white rounded-t-lg">
-            <CardTitle className="flex items-center text-white">
-              <Calculator className="h-6 w-6 mr-2 text-vl-yellow" />
+            <CardTitle className="flex items-center mt-4 text-white">
+              <Calculator className="h-6 w-6 mr-2 ml-2 text-vl-yellow" />
               {t("evaluation.form.title") || "Property Evaluation Tool"}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6 p-8 bg-transparent">
             {/* Contact Information */}
             <div className="bg-vl-yellow/10 p-6 rounded-lg border-0">
-              <h3 className="font-semibold text-vl-blue mb-4">
+              <h3 className="font-semibold text-vl-yellow mb-4">
                 {t("evaluation.contact.info") || "Contact Information"}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -175,7 +175,7 @@ export default function PropertyEvaluationTool() {
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     required
-                    className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                    className="bg-white border-gray-300 text-gray-900 mt-2 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                   />
                 </div>
                 <div>
@@ -188,7 +188,7 @@ export default function PropertyEvaluationTool() {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     required
-                    className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                    className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                   />
                 </div>
                 <div>
@@ -199,7 +199,7 @@ export default function PropertyEvaluationTool() {
                     placeholder={t("evaluation.phone.placeholder") || "Enter your phone number"}
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                    className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                   />
                 </div>
               </div>
@@ -212,7 +212,7 @@ export default function PropertyEvaluationTool() {
                   {t("evaluation.property.type") || "Property Type"} *
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("propertyType", value)}>
-                  <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
+                  <SelectTrigger className="bg-white border-gray-300 mt-2 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
                     <SelectValue placeholder={t("evaluation.select.type") || "Select property type"} />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
@@ -237,7 +237,7 @@ export default function PropertyEvaluationTool() {
                   {t("evaluation.location") || "Location"} *
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("location", value)}>
-                  <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
+                  <SelectTrigger className="bg-white border-gray-300 mt-2 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
                     <SelectValue placeholder={t("evaluation.select.location") || "Select location"} />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
@@ -270,7 +270,7 @@ export default function PropertyEvaluationTool() {
                   {t("evaluation.bedrooms") || "Bedrooms"}
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("bedrooms", value)}>
-                  <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
+                  <SelectTrigger className="bg-white border-gray-300 mt-2 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
                     <SelectValue placeholder={t("evaluation.select.beds") || "Select bedrooms"} />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
@@ -298,7 +298,7 @@ export default function PropertyEvaluationTool() {
                   {t("evaluation.bathrooms") || "Bathrooms"}
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("bathrooms", value)}>
-                  <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
+                  <SelectTrigger className="bg-white border-gray-300 mt-2 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
                     <SelectValue placeholder={t("evaluation.select.baths") || "Select bathrooms"} />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
@@ -330,7 +330,7 @@ export default function PropertyEvaluationTool() {
                   value={formData.area}
                   onChange={(e) => handleInputChange("area", e.target.value)}
                   required
-                  className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                  className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                 />
               </div>
             </div>
@@ -341,7 +341,7 @@ export default function PropertyEvaluationTool() {
                   {t("evaluation.condition") || "Property Condition"}
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("condition", value)}>
-                  <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
+                  <SelectTrigger className="bg-white border-gray-300 mt-2 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
                     <SelectValue placeholder={t("evaluation.select.condition") || "Select condition"} />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-300">
@@ -369,7 +369,7 @@ export default function PropertyEvaluationTool() {
                   placeholder={t("evaluation.year.placeholder") || "e.g., 2020"}
                   value={formData.yearBuilt}
                   onChange={(e) => handleInputChange("yearBuilt", e.target.value)}
-                  className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                  className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                 />
               </div>
             </div>
@@ -382,7 +382,7 @@ export default function PropertyEvaluationTool() {
                 placeholder={t("evaluation.amenities.placeholder") || "e.g., Pool, Gym, Parking"}
                 value={formData.amenities}
                 onChange={(e) => handleInputChange("amenities", e.target.value)}
-                className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
               />
             </div>
 
@@ -395,7 +395,7 @@ export default function PropertyEvaluationTool() {
                 value={formData.description}
                 onChange={(e) => handleInputChange("description", e.target.value)}
                 rows={3}
-                className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow resize-none"
+                className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow resize-none"
               />
             </div>
 

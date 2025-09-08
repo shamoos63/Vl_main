@@ -194,7 +194,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="firstName" className="text-sm font-medium">
+              <Label htmlFor="firstName" className="text-sm  font-medium">
                 {t("contact.first.name")} *
               </Label>
               <Input
@@ -203,6 +203,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
                 value={formData.firstName}
                 onChange={(e) => handleInputChange("firstName", e.target.value)}
                 required
+                className="mt-3"
               />
             </div>
             <div>
@@ -215,6 +216,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
                 value={formData.lastName}
                 onChange={(e) => handleInputChange("lastName", e.target.value)}
                 required
+                className="mt-3"
               />
             </div>
           </div>
@@ -230,6 +232,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
               required
+              className="mt-3"
             />
           </div>
 
@@ -242,6 +245,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
               placeholder={t("contact.phone.placeholder")}
               value={formData.phone}
               onChange={(e) => handleInputChange("phone", e.target.value)}
+              className="mt-3"
             />
           </div>
 
@@ -254,6 +258,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
               placeholder={t("contact.budget.placeholder")}
               value={formData.budget}
               onChange={(e) => handleInputChange("budget", e.target.value)}
+              className="mt-3"
             />
           </div>
 
@@ -268,6 +273,7 @@ export default function PropertyContactModal({ isOpen, onClose, property }: Prop
               value={formData.message}
               onChange={(e) => handleInputChange("message", e.target.value)}
               required
+              className="mt-3"
             />
           </div>
 

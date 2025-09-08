@@ -58,14 +58,14 @@ export default function EvaluationPage() {
     </li>
   </ul>
 </div>
-        <p className="text-lg text-white text-center pt-6 font-medium w-full whitespace-nowrap">
+        <p className="text-lg text-white text-center pt-10 mt-4 font-medium w-full whitespace-nowrap">
   {t("evaluation.description.4")}
 </p>
         </div>
       </section>
    <EvaluationClient />
       {/* Stats Section */}
-      <section className="py-8">
+      <section className="py-8 mt-[-5rem]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="glass rounded-lg p-6 text-center shadow-md">

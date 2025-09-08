@@ -31,7 +31,6 @@ export default function BlogPage() {
     { key: "Market Analysis", label: t("blog.categories.market.analysis") },
     { key: "Investment Guide", label: t("blog.categories.investment.guide") },
     { key: "Investment Tips", label: t("blog.categories.investment.tips") },
-    { key: "Investment Strategy", label: t("blog.categories.investment.strategy") },
     { key: "Area Guide", label: t("blog.categories.area.guide") },
     { key: "Legal Guide", label: t("blog.categories.legal.guide") },
   ]
@@ -202,12 +201,12 @@ export default function BlogPage() {
     </li>
 
   </ul>
-          <p className="text-lg text-white text-center font-medium pt-5">{t("blog.description.4")}</p>
+          <p className="text-lg text-white text-center font-medium pt-8 mt-4">{t("blog.description.4")}</p>
         </div>
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-8 bg-transparent">
+      <section className="py-4 bg-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-6">
             {/* Search Bar */}
@@ -293,7 +292,7 @@ export default function BlogPage() {
               </p>
             </div>
           ) : (
-            <section className="w-full flex justify-center py-8">
+            <section className="w-full flex justify-center py-2">
               <div className="w-full max-w-7xl mx-auto px-4">
                 <div className="flex flex-wrap justify-center gap-8">
               {filteredPosts.map((post) => (

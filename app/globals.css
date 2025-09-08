@@ -1100,7 +1100,7 @@ div[class*="dropdown-item"]:hover {
 [data-radix-select-item][data-state="checked"]::before,
 .radix-select-item[data-state="checked"]::before,
 [role="option"][aria-selected="true"]::before {
-  content: "✓" !important;
+  content: "" !important;
   position: absolute !important;
   right: 12px !important;
   top: 50% !important;
@@ -1448,4 +1448,9 @@ div[class*="dropdown-item"]:hover {
   .mobile-language-trigger::before {
     transition: none !important;
   }
+}
+
+/* Hide the checkmark for hovered but not selected items */
+[data-state="checked"] .select-item-indicator {
+  display: inline-flex !important;
 }

@@ -10,9 +10,6 @@ import {
   TrendingUp,
   Plus,
   MessageSquare,
-  Calendar,
-  DollarSign,
-  ArrowUpRight,
   Activity,
   FileText,MessageSquareText,
 } from "lucide-react"

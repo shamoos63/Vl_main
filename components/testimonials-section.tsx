@@ -300,20 +300,29 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
             </p>
             <div className="flex flex-col sm:flex-row gap-12 justify-center">
               <div className="text-center hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl font-bold text-vl-yellow">AED 1.7B+</div>
-                <div className="text-white/80">
+            <div className="text-white/80">
                   {language === "en"
                     ? "Valued at"
                     : language === "ar"
                       ? "بقيمة"
                       : "Общая стоимость сделок"}
                 </div>
+                <div className="text-3xl font-bold text-vl-yellow"> {language === "en"
+                    ? "AED 1.7B+"
+                    : language === "ar"
+                      ? "1.7 مليار درهم إماراتي"
+                      : "1.7"}</div>
+                
               </div>
+              
               <div className="text-center hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl font-bold text-vl-yellow">585+</div>
-                <div className="text-white/80">
-                  {language === "en" ? "Proprties Sold" : language === "ar" ? "صفقة عقارية " : "Лет опыта"}
+                 <div className="text-white/80">
+                  {language === "en" ? "More than" : language === "ar" ? "أكثر من " : "5"}
                 </div>
+                <div className="text-3xl font-bold text-vl-yellow">
+                    {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 Лет опыта"}
+                </div>
+               
               </div>
               
             </div>

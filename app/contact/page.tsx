@@ -5,9 +5,6 @@ import Header from "@/components/header"
 import ServerPageHero from "@/components/server-page-hero"
 import { Card } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import ContactForm from "@/components/contact-form"
 import { useI18n } from "@/lib/i18n"
 
@@ -38,7 +35,7 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   
                   <div className="flex items-center">
-                    <Mail className="h-5 w-5 text-vl-yellow mr-3" />
+                    <Mail className="h-5 w-5 text-vl-yellow mr-3 ml-3" />
                     <div>
                       <p className="font-medium text-vl-yellow dark:text-white">{t("contact.info.email")}</p>
                       <p className="text-gray-600 dark:text-gray-300">victoria.lancaster@selectproperty.ae</p>
@@ -46,7 +43,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-center">
-                    <MapPin className="h-5 w-5 text-vl-yellow mr-3" />
+                    <MapPin className="h-5 w-5 text-vl-yellow mr-3 ml-3" />
                     <div>
                       <p className="font-medium text-vl-yellow dark:text-white">{t("contact.info.office")}</p>
                       <p className="text-gray-600 dark:text-gray-300">{t("contact.info.office.location")}</p>
@@ -54,10 +51,18 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-center">
-                    <Clock className="h-5 w-5 text-vl-yellow mr-3" />
+                    <Clock className="h-5 w-5 text-vl-yellow mr-3 ml-3" />
                     <div>
                       <p className="font-medium text-vl-yellow dark:text-white">{t("contact.info.hours")}</p>
                       <p className="text-gray-600 dark:text-gray-300">{t("contact.info.hours.time")}</p>
+                    </div>
+                  </div>
+
+                      <div className="flex items-center">
+                    <Phone className="h-5 w-5 text-vl-yellow mr-3 ml-3" />
+                    <div>
+                      <p className="font-medium text-vl-yellow dark:text-white">{t("contact.info.phone")}</p>
+                      <p className="text-gray-600 dark:text-gray-300">{t("footer.contact.phone")}</p>
                     </div>
                   </div>
                 </div>
