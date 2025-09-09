@@ -184,7 +184,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 </p>
                 </CardTitle>
                 <p className="text-white text-base leading-relaxed mb-4 font-medium">
-                  {welcomeSubtitle}
+                  
                                    {welcomeSubtitle}
                  {language !== "ar" && (
     <>

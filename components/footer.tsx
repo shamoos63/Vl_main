@@ -91,15 +91,26 @@ export default function Footer() {
           <div  className={`lg:col-span-1 ${
     language === "ar" ? "mr-[-5rem]" : "ml-[-5rem]"
   }`}>
-            <h3 className="text-lg font-semibold mb-6 flex flex-col items-center sm:items-start">{t("footer.contact.info")}</h3>
+            <h3
+  className={`text-lg font-semibold mb-6 flex flex-col items-center sm:items-start ${
+    language === "ar" ? "ml-[-5rem]" : "mr-[-5rem]"
+  }`}
+>
+  {t("footer.contact.info")}
+</h3>
             <ul className="space-y-4 flex flex-col  items-center sm:items-start">
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 ml-3 text-vl-yellow" />
-                <span className="text-gray-300">Dubai, UAE</span>
+                <span className={`text-gray-300 ${language === "ar" ? "ml-[-5rem]" : "mr-[-5rem]"}`}>
+  Dubai, UAE
+</span>
               </li>
       <li className="flex">
                 <Mail className="h-5 w-5 mr-3 ml-3 text-vl-yellow" />
-                <span className="text-gray-300">victoria.lancaster@selectproperty.ae</span>
+                <span className={`text-gray-300 ${language === "ar" ? "ml-[-5rem]" : "mr-[-5rem]"}`}>
+                victoria.lancaster@selectproperty.ae
+</span>
+            
               </li>
             </ul>
           </div>

@@ -17,6 +17,7 @@
     "db:seed": "node scripts/seed-database.js"
   },
   "dependencies": {
+    "@api/reelly": "file:.api/apis/reelly",
     "@google/generative-ai": "^0.21.0",
     "@hookform/resolvers": "^3.9.1",
     "@libsql/client": "^0.14.0",
