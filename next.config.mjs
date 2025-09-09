@@ -6,6 +6,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Transpile the local SDK package from node_modules
+  transpilePackages: ['@api/reelly'],
   images: {
     unoptimized: true,
   },

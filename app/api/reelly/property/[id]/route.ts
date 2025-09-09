@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import reelly from '@api/reelly'
+// Use dynamic import to avoid ESM/TS parsing during build step
+const reellyPromise = import('@api/reelly').then(m => m.default)
 
 function getApiKey(): string | null {
   return (
@@ -19,6 +20,7 @@ export async function GET(_req: NextRequest, context: { params: { id: string } }
     const id = Number(idParam)
     if (!id || Number.isNaN(id)) return NextResponse.json({ success: false, error: 'Invalid id' }, { status: 400 })
 
+    const reelly = await reellyPromise
     reelly.auth(key)
 
     // Use the generated SDK method for property details

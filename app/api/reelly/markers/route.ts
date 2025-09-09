@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import reelly from '@api/reelly'
+// Use dynamic import to avoid ESM/TS parsing during build step
+const reellyPromise = import('@api/reelly').then(m => m.default)
 
 function getApiKey(): string | null {
   return (
@@ -17,6 +18,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Missing Reelly API key' }, { status: 500 })
     }
 
+    const reelly = await reellyPromise
     reelly.auth(key)
     // Forward query params (e.g., unit_bedrooms, unit_price_from, unit_price_to, etc.)
     const searchParams = Object.fromEntries(new URL(request.url).searchParams.entries()) as Record<string, string>
