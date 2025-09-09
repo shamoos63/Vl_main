@@ -154,33 +154,7 @@ export default function DubaiMapPage() {
 
   return (
     <div className="px-4 md:px-8 py-6 space-y-4">
-      <div className="flex flex-wrap gap-3 items-end">
-        <div className="w-32">
-          <Select value={bedrooms} onValueChange={setBedrooms}>
-            <SelectTrigger className="h-10"><SelectValue placeholder="Bedrooms" /></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="any">Any</SelectItem>
-              <SelectItem value="1">1+</SelectItem>
-              <SelectItem value="2">2+</SelectItem>
-              <SelectItem value="3">3+</SelectItem>
-              <SelectItem value="4">4+</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <Input className="w-36" placeholder="Min Price (AED)" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
-        <Input className="w-36" placeholder="Max Price (AED)" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
-
-        <PropertyMapFilters
-          filters={filters}
-          onChange={setFilters}
-          onReset={() => setFilters({ propertyTypes: [], priceRange: [0, 100000000], status: [], bedrooms: null, bathrooms: null })}
-          maxPrice={100000000}
-          minPrice={0}
-          activeFiltersCount={activeFiltersCount}
-        />
-
-        <Button onClick={() => location.reload()} variant="outline">Refresh</Button>
-      </div>
+    
 
       {error && <div className="text-red-600">{error}</div>}
 
