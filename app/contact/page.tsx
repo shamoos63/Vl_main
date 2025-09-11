@@ -29,7 +29,7 @@ export default function ContactPage() {
 
             {/* Contact Information */}
             <div className="space-y-8 ">
-              <Card className="p-6 glass">
+              <Card className="p-4 glass">
                 <h3 className="text-xl font-bold text-vl-yellow dark:text-white mb-4">{t("contact.info.title")}</h3>
 
                 <div className="space-y-4">

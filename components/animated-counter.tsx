@@ -6,6 +6,7 @@ interface AnimatedCounterProps {
   end: number
   duration?: number
   suffix?: string
+  something?: string
   prefix?: string
   className?: string
   decimals?: number
@@ -17,6 +18,7 @@ interface AnimatedCounterProps {
 export default function AnimatedCounter({
   end,
   duration = 2500, // Slightly longer for smoother animation
+  something = "",
   suffix = "",
   prefix = "",
   className = "",
@@ -133,8 +135,11 @@ export default function AnimatedCounter({
           transform: isComplete ? "scale(1.05)" : "scale(1)",
         }}
       >
+        
         {prefix}
+        
         <span className="counter-digits">{count.toFixed(decimals)}</span>
+        
         {suffix}
       </div>
 

@@ -15,7 +15,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Calendar,
   Check,
   Play,
   ChevronLeft,
@@ -282,7 +281,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
           </TabsList>
 
           <TabsContent value="overview" className="p-6 glass rounded-b-lg"> {/* Glass applied to each TabsContent */}
-            <h3 className="text-xl font-semibold text-vl-yellow dark:text-white mb-4">
+            <h3 className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${ language === "ar" ? "text-right " : "text-left" }`}>
               {t("properties.overview") || "Property Overview"}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
@@ -297,7 +296,6 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                 </div>
                 <div className="font-semibold text-vl-yellow dark:text-white">{property.bedrooms || 0}</div>
               </div>
-              {/* Corrected typo: 'transparent' to 'bg-transparent' */}
               <div className="bg-transparent p-4 rounded-lg text-center">
                 <Bath className="h-5 w-5 mx-auto mb-2 text-vl-yellow" />
                 <div className="text-sm text-gray-500 dark:text-gray-400">
@@ -323,7 +321,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
           </TabsContent>
 
           <TabsContent value="features" className="p-6 glass rounded-b-lg">
-            <h3 className="text-xl font-semibold text-vl-yellow dark:text-white mb-4">
+            <h3 className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${ language === "ar" ? "text-right " : "text-left" }`}>
               {t("properties.features") || "Property Features"}
             </h3>
             {propertyFeatures.length > 0 ? (
@@ -341,7 +339,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
           </TabsContent>
 
           <TabsContent value="amenities" className="p-6 glass rounded-b-lg">
-            <h3 className="text-xl font-semibold text-vl-yellow dark:text-white mb-4">
+          <h3 className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${ language === "ar" ? "text-right " : "text-left" }`}>
               {t("properties.amenities") || "Building Amenities"}
             </h3>
             {propertyAmenities.length > 0 ? (
@@ -362,10 +360,10 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
 
       {/* Right Column - Contact and Details */}
       <div>
-        <Card className="mb-6 glass"> {/* Applied 'glass' here */}
-          <CardContent className="p-6"> {/* Removed 'glass' from here to avoid double application */}
+        <Card className="mb-6 glass"> 
+          <CardContent className="p-6">
      <div className="flex items-start justify-between mb-4">
-  <h1 className="text-2xl font-bold text-vl-yellow dark:text-white text-center">{property.title}</h1>
+  <h1 className="text-2xl font-bold text-vl-yellow dark:text-white items-center sm:items-start">{property.title}</h1>
   <Badge className={`
       ${property.status === "Ready" ? "bg-green-500" : "bg-blue-500"} 
       text-white 
@@ -408,11 +406,11 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
 
               <div className="space-y-3 mb-6">
                 <div className="flex items-center">
-                  <Phone className="h-4 w-4 text-vl-yellow mr-3" />
-                  <span className="text-gray-600 dark:text-gray-300">+971 4 2794 800</span>
+                  <Phone className={`h-4 w-4 ${ language === "ar" ? "ml-4" : "mr-4" }`} />
+                  <span className="text-gray-600 dark:text-gray-300">00971-4279-4800</span>
                 </div>
                 <div className="flex items-center">
-                  <Mail className="h-4 w-4 text-vl-yellow mr-3" />
+                  <Mail className={`h-4 w-4 ${ language === "ar" ? "ml-4" : "mr-4" }`} />
                   <span className="text-gray-600 dark:text-gray-300">victoria.lancaster@selectproperty.ae</span>
                 </div>
               </div>

@@ -11,7 +11,7 @@ import { useI18n } from "@/lib/i18n"
 
 
 export default function AreasPage() {
-  const { t, isRTL } = useI18n()
+  const { t, isRTL, language } = useI18n()
 
   const areas = [
     {
@@ -88,13 +88,13 @@ export default function AreasPage() {
     </li>
 
   </ul>
-          <p className="text-lg text-gray-700 pt-4 font-medium text-center">
+          <p className="text-lg text-gray-700 pt-4font-medium text-center">
             {t("areas.description.3")}
           </p>
         </div>
       </section>
 
-     <div className="p-6 bg-transparent">
+     <div className="p-6 mt-[-6rem] bg-transparent">
   <div className="container mx-auto px-4 py-16">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {areas.map((area, index) => (
@@ -120,15 +120,16 @@ export default function AreasPage() {
 
             <div className="grid grid-cols-2 gap-4 text-sm text-gray-100">
               <div className="flex items-center">
-                <Home className="h-4 w-4 mr-2 text-vl-yellow" />
+                <Home className={`h-4 w-4 mr-2 text-vl-yellow ${ language === "ar" ? "ml-2" : "mr-2" }`}/>
                 <span>{area.properties}</span>
               </div>
               <div className="flex items-center">
-                <TrendingUp className="h-4 w-4 mr-2 text-green-400" />
+                <TrendingUp className={`h-4 w-4 mr-2 text-vl-yellow ${ language === "ar" ? "ml-2" : "mr-2" }`} />
+
                 <span>{area.growth}</span>
               </div>
               <div className="flex items-center col-span-2">
-                <MapPin className="h-4 w-4 mr-2 text-vl-yellow" />
+                <MapPin className={`h-4 w-4 mr-2 text-vl-yellow ${ language === "ar" ? "ml-2" : "mr-2" }`} />
                 <span className="font-semibold">{area.avgPrice}</span>
               </div>
             </div>

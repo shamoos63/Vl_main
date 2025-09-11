@@ -89,20 +89,20 @@ const faqData = {
       answer: "دبي تقدّم واحد من أعلى عوائد الإيجار عالميًا، بمتوسط يتراوح بين 5% و 8.4%، وقد يصل في بعض الفرص الاستثنائية إلى 15%.",
     },
     {
-      question: "هل أحتاج إلى أن أكون في دبي لشراء عقار؟",
+      question: "هل يجب أن أكون في دبي لشراء عقار؟",
       answer: " إطلاقاً. بفضل التوكيل والتوقيع الرقمي، يمكنك إتمام عملية الشراء من أي مكان في العالم بكل سهولة وأمان.",
     },
     {
-      question: "هل يستطيع المشترون الدوليين الحصول على رهن عقاري في دبي؟",
+      question: "هل يستطيع المشترون الدوليون الحصول على رهن عقاري في دبي؟",
       answer: "نعم. بعض البنوك تقدّم تمويلاً لغير المقيمين وفق ملفك المالي ونوع العقار، ما يجعل دبي سوقاً مفتوحاً ومرناً أمام المستثمرين العالميين.",
     },
     {
       question: "هل هناك ضرائب على  شراء العقار في دبي؟",
       answer:
-        " لا، دبي لا تفرض ضريبة دخل عقاري أو أرباح رأسمالية. الرسوم الوحيدة المهمة هي 4% رسوم تسجيل لدى دائرة الأراضي والأملاك، إضافة إلى بعض الرسوم الإدارية والقانونية البسيطة.",
+        "دبي لا تفرض ضريبة دخل عقاري أو أرباح رأسمالية. الرسوم الوحيدة المهمة هي 4% رسوم تسجيل لدى دائرة الأراضي والأملاك، إضافة إلى بعض الرسوم الإدارية والقانونية البسيطة.",
     },
     {
-      question: "هل يتيح العقار الحصول على إقامة في دبي",
+      question: "هل يتيح تملّك العقار الحصول على إقامة في دبي؟",
       answer:
         "نعم. عند الاستثمار بـ 750,000 درهم أو أكثر في عقار سكني، تصبح مؤهلاً للحصول على إقامة قابلة للتجديد لمدة عامين عبر دائرة الأراضي والأملاك في دبي.",
     },
@@ -287,7 +287,7 @@ export default function FaqSection() {
       onClick={() => toggleFaq(index)}
       className="w-full p-5 sm:p-6 text-left flex items-center justify-between bg-transparent hover:bg-white/5 transition-colors duration-300"
     >
-      <h3 className="text-lg sm:text-xl font-semibold text-vl-yellow tracking-wide pr-4 shadow-none !important">{faq.question}</h3>
+      <h3 className={`text-lg sm:text-xl font-semibold text-vl-yellow tracking-wide pr-4 shadow-none !important ${ language === "ar" ? "text-right " : "text-left" }`}>{faq.question}</h3>
       {openIndex === index ? (
         <ChevronUp className="h-5 w-5 text-vl-yellow flex-shrink-0 transition-transform duration-200" />
       ) : (

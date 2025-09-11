@@ -176,6 +176,7 @@ export default function AboutPage() {
           </div>
 
           {/* Second Section - Text Left, Photo Right - Text animates from LEFT, Photo animates from RIGHT */}
+          
           <div
             ref={(el) => {
               sectionRefs.current[1] = el
@@ -183,6 +184,21 @@ export default function AboutPage() {
             data-section-index="1"
             className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20"
           >
+              {/* Photo Right - Animates from RIGHT */}
+            <div
+              className={`relative transition-all duration-700 ease-out ${
+                visibleSections.has(1) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+              }`}
+            >
+              <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/victoria-photo-2.jpg"
+                  alt="Victoria Lancaster - Client Meeting"
+                  fill
+                  className="object-contain left-4 md:left-6 absolute"
+                />
+              </div>
+            </div>
             {/* Content Left - Animates from LEFT */}
             <div
               className={`ml-6 space-y-8 transition-all duration-700 ease-out ${
@@ -208,21 +224,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Photo Right - Animates from RIGHT */}
-            <div
-              className={`relative transition-all duration-700 ease-out ${
-                visibleSections.has(1) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-              }`}
-            >
-              <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/victoria-photo-2.jpg"
-                  alt="Victoria Lancaster - Client Meeting"
-                  fill
-                  className="object-contain left-4 md:left-6 absolute"
-                />
-              </div>
-            </div>
+          
           </div>
 
           {/* Third Section - Photo Left, Text Right - Photo animates from LEFT, Text animates from RIGHT */}
@@ -303,9 +305,7 @@ export default function AboutPage() {
          
               
             </div>
-               <p className="text-xl text-center text-white mb-8">
-              {t("about.expertise.quote2")}
-            </p>
+              
 
             {/* Offices */}
             <h3 className="text-2xl font-bold text-vl-yellow mb-6 font-sansumi text-center">{t("about.offices.title")}</h3>
@@ -344,8 +344,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-vl-yellow mb-6 font-sansumi">{t("about.cta.title")}</h2>
-            <p className="text-xl text-white mb-8 leading-relaxed">
+            <p className="text-xl text-white mb-1 leading-relaxed">
               {t("about.cta.text")}
+            </p>
+            <p className="text-xl text-white mb-8 leading-relaxed">
+              {t("about.cta.text2")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button

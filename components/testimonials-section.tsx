@@ -232,7 +232,7 @@ export default function TestimonialsSection() {
                <div
   className={`absolute top-4 ${
 language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
-  } text-vl-yellow opacity-20 group-hover:opacity-40 transition-opacity duration-300`}
+  } text-vl-yellow opacity-20 group-hover:opacity-100 transition-opacity duration-300`}
 >
                   <Image src="/comma_sign.svg" alt="Quote" width={32} height={32} />
                 </div>
@@ -295,12 +295,20 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
               {language === "en"
                 ? "Ready to start your Dubai property investment journey? Let me help you achieve your goals."
                 : language === "ar"
-                  ? "مستعد لتدخل عالم الاستثمار العقاري الذكي. سأرشدك بخبرة تتجاوز 15 عاماً لتتجنّب المخاطر وتكسب الوقت وتضاعف عوائدك"
+                  ? "مستعد لتدخل عالم الاستثمار العقاري الذكي؟ سأرشدك بخبرة تتجاوز 15 عاماً لتتجنّب المخاطر وتكسب الوقت وتضاعف عوائدك"
                   : "Готовы начать свое инвестиционное путешествие в недвижимость Дубая? Позвольте Виктории помочь вам достичь ваших целей."}
             </p>
             <div className="flex flex-col sm:flex-row gap-12 justify-center">
               <div className="text-center hover:scale-110 transition-transform duration-300">
-            <div className="text-white/80">
+            
+              <div className="text-center hover:scale-110 transition-transform duration-300">
+                 <div className="text-white/80">
+                  {language === "en" ? "More than" : language === "ar" ? "أكثر من " : "5"}
+                </div>
+                <div className="text-3xl font-bold text-vl-yellow">
+                    {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 Лет опыта"}
+                </div>
+               <div className="text-white/80">
                   {language === "en"
                     ? "Valued at"
                     : language === "ar"
@@ -315,14 +323,6 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                 
               </div>
               
-              <div className="text-center hover:scale-110 transition-transform duration-300">
-                 <div className="text-white/80">
-                  {language === "en" ? "More than" : language === "ar" ? "أكثر من " : "5"}
-                </div>
-                <div className="text-3xl font-bold text-vl-yellow">
-                    {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 Лет опыта"}
-                </div>
-               
               </div>
               
             </div>

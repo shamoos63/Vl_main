@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Calculator, CheckCircle, Phone, Mail } from "lucide-react"
+import { Calculator, CheckCircle, Mail } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 
 export default function PropertyEvaluationTool() {
@@ -259,6 +259,9 @@ export default function PropertyEvaluationTool() {
                     <SelectItem value="dubai-maritime" className="text-gray-900">
                       {t("location.dubai.maritime") || "Dubai Maritime City"}
                     </SelectItem>
+                    <SelectItem value="other" className="text-gray-900">
+                      {t("location.dubai.other") || "Other"}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -344,7 +347,7 @@ export default function PropertyEvaluationTool() {
                   <SelectTrigger className="bg-white border-gray-300 mt-2 text-gray-900 focus:border-vl-yellow focus:ring-vl-yellow">
                     <SelectValue placeholder={t("evaluation.select.condition") || "Select condition"} />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-300">
+                  <SelectContent className="bg-white border-gray-300 ">
                     <SelectItem value="excellent" className="text-gray-900">
                       {t("evaluation.condition.excellent") || "Excellent"}
                     </SelectItem>

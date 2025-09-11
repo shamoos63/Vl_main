@@ -30,13 +30,13 @@ export default function Footer() {
     {t("footer.description")}
   </p>
   <div className="flex space-x-4">
-    <Button variant="ghost" size="sm" className="text-white hover:text-vl-yellow">
+    <Button variant="ghost" size="sm" onClick={() => window.open("https://www.facebook.com/share/1EcLgYgQE7/?mibextid=wwXIfr", "_blank")}  className="text-white hover:text-vl-yellow">
       <Facebook className="h-5 w-5" />
     </Button>
-    <Button variant="ghost" size="sm" className="text-white hover:text-vl-yellow">
-      <Instagram className="h-5 w-5" />
+    <Button variant="ghost" size="sm" onClick={() => window.open("https://www.instagram.com/victoria.lancaster.realestate?igsh=NmNid3F5cXZjbXV0", "_blank")}  className="text-white hover:text-vl-yellow">
+      <Instagram className={`h-5 w-5 ml-[-2rem] mr-[-2rem] ${ language === "ar" ? "ml-[-3rem] mr-[-2rem]" : "ml-[-2rem] mr-[-2rem]"  }`} />
     </Button>
-    <Button variant="ghost" size="sm" className="text-white hover:text-vl-yellow">
+    <Button variant="ghost" size="sm" onClick={() => window.open("https://www.linkedin.com/in/victoria-lancaster-17333b30?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", "_blank")}  className="text-white hover:text-vl-yellow">
       <Linkedin className="h-5 w-5" />
     </Button>
   </div>

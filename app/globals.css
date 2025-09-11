@@ -1453,7 +1453,4 @@ div[class*="dropdown-item"]:hover {
   }
 }
 
-/* Hide the checkmark for hovered but not selected items */
-[data-state="checked"] .select-item-indicator {
-  display: inline-flex !important;
-}
+

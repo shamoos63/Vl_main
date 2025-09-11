@@ -323,16 +323,16 @@ export default function HeroSection() {
           <h1 className="text-4xl md:text-6xl pt-3 mt-3 lg:text-7xl font-bold text-white mb-2 font-sansumi">
             {t("hero.title")} 
           </h1>
-          <h1 className="text-xl md:text-4xl pt-3 lg:text-4xl font-bold text-white mb-6 font-sansumi">
+          <h1 className="text-xl md:text-3xl md:pt-1 lg:pt-2 pt-1 lg:text-3xl font-bold text-white mb-6 font-sansumi">
             {t("hero.title.highlight")} 
           </h1>
 
-          <p className="text-l md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
+          <p className="text-sm md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
             {t("hero.subtitle")}
           </p>
 
           {/* Search Form */}
-          <form onSubmit={handleSearchSubmit} className="glassmorphism rounded-2xl p-6 md:p-8 max-w-4xl mx-auto relative z-[1000]">
+          <form onSubmit={handleSearchSubmit} className="glassmorphism rounded-2xl p-6 md:p-8 max-w-4xl mx-auto relative mb-4 z-[1000]">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               <Select onValueChange={(value) => setSearchData({ ...searchData, propertyType: value })}>
                 <SelectTrigger className="h-12 bg-white/90 border-0 hover:bg-white transition-colors text-vl-blue hero-search-select">
@@ -354,13 +354,7 @@ export default function HeroSection() {
               
       <div className="flex text-black items-center h-12 bg-transparent border-0 rounded-md px-3 transition-colors group  focus-within:ring-2 focus-within:ring-vl-yellow/50 text-black">
   
-  {isRTL ? (
   
-    <MapPin className="h-4 w-4 ml-2 text-white flex-shrink-0 hidden" />
-  ) : (
-  
-    <MapPin className="h-4 w-4 mr-2 text-white flex-shrink-0" />
-  )}
 
   <Input
     ref={locationInputRef}
@@ -377,13 +371,7 @@ export default function HeroSection() {
     placeholder={t("search.location")}
     className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
   />
- {isRTL ? (
-  
-  <MapPin className="h-4 w-4 ml-2  text-white flex-shrink-0 " />
-) : (
 
-  <MapPin className="h-4 w-4 mr-2 text-white flex-shrink-0 hidden" />
-)}
   <div className="flex items-center space-x-1">
     {locationInput && (
       <button
@@ -391,7 +379,7 @@ export default function HeroSection() {
         className="text-black hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
         type="button"
       >
-        <X className="h-3 w-3" />
+        <X className="h-3 w-3 items-start" />
       </button>
     )}
     <button
@@ -404,12 +392,10 @@ export default function HeroSection() {
       {isDetectingLocation ? (
         <Loader2 className="h-3 w-3 animate-spin" />
       ) : (
-        <Navigation className={`h-3 w-3 ${language === "ar" ? "mr-14" : "ml-14" }`}/>
+        <Navigation className={`h-3 w-3`}/>
       )}
     </button>
-    <ChevronDown
-      className={`h-3 w-3 text-gray-400 transition-transform ${showLocationDropdown ? "rotate-180" : ""}`}
-    />
+    
   </div>
 </div>
 
@@ -555,7 +541,7 @@ export default function HeroSection() {
           </form>
 
           {/* Enhanced Stats with Staggered Animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-4 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-2 sm:mb-6  md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
@@ -590,26 +576,26 @@ export default function HeroSection() {
 
            <div className="text-center group">
               <div className="relative">
+                
                 <AnimatedCounter
-                  prefix="AED "
-                  end={1.7}
-                  suffix="B+"
-                  decimals={1}
-                  delay={400}
-                  duration={3000}
-                  className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
-                  glowEffect={true}
-                  pulseOnComplete={true}
-                />
+  prefix={isRTL ? '+' : 'AED '}
+  end={1.7}
+  suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
+  decimals={1}
+  delay={400}
+  duration={3000}
+  className={'text-2xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-xl md:text-2xl" : "text-2xl md:text-4xl"}'}
+  glowEffect={true}
+  pulseOnComplete={true}
+/>
               </div>
-              <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
+              <div className={'text-white/80 text-xl font-medium transition-all duration-300 group-hover:text-white '}>
                 {t("hero.stats.value")}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div></div>
     </section>
   )
 }

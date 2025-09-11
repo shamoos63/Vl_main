@@ -332,7 +332,9 @@ export default function EnhancedPropertyCard({
   </h3>
               <div className="flex items-center text-gray-600 mb-2">
                 <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-                <span className="text-sm mr-2">{property.location}</span>
+                <span className={`text-sm ${language === "ar" ? "ml-[-3rem] mr-2" : "mr-[-3rem]"}`}>
+                  {property.location}
+                </span>
               </div>
               <div className="flex items-center gap-2 text-xs text-vl-black">
                 {property.type && (
@@ -342,7 +344,7 @@ export default function EnhancedPropertyCard({
                 )}
                 {property.yearBuilt && (
                   <span className="flex items-center text-white">
-                    <Calendar className="h-3 w-3 mr-1 text-white" />
+                    <Calendar className={`h-3 w-3 text-white ${ language === "ar" ? "ml-2" : "mr-2" }`} />
                     {property.yearBuilt}
                   </span>
                 )}

@@ -217,17 +217,17 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   {/* Strategic */}
                   <div className="text-center">
                     <div className="text-white font-semibold font-medium mb-1">{welcomeStrategic}</div>
-                      <AnimatedCounter
-                                      prefix="AED "
-                                      end={1.7}
-                                      suffix="B+"
-                                      decimals={1}
-                                      delay={400}
-                                      duration={3000}
-                                      className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
-                                      glowEffect={true}
-                                      pulseOnComplete={true}
-                                    />
+                     <AnimatedCounter
+  prefix={isRTL ? '+' : 'AED '}
+  end={1.7}
+  suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
+  decimals={1}
+  delay={400}
+  duration={3000}
+  className={'font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-sm" : "text-lg"}'}
+  glowEffect={true}
+  pulseOnComplete={true}
+/>
                   </div>
                 </div>
               </div>
@@ -287,17 +287,17 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   {/* Strategic */}
                   <div className="text-center">
                     <div className="text-white font-semibold text-lg mb-1">{welcomeStrategic}</div>
-                    <AnimatedCounter
-                                      prefix="AED "
-                                      end={1.7}
-                                      suffix="B+"
-                                      decimals={1}
-                                      delay={400}
-                                      duration={3000}
-                                      className="text-lg font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
-                                      glowEffect={true}
-                                      pulseOnComplete={true}
-                                    />
+                      <AnimatedCounter
+  prefix={isRTL ? '+' : 'AED '}
+  end={1.7}
+  suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
+  decimals={1}
+  delay={400}
+  duration={3000}
+  className={'font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-sm" : "text-lg"}'}
+  glowEffect={true}
+  pulseOnComplete={true}
+/>
                   </div>
                 </div>
               </div>

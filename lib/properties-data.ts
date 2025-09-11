@@ -53,7 +53,3 @@ export interface Property {
     lng: number
   }
 }
-
-// NOTE: All static/mock data has been removed.
-// Properties are now fetched exclusively from the database via PropertyService.
-// Use PropertyService.getAllProperties() to get property data.
