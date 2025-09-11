@@ -10,7 +10,7 @@ export default function PropertiesPageWrapper({ children }: PropertiesPageWrappe
   const { isRTL } = useI18n()
   
   return (
-    <main className="min-h-screen pt-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
+    <main className="min-h-screen pt-24 bg-transparent" dir={isRTL ? "rtl" : "ltr"}>
       {children}
     </main>
   )

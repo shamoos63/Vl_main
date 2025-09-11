@@ -329,7 +329,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="mt-1 bg-white border-vl-yellow focus:border-vl-yellow text-white"
+                  className="mt-1 bg-transparent text-white border-vl-yellow focus:border-vl-yellow"
                 />
               </div>
 
@@ -342,7 +342,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   placeholder={welcomePhonePlaceholder}
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="mt-1 bg-white border-vl-yellow focus:border-vl-yellow text-white"
+                  className="mt-1 bg-transparent border-vl-yellow focus:border-vl-yellow text-white"
                 />
               </div>
             </div>
@@ -358,7 +358,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
-                className="mt-1 bg-white border-vl-yellow focus:border-vl-yellow text-white"
+                className="mt-1 bg-transparent border-vl-yellow focus:border-vl-yellow text-white"
               />
             </div>
 
@@ -371,7 +371,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 placeholder={welcomeDetailsPlaceholder}
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                className="mt-1 bg-white border-vl-yellow focus:border-vl-yellow min-h-[80px] md:min-h-[100px] resize-none text-white"
+                className="mt-1 bg-transparent border-vl-yellow focus:border-vl-yellow min-h-[80px] md:min-h-[100px] resize-none text-white"
                 rows={3}
               />
             </div>
@@ -382,7 +382,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 variant="ghost"
                 onClick={handleSkip}
                 disabled={isSubmitting}
-                className="text-white hover:text-black order-2 sm:order-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="text-transparent hover:text-black order-2 sm:order-1 disabled:opacity-50 disabled:cursor-not-allowed"
               >
 {welcomeSkip}
               </Button>

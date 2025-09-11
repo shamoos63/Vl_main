@@ -498,6 +498,9 @@ export default function OpenStreetMap({
           background: transparent;
           border: none;
         }
+          .text-vl-yellow {
+  color: #ffd396;
+}
         .marker-pin {
           width: 30px;
           height: 30px;
@@ -512,7 +515,7 @@ export default function OpenStreetMap({
           box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .marker-pin.selected {
-          background: #fbbf24;
+          background: #ffd396;
         }
         .marker-pin::after {
           content: '';
@@ -531,7 +534,7 @@ export default function OpenStreetMap({
           border-radius: 50%;
           background: linear-gradient(135deg, #0b1220 0%, #18253d 100%);
           border: 2px solid rgba(255,255,255,0.8);
-          color: #fbbf24;
+          color: #ffd396;
           font-weight: 800;
           box-shadow: 0 6px 16px rgba(0,0,0,0.35);
         }
@@ -559,7 +562,7 @@ export default function OpenStreetMap({
           margin: 0 0 8px 0;
           font-size: 20px;
           font-weight: 700;
-          color: #fbbf24;
+          color: #ffd396;
           text-align: left;
         }
         .property-popup .popup-sub {
@@ -577,7 +580,7 @@ export default function OpenStreetMap({
         }
         .property-popup .icon {
           margin-right: 8px;
-          color: #fbbf24;
+          color: #ffd396;
         }
         .property-popup .popup-cover {
           width: 100%;
@@ -605,11 +608,12 @@ export default function OpenStreetMap({
           align-items: center;
           margin-bottom: 15px;
         }
+           
         .property-popup .price,
         .property-popup .price-vl {
           font-size: 24px;
           font-weight: 800;
-          color: #fbbf24 !important;
+          color: #ffd396 !important;
         }
         .property-popup .status {
           padding: 4px 12px;
@@ -761,7 +765,10 @@ export default function OpenStreetMap({
               <CardContent className="p-4">
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="text-lg font-semibold text-vl-blue">{selectedPropertyData.title}</h3>
-                  <div className="text-xl font-bold text-vl-yellow">{selectedPropertyData.price}</div>
+                  <p className="text-xl font-bold" style={{ color: '#ffd396' }}>
+  {selectedPropertyData.price}
+</p>
+
                 </div>
                 <div className="flex items-center text-gray-600 mb-3">
                   <MapPin className="h-4 w-4 mr-1" />

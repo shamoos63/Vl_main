@@ -44,7 +44,7 @@ export default function Footer() {
 
          {/* Quick Links */}
 <div  className={`lg:col-span-1 ${
-    language === "ar" ? "mr-[1rem]" : "ml-[1rem]"
+    language === "ar" ? "mr[4rem]" : "ml[4rem]"
   }`} >
   <h3 className="text-lg font-semibold mb-6 flex flex-col items-center sm:items-start">
     {t("footer.quick.links")}
@@ -117,8 +117,8 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold mb-6" >{t("footer.newsletter")}</h3>
-            <p className="text-gray-300 mb-4">{t("footer.newsletter.description")}</p>
+            <h3 className="text-lg font-semibold mb-6 flex flex-col  items-center sm:items-start" >{t("footer.newsletter")}</h3>
+            <p className="text-gray-300 mb-4 flex flex-col  items-center sm:items-start">{t("footer.newsletter.description")}</p>
             <div className="flex flex-col space-y-3">
               <Input
                 type="email"

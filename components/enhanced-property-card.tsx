@@ -332,7 +332,7 @@ export default function EnhancedPropertyCard({
   </h3>
               <div className="flex items-center text-gray-600 mb-2">
                 <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-                <span className="text-sm">{property.location}</span>
+                <span className="text-sm mr-2">{property.location}</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-vl-black">
                 {property.type && (
@@ -402,8 +402,9 @@ export default function EnhancedPropertyCard({
               <Tooltip>
                 <TooltipTrigger>
                   <div className="flex items-center text-xs cursor-help">
-                    <Car className="h-4 w-4 mr-1" />
+                
                     {property.parkingSpaces}
+                    <Car className={`h-4 w-4 ${language === "ar" ? "mr-1" : "ml-1" }`} />
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>{t("property.parking") || "Parking Spaces"}</TooltipContent>

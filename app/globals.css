@@ -31,6 +31,7 @@ body {
   background: url("/background.webp") center center / cover no-repeat fixed;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Remove the overlay that was obscuring the background */
@@ -40,12 +41,13 @@ body {
 main {
   background: transparent !important;
   position: relative;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Card styling updates - More transparent to show background */
 .card,
-[data-card],
-.bg-white {
+[data-card] {
   background: rgba(6, 27, 52, 0.3) !important;
   backdrop-filter: blur(5px) !important;
   border: 1px solid rgba(255, 211, 150, 0.3) !important;
@@ -65,14 +67,14 @@ h6 {
 
 /* Comprehensive text visibility fixes */
 
+/* Avoid forcing white on every element to prevent contrast issues on light backgrounds */
 span,
 div,
 li,
 a,
 label,
 button {
-  color: white !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Specific text elements that need white color */
@@ -83,10 +85,11 @@ button {
 }
 
 /* Specific overrides for better contrast */
+/* Tone down global text overrides for better component responsiveness */
 .text-gray-600,
 .text-gray-700,
 .text-gray-500 {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: inherit;
 }
 
 .text-vl-blue {

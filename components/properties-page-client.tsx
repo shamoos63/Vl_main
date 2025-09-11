@@ -26,7 +26,7 @@ function PropertiesContent() {
       </section>
 
       {/* View Toggle */}
-      <section className="py-8 bg-white">
+      <section className="py-8 bg-transparent">
         <div className="container mx-auto px-4">
         {/*  <div className="flex justify-center gap-4 mb-8">
                <Button

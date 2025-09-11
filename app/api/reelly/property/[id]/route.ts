@@ -11,12 +11,12 @@ function getApiKey(): string | null {
   )
 }
 
-export async function GET(_req: NextRequest, context: { params: { id: string } }) {
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const key = getApiKey()
     if (!key) return NextResponse.json({ success: false, error: 'Missing Reelly API key' }, { status: 500 })
 
-    const { id: idParam } = context.params
+    const { id: idParam } = await params
     const id = Number(idParam)
     if (!id || Number.isNaN(id)) return NextResponse.json({ success: false, error: 'Invalid id' }, { status: 400 })
 

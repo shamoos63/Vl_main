@@ -49,7 +49,7 @@ export default function AreasPage() {
   ]
 
   return (
-    <main className="min-h-screen pt-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
+    <main className="min-h-screen pt-24 bg-transparent" dir={isRTL ? "rtl" : "ltr"}>
       <Header />
       <ServerPageHero
         title={t("areas.page.title")}
@@ -59,7 +59,7 @@ export default function AreasPage() {
       />
 
       {/* Description Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-transparent">
         <div className="container mx-auto px-4 max-w-4xl">
           <p className="text-lg text-gray-700 mb-6 text-center">
             {t("areas.description.1")}

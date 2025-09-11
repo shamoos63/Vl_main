@@ -118,7 +118,7 @@ export default function HeroSection() {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
   const locationDropdownRef = useRef<HTMLDivElement>(null)
   const locationInputRef = useRef<HTMLInputElement>(null)
-  const { t, isRTL } = useI18n()
+  const { t, isRTL, language } = useI18n()
   const router = useRouter()
 
   // Detect user's location on component mount
@@ -320,7 +320,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl pt-3 lg:text-7xl font-bold text-white mb-2 font-sansumi">
+          <h1 className="text-4xl md:text-6xl pt-3 mt-3 lg:text-7xl font-bold text-white mb-2 font-sansumi">
             {t("hero.title")} 
           </h1>
           <h1 className="text-4xl md:text-6xl pt-3 lg:text-4xl font-bold text-white mb-6 font-sansumi">
@@ -336,7 +336,7 @@ export default function HeroSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               <Select onValueChange={(value) => setSearchData({ ...searchData, propertyType: value })}>
                 <SelectTrigger className="h-12 bg-white/90 border-0 hover:bg-white transition-colors text-vl-blue hero-search-select">
-                  <div className="flex items-center text-slate-500">
+                  <div className="flex items-center text-white">
                     <Home className="h-4 w-4 mr-2 text-white" />
                     <SelectValue className="text-black" placeholder={t("search.property.type")} />
                   </div>
@@ -349,53 +349,69 @@ export default function HeroSection() {
                 </SelectContent>
               </Select>
 
-              {/* Enhanced Location with Autocomplete and Geolocation */}
+  
               <div className="relative z-[1000]" ref={locationDropdownRef}>
-                <div className="flex text-white items-center h-12 bg-transparent border-0 rounded-md px-3 transition-colors group  focus-within:ring-2 focus-within:ring-vl-yellow/50 text-white">
-                  <MapPin className="h-4 w-4 mr-2 text-white flex-shrink-0" />
-                  <Input
-                    ref={locationInputRef}
-                    value={locationInput}
-                    onChange={(e) => setLocationInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    onFocus={() => {
-                      if (locationInput.trim() && filteredLocations.length > 0) {
-                        setShowLocationDropdown(true)
-                      } else if (!locationInput.trim() && nearbyLocations.length > 0) {
-                        setShowLocationDropdown(true)
-                      }
-                    }}
-                    placeholder={t("search.location")}
-                    className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
-                  />
-                  <div className="flex items-center space-x-1">
-                    {locationInput && (
-                      <button
-                        onClick={clearLocation}
-                        className="text-black hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
-                        type="button"
-                      >
-                        <X className="h-3 w-3" />
-                      </button>
-                    )}
-                    <button
-                      onClick={detectLocation}
-                      disabled={isDetectingLocation}
-                      className="text-vl-blue hover:text-vl-blue-dark transition-colors p-1 rounded-full hover:bg-vl-yellow/20"
-                      type="button"
-                      title="Detect my location"
-                    >
-                      {isDetectingLocation ? (
-                        <Loader2 className="h-3 w-3 animate-spin" />
-                      ) : (
-                        <Navigation className="h-3 w-3" />
-                      )}
-                    </button>
-                    <ChevronDown
-                      className={`h-3 w-3 text-gray-400 transition-transform ${showLocationDropdown ? "rotate-180" : ""}`}
-                    />
-                  </div>
-                </div>
+              
+      <div className="flex text-black items-center h-12 bg-transparent border-0 rounded-md px-3 transition-colors group  focus-within:ring-2 focus-within:ring-vl-yellow/50 text-black">
+  
+  {isRTL ? (
+  
+    <MapPin className="h-4 w-4 ml-2 text-white flex-shrink-0 hidden" />
+  ) : (
+  
+    <MapPin className="h-4 w-4 mr-2 text-white flex-shrink-0" />
+  )}
+
+  <Input
+    ref={locationInputRef}
+    value={locationInput}
+    onChange={(e) => setLocationInput(e.target.value)}
+    onKeyDown={handleKeyDown}
+    onFocus={() => {
+      if (locationInput.trim() && filteredLocations.length > 0) {
+        setShowLocationDropdown(true)
+      } else if (!locationInput.trim() && nearbyLocations.length > 0) {
+        setShowLocationDropdown(true)
+      }
+    }}
+    placeholder={t("search.location")}
+    className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
+  />
+ {isRTL ? (
+  
+  <MapPin className="h-4 w-4 ml-2  text-white flex-shrink-0 " />
+) : (
+
+  <MapPin className="h-4 w-4 mr-2 text-white flex-shrink-0 hidden" />
+)}
+  <div className="flex items-center space-x-1">
+    {locationInput && (
+      <button
+        onClick={clearLocation}
+        className="text-black hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+        type="button"
+      >
+        <X className="h-3 w-3" />
+      </button>
+    )}
+    <button
+      onClick={detectLocation}
+      disabled={isDetectingLocation}
+      className="text-vl-blue hover:text-vl-blue-dark transition-colors p-1 rounded-full hover:bg-vl-yellow/20"
+      type="button"
+      title="Detect my location"
+    >
+      {isDetectingLocation ? (
+        <Loader2 className="h-3 w-3 animate-spin" />
+      ) : (
+        <Navigation className={`h-3 w-3 ${language === "ar" ? "mr-14" : "ml-14" }`}/>
+      )}
+    </button>
+    <ChevronDown
+      className={`h-3 w-3 text-gray-400 transition-transform ${showLocationDropdown ? "rotate-180" : ""}`}
+    />
+  </div>
+</div>
 
                 {/* Enhanced Autocomplete Dropdown with Geolocation */}
                 {showLocationDropdown && (

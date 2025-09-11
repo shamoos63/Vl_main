@@ -320,7 +320,7 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
             )}
           </Button>
 
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-white">
             {filteredProperties.length} {t("properties.found") || "properties found"}
           </div>
         </div>
@@ -380,14 +380,14 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
             )}
           </Button>
 
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-white">
             {filteredProperties.length} {t("properties.found") || "properties found"}
           </div>
         </div>
 
         {/* Quick sort dropdown */}
         <div className="flex items-center gap-2">
-          <Label htmlFor="quick-sort" className="text-sm font-medium whitespace-nowrap">
+          <Label htmlFor="quick-sort" className="text-sm font-medium whitespace-nowrap text-white">
             {t("filters.sort.label") || "Sort By"}:
           </Label>
           <Select value={filters.sortBy} onValueChange={handleSortChange}>

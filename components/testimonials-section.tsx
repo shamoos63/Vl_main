@@ -249,7 +249,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                     <h4 className="font-semibold text-vl-yellow text-lg group-hover:text-vl-yellow/80 transition-colors duration-300">
                       {testimonial.name}
                     </h4>
-                    <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                    <p className="text-sm text-gray-600 group-hover:text-white transition-colors duration-300">
                       {testimonial.location}
                     </p>
                   </div>
@@ -265,7 +265,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                   ))}
                 </div>
 
-                <p className="text-gray-600 mb-4 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-gray-600 mb-4 leading-relaxed group-hover:text-white-700 transition-colors duration-300">
                   "{testimonial.text}"
                 </p>
 

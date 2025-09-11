@@ -175,7 +175,7 @@ export default function PropertyEvaluationTool() {
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     required
-                    className="bg-white border-gray-300 text-gray-900 mt-2 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                    className="bg-transparent border-gray-300 text-gray-900 mt-2 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                   />
                 </div>
                 <div>
@@ -188,7 +188,7 @@ export default function PropertyEvaluationTool() {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     required
-                    className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                    className="bg-transparent border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                   />
                 </div>
                 <div>
@@ -199,7 +199,7 @@ export default function PropertyEvaluationTool() {
                     placeholder={t("evaluation.phone.placeholder") || "Enter your phone number"}
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                    className="bg-transparent border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                   />
                 </div>
               </div>
@@ -330,7 +330,7 @@ export default function PropertyEvaluationTool() {
                   value={formData.area}
                   onChange={(e) => handleInputChange("area", e.target.value)}
                   required
-                  className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                  className="bg-transparent border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                 />
               </div>
             </div>
@@ -369,7 +369,7 @@ export default function PropertyEvaluationTool() {
                   placeholder={t("evaluation.year.placeholder") || "e.g., 2020"}
                   value={formData.yearBuilt}
                   onChange={(e) => handleInputChange("yearBuilt", e.target.value)}
-                  className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                  className="bg-transparent border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
                 />
               </div>
             </div>
@@ -382,7 +382,7 @@ export default function PropertyEvaluationTool() {
                 placeholder={t("evaluation.amenities.placeholder") || "e.g., Pool, Gym, Parking"}
                 value={formData.amenities}
                 onChange={(e) => handleInputChange("amenities", e.target.value)}
-                className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
+                className="bg-transparent border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow"
               />
             </div>
 
@@ -395,7 +395,7 @@ export default function PropertyEvaluationTool() {
                 value={formData.description}
                 onChange={(e) => handleInputChange("description", e.target.value)}
                 rows={3}
-                className="bg-white border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow resize-none"
+                className="bg-transparent border-gray-300 mt-2 text-gray-900 placeholder-gray-500 focus:border-vl-yellow focus:ring-vl-yellow resize-none"
               />
             </div>
 
