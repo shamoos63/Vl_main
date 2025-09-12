@@ -26,7 +26,7 @@ export default async function HomePage() {
   }
 
   return (
-    <main className="min-h-screen pt-24 bg-white">
+    <main className="min-h-screen pt-24 bg-transparent">
       <Header />
       <HeroSection />
       

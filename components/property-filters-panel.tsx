@@ -111,17 +111,17 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Search */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
-            <Search className="h-4 w-4" />
+          <CardTitle className="text-sm font-medium flex items-center gap-2 text-white">
+            <Search className="h-4 w-4 text-white" />
             {t("filters.search") || "Search"}
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white" />
             <Input
               placeholder={t("filters.search.placeholder") || "Search properties..."}
-              className="pl-9"
+              className="pl-9 text-white"
               value={filters.searchQuery}
               onChange={handleSearchChange}
             />
@@ -132,12 +132,13 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Price Range */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
-            <DollarSign className="h-4 w-4" />
+          <CardTitle className="text-sm font-medium flex items-center gap-2 text-white">
+            <DollarSign className="h-4 w-4 text-white" />
             {t("filters.price.range") || "Price Range"}
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
+          
           <PriceRangeSlider
             minPrice={MIN_PRICE}
             maxPrice={MAX_PRICE}
@@ -150,8 +151,8 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Bedrooms & Bathrooms */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
-            <Bed className="h-4 w-4" />
+          <CardTitle className="text-sm font-medium flex items-center gap-2 text-white">
+            <Bed className="h-4 w-4 text-white" />
             {t("filters.rooms") || "Rooms"}
           </CardTitle>
         </CardHeader>
@@ -176,8 +177,8 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Property Type */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
-            <Home className="h-4 w-4" />
+          <CardTitle className="text-sm font-medium flex items-center gap-2 text-white">
+            <Home className="h-4 w-4 text-white" />
             {t("filters.property.type") || "Property Type"}
           </CardTitle>
         </CardHeader>
@@ -185,12 +186,13 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
           <div className="grid grid-cols-2 gap-2">
             {PROPERTY_TYPES.map((type) => (
               <div key={type} className="flex items-center space-x-2">
-                <Checkbox
-                  id={`type-${type}`}
-                  checked={filters.propertyTypes.includes(type)}
-                  onCheckedChange={(checked) => handlePropertyTypeChange(type, checked === true)}
-                />
-                <Label htmlFor={`type-${type}`} className="text-sm font-normal cursor-pointer capitalize">
+               <Checkbox
+                id={`type-${type}`}
+                checked={filters.propertyTypes.includes(type)}
+                onCheckedChange={(checked) => handlePropertyTypeChange(type, checked === true)}
+                className={`${language === "ar" ? "ml-2" : "mr-2"}`}
+                  />
+                <Label htmlFor={`type-${type}`} className="text-white text-sm font-normal cursor-pointer capitalize">
                   {type}
                 </Label>
               </div>
@@ -202,7 +204,7 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Status */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">{t("filters.status") || "Status"}</CardTitle>
+          <CardTitle className="text-sm font-medium text-white">{t("filters.status") || "Status"}</CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
           <div className="grid grid-cols-2 gap-2">
@@ -212,8 +214,9 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
                   id={`status-${status.id}`}
                   checked={filters.status.includes(status.id)}
                   onCheckedChange={(checked) => handleStatusChange(status.id, checked === true)}
+                  className={`${language === "ar" ? "ml-2" : "mr-2"}`}
                 />
-                <Label htmlFor={`status-${status.id}`} className="text-sm font-normal cursor-pointer">
+                <Label htmlFor={`status-${status.id}`} className="text-white text-sm font-normal cursor-pointer">
                   {status.label}
                 </Label>
               </div>
@@ -225,8 +228,8 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Locations */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
+          <CardTitle className="text-sm font-medium flex items-center gap-2 text-white">
+            <MapPin className="h-4 w-4 text-white" />
             {t("filters.location") || "Location"}
           </CardTitle>
         </CardHeader>
@@ -238,8 +241,9 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
                   id={`location-${location}`}
                   checked={filters.locations.includes(location)}
                   onCheckedChange={(checked) => handleLocationChange(location, checked === true)}
+                   className={`${language === "ar" ? "ml-2" : "mr-2"}`}
                 />
-                <Label htmlFor={`location-${location}`} className="text-sm font-normal cursor-pointer">
+                <Label htmlFor={`location-${location}`} className="text-sm font-normal cursor-pointer text-white">
                   {location}
                 </Label>
               </div>
@@ -251,7 +255,7 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Amenities */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">{t("filters.amenities") || "Amenities"}</CardTitle>
+          <CardTitle className="text-sm font-medium text-white">{t("filters.amenities") || "Amenities"}</CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
           <div className="grid grid-cols-2 gap-2">
@@ -261,8 +265,9 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
                   id={`amenity-${amenity.id}`}
                   checked={filters.amenities.includes(amenity.id)}
                   onCheckedChange={(checked) => handleAmenityChange(amenity.id, checked === true)}
+                   className={`${language === "ar" ? "ml-2" : "mr-2"}`}
                 />
-                <Label htmlFor={`amenity-${amenity.id}`} className="text-sm font-normal cursor-pointer">
+                <Label htmlFor={`amenity-${amenity.id}`} className="text-sm font-normal text-white cursor-pointer">
                   {amenity.label}
                 </Label>
               </div>
@@ -274,7 +279,7 @@ export default function PropertyFiltersPanel({ className = "" }: PropertyFilters
       {/* Sort */}
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-medium">{t("filters.sort.label") || "Sort By"}</CardTitle>
+          <CardTitle className="text-sm font-medium text-white">{t("filters.sort.label") || "Sort By"}</CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
           <Select value={filters.sortBy} onValueChange={handleSortChange}>

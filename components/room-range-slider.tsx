@@ -44,8 +44,8 @@ export default function RoomRangeSlider({
     <div className={`space-y-5 ${className}`} dir={isRTL ? "rtl" : "ltr"}>
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-medium text-gray-700">{label}</h3>
-          <span className="text-xs text-gray-500">
+          <h3 className="text-sm font-medium text-white">{label}</h3>
+          <span className="text-xs text-white">
             {localValue[0]} - {localValue[1]}
           </span>
         </div>
@@ -61,7 +61,7 @@ export default function RoomRangeSlider({
           className="py-1"
         />
 
-        <div className="flex justify-between text-xs text-gray-500">
+        <div className="flex justify-between text-xs text-white">
           <span>{minValue}</span>
           <span>{maxValue}</span>
         </div>

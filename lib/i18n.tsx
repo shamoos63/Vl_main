@@ -952,6 +952,7 @@ const translations = {
     "filters.bedrooms": "عدد الغرف",
     "filters.bedrooms.range": "عدد الغرف",
     "filters.bathrooms": "الحمامات",
+    "filters.rooms":"الغرف",
     "filters.bathrooms.range": "الحمامات",
     "filters.location": "الموقع",
     "filters.status": "الحالة",
