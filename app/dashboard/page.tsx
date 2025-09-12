@@ -178,7 +178,7 @@ export default function DashboardPage() {
               <div className="quick-actions-grid">
                 <a href="/dashboard/properties" className="quick-action">
                   <div className="quick-action-icon">
-                    <Plus size={24} />
+                    <Plus size={24} className="text-white" />
                   </div>
                   <div className="quick-action-content">
                     <h3>Add New Property</h3>
@@ -187,8 +187,8 @@ export default function DashboardPage() {
                 </a>
 
                 <a href="/dashboard/contacts" className="quick-action">
-                  <div className="quick-action-icon">
-                    <Users size={24} />
+                  <div className="quick-action-icon text-white">
+                    <Users size={24} className="text-white" />
                   </div>
                   <div className="quick-action-content">
                     <h3>Manage Contacts</h3>
@@ -198,7 +198,7 @@ export default function DashboardPage() {
 
                 <a href="/dashboard/evaluations" className="quick-action">
                   <div className="quick-action-icon">
-                    <Calculator size={24} />
+                    <Calculator size={24} className="text-white"  />
                   </div>
                   <div className="quick-action-content">
                     <h3>Property Evaluations</h3>
@@ -208,7 +208,7 @@ export default function DashboardPage() {
 
                 <a href="/dashboard/blog" className="quick-action">
                   <div className="quick-action-icon">
-                    <FileText size={24} />
+                    <FileText size={24}  className="text-white" />
                   </div>
                   <div className="quick-action-content">
                     <h3>Manage Blog</h3>
@@ -219,9 +219,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Recent Activity */}
-         
-          {/* Performance Overview */}
+
     
         </div>
       </ModernDashboardLayout>

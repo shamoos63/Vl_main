@@ -394,7 +394,7 @@ export default function PropertiesPage() {
           </Button>
         </div>
 
-        <div className="bg-white rounded-lg shadow mb-6">
+        <div className="bg-transparent rounded-lg shadow mb-6">
           <div className="p-4 border-b">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -531,7 +531,7 @@ export default function PropertiesPage() {
 
         {/* Modern Add/Edit Property Modal */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto bg-white border-0 shadow-2xl rounded-xl">
+          <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto bg-transparent border-0 shadow-2xl rounded-xl">
             <div className="bg-vl-blue p-6 rounded-xl">
               <DialogHeader className="mb-6">
                 <div className="flex items-center gap-3">
@@ -578,7 +578,7 @@ export default function PropertiesPage() {
 
                   {/* Basic Info Tab */}
                   <TabsContent value="basic" className="space-y-6">
-                    <div className="bg-white rounded-lg p-6 shadow-sm border">
+                    <div className="bg-transparent rounded-lg p-6 shadow-sm border">
                       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                         <Home className="w-5 h-5 text-blue-600" />
                         Property Information
@@ -596,7 +596,7 @@ export default function PropertiesPage() {
                         defaultValue={currentProperty?.title}
                         required
                         placeholder="e.g. Luxury Villa in Dubai Marina"
-                              className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
 
@@ -610,7 +610,7 @@ export default function PropertiesPage() {
                         defaultValue={currentProperty?.location}
                         required
                         placeholder="e.g. Dubai Marina"
-                              className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
 
@@ -620,10 +620,10 @@ export default function PropertiesPage() {
                                 Property Type *
                               </Label>
                               <Select name="type" defaultValue={currentProperty?.type || "Villa"}>
-                                <SelectTrigger className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                <SelectTrigger className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                                   <SelectValue placeholder="Select property type" />
                                 </SelectTrigger>
-                                <SelectContent className="bg-white border border-gray-300 shadow-lg">
+                                <SelectContent className="bg-transparent border border-gray-300 shadow-lg">
                                   <SelectItem value="Villa">Villa</SelectItem>
                                   <SelectItem value="Apartment">Apartment</SelectItem>
                                   <SelectItem value="Townhouse">Townhouse</SelectItem>
@@ -637,10 +637,10 @@ export default function PropertiesPage() {
                                 Status *
                               </Label>
                               <Select name="status" defaultValue={currentProperty?.status || "For Sale"}>
-                                <SelectTrigger className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                                <SelectTrigger className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                                   <SelectValue placeholder="Select status" />
                                 </SelectTrigger>
-                                <SelectContent className="bg-white border border-gray-300 shadow-lg">
+                                <SelectContent className="bg-transparent border border-gray-300 shadow-lg">
                                   <SelectItem value="For Sale">For Sale</SelectItem>
                                   <SelectItem value="For Rent">For Rent</SelectItem>
                                   <SelectItem value="Sold">Sold</SelectItem>
@@ -659,7 +659,7 @@ export default function PropertiesPage() {
                         defaultValue={currentProperty?.price}
                         required
                               placeholder="e.g. 1500000"
-                              className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
 
@@ -675,7 +675,7 @@ export default function PropertiesPage() {
                           defaultValue={currentProperty?.bedrooms}
                           required
                           min="0"
-                                className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         />
                       </div>
                       <div>
@@ -689,7 +689,7 @@ export default function PropertiesPage() {
                           defaultValue={currentProperty?.bathrooms}
                           required
                           min="0"
-                                className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         />
                       </div>
                     <div>
@@ -702,7 +702,7 @@ export default function PropertiesPage() {
                         defaultValue={currentProperty?.area}
                         required
                                 placeholder="e.g. 1,200"
-                                className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
                     </div>
@@ -718,7 +718,7 @@ export default function PropertiesPage() {
                         name="image"
                         defaultValue={currentProperty?.image}
                         placeholder="Enter image URL or leave blank for placeholder"
-                              className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
 
@@ -731,7 +731,7 @@ export default function PropertiesPage() {
                         name="videoId"
                         defaultValue={currentProperty?.videoId}
                         placeholder="e.g. dQw4w9WgXcQ"
-                              className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
 
@@ -746,7 +746,7 @@ export default function PropertiesPage() {
                         required
                         placeholder="Describe the property..."
                               rows={4}
-                              className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                             />
                           </div>
 
@@ -766,7 +766,7 @@ export default function PropertiesPage() {
 
                   {/* Translations Tab */}
                   <TabsContent value="translations" className="space-y-6">
-                    <div className="bg-white rounded-lg p-6 shadow-sm border">
+                    <div className="bg-transparent rounded-lg p-6 shadow-sm border">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                           <Globe className="w-5 h-5 text-blue-600" />
@@ -802,7 +802,7 @@ export default function PropertiesPage() {
                               [activeLanguage]: { ...prev[activeLanguage], title: e.target.value }
                             }))}
                             placeholder={`Property title in ${activeLanguage.toUpperCase()}`}
-                            className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                            className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
                         </div>
 
@@ -817,7 +817,7 @@ export default function PropertiesPage() {
                               [activeLanguage]: { ...prev[activeLanguage], locationDisplayName: e.target.value }
                             }))}
                             placeholder={`Location name in ${activeLanguage.toUpperCase()}`}
-                            className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                            className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
                         </div>
 
@@ -833,7 +833,7 @@ export default function PropertiesPage() {
                             }))}
                             placeholder={`Property description in ${activeLanguage.toUpperCase()}`}
                             rows={4}
-                            className="mt-1 bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                            className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
                         </div>
                       </div>
@@ -842,13 +842,13 @@ export default function PropertiesPage() {
 
                   {/* Preview Tab */}
                   <TabsContent value="preview" className="space-y-6">
-                    <div className="bg-white rounded-lg p-6 shadow-sm border">
+                    <div className="bg-transparent rounded-lg p-6 shadow-sm border">
                       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                         <Eye className="w-5 h-5 text-blue-600" />
                         Property Preview
                       </h3>
                       
-                      <div className="max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+                      <div className="max-w-md mx-auto bg-transparent border border-gray-200 rounded-lg shadow-md overflow-hidden">
                         <div className="relative h-48 w-full">
                           <Image
                             src={currentProperty?.image || "/placeholder.svg"}
@@ -911,7 +911,7 @@ export default function PropertiesPage() {
                         type="button" 
                         variant="outline" 
                         onClick={() => setIsDialogOpen(false)}
-                        className="bg-white hover:bg-gray-50"
+                        className="bg-transparent hover:bg-gray-50"
                       >
                     Cancel
                   </Button>
@@ -931,8 +931,8 @@ export default function PropertiesPage() {
 
         {/* Delete Confirmation Dialog - Fixed Styling */}
         <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-          <DialogContent className="bg-white border-0 shadow-2xl">
-            <div className="bg-white p-6 rounded-lg">
+          <DialogContent className="bg-transparent border-0 shadow-2xl">
+            <div className="bg-transparent p-6 rounded-lg">
               <DialogHeader className="mb-4">
                 <DialogTitle className="text-lg font-bold text-gray-900">Confirm Deletion</DialogTitle>
                 <DialogDescription className="text-gray-600">
@@ -940,7 +940,7 @@ export default function PropertiesPage() {
                 </DialogDescription>
               </DialogHeader>
               <div className="flex justify-end space-x-3 pt-4">
-                <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)} className="bg-white">
+                <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)} className="bg-transparent">
                   Cancel
                 </Button>
                 <Button

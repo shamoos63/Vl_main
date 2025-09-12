@@ -157,7 +157,7 @@ export default function SettingsPage() {
 
   return (
     <ModernDashboardLayout>
-      <div className="max-w-4xl bg-white rounded-lg shadow-lg p-6">
+      <div className="max-w-4xl bg-transparent rounded-lg shadow-lg p-6">
      
         {saveMessage && (
           <div
@@ -174,18 +174,18 @@ export default function SettingsPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
           {/* Account Settings */}
-          <Card className="bg-white border-0 shadow-lg">
+          <Card className="bg-transparent border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center">
-                <UserIcon className="h-5 w-5 mr-2 text-vl-blue text-center" />
+                <UserIcon className="h-5 w-5 text-white ml-2 text-center" />
                 Account Settings
               </CardTitle>
               <CardDescription>Change your display name and password</CardDescription>
             </CardHeader>
-            <CardContent className="p-6 bg-white space-y-4">
+            <CardContent className="p-6 bg-transparent space-y-4">
               <div>
                 <Label htmlFor="displayName" className="flex items-center">
-                  <UserIcon className="h-4 w-4 mr-2 text-gray-500" />
+                  <UserIcon className="h-4 w-4 ml-2 text-gray-500" />
                   Display Name
                 </Label>
                 <Input
@@ -199,7 +199,7 @@ export default function SettingsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="currentPassword" className="flex items-center">
-                    <Lock className="h-4 w-4 mr-2 text-gray-500" />
+                    <Lock className="h-4 w-4 ml-2 text-gray-500" />
                     Current Password
                   </Label>
                   <Input
@@ -213,7 +213,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <Label htmlFor="newPassword" className="flex items-center">
-                    <Lock className="h-4 w-4 mr-2 text-gray-500" />
+                    <Lock className="h-4 w-4 ml-2 text-gray-500" />
                     New Password
                   </Label>
                   <Input
@@ -227,7 +227,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <Label htmlFor="confirmPassword" className="flex items-center">
-                    <Lock className="h-4 w-4 mr-2 text-gray-500" />
+                    <Lock className="h-4 w-4 ml-2 text-gray-500" />
                     Confirm Password
                   </Label>
                   <Input
@@ -248,7 +248,7 @@ export default function SettingsPage() {
               )}
 
               <div className="flex justify-end">
-                <Button onClick={handleAccountSave} disabled={accountSaving} className="bg-vl-blue hover:bg-vl-blue-dark">
+                <Button onClick={handleAccountSave} disabled={accountSaving} className="text-vl-yellow transform border hover:scale-105 transition-all">
                   {accountSaving ? 'Saving...' : 'Save Account Changes'}
                 </Button>
               </div>

@@ -119,7 +119,7 @@ export default function DashboardLoginPage() {
                     value={formData.username}
                     onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                     required
-                    className=" font-sansumi pl-10 bg-white border-vl-yellow focus:border-vl-yellow text-gray-900"
+                    className=" font-sansumi pl-10 bg-transparent border-vl-yellow focus:border-vl-yellow text-gray-900"
                   />
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
                 </div>
@@ -137,7 +137,7 @@ export default function DashboardLoginPage() {
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     required
-                    className="font-sansumi pl-10 pr-10 bg-white border-vl-yellow focus:border-vl-yellow text-gray-900"
+                    className="font-sansumi pl-10 pr-10 bg-transparent border-vl-yellow focus:border-vl-yellow text-gray-900"
                   />
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
                   <button

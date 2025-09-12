@@ -181,7 +181,7 @@ export default function ContactsPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow mb-6">
+      <div className="bg-transparent rounded-lg shadow mb-6">
         <div className="p-4 border-b">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -312,7 +312,7 @@ export default function ContactsPage() {
 
       {/* View Contact Dialog */}
       <Dialog open={isViewDialogOpen} onOpenChange={setIsViewDialogOpen}>
-        <DialogContent className="max-w-2xl bg-white border-0 shadow-2xl">
+        <DialogContent className="max-w-2xl bg-transparent border-0 shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold">Contact Request Details</DialogTitle>
             <DialogDescription>View and manage this contact request</DialogDescription>
@@ -412,7 +412,7 @@ export default function ContactsPage() {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-white border-0 shadow-2xl">
+        <DialogContent className="bg-transparent border-0 shadow-2xl">
           <DialogHeader>
             <DialogTitle>Confirm Deletion</DialogTitle>
             <DialogDescription>

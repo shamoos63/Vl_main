@@ -331,7 +331,7 @@ export default function BlogPage() {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow mb-6">
+      <div className="bg-transparent rounded-lg shadow mb-6">
         <div className="p-4 border-b">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -444,8 +444,8 @@ export default function BlogPage() {
 
       {/* Add/Edit Blog Post Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-white border-0 shadow-2xl">
-          <div className="bg-white p-6 rounded-lg">
+        <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-transparent border-0 shadow-2xl">
+          <div className="bg-transparent p-6 rounded-lg">
             <DialogHeader className="mb-6">
               <DialogTitle className="text-xl font-bold text-gray-900">
                 {currentPost?.id ? "Edit Blog Post" : "Add New Blog Post"}
@@ -470,10 +470,10 @@ export default function BlogPage() {
                     Category *
                   </Label>
                   <Select name="type" defaultValue={currentPost?.type || "Market Analysis"}>
-                    <SelectTrigger className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue">
+                    <SelectTrigger className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue">
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white border border-gray-300 shadow-lg">
+                    <SelectContent className="bg-transparent border border-gray-300 shadow-lg">
                       {categories.map((category) => (
                         <SelectItem key={category.key} value={category.key}>
                           {category.label}
@@ -495,7 +495,7 @@ export default function BlogPage() {
                     max="60"
                     defaultValue={currentPost?.readingMinutes || 5}
                     required
-                    className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                    className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                   />
                 </div>
 
@@ -508,7 +508,7 @@ export default function BlogPage() {
                     name="featuredImageUrl"
                     defaultValue={currentPost?.featuredImageUrl || ""}
                     placeholder="Enter image URL or leave blank for placeholder"
-                    className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                    className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                   />
                 </div>
               </div>
@@ -521,7 +521,7 @@ export default function BlogPage() {
               </div>
 
               {/* Language Tabs */}
-              <Tabs value={activeLanguageTab} onValueChange={setActiveLanguageTab} className="w-full text-black">
+              <Tabs value={activeLanguageTab} onValueChange={setActiveLanguageTab} className="w-full text-white">
                 <TabsList className="grid w-full grid-cols-3">
                   {languages.map((lang) => (
                     <TabsTrigger
@@ -550,7 +550,7 @@ export default function BlogPage() {
                           placeholder={`e.g. ${lang.code === 'ar' ? 'اتجاهات سوق العقارات في دبي' : 
                                            lang.code === 'ru' ? 'Тенденции рынка недвижимости Дубая' : 
                                            'Dubai Real Estate Market Trends'}`}
-                          className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                          className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                           dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
                         />
                       </div>
@@ -568,7 +568,7 @@ export default function BlogPage() {
                                         lang.code === 'ru' ? 'Краткое изложение статьи...' : 
                                         'A brief summary of the post...'}`}
                           rows={3}
-                          className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                          className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                           dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
                         />
                       </div>
@@ -586,7 +586,7 @@ export default function BlogPage() {
                                         lang.code === 'ru' ? 'Напишите содержание вашей статьи...' : 
                                         'Write your blog post content...'}`}
                           rows={15}
-                          className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                          className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                           dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
                         />
                       </div>
@@ -601,7 +601,7 @@ export default function BlogPage() {
                             value={translations[lang.code as 'en' | 'ar' | 'ru'].metaTitle}
                             onChange={(e) => updateTranslation(lang.code as 'en' | 'ar' | 'ru', 'metaTitle', e.target.value)}
                             placeholder={`SEO title (${lang.name})`}
-                            className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                            className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                             dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
                           />
                         </div>
@@ -615,7 +615,7 @@ export default function BlogPage() {
                             value={translations[lang.code as 'en' | 'ar' | 'ru'].metaDescription}
                             onChange={(e) => updateTranslation(lang.code as 'en' | 'ar' | 'ru', 'metaDescription', e.target.value)}
                             placeholder={`SEO description (${lang.name})`}
-                            className="mt-1 bg-white border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                            className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                             dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
                           />
                         </div>
@@ -646,7 +646,7 @@ export default function BlogPage() {
               </div>
 
               <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
-                <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)} className="bg-white">
+                <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)} className="bg-transparent">
                   Cancel
                 </Button>
                 <Button 
@@ -671,8 +671,8 @@ export default function BlogPage() {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-white border-0 shadow-2xl">
-          <div className="bg-white p-6 rounded-lg">
+        <DialogContent className="bg-transparent border-0 shadow-2xl">
+          <div className="bg-transparent p-6 rounded-lg">
             <DialogHeader className="mb-4">
               <DialogTitle className="text-lg font-bold text-gray-900">Confirm Deletion</DialogTitle>
               <DialogDescription className="text-gray-600">
@@ -680,7 +680,7 @@ export default function BlogPage() {
               </DialogDescription>
             </DialogHeader>
             <div className="flex justify-end space-x-3 pt-4">
-              <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)} className="bg-white">
+              <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)} className="bg-transparent">
                 Cancel
               </Button>
               <Button

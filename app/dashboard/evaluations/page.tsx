@@ -162,7 +162,7 @@ export default function EvaluationsPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow mb-6">
+      <div className="bg-transparent rounded-lg shadow mb-6">
         <div className="p-4 border-b">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -289,7 +289,7 @@ export default function EvaluationsPage() {
 
       {/* View Evaluation Dialog */}
       <Dialog open={isViewDialogOpen} onOpenChange={setIsViewDialogOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-white border-0 shadow-2xl">
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-transparent border-0 shadow-2xl">
           <DialogHeader>
             <DialogTitle>Property Evaluation Details</DialogTitle>
             <DialogDescription>View and manage this property evaluation request</DialogDescription>
@@ -435,7 +435,7 @@ export default function EvaluationsPage() {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-white border-0 shadow-2xl">
+        <DialogContent className="bg-transparent border-0 shadow-2xl">
           <DialogHeader>
             <DialogTitle>Confirm Deletion</DialogTitle>
             <DialogDescription>
