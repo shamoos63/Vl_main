@@ -224,7 +224,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
   decimals={1}
   delay={400}
   duration={3000}
-  className={'font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-sm" : "text-lg"}'}
+  className={'whitespace-nowrap font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-sm" : "text-lg"}'}
   glowEffect={true}
   pulseOnComplete={true}
 />

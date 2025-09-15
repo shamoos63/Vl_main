@@ -584,7 +584,7 @@ export default function HeroSection() {
   decimals={1}
   delay={400}
   duration={3000}
-  className={'text-2xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-xl md:text-2xl" : "text-2xl md:text-4xl"}'}
+  className={' whitespace-nowrap text-2xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-xl md:text-2xl" : "text-2xl md:text-4xl"}'}
   glowEffect={true}
   pulseOnComplete={true}
 />
