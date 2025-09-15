@@ -101,14 +101,14 @@ export default function Footer() {
             <ul className="space-y-4 flex flex-col  items-center sm:items-start">
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 ml-3 text-vl-yellow" />
-                <span className={`text-gray-300 ${language === "ar" ? "ml-[-5rem]" : "mr-[-5rem]"}`}>
-  Dubai, UAE
+                <span className={`text-gray-300 ${language === "ar" ? "ml-[-5rem]" : "mr-[-3rem]"}`}>
+  {t("footer.Location")}
 </span>
               </li>
       <li className="flex">
                 <Mail className="h-5 w-5 mr-3 ml-3 text-vl-yellow" />
-                <span className={`text-gray-300 ${language === "ar" ? "ml-[-5rem]" : "mr-[-5rem]"}`}>
-                victoria.lancaster@selectproperty.ae
+                <span className={`text-gray-300 ${language === "ar" ? "ml-[-5rem]" : "mr-[-3rem]"}`}>
+                {t("footer.Mail")}
 </span>
             
               </li>

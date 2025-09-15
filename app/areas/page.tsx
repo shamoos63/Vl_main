@@ -88,7 +88,7 @@ export default function AreasPage() {
     </li>
 
   </ul>
-          <p className="text-lg text-gray-700 pt-4font-medium text-center">
+          <p className="text-lg text-gray-700 pt-4 font-medium text-center">
             {t("areas.description.3")}
           </p>
         </div>

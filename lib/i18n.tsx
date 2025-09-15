@@ -324,7 +324,7 @@ const translations = {
     "properties.of": "of",
     "properties.results": "results",
     "properties.end.of.results": "Every property here meets strict criteria to ensure a safe investment",
-    "properties.page.subtitle2": "No noise, no random offers, only handpicked",
+    "properties.page.subtitle2": "No noise, no random offers, only handpicked Real Estate opportunities",
 
     // Properties Page Specific
     "properties.page.title": "Personally Selected",
@@ -555,6 +555,8 @@ const translations = {
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
     "footer.sitemap": "Sitemap",
+    "footer.Location": "Dubai, UAE",
+    "footer.Mail": "victoria.lancaster@selectproperty.ae",
 
     // Properties Page & Listings
     "properties.page.title.alt": "Personally Selected. Strategically Positioned.",
@@ -743,7 +745,7 @@ const translations = {
   "evaluation.feature.2": "إمكانات الدخل والاستثمار",
   "evaluation.feature.3": "خطة البيع أو الإيجار الأمثل",
   "evaluation.feature.3+": "(إذا كانت قابلة للتطبيق)",
-  "evaluation.description.4": "شارك تفاصيلك أدناه، ودعني أقيّم عقارك شخصياً",
+  "evaluation.description.4": "شارك معلوماتك أدناه، ودعني أقيّم عقارك شخصياً",
   "evaluation.stats.1": "صفقة عقارية",
   "evaluation.stats.2": "بإجمالي",
   "evaluation.stats.3": "عاماً من الخبرة",
@@ -829,7 +831,7 @@ const translations = {
   "about.office.dubai": "دبي، الإمارات العربية المتحدة",
   "about.office.manchester": "مانشستر، المملكة المتحدة",
   "about.cta.title": "مستعد لاتخاذ الخطوة التالية؟",
-  "about.cta.text": "لنبدأ محادثة مبنية على الثقة، موجهة بإستراتيجية ومصممة خصيصاً لأهدافك. شارك تفاصيلك أدناه.",
+  "about.cta.text": "لنبدأ محادثة مبنية على الثقة، موجهة بإستراتيجية ومصممة خصيصاً لأهدافك. شارك معلوماتك أدناه.",
   "about.cta.text2": "ستراجع فيكتوريا شخصياً كيف يمكنها دعم خطوتك التالية",
   "about.cta.button": "إرسال رسالة",
   "about.achievements.1.number": "585+",
@@ -1062,7 +1064,7 @@ const translations = {
     "home.properties.loading": "جاري تحميل مجموعتنا المختارة من العقارات المميزة...",
 
     // Footer Arabic
-    "footer.description": "شريكك الموثوق في الاستثمار العقاري في دبي، أقدم إرشادات شخصية وفرص حصرية",
+    "footer.description": "شريكك الموثوق في عالم الاستثمار العقارية",
     "footer.quick.links": "روابط سريعة",
     "footer.contact.info": "معلومات التواصل",
     "footer.newsletter": "النشرة الإخبارية",
@@ -1074,6 +1076,8 @@ const translations = {
     "footer.contact.address": "دبي، الإمارات العربية المتحدة",
     "footer.contact.phone": "00971-4-2794-800",
     "footer.contact.email": "victoria.lancaster@selectproperty.ae",
+     "footer.Location": "دبي، الإمارات العربية المتحدة ",
+    "footer.Mail": "victoria.lancaster@selectproperty.ae",
 
     // Testimonials Arabic
     "testimonials.title.alt": "موثوقة من نخبة المستثمرين العالميّين",

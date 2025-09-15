@@ -428,7 +428,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
         </Card>
 
         <Card className="glass"> {/* Applied 'glass' here */}
-          <CardContent className="p-6"> {/* Removed 'glass' from here to avoid double application */}
+          <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-vl-yellow dark:text-white mb-4">
               {t("properties.similar") || "Similar Properties"}
             </h3>
@@ -452,7 +452,8 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                 similarProperties.slice(0, 3).map((similarProperty) => (
                   <Link href={`/properties/${similarProperty.id}`} key={similarProperty.id}>
                     <div className="flex items-center p-2 rounded-lg  transition-transform duration-300 hover:scale-105">
-                      <div className="relative w-20 h-20 rounded-md overflow-hidden mr-3">
+                      <div className={`relative w-20 h-20 rounded-md overflow-hidden ${ language === "ar" ? "ml-3" : "mr-3"  }`}>
+
                         <Image
                           src={similarProperty.image || "/placeholder.svg?height=80&width=80&text=Property"}
                           alt={similarProperty.title}

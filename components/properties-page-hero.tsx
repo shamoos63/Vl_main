@@ -4,22 +4,23 @@ import ServerPageHero from "@/components/server-page-hero"
 import { useI18n } from "@/lib/i18n"
 
 export default function PropertiesPageHero() {
-  const { t, isRTL } = useI18n()
-  
+  const { t, isRTL, locale } = useI18n()
+
   return (
     <div dir={isRTL ? "rtl" : "ltr"}>
       <ServerPageHero
         title={
-  <>
-    {t("properties.page.title")}<br />
-    {t("properties.page.title2")}
-  </>
-}
+          <>
+            {t("properties.page.title")}<br />
+            {t("properties.page.title2")}
+          </>
+        }
         subtitle={
-  <>
-    {t("properties.page.subtitle2")}<br />
-    {t("properties.page.subtitle")}
-  </>}
+          <>
+            {t("properties.page.subtitle2")}<br />
+            {locale !== "en" && t("properties.page.subtitle")}
+          </>
+        }
         backgroundImage="/hero.webp"
         className="font-sansumi"
       />

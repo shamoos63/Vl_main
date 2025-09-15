@@ -217,7 +217,7 @@ export default function TestimonialsSection() {
             {language === "en"
               ? "Hear from clients who chose strategy, discretion, and results."
               : language === "ar"
-                ? "استمع إلى العملاء الذين اختاروا الاستراتيجية والتقدير والنتائج"
+                ? "استمع إلى العملاء الذين اختاروا الاستراتيجية والنتائج"
                 : "Послушайте мнения клиентов, которые выбрали стратегию, осмотрительность и результаты."}
           </p>
         </div>
@@ -308,7 +308,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                 <div className="text-3xl font-bold text-vl-yellow">
                     {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 Лет опыта"}
                 </div>
-               <div className="text-white/80">
+               <div className="text-white/80 pt-2">
                   {language === "en"
                     ? "Valued at"
                     : language === "ar"

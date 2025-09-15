@@ -502,7 +502,7 @@ export default function HeroSection() {
               <Select onValueChange={(value) => setSearchData({ ...searchData, priceRange: value })}>
                 <SelectTrigger className="h-12 bg-white/90 border-0 hover:bg-white transition-colors text-vl-blue hero-search-select">
                   <div className="flex items-center">
-                    <DollarSign className="h-4 w-4 mr-2 text-black" />
+                    <DollarSign className="h-4 w-4 mr-1 text-black" />
                     <SelectValue className="text-black" placeholder={t("search.price.range")} />
                   </div>
                 </SelectTrigger>
@@ -584,7 +584,7 @@ export default function HeroSection() {
   decimals={1}
   delay={400}
   duration={3000}
-  className={' whitespace-nowrap text-2xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-xl md:text-2xl" : "text-2xl md:text-4xl"}'}
+  className={` whitespace-nowrap text-2xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-lg md:text-lg" : "text-2xl md:text-4xl"}`}
   glowEffect={true}
   pulseOnComplete={true}
 />

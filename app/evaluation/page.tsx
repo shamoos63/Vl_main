@@ -64,24 +64,24 @@ export default function EvaluationPage() {
    <EvaluationClient />
       {/* Stats Section */}
       <section className="py-8 mt-[-5rem]">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-             <div className="glass rounded-lg p-6 text-center shadow-md">
-              <div className="text-3xl font-bold text-v-yellow">15+</div>
-              <div className="text-sm text-gray-600">{t("evaluation.stats.3")}</div>
-            </div>
-            <div className="glass rounded-lg p-6 text-center shadow-md">
-              <div className="text-3xl font-bold text-v-yellow">585+</div>
-              <div className="text-sm text-gray-600">{t("evaluation.stats.1")}</div>
-            </div>
-            <div className="glass rounded-lg p-6 text-center shadow-md">
-              <div className="text-3xl font-bold text-v-yellow">AED 1.7B+</div>
-              <div className="text-sm text-gray-600">{t("evaluation.stats.2")}</div>
-            </div>
-           
-          </div>
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      {[
+        { value: "15+", label: t("evaluation.stats.3") },
+        { value: "585+", label: t("evaluation.stats.1") },
+        { value: "AED 1.7B+", label: t("evaluation.stats.2") },
+      ].map((stat, index) => (
+        <div
+          key={index}
+          className="glass rounded-lg p-6 text-center shadow-md flex flex-col justify-center items-center w-[200px] h-[100px]"
+        >
+          <div className="text-3xl font-bold text-v-yellow">{stat.value}</div>
+          <div className="text-sm text-gray-600">{stat.label}</div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
    
         <Footer />
