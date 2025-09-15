@@ -125,7 +125,7 @@ const translations = {
   "evaluation.description.4":
     "Submit your details below, I will personally evaluate your property",
   "evaluation.stats.1": "Properties Sold",
-  "evaluation.stats.2": "Valued at",
+  "evaluation.stats.2": "Total Value",
   "evaluation.stats.3": "Years of Experience",
   "evaluation.contact.info": "Contact Information",
   "evaluation.name": "Full Name",

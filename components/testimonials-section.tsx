@@ -310,7 +310,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                 </div>
                <div className="text-white/80 pt-2">
                   {language === "en"
-                    ? "Valued at"
+                    ? "Total Valued"
                     : language === "ar"
                       ? "بقيمة"
                       : "Общая стоимость сделок"}
