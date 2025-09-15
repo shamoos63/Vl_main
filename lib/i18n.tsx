@@ -1064,7 +1064,7 @@ const translations = {
     "home.properties.loading": "جاري تحميل مجموعتنا المختارة من العقارات المميزة...",
 
     // Footer Arabic
-    "footer.description": "شريكك الموثوق في عالم الاستثمار العقارية",
+    "footer.description": "شريكك الموثوق في عالم الاستثمار العقاري",
     "footer.quick.links": "روابط سريعة",
     "footer.contact.info": "معلومات التواصل",
     "footer.newsletter": "النشرة الإخبارية",

@@ -308,7 +308,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                 <div className="text-3xl font-bold text-vl-yellow">
                     {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 Лет опыта"}
                 </div>
-               <div className="text-white/80 pt-2">
+               <div className="text-white/80 pt-4">
                   {language === "en"
                     ? "Total Valued"
                     : language === "ar"
