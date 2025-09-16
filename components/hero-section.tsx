@@ -541,7 +541,7 @@ export default function HeroSection() {
           </form>
 
           {/* Enhanced Stats with Staggered Animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-2 sm:mb-6  md:grid-cols-3 gap-8 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-2 sm:mb-10  md:grid-cols-3 gap-8 mb-10">
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
