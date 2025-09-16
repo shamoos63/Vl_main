@@ -305,7 +305,7 @@ export default function HeroSection() {
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Background with gradient overlay */}
-      <div className="flex items-center text-black"></div>
+      <div className="flex items-center text-black "></div>
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -541,7 +541,7 @@ export default function HeroSection() {
           </form>
 
           {/* Enhanced Stats with Staggered Animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-2 sm:mb-6  md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-2 sm:mb-6  md:grid-cols-3 gap-8 mb-4">
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
@@ -589,7 +589,7 @@ export default function HeroSection() {
   pulseOnComplete={true}
 />
               </div>
-              <div className={'text-white/80 text-xl font-medium transition-all duration-300 group-hover:text-white '}>
+              <div className={'text-white/80 text-xl font-medium transition-all duration-300 group-hover:text-white'}>
                 {t("hero.stats.value")}
               </div>
             </div>

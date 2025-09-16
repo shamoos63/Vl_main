@@ -35,8 +35,10 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
   const welcomeSubtitle = t("welcome.subtitle")
   const welcomeSubtitle2 = t("welcome.subtitle2")
   const welcomeExperience = t("welcome.experience")
-  const welcomeExperience2 = t("welcome.experience2")
-  const welcomeExperienceDetail = t("welcome.experience.detail")
+  const welcomeExperience1 = t("welcome.subtitle1")
+  const welcomeExperience22 = t("welcome.subtitle2+")
+  const welcomeExperience3 = t("welcome.subtitle3")
+  const welcomeExperience4 = t("welcome.subtitle4")
   const welcomeStrategic = t("welcome.strategic")
   const welcomeStrategicDetail = t("welcome.strategic.detail")
   const welcomeGetInTouch = t("welcome.get.in.touch")
@@ -185,13 +187,11 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                 </CardTitle>
                 <p className="text-white text-base leading-relaxed mb-4 font-medium">
                   
-                                   {welcomeSubtitle}
-                 {language !== "ar" && (
-    <>
-      <br />
-      {welcomeSubtitle2}
-    </>
-  )}
+                {language == "ar" && (  <>  <br />  {welcomeSubtitle}  </>  )}
+                 {language !== "ar" && (  <>  <br />  {welcomeExperience1}  </>  )}
+                 {language !== "ar" && (  <>  <br />  {welcomeExperience22}  </>  )}
+                 {language !== "ar" && (  <>  <br />  {welcomeExperience3}  </>  )}
+                 {language !== "ar" && (  <>  <br />  {welcomeExperience4}  </>  )}
                 </p>
 
                 {/* Two Column Stats for Mobile */}
