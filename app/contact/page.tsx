@@ -19,7 +19,6 @@ export default function ContactPage() {
   subtitle={t("contact.page.subtitle")}
   backgroundImage="/hero.webp"
   className="font-sansumi"
-  subtitleClassName="pt-4"
 />
 
       <div className="pt-8">
