@@ -187,7 +187,7 @@ const translations = {
     // Hero Section
     "hero.title": "Dubai 2025",
     "hero.title.highlight": "The Strategy of Wealth",
-    "hero.subtitle": "Understand the Market | Access Exclusives   Build Lasting Wealth",
+    "hero.subtitle": "Understand the Market | Access Exclusives | Build Lasting Wealth",
     "hero.search.button": "Search",
     "hero.stats.properties": "Properties Sold",
     "hero.stats.value": "Total Value",

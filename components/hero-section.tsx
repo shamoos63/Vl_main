@@ -548,12 +548,16 @@ export default function HeroSection() {
                   end={15}
                   suffix="+"
                   delay={200}
-                  className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                    className={`text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${
+  isRTL ? "text-lg md:text-xl mt-2" : "text-2xl md:text-4xl"
+}`}
                   glowEffect={true}
                   pulseOnComplete={true}
                 />
               </div>
-              <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
+              <div   className={`text-white/80 font-medium transition-all duration-300 group-hover:text-white ${
+  isRTL ? "text-xl" : ""
+}`}>
                 {t("hero.stats.experience")}
               </div>
             </div>
@@ -564,12 +568,16 @@ export default function HeroSection() {
                   end={585}
                   suffix="+"
                   delay={600}
-                  className="text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110"
+                    className={`text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${
+  isRTL ? "text-lg md:text-xl mt-2" : "text-2xl md:text-4xl"
+}`}
                   glowEffect={true}
                   pulseOnComplete={true}
                 />
               </div>
-              <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
+              <div   className={`text-white/80 font-medium transition-all duration-300 group-hover:text-white ${
+  isRTL ? "text-xl" : ""
+}`}>
                 {t("hero.stats.properties")}
               </div>
             </div>
@@ -591,7 +599,9 @@ export default function HeroSection() {
       pulseOnComplete={true}
     />
   </div>
-  <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
+  <div   className={`text-white/80 font-medium transition-all duration-300 group-hover:text-white ${
+  isRTL ? "text-xl" : ""
+}`}>
     {t("hero.stats.value")}
   </div>
 </div>
