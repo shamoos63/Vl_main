@@ -285,7 +285,7 @@ export default function AboutPage() {
       <section className="py-4 bg-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-vl-yellow mb-4 font-sansumi text-center">{t("about.expertise.title")}</h2>
+            <h2 className="text-4xl font-bold text-vl-yellow mb-4 font-sansumi text-center mt-[-2rem]">{t("about.expertise.title")}</h2>
             <p className="text-xl text-center text-vl-yellow italic mb-8">
               "{t("about.expertise.quote")}"
             </p>

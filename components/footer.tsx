@@ -15,21 +15,21 @@ export default function Footer() {
       <div className="space-y-6 p-8 bg-transparent">
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
-  <div className="flex flex-col items-center sm:items-start">
+  <div className="flex flex-col  items-center">
   <div className="mb-6">
     <Image
       src="/VL1_w.svg"
       alt="Victoria Lancaster Real Estate"
       width={200}
       height={120}
-      className="h-24 w-auto brightness-0 invert"
+      className="h-24 items-center  w-auto brightness-0 invert"
       priority
     />
   </div>
   <p className="text-gray-300 mb-6 leading-relaxed text-center">
     {t("footer.description")}
   </p>
-  <div className="flex space-x-4">
+  <div className="flex space-x-4 mr-5">
     <Button variant="ghost" size="sm" onClick={() => window.open("https://www.facebook.com/share/1EcLgYgQE7/?mibextid=wwXIfr", "_blank")}  className="text-white hover:text-vl-yellow">
       <Facebook className="h-5 w-5" />
     </Button>

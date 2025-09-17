@@ -327,7 +327,7 @@ export default function HeroSection() {
             {t("hero.title.highlight")} 
           </h1>
 
-          <p className="text-sm md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
+          <p className="text-sm md:text-sm text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
             {t("hero.subtitle")}
           </p>
 
@@ -369,7 +369,7 @@ export default function HeroSection() {
       }
     }}
     placeholder={t("search.location")}
-    className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
+    className="border-0 bg-transparent text-s focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
   />
 
   <div className="flex items-center space-x-1">
@@ -541,7 +541,7 @@ export default function HeroSection() {
           </form>
 
           {/* Enhanced Stats with Staggered Animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:mt-2 sm:mb-10  md:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:pt-4 sm:mb-6  md:grid-cols-3 gap-8 mb-8">
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
@@ -575,24 +575,26 @@ export default function HeroSection() {
             </div>
 
            <div className="text-center group">
-              <div className="relative">
-                
-                <AnimatedCounter
-  prefix={isRTL ? '+' : 'AED '}
-  end={1.7}
-  suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
-  decimals={1}
-  delay={400}
-  duration={3000}
-  className={` whitespace-nowrap text-2xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${ isRTL ? "text-lg md:text-lg" : "text-2xl md:text-4xl"}`}
-  glowEffect={true}
-  pulseOnComplete={true}
-/>
-              </div>
-              <div className={'text-white/80 text-xl font-medium transition-all duration-300 group-hover:text-white'}>
-                {t("hero.stats.value")}
-              </div>
-            </div>
+  <div className="relative">
+    <AnimatedCounter
+      prefix={isRTL ? '+' : 'AED '}
+      end={1.7}
+      suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
+      decimals={1}
+      delay={400}
+      duration={3000}
+      className={`whitespace-nowrap font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${
+  isRTL ? "text-lg md:text-xl mt-2" : "text-2xl md:text-4xl"
+}`}
+
+      glowEffect={true}
+      pulseOnComplete={true}
+    />
+  </div>
+  <div className="text-white/80 font-medium transition-all duration-300 group-hover:text-white">
+    {t("hero.stats.value")}
+  </div>
+</div>
           </div>
         </div>
       </div>

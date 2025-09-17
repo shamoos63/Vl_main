@@ -181,11 +181,11 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
               <div className="flex-1 text-center">
                 <CardTitle className="text-xl font-bold text-vl-yellow mb-3 leading-tight">
                   {welcomeTitle}
-                  <p className="text-white text-base leading-relaxed mb-4 font-medium">
+                  <p className="text-white text-base leading-relaxed mb-1 font-medium">
                   {welcomeTitle2}
                 </p>
                 </CardTitle>
-                <p className="text-white text-base leading-relaxed mb-4 font-medium">
+                <p className="text-white text-base leading-relaxed mb-4 pt-[-2rem] font-medium">
                   
                 {language == "ar" && (  <>  <br />  {welcomeSubtitle}  </>  )}
                  {language !== "ar" && (  <>  <br />  {welcomeExperience1}  </>  )}

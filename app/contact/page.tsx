@@ -14,12 +14,13 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen pt-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
       <Header />
-      <ServerPageHero
-        title={t("contact.page.title")}
-        subtitle={t("contact.page.subtitle")}
-        backgroundImage="/hero.webp"
-        className="font-sansumi"
-      />
+  <ServerPageHero
+  title={t("contact.page.title")}
+  subtitle={t("contact.page.subtitle")}
+  backgroundImage="/hero.webp"
+  className="font-sansumi"
+  subtitleClassName="pt-2"
+/>
 
       <div className="pt-8">
         <div className="container mx-auto px-4 py-16">

@@ -187,7 +187,7 @@ const translations = {
     // Hero Section
     "hero.title": "Dubai 2025",
     "hero.title.highlight": "The Strategy of Wealth",
-    "hero.subtitle": "Understand the Market. Access Exclusives. Build Lasting Wealth",
+    "hero.subtitle": "Understand the Market | Access Exclusives   Build Lasting Wealth",
     "hero.search.button": "Search",
     "hero.stats.properties": "Properties Sold",
     "hero.stats.value": "Total Value",
@@ -751,7 +751,7 @@ const translations = {
   "evaluation.feature.3+": "(إذا كانت قابلة للتطبيق)",
   "evaluation.description.4": "شارك معلوماتك أدناه، ودعني أقيّم عقارك شخصياً",
   "evaluation.stats.1": "صفقة عقارية",
-  "evaluation.stats.2": "بإجمالي",
+  "evaluation.stats.2": "القيمة الإجمالية",
   "evaluation.stats.3": "عاماً من الخبرة",
   "evaluation.contact.info": "معلومات التواصل",
   "evaluation.name": "الاسم الكامل",
@@ -791,7 +791,7 @@ const translations = {
 
      // About
   "about.page.title": "عن فيكتوريا",
-  "about.page.subtitle": "استراتيجية واضحة | ثقة راسخة | ونتائج ملموسة",
+  "about.page.subtitle": "استراتيجية واضحة | ثقة راسخة | نتائج ملموسة",
   "about.quote": "بالنسبة لي، الاستثمار العقاري ليس مجرد صفقة… بل بناء مستقبل.",
   "about.quote+": "أتعامل مع كل عقار وكأنه استثماري الخاص، بالعناية والدقة نفسها",
   "about.name": "فيكتوريا لانكاستر",
