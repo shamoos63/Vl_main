@@ -871,8 +871,8 @@ const translations = {
 
     // Hero Section Arabic
     "hero.title": "دبي ليست خياراً",
-    "hero.title.highlight": "بل طريق استراتيجي للثروة",
-    "hero.subtitle":"افهم السوق  |  اغتنم الفرص الحصرية  |  وابنِ مستقبلاً يدوم",
+    "hero.title.highlight": "بـل طريق استراتيجي للثروة",
+    "hero.subtitle":"افهم السـوق  |  اغتنم الفـرص الحصرية  |  وابنِ مستقبلاً يـدوم",
     "hero.search.button": "أبحث",
     "hero.stats.properties": "صفقة عقارية ",
     "hero.stats.value": "القيمة الإجمالية",

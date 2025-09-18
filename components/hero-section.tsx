@@ -323,11 +323,11 @@ export default function HeroSection() {
           <h1 className="text-4xl md:text-6xl pt-3 mt-3 lg:text-7xl font-bold text-white mb-2 font-sansumi">
             {t("hero.title")} 
           </h1>
-          <h1 className="text-xl md:text-3xl md:pt-1 lg:pt-2 pt-1 lg:text-3xl font-bold text-white mb-6 font-sansumi">
+          <h1 className="text-xl md:text-3xl md:pt-1 lg:pt-3 pt-2 lg:text-3xl font-bold text-white mb-6 font-sansumi">
             {t("hero.title.highlight")} 
           </h1>
 
-          <p className="text-sm md:text-sm text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold">
+          <p className={`text-sm md:text-sm text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-sansumi font-semibold ${ language === "ar" ? "text-lg md:text-lg" : ""  }`}>
             {t("hero.subtitle")}
           </p>
 
