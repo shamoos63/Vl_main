@@ -141,6 +141,8 @@ export default function AnimatedCounter({
         <span className="counter-digits">{count.toFixed(decimals)}</span>
         
         {suffix}
+        <div/>
+        {something}
       </div>
 
       {/* Animated underline */}

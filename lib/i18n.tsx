@@ -581,8 +581,8 @@ const translations = {
     "welcome.subtitle2": "Real Estate, turning ambition into lasting value",
     "welcome.subtitle1": "For over 15 years, I’ve been untrusted",
     "welcome.subtitle2+": "With guiding capital into Real Estate",
-    "welcome.subtitle3": "turning ambition into lasting ",
-    "welcome.subtitle4": "value",
+    "welcome.subtitle3": "turning ambition into lasting value",
+    
     "welcome.experience": "Properties Sold ",
     "welcome.experience2": "+",
     "welcome.experience.detail": "Across Dubai and the UK",

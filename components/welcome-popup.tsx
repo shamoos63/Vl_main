@@ -38,7 +38,6 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
   const welcomeExperience1 = t("welcome.subtitle1")
   const welcomeExperience22 = t("welcome.subtitle2+")
   const welcomeExperience3 = t("welcome.subtitle3")
-  const welcomeExperience4 = t("welcome.subtitle4")
   const welcomeStrategic = t("welcome.strategic")
   const welcomeStrategicDetail = t("welcome.strategic.detail")
   const welcomeGetInTouch = t("welcome.get.in.touch")
@@ -165,7 +164,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
 
           <div className="relative z-10">
             {/* Mobile Layout (unchanged) - Responsive Layout for mobile */}
-            <div className="flex flex-col items-center md:hidden gap-6 mb-6">
+            <div className="flex flex-col items-center md:hidden gap-7 mb-6">
               {/* Centered Photo for Mobile */}
               <div className="flex justify-center w-full">
                 <Image
@@ -191,11 +190,10 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                  {language !== "ar" && (  <>  <br />  {welcomeExperience1}  </>  )}
                  {language !== "ar" && (  <>  <br />  {welcomeExperience22}  </>  )}
                  {language !== "ar" && (  <>  <br />  {welcomeExperience3}  </>  )}
-                 {language !== "ar" && (  <>  <br />  {welcomeExperience4}  </>  )}
                 </p>
 
                 {/* Two Column Stats for Mobile */}
-                <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="grid grid-cols-2 gap-4 w-full">
 
                   {/* Experience */}
                   <div className="text-center">
@@ -220,7 +218,8 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                      <AnimatedCounter
   prefix={isRTL ? '+' : 'AED '}
   end={1.7}
-  suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
+  suffix={isRTL ? 'مليار' : 'B+'}
+  something={isRTL ? 'درهم إماراتي' : ''}
   decimals={1}
   delay={400}
   duration={3000}

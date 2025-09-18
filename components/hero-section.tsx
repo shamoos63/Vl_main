@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, MapPin, DollarSign, Home, X, ChevronDown, Navigation, Loader2 } from "lucide-react"
+import { Search, MapPin, DollarSign, Home, X, Navigation, Loader2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import AnimatedCounter from "./animated-counter"
 import { Input } from "@/components/ui/input"
@@ -369,7 +369,7 @@ export default function HeroSection() {
       }
     }}
     placeholder={t("search.location")}
-    className="border-0 bg-transparent text-s focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
+    className="border-0 text-left ml-1 bg-transparent text-sm focus-visible:ring-0 focus-visible:ring-offset-0 p-0 h-full placeholder:text-white"
   />
 
   <div className="flex items-center space-x-1">
@@ -392,7 +392,7 @@ export default function HeroSection() {
       {isDetectingLocation ? (
         <Loader2 className="h-3 w-3 animate-spin" />
       ) : (
-        <Navigation className={`h-3 w-3`}/>
+        <Navigation className={`h-4 w-4`} />
       )}
     </button>
     
