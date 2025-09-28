@@ -211,14 +211,14 @@ export default function TestimonialsSection() {
               ? "Trusted by Global Investors"
               : language === "ar"
                 ? "موثوقة من قبل عملاء عالميين"
-                : "Доверие мировых инвесторов"}
+                : "Доверие мировых Виктории доверяют инвесторы со всего мира"}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {language === "en"
               ? "Hear from clients who chose strategy, discretion, and results."
               : language === "ar"
                 ? "استمع إلى العملاء الذين اختاروا الاستراتيجية والنتائج"
-                : "Послушайте мнения клиентов, которые выбрали стратегию, осмотрительность и результаты."}
+                : "Отзывы клиентов, которые выбрали стратегию и результат"}
           </p>
         </div>
 
@@ -289,13 +289,15 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                 ? "Join 500+ Satisfied Investors"
                 : language === "ar"
                   ? "انضم إلى 500+ مستثمر ناجح"
-                  : "Присоединяйтесь к 500+ довольным инвесторам"}
+                  : "Присоединяйтесь к 500+ успешным инвесторам"}
             </h3>
             <p className="text-white/90 mb-6">
               {language === "en"
                 ? "Ready to start your Dubai property investment journey? Let me help you achieve your goals."
                 : language === "ar"
-                  ? "مستعد لتدخل عالم الاستثمار العقاري الذكي؟ سأرشدك بخبرة تتجاوز 15 عاماً لتتجنّب المخاطر وتكسب الوقت وتضاعف عوائدك"
+                  ? <>Готовы войти в мир умных инвестиций в недвижимость?<br/>
+Я проведу вас с опытом более 15 лет, помогу избежать рисков, сэкономить время и увеличить доходность.
+</>
                   : "Готовы начать свое инвестиционное путешествие в недвижимость Дубая? Позвольте Виктории помочь вам достичь ваших целей."}
             </p>
             <div className="flex flex-col sm:flex-row gap-12 justify-center">
@@ -303,23 +305,23 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
             
               <div className="text-center hover:scale-110 transition-transform duration-300">
                  <div className="text-white/80">
-                  {language === "en" ? "More than" : language === "ar" ? "أكثر من " : "5"}
+                  {language === "en" ? "More than" : language === "ar" ? "أكثر من " : "Более"}
                 </div>
                 <div className="text-3xl font-bold text-vl-yellow">
-                    {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 Лет опыта"}
+                    {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 сделок с недвижимостью"}
                 </div>
                <div className="text-white/80 pt-4">
                   {language === "en"
                     ? "Total Valued"
                     : language === "ar"
                       ? "بقيمة"
-                      : "Общая стоимость сделок"}
+                      : "Общей стоимостью"}
                 </div>
                 <div className="text-3xl font-bold text-vl-yellow"> {language === "en"
                     ? "AED 1.7B+"
                     : language === "ar"
                       ? "1.7 مليار درهم إماراتي"
-                      : "1.7"}</div>
+                      : "1,7 млрд дирхамов ОАЭ"}</div>
                 
               </div>
               

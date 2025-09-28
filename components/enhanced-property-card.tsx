@@ -448,9 +448,7 @@ export default function EnhancedPropertyCard({
     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full mt-auto">
   <Link href={`/properties/${property.id}`} className="flex-1">
     <Button
-      className="w-full text-white bg-transparent hover:text-vl-yellow font-semibold
-        px-4 py-3 text-base /* <-- Adjusted padding and text size */
-        transition-all duration-300 hover:scale-95 border-2 border-vl-yellow hover:border-black"
+      className={`w-full text-white bg-transparent hover:text-vl-yellow font-semibold px-4 py-3 transition-all duration-300 hover:scale-95 border-2 border-vl-yellow hover:border-black ${ language === "ru" ? "text-xs" : "text-base"}`}
     >
       <Eye className="h-4 w-4 mr-1 group-hover:scale-90 transition-transform" /> {/* reduced margin to mr-1 */}
       {t("property.view.details") || "View Details"}
@@ -458,9 +456,7 @@ export default function EnhancedPropertyCard({
     </Button>
   </Link>
   <Button
-    className="flex-1 text-blue bg-white font-semibold
-      px-4 py-3 text-base /* <-- Adjusted padding and text size */
-      transition-all duration-300 hover:scale-95 border border-blue-300"
+  className={`flex-1 text-blue bg-white font-semibold px-4 py-3 text-base transition-all duration-300 hover:scale-95 border border-blue-300 ${ language === "ru" ? "text-xs" : "text-base"}`}
     onClick={handleContactForm}
   >
     <MessageCircle className="h-4 w-4 mr-1" /> {/* reduced margin to mr-1 */}

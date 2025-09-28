@@ -213,7 +213,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                   </div>
 
                   {/* Strategic */}
-                  <div className="text-center">
+                  <div className="text-center whitespace-nowrap">
                     <div className="text-white font-semibold font-medium mb-1">{welcomeStrategic}</div>
                      <AnimatedCounter
   prefix={isRTL ? '+' : 'AED '}
