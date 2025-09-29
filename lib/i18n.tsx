@@ -555,7 +555,7 @@ const translations = {
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
     "footer.sitemap": "Sitemap",
-    "footer.Location": "Dubai, UAE",
+    "footer.Location": "Дубай, Объединённые Арабские Эмираты",
     "footer.Mail": "victoria.lancaster@selectproperty.ae",
 
     // Properties Page & Listings
@@ -1264,7 +1264,7 @@ const translations = {
    "about.achievements.4.number": "3",
    "about.achievements.4.title": "Языка",
    "about.achievements.4.description": "Свободно владеет английским, арабским и русским языками",
- "properties.page.subtitle2": "Каждая недвижимость здесь прошла определённые критерии",
+ "evaluation.stats.3": "Каждая недвижимость здесь прошла определённые критерии",
 
     // Navigation Russian
     "nav.home": "Главная",
@@ -1479,9 +1479,9 @@ const translations = {
   "evaluation.feature.3": "Стратегию продажи (если применимо)",
   "evaluation.description.4":
     "Отправьте свои данные ниже, Виктория лично оценит вашу недвижимость и посоветует лучший следующий шаг.",
-  "evaluation.stats.1": "Оцененных объектов",
-  "evaluation.stats.2": "Общая оцененная стоимость",
-  "evaluation.stats.3": "Лет опыта",
+  "evaluation.stats.1": "сделок с недвижимостью",
+  "evaluation.stats.2": "совокупный объём",
+  "evaluation.stats.3": "лет опыта",
   "evaluation.contact.info": "Контактные данные",
   "evaluation.name": "Полное имя",
   "evaluation.name.placeholder": "Введите ваше полное имя",
@@ -1520,8 +1520,8 @@ const translations = {
 
 
     // Contact Page Russian
-    "contact.page.title": "Свяжитесь с нами",
-    "contact.page.subtitle": "Свяжитесь с нами для персонализированной консультации по недвижимости",
+    "contact.page.title": "Свяжитесь со мной",
+    "contact.page.subtitle": "Получите персональную консультацию по недвижимости",
     "contact.form.title": "Напишите мне",
     "contact.first.name": "Имя",
     "contact.first.name.placeholder": "Введите ваше имя",

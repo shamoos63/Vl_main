@@ -69,7 +69,11 @@ export default function EvaluationPage() {
       {[
         { value: "15+", label: t("evaluation.stats.3") },
         { value: "585+", label: t("evaluation.stats.1") },
-        { value: "AED 1.7B+", label: t("evaluation.stats.2") },
+        {
+    value: language === "ru" ? "1.7+ млрд AED" : "AED 1.7B+",
+    label: t("evaluation.stats.2"),
+  },
+
       ].map((stat, index) => (
         <div
           key={index}

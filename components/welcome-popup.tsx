@@ -29,6 +29,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
   const { t, isRTL, language } = useI18n()
   const popupRef = useRef<HTMLDivElement>(null)
 
+  
   // Ternary translation for welcome popup content
   const welcomeTitle = t("welcome.title")
   const welcomeTitle2 = t("welcome.title2")
@@ -148,6 +149,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
       className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[200] p-4"
       dir={isRTL ? "rtl" : "ltr"}
     >
+      
       <Card
         className="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-vl-blue border border-vl-yellow shadow-2xl border-0 relative"
         ref={popupRef}
@@ -158,6 +160,24 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
          <div className="absolute inset-0">
   <img src="/background.webp" alt="background" className="w-full h-full object-cover" />
 </div>
+
+      <button
+        type="button"
+        onClick={() => {
+          // Cycle through 'en', 'ar', 'ru'
+          const langs = ["en", "ar", "ru"];
+          const currentIdx = langs.indexOf(language);
+          const nextLang = langs[(currentIdx + 1) % langs.length];
+          window.localStorage.setItem("vl-language", nextLang);
+          window.location.reload();
+        }}
+         className="absolute top-6 left-3 bg-vl-yellow text-xs text-vl-blue font-bold px-2 py-1 rounded-full shadow-lg z-[210] transition-transform duration-300 hover:scale-105"
+  style={{ minWidth: 80 }}
+>
+        {language === "en" && "العربية"}
+        {language === "ar" && "Русский"}
+        {language === "ru" && "English"}
+      </button>
 
 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>

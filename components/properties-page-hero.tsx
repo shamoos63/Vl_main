@@ -17,7 +17,7 @@ export default function PropertiesPageHero() {
         }
         subtitle={
           <>
-            {t("properties.page.subtitle2")}<br />
+            {language !== "ru" && t("properties.page.subtitle2")}<br />
             {language !== "en" && t("properties.page.subtitle")}
           </>
         }
