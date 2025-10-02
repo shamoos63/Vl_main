@@ -11,7 +11,6 @@ import { CheckCircle } from "lucide-react"
 import { useI18n } from "@/lib/i18n"
 import Image from "next/image"
 import AnimatedCounter from "@/components/animated-counter"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 interface WelcomePopupProps {
   onClose: () => void
@@ -162,28 +161,43 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
   <img src="/background.webp" alt="background" className="w-full h-full object-cover" />
 </div>
 
-      <Select
-  value={language}
-  onValueChange={(nextLang) => {
-    window.localStorage.setItem("vl-language", nextLang);
-    window.location.reload();
-  }}
->
-  <SelectTrigger className="absolute top-3 glass text-xs text-vl-blue font-bold px-4 py-1 rounded-full shadow-lg z-[210] w-[100px] transition-transform duration-300 hover:scale-105">
-    <SelectValue placeholder="Language" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="en" className="select-item w-full px-4 py-2 cursor-pointer flex items-center justify-start">
-      English
-    </SelectItem>
-    <SelectItem value="ar" className="w-full px-4 py-2 cursor-pointer flex items-center justify-start">
-      العربية
-    </SelectItem>
-    <SelectItem value="ru" className="w-full px-4 py-2 cursor-pointer flex items-center justify-start">
-      Русский
-    </SelectItem>
-  </SelectContent>
-</Select>
+     <div className="absolute top-6 left-3 flex flex-col gap-2 z-[210]">
+  <button
+    type="button"
+    onClick={() => {
+      window.localStorage.setItem("vl-language", "en");
+      window.location.reload();
+    }}
+    className="bg-vl-yellow text-xs text-vl-blue font-bold px-2 py-1 rounded-full shadow-lg transition-transform duration-300 hover:scale-105"
+    style={{ minWidth: 80 }}
+  >
+    English
+  </button>
+
+  <button
+    type="button"
+    onClick={() => {
+      window.localStorage.setItem("vl-language", "ar");
+      window.location.reload();
+    }}
+    className="bg-vl-yellow text-xs text-vl-blue font-bold px-2 py-1 rounded-full shadow-lg transition-transform duration-300 hover:scale-105"
+    style={{ minWidth: 80 }}
+  >
+    العربية
+  </button>
+
+  <button
+    type="button"
+    onClick={() => {
+      window.localStorage.setItem("vl-language", "ru");
+      window.location.reload();
+    }}
+    className="bg-vl-yellow text-xs text-vl-blue font-bold px-2 py-1 rounded-full shadow-lg transition-transform duration-300 hover:scale-105"
+    style={{ minWidth: 80 }}
+  >
+    Русский
+  </button>
+</div>
 
 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>

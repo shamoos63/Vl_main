@@ -28,6 +28,7 @@ export default function PropertiesPageHero() {
         }
         backgroundImage="/hero.webp"
         className="font-sansumi"
+        
       />
     </div>
   )

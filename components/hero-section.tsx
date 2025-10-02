@@ -304,7 +304,6 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-visible"
       dir={isRTL ? "rtl" : "ltr"}
     >
-      {/* Background with gradient overlay */}
       <div className="flex items-center text-black "></div>
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
