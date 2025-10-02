@@ -64,6 +64,7 @@ const translations = {
   "timeline.signature.title": "Investment Director | Licensed Real Estate Advisor",
   "about.expertise.quote2": "Let’s start a conversation built on trust and data, tailored to your goals. Enter your details, and Victoria will personally reach out to guide your next step.",
 "footer.contact.phone": "00971-4-2794-800",
+"footer.contact.address": "Dubai, UAE",
 // Blog Search
     "blog.search.placeholder":"Search blog posts...",
     "blog.no.posts": "No blog posts found",
@@ -791,7 +792,7 @@ const translations = {
 
      // About
   "about.page.title": "عن فيكتوريا",
-  "about.page.subtitle": "استراتيجية واضحة | ثقة راسخة | نتائج ملموسة",
+  "about.page.subtitle": "استراتيجية واضحة  |  ثقة راسخة  |  نتائج ملموسة",
   "about.quote": "بالنسبة لي، الاستثمار العقاري ليس مجرد صفقة… بل بناء مستقبل.",
   "about.quote+": "أتعامل مع كل عقار وكأنه استثماري الخاص، بالعناية والدقة نفسها",
   "about.name": "فيكتوريا لانكاستر",
@@ -872,7 +873,7 @@ const translations = {
     // Hero Section Arabic
     "hero.title": "دبي ليست خياراً",
     "hero.title.highlight": "بـل طريق استراتيجي للثروة",
-    "hero.subtitle":"افهم السـوق  |  اغتنم الفـرص الحصرية  |  وابنِ مستقبلاً يـدوم",
+    "hero.subtitle":"افهم السـوق   |   اغتنم الفـرص الحصرية   |   وابنِ مستقبلاً يـدوم",
     "hero.search.button": "أبحث",
     "hero.stats.properties": "صفقة عقارية ",
     "hero.stats.value": "القيمة الإجمالية",
@@ -1063,7 +1064,7 @@ const translations = {
     // Properties Page & Listings Arabic
     "properties.page.title.alt": "مختارة شخصياً. موضوعة استراتيجياً.",
     "properties.page.subtitle.alt": "لا ضوضاء. لا قوائم جماعية. فقط فرص منتقاة، مراجعة، مصقولة، وجاهزة للاستثمار.",
-    "home.properties.title": "اكتشف أهم الفرص",
+    "home.properties.title": "اكتشــف أهــم الفــرص",
     "home.properties.subtitle": "عقارات مميزة مختارة بعناية ",
     "home.properties.loading": "جاري تحميل مجموعتنا المختارة من العقارات المميزة...",
 
@@ -1418,7 +1419,7 @@ const translations = {
     "filters.property.types.townhouse": "Таунхаус",
 
     // Sort Options Russian
-    "filters.sort.label": "Сортировать по:",
+    "filters.sort.label": "Сортировать по",
     "filters.sort.default": "По умолчанию",
     "filters.sort.price-asc": "Цена: по возрастанию",
     "filters.sort.price-desc": "Цена: по убыванию",

@@ -18,7 +18,12 @@ export default function PropertiesPageHero() {
         subtitle={
           <>
             {language !== "ru" && t("properties.page.subtitle2")}<br />
-            {language !== "en" && t("properties.page.subtitle")}
+            {language === "ru" ? (
+    <span className="-mt-8 block">{t("properties.page.subtitle")}</span>
+  ) : (
+    <span className="pt-4 block">{t("properties.page.subtitle")}</span>
+  )}
+
           </>
         }
         backgroundImage="/hero.webp"

@@ -325,12 +325,12 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
               {t("properties.features") || "Property Features"}
             </h3>
             {propertyFeatures.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 item-start">
                 {propertyFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center">
-                    <Check className="h-4 w-4 text-vl-yellow mr-2 flex-shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">{feature}</span>
-                  </div>
+                  <div key={index} className={`flex items-center ${language === "ar" ? "flex-row-reverse" : ""}`}>
+<Check className={`h-4 w-4 text-vl-yellow flex-shrink-0 ${language === "ar" ? "ml-2" : "mr-2"}`} />
+  <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+</div>
                 ))}
               </div>
             ) : (
@@ -345,10 +345,10 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
             {propertyAmenities.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {propertyAmenities.map((amenity, index) => (
-                  <div key={index} className="flex items-center">
-                    <Check className="h-4 w-4 text-vl-yellow mr-2 flex-shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">{amenity}</span>
-                  </div>
+                  <div key={index} className={`flex items-center ${language === "ar" ? "flex-row-reverse" : ""}`}>
+  <Check className={`h-4 w-4 text-vl-yellow flex-shrink-0 ${language === "ar" ? "ml-2" : "mr-2"}`} />
+  <span className="text-gray-600 dark:text-gray-300">{amenity}</span>
+</div>
                 ))}
               </div>
             ) : (
@@ -392,7 +392,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
 
               <div className="flex items-start mb-4">
                 <Image
-                  src="/victoria-photo-1.jpg"
+                  src="/victoria-photo-3.jpg"
                   alt="Victoria Lancaster"
                   width={60}
                   height={60}

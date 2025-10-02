@@ -1453,4 +1453,14 @@ div[class*="dropdown-item"]:hover {
   }
 }
 
+/* Add to your global CSS or welcome-popup.module.css */
+.select-item {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 

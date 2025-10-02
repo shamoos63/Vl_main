@@ -17,7 +17,7 @@ interface TimelineItem {
 
 
 export default function TimelineSection() {
-  const { t, isRTL } = useI18n()
+  const { t, isRTL, language } = useI18n()
   const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set())
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down")
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -156,16 +156,16 @@ export default function TimelineSection() {
                         } rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:border-opacity-60`}
                       >
                         <div className="flex items-center gap-3 mb-4">
-                          <div
-                            className={`p-2 rounded-full ${
-                              item.highlight
-                                ? "bg-vl-yellow text-vl-blue border border-vl-blue"
-                                : "bg-vl-blue border border-vl-yellow text-vl-yellow"
-                            }`}
-                          >
-                            {item.icon}
-                          </div>
-                          <h3 className="text-xl font-bold text-vl-yellow">{item.title}</h3>
+                         <div
+  className={`p-2 rounded-full ${
+    index % 2 === 0
+      ? "bg-vl-blue text-vl-yellow border border-vl-yellow"
+      : "bg-vl-yellow text-vl-blue border border-vl-blue"
+  }`}
+>
+  {item.icon}
+</div>
+                          <h3 className="text-xl font-bold text-vl-yellow text-start">{item.title}</h3>
                         </div>
                         <p className="text-white leading-relaxed text-center">{item.description}</p>
                       </div>
@@ -175,24 +175,18 @@ export default function TimelineSection() {
                     <div className={`${index % 2 === 0 ? "md:order-2" : "md:order-1"} flex justify-center`}>
                       <div className="relative">
                         {/* Timeline Dot */}
-                        <div
-                          className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full ${
-                            item.highlight ? "bg-vl-yellow" : "bg-vl-blue border-2 border-vl-yellow"
-                          } hidden md:block`}
-                        ></div>
+                      
 
                         {/* Year Circle */}
-                        <div
-                          className={`w-20 h-20 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-300 ${
-                            item.highlight
-                              ? "bg-vl-yellow text-vl-blue border-2 border-vl-blue shadow-lg scale-110"
-                              : visibleItems.has(index)
-                                ? "bg-vl-blue border-2 border-vl-yellow text-white shadow-md scale-105"
-                                : "bg-vl-blue border border-vl-yellow border-opacity-30 text-vl-yellow opacity-70"
-                          }`}
-                        >
-                          {item.year}
-                        </div>
+                       <div
+  className={`w-20 h-20 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-300 ${
+    index % 2 === 0
+      ? "bg-vl-blue text-vl-yellow border border-vl-yellow"
+      : "bg-vl-yellow text-vl-blue border border-vl-blue"
+  }`}
+>
+  {item.year}
+</div>
                       </div>
                     </div>
                   </div>

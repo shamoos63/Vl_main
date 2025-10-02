@@ -27,9 +27,13 @@ export default function EvaluationPage() {
           <p className="text-lg text-white text-center py-1">
             {t("evaluation.description.1")}
             </p>
-            <p className={'text-lg text-white text-center py-1 mb-6 ${ language === "ar" ? "mb-6" : "mb-0" }'}>
-            {t("evaluation.description.1+")}
-            </p>
+            <p
+  className={`text-lg text-white text-center py-1 
+    ${language === "ar" ? "mb-6" : "mb-0"} 
+    ${language === "ru" ? "hidden" : "visible"}`}
+>
+  {t("evaluation.description.1+")}
+</p>
             <p className={`text-lg text-white text-center py-1 mb-6 ${ language === "ar" ? "hidden" : "visible" }`}>     {t("evaluation.description.2")}</p>
          <div className="w-full">
   <ul className="flex flex-col gap-6 md:flex-row md:gap-8">
@@ -65,7 +69,7 @@ export default function EvaluationPage() {
       {/* Stats Section */}
       <section className="py-8 mt-[-5rem]">
   <div className="container mx-auto px-4">
-    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
       {[
         { value: "15+", label: t("evaluation.stats.3") },
         { value: "585+", label: t("evaluation.stats.1") },
@@ -79,7 +83,7 @@ export default function EvaluationPage() {
           key={index}
           className="glass rounded-lg p-6 text-center shadow-md flex flex-col justify-center items-center w-[200px] h-[100px]"
         >
-          <div className="text-3xl font-bold text-v-yellow">{stat.value}</div>
+          <div className={` font-bold text-v-yellow  ${language !== "ar" ? "text-xl" : "text-3xl" }`}>{stat.value}</div>
           <div className="text-sm text-gray-600">{stat.label}</div>
         </div>
       ))}
