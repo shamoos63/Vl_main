@@ -476,7 +476,8 @@ const translations = {
   "about.office.dubai": "Dubai, United Arab Emirates",
   "about.office.manchester": "Manchester, United Kingdom",
   "about.cta.title": "Ready to take the next step?",
-  "about.cta.text": "Let's start a conversation built on trust, guided by insight, and tailored to your goals. Share your details below",
+  "about.cta.text": "Let's start a conversation built on trust, guided by insight, and tailored to your goals.",
+  "about.cta.text1": "Share your details below",
   "about.cta.text2": "Victoria will personally review how she can support your next move",
   "about.cta.button": "Send Message",
   "about.achievements.1.number": "585+",
@@ -556,7 +557,7 @@ const translations = {
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
     "footer.sitemap": "Sitemap",
-    "footer.Location": "Дубай, Объединённые Арабские Эмираты",
+    "footer.Location": "Dubai, UAE",
     "footer.Mail": "victoria.lancaster@selectproperty.ae",
 
     // Properties Page & Listings
@@ -873,7 +874,7 @@ const translations = {
     // Hero Section Arabic
     "hero.title": "دبي ليست خياراً",
     "hero.title.highlight": "بـل طريق استراتيجي للثروة",
-    "hero.subtitle":"افهم السـوق   |   اغتنم الفـرص الحصرية   |   وابنِ مستقبلاً يـدوم",
+    "hero.subtitle":"افهم السـوق     |      اغتنم الفـرص الحصرية     |      وابنِ مستقبلاً يـدوم",
     "hero.search.button": "أبحث",
     "hero.stats.properties": "صفقة عقارية ",
     "hero.stats.value": "القيمة الإجمالية",
@@ -1557,6 +1558,7 @@ const translations = {
     "footer.description": "Ваш надёжный партнёр в мире инвестиций в недвижимость",
     "footer.quick.links": "Быстрые ссылки",
     "footer.contact.info": "Контактная информация",
+    "footer.Location": "Дубай, Объединённые Арабские Эмираты",
     "footer.newsletter": "Новостная рассылка",
     "footer.newsletter.description": "Подпишитесь сейчас, чтобы получать ключевые новости и проверенные данные",
     "footer.email.placeholder": "Ваш адрес электронной почты",

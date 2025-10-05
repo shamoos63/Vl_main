@@ -12,7 +12,7 @@ import { useI18n } from "@/lib/i18n"
 
 
 export default function AboutPage() {
-  const { t, isRTL } = useI18n()
+  const { t, isRTL,language } = useI18n()
   const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set())
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down")
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -186,7 +186,7 @@ export default function AboutPage() {
           >
               {/* Photo Right - Animates from RIGHT */}
             <div
-              className={`relative transition-all duration-700 ease-out ${
+              className={`relative lg:order-2 transition-all duration-700 ease-out ${
                 visibleSections.has(1) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
               }`}
             >
@@ -201,7 +201,7 @@ export default function AboutPage() {
             </div>
             {/* Content Left - Animates from LEFT */}
             <div
-              className={`ml-6 space-y-8 transition-all duration-700 ease-out ${
+              className={`lg:order-1 lg:ml-6 space-y-8 transition-all duration-700 ease-out ${
                 visibleSections.has(1) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
               }`}
             >
@@ -223,7 +223,6 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-
           
           </div>
 
@@ -347,6 +346,12 @@ export default function AboutPage() {
             <p className="text-xl text-white mb-1 leading-relaxed">
               {t("about.cta.text")}
             </p>
+            { language === "en" && (
+  <p className="text-xl text-white mb-1 leading-relaxed">
+    {t("about.cta.text1")}
+  </p>
+)}
+
             <p className="text-xl text-white mb-8 leading-relaxed">
               {t("about.cta.text2")}
             </p>
