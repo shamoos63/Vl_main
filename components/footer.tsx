@@ -46,7 +46,7 @@ export default function Footer() {
 <div  className={`lg:col-span-1 ${
     language === "ar" ? "mr[4rem]" : "ml[4rem]"
   }`} >
-  <h3 className="text-lg font-semibold mb-6 flex flex-col items-center sm:items-start">
+  <h3 className="text-lg font-semibold mb-3 flex flex-col items-center sm:items-start">
     {t("footer.quick.links")}
   </h3>
   <ul className="space-y-3 flex flex-col items-center sm:items-start">
@@ -92,7 +92,7 @@ export default function Footer() {
     language === "ar" ? "mr-[-5rem]" : "ml-[-5rem]"
   }`}>
             <h3
-  className={`text-lg font-semibold mb-6 flex flex-col items-center sm:items-start ${
+  className={`text-lg font-semibold mb-3 flex flex-col items-center sm:items-start ${
     language === "ar" ? "ml-[-5rem]" : "mr-[-5rem]"
   }`}
 >
@@ -117,7 +117,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 flex flex-col  items-center sm:items-start" >{t("footer.newsletter")}</h3>
+            <h3 className="text-lg font-semibold mb-3 flex flex-col  items-center sm:items-start" >{t("footer.newsletter")}</h3>
             <p className="text-gray-300 mb-4 flex flex-col  items-center sm:items-start">{t("footer.newsletter.description")}</p>
             <div className="flex flex-col space-y-3">
               <Input
