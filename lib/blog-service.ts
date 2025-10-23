@@ -120,7 +120,10 @@ export class BlogService {
           eq(blogs.id, blogTranslations.blogId),
           eq(blogTranslations.language, language)
         ))
-        .where(eq(blogs.isPublished, true))
+        .where(and(
+          eq(blogs.isPublished, true),
+          sql`${blogs.type} != 'Area' AND ${blogs.type} != 'Article'`
+        ))
         .orderBy(desc(blogs.publishedAt), desc(blogs.createdAt));
 
       return result.map(row => ({
@@ -158,6 +161,7 @@ export class BlogService {
           eq(blogs.id, blogTranslations.blogId),
           eq(blogTranslations.language, language)
         ))
+        .where(sql`${blogs.type} != 'Area' AND ${blogs.type} != 'Article'`)
         .orderBy(desc(blogs.publishedAt), desc(blogs.createdAt));
 
       return result.map(row => ({
@@ -317,6 +321,7 @@ export class BlogService {
         ))
         .where(and(
           eq(blogs.isPublished, true),
+          sql`${blogs.type} != 'Area' AND ${blogs.type} != 'Article'`,
           sql`(${blogTranslations.title} LIKE ${`%${query}%`} OR ${blogTranslations.content} LIKE ${`%${query}%`} OR ${blogTranslations.excerpt} LIKE ${`%${query}%`})`
         ))
         .orderBy(desc(blogs.publishedAt), desc(blogs.createdAt));

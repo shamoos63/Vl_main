@@ -301,7 +301,16 @@ export default function PropertiesPage() {
       homeDisplay: formData.get("homeDisplay") === "on",
       description: formData.get("description") as string,
       videoId: formData.get("videoId") as string,
-      type: formData.get("type") as string
+      type: formData.get("type") as string,
+      // Parse optional comma-separated gallery images to array for API
+      ...(formData.get("images")
+        ? {
+            images: (formData.get("images") as string)
+              .split(",")
+              .map((s) => s.trim())
+              .filter((s) => s.length > 0),
+          }
+        : {}),
     }
 
     try {
@@ -723,6 +732,19 @@ export default function PropertiesPage() {
                     </div>
 
                     <div>
+                      <Label htmlFor="images" className="text-sm font-medium text-gray-700">
+                        Gallery Image URLs (comma-separated)
+                      </Label>
+                      <Input
+                        id="images"
+                        name="images"
+                        defaultValue={(currentProperty?.images || []).join(", ")}
+                        placeholder="https://.../1.jpg, https://.../2.jpg"
+                        className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    <div>
                       <Label htmlFor="videoId" className="text-sm font-medium text-gray-700">
                         YouTube Video ID
                       </Label>
@@ -833,6 +855,27 @@ export default function PropertiesPage() {
                             }))}
                             placeholder={`Property description in ${activeLanguage.toUpperCase()}`}
                             rows={4}
+                            className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          />
+                        </div>
+
+                        <div>
+                          <Label className="text-sm font-medium text-gray-700">
+                            Amenities ({activeLanguage.toUpperCase()}) – comma-separated
+                          </Label>
+                          <Input
+                            value={(translations[activeLanguage]?.amenitiesTranslated || []).join(", ")}
+                            onChange={(e) => {
+                              const values = e.target.value
+                                .split(",")
+                                .map((s) => s.trim())
+                                .filter((s) => s.length > 0)
+                              setTranslations(prev => ({
+                                ...prev,
+                                [activeLanguage]: { ...prev[activeLanguage], amenitiesTranslated: values }
+                              }))
+                            }}
+                            placeholder={`e.g. Pool, Gym, Parking in ${activeLanguage.toUpperCase()}`}
                             className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
                         </div>

@@ -29,6 +29,7 @@ const navigation = [
   { name: "Contacts", href: "/dashboard/contacts", icon: MessageSquare },
   { name: "Evaluations", href: "/dashboard/evaluations", icon: Calculator },
   { name: "Blog", href: "/dashboard/blog", icon: FileText },
+  { name: "Areas", href: "/dashboard/areas", icon: FileText },
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ]
 

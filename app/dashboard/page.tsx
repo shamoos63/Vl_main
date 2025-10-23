@@ -215,6 +215,16 @@ export default function DashboardPage() {
                     <p>Create and edit blog posts</p>
                   </div>
                 </a>
+
+                <a href="/dashboard/areas" className="quick-action">
+                  <div className="quick-action-icon">
+                    <FileText size={24}  className="text-white" />
+                  </div>
+                  <div className="quick-action-content">
+                    <h3>Manage Areas</h3>
+                    <p>Create and edit area articles</p>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
