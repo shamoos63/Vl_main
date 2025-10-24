@@ -3,6 +3,7 @@ import { getDb } from '@/lib/db/index';
 import { properties, propertyTranslations } from '@/lib/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
 import { type PropertyWithTranslation, convertToCurrentPropertyFormat } from '@/lib/db/utils';
+import { ensurePropertyHomeDisplayColumn } from '@/lib/db/migrations';
 
 // GET - Fetch all properties
 export async function GET(request: NextRequest) {
@@ -52,6 +53,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    // Ensure schema is compatible before attempting insert
+    await ensurePropertyHomeDisplayColumn();
     
     // Validate required fields
     const requiredFields = ['title', 'location', 'price', 'bedrooms', 'bathrooms', 'area', 'type', 'description'];
@@ -113,8 +116,9 @@ export async function POST(request: NextRequest) {
       agentEmail: 'victoria.lancaster@selectproperty.ae'
     };
 
-    // Insert property
-    const result = await db.insert(properties).values(propertyData).returning();
+    // Insert property (with auto-migration fallback for missing column)
+    let result;
+    result = await db.insert(properties).values(propertyData).returning();
     const newProperty = result[0];
 
     // Insert English translation

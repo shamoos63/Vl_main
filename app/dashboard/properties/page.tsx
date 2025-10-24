@@ -35,6 +35,8 @@ interface Property {
   videoId?: string
   images?: string[]
   type: string
+  features?: string[]
+  amenities?: string[]
 }
 
 // Translation interface
@@ -61,6 +63,8 @@ export default function PropertiesPage() {
     ar: { title: "", description: "", locationDisplayName: "", featuresTranslated: [], amenitiesTranslated: [], highlightsTranslated: [] },
     ru: { title: "", description: "", locationDisplayName: "", featuresTranslated: [], amenitiesTranslated: [], highlightsTranslated: [] }
   })
+  const [baseFeatures, setBaseFeatures] = useState<string[]>([])
+  const [baseAmenities, setBaseAmenities] = useState<string[]>([])
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -136,6 +140,8 @@ export default function PropertiesPage() {
       images: [],
       type: "Villa",
     })
+    setBaseFeatures([])
+    setBaseAmenities([])
     
     // Reset translations
     setTranslations({
@@ -153,6 +159,8 @@ export default function PropertiesPage() {
     setCurrentProperty({ ...property })
     setActiveTab("basic")
     setActiveLanguage("en")
+    setBaseFeatures(Array.isArray(property.features) ? property.features : [])
+    setBaseAmenities(Array.isArray(property.amenities) ? property.amenities : [])
     
     // Fetch translations for existing property
     if (property.id) {
@@ -302,6 +310,9 @@ export default function PropertiesPage() {
       description: formData.get("description") as string,
       videoId: formData.get("videoId") as string,
       type: formData.get("type") as string,
+      // base features/amenities edited in chips input
+      features: baseFeatures,
+      amenities: baseAmenities,
       // Parse optional comma-separated gallery images to array for API
       ...(formData.get("images")
         ? {
@@ -561,20 +572,7 @@ export default function PropertiesPage() {
               </DialogHeader>
 
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-6">
-                  <TabsTrigger value="basic" className="flex items-center gap-2">
-                    <Home className="w-4 h-4" />
-                    Basic Info
-                  </TabsTrigger>
-                  <TabsTrigger value="translations" className="flex items-center gap-2">
-                    <Globe className="w-4 h-4" />
-                    Translations
-                  </TabsTrigger>
-                  <TabsTrigger value="preview" className="flex items-center gap-2">
-                    <Eye className="w-4 h-4" />
-                    Preview
-                  </TabsTrigger>
-                </TabsList>
+             
 
               <form
                 action={(formData) => {
@@ -586,7 +584,7 @@ export default function PropertiesPage() {
                 {currentProperty?.id && <input type="hidden" name="id" value={currentProperty.id} />}
 
                   {/* Basic Info Tab */}
-                  <TabsContent value="basic" className="space-y-6">
+                  <TabsContent value="basic" forceMount className="space-y-6">
                     <div className="bg-transparent rounded-lg p-6 shadow-sm border">
                       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                         <Home className="w-5 h-5 text-blue-600" />
@@ -628,7 +626,7 @@ export default function PropertiesPage() {
                               <Label htmlFor="type" className="text-sm font-medium text-gray-700">
                                 Property Type *
                               </Label>
-                              <Select name="type" defaultValue={currentProperty?.type || "Villa"}>
+                              <Select name="type" defaultValue={currentProperty?.type || "Villa"} onValueChange={(value) => setCurrentProperty(prev => prev ? { ...prev, type: value } : prev)}>
                                 <SelectTrigger className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                                   <SelectValue placeholder="Select property type" />
                                 </SelectTrigger>
@@ -639,13 +637,15 @@ export default function PropertiesPage() {
                                   <SelectItem value="Penthouse">Penthouse</SelectItem>
                                 </SelectContent>
                               </Select>
+                              {/* Ensure type is submitted with the form */}
+                              <input type="hidden" name="type" value={currentProperty?.type || "Villa"} />
                             </div>
 
                             <div>
                               <Label htmlFor="status" className="text-sm font-medium text-gray-700">
                                 Status *
                               </Label>
-                              <Select name="status" defaultValue={currentProperty?.status || "For Sale"}>
+                              <Select name="status" defaultValue={currentProperty?.status || "For Sale"} onValueChange={(value) => setCurrentProperty(prev => prev ? { ...prev, status: value } : prev)}>
                                 <SelectTrigger className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                                   <SelectValue placeholder="Select status" />
                                 </SelectTrigger>
@@ -655,6 +655,8 @@ export default function PropertiesPage() {
                                   <SelectItem value="Sold">Sold</SelectItem>
                                 </SelectContent>
                               </Select>
+                              {/* Ensure status is submitted with the form */}
+                              <input type="hidden" name="status" value={currentProperty?.status || "For Sale"} />
                             </div>
                           </div>
 
@@ -772,8 +774,58 @@ export default function PropertiesPage() {
                             />
                           </div>
 
+                          {/* Base Amenities (English/default) */}
+                          <div>
+                            <Label className="text-sm font-medium text-gray-700">
+                              Amenities (base)
+                            </Label>
+                            <div className="mt-1 flex flex-wrap gap-2 p-2 border rounded-md bg-transparent">
+                              {baseAmenities.map((amenity, idx) => (
+                                <span key={`${amenity}-${idx}`} className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
+                                  {amenity}
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setBaseAmenities(prev => {
+                                        const next = prev.slice()
+                                        next.splice(idx, 1)
+                                        return next
+                                      })
+                                    }}
+                                    className="ml-1 text-blue-700 hover:text-blue-900"
+                                    aria-label="Remove amenity"
+                                  >
+                                    ×
+                                  </button>
+                                </span>
+                              ))}
+                              <input
+                                type="text"
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter' || e.key === ',') {
+                                    e.preventDefault()
+                                    const target = e.target as HTMLInputElement
+                                    const raw = target.value
+                                    const candidates = raw
+                                      .split(',')
+                                      .map(s => s.trim())
+                                      .filter(Boolean)
+                                    if (candidates.length > 0) {
+                                      setBaseAmenities(prev => [...prev, ...candidates])
+                                      target.value = ''
+                                    }
+                                  }
+                                }}
+                                placeholder={`Type an amenity and press Enter`}
+                                className="flex-1 min-w-[150px] bg-transparent outline-none"
+                              />
+                            </div>
+                          </div>
+
                           <div className="flex items-center space-x-3 p-3 bg-transparent border border-yellow-200 rounded-lg">
-                            <Checkbox id="featured" name="featured" defaultChecked={currentProperty?.featured} />
+                            <Checkbox id="featured" name="featured" defaultChecked={currentProperty?.featured} onCheckedChange={(checked) => setCurrentProperty(prev => prev ? { ...prev, featured: !!checked } : prev)} />
+                            {/* Ensure featured is submitted with the form */}
+                            <input type="hidden" name="featured" value={currentProperty?.featured ? 'on' : ''} />
                             <div>
                               <Label htmlFor="featured" className="text-sm font-medium text-gray-700 cursor-pointer">
                                 Featured Property
@@ -787,7 +839,7 @@ export default function PropertiesPage() {
                   </TabsContent>
 
                   {/* Translations Tab */}
-                  <TabsContent value="translations" className="space-y-6">
+                  <TabsContent value="translations" forceMount className="space-y-6">
                     <div className="bg-transparent rounded-lg p-6 shadow-sm border">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
@@ -823,6 +875,12 @@ export default function PropertiesPage() {
                               ...prev,
                               [activeLanguage]: { ...prev[activeLanguage], title: e.target.value }
                             }))}
+                            onKeyDown={(e) => {
+                              if (e.key === ',') {
+                                // Prevent accidental comma insertion
+                                e.preventDefault()
+                              }
+                            }}
                             placeholder={`Property title in ${activeLanguage.toUpperCase()}`}
                             className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
@@ -838,6 +896,11 @@ export default function PropertiesPage() {
                               ...prev,
                               [activeLanguage]: { ...prev[activeLanguage], locationDisplayName: e.target.value }
                             }))}
+                            onKeyDown={(e) => {
+                              if (e.key === ',') {
+                                e.preventDefault()
+                              }
+                            }}
                             placeholder={`Location name in ${activeLanguage.toUpperCase()}`}
                             className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
@@ -861,83 +924,59 @@ export default function PropertiesPage() {
 
                         <div>
                           <Label className="text-sm font-medium text-gray-700">
-                            Amenities ({activeLanguage.toUpperCase()}) – comma-separated
+                            Amenities ({activeLanguage.toUpperCase()})
                           </Label>
-                          <Input
-                            value={(translations[activeLanguage]?.amenitiesTranslated || []).join(", ")}
-                            onChange={(e) => {
-                              const values = e.target.value
-                                .split(",")
-                                .map((s) => s.trim())
-                                .filter((s) => s.length > 0)
-                              setTranslations(prev => ({
-                                ...prev,
-                                [activeLanguage]: { ...prev[activeLanguage], amenitiesTranslated: values }
-                              }))
-                            }}
-                            placeholder={`e.g. Pool, Gym, Parking in ${activeLanguage.toUpperCase()}`}
-                            className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </TabsContent>
-
-                  {/* Preview Tab */}
-                  <TabsContent value="preview" className="space-y-6">
-                    <div className="bg-transparent rounded-lg p-6 shadow-sm border">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <Eye className="w-5 h-5 text-blue-600" />
-                        Property Preview
-                      </h3>
-                      
-                      <div className="max-w-md mx-auto bg-transparent border border-gray-200 rounded-lg shadow-md overflow-hidden">
-                        <div className="relative h-48 w-full">
-                          <Image
-                            src={currentProperty?.image || "/placeholder.svg"}
-                            alt="Property Preview"
-                            fill
-                            className="object-cover"
-                          />
-                          {currentProperty?.featured && (
-                            <div className="absolute top-2 left-2 bg-yellow-400 text-yellow-900 px-2 py-1 rounded-md text-xs font-medium">
-                              Featured
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-4">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
-                              {currentProperty?.type || "Villa"}
-                            </span>
-                            <span className={`px-2 py-1 rounded-full text-xs ${
-                              currentProperty?.status === "For Sale" 
-                                ? "bg-green-100 text-green-800" 
-                                : currentProperty?.status === "For Rent"
-                                ? "bg-blue-100 text-blue-800"
-                                : "bg-gray-100 text-gray-800"
-                            }`}>
-                              {currentProperty?.status || "For Sale"}
-                            </span>
-                          </div>
-                          <h3 className="font-semibold text-gray-900 text-lg mb-1">
-                            {currentProperty?.title || "Property Title"}
-                          </h3>
-                          <p className="text-sm text-gray-600 mb-2">
-                            {currentProperty?.location || "Location"}
-                          </p>
-                          <p className="text-lg font-bold text-blue-600">
-                            {typeof currentProperty?.price === 'string' 
-                              ? currentProperty.price 
-                              : currentProperty?.price 
-                              ? `AED ${currentProperty.price.toLocaleString()}`
-                              : "AED 0"
-                            }
-                          </p>
-                          <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
-                            <span>{currentProperty?.bedrooms || 0} beds</span>
-                            <span>{currentProperty?.bathrooms || 0} baths</span>
-                            <span>{currentProperty?.area || "0 sq ft"}</span>
+                          <div className="mt-1 flex flex-wrap gap-2 p-2 border rounded-md bg-transparent">
+                            {(translations[activeLanguage]?.amenitiesTranslated || []).map((amenity, idx) => (
+                              <span key={`${amenity}-${idx}`} className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
+                                {amenity}
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setTranslations(prev => {
+                                      const next = { ...prev }
+                                      const list = (next[activeLanguage]?.amenitiesTranslated || []).slice()
+                                      list.splice(idx, 1)
+                                      next[activeLanguage] = { ...next[activeLanguage], amenitiesTranslated: list }
+                                      return next
+                                    })
+                                  }}
+                                  className="ml-1 text-blue-700 hover:text-blue-900"
+                                  aria-label="Remove amenity"
+                                >
+                                  ×
+                                </button>
+                              </span>
+                            ))}
+                            <input
+                              type="text"
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ',') {
+                                  e.preventDefault()
+                                  const target = e.target as HTMLInputElement
+                                  const raw = target.value
+                                  const candidates = raw
+                                    .split(',')
+                                    .map(s => s.trim())
+                                    .filter(Boolean)
+                                  if (candidates.length > 0) {
+                                    setTranslations(prev => ({
+                                      ...prev,
+                                      [activeLanguage]: {
+                                        ...prev[activeLanguage],
+                                        amenitiesTranslated: [
+                                          ...(prev[activeLanguage]?.amenitiesTranslated || []),
+                                          ...candidates
+                                        ]
+                                      }
+                                    }))
+                                    target.value = ''
+                                  }
+                                }
+                              }}
+                              placeholder={`Type an amenity and press Enter`}
+                              className="flex-1 min-w-[150px] bg-transparent outline-none"
+                            />
                           </div>
                         </div>
                       </div>

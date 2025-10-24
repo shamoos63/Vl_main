@@ -49,6 +49,27 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
     }
   }, [initialProperty, error])
 
+  // Ensure we have fresh data from the API when initialProperty isn't provided
+  useEffect(() => {
+    if (!initialProperty && !error) {
+      const fetchProperty = async () => {
+        setLoading(true)
+        try {
+          const res = await fetch(`/api/properties/${propertyId}`, { cache: 'no-store' })
+          const json = await res.json()
+          if (json?.success) {
+            setProperty(json.data)
+          }
+        } catch (e) {
+          console.error('Error fetching property details:', e)
+        } finally {
+          setLoading(false)
+        }
+      }
+      fetchProperty()
+    }
+  }, [initialProperty, error, propertyId])
+
   // Fetch similar properties when property is available
   useEffect(() => {
     if (property?.id) {
@@ -139,13 +160,50 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
   }
 
   // Ensure we have fallback values for arrays
-  const propertyImages =
+  let propertyImages =
     property.images && property.images.length > 0
-      ? property.images
+      ? property.images.slice()
       : [property.image || "/placeholder.svg?height=400&width=600&text=Property+Image"]
 
-  const propertyFeatures = property.features || []
-  const propertyAmenities = property.amenities || []
+  // Prefer showing the cover image first if provided and not already in the array
+  if (property.image && (!propertyImages || propertyImages.length === 0)) {
+    propertyImages = [property.image]
+  } else if (property.image && propertyImages && !propertyImages.includes(property.image)) {
+    propertyImages = [property.image, ...propertyImages]
+  }
+
+  // Normalize features/amenities in case of string payloads
+  const propertyFeatures = Array.isArray(property.features)
+    ? property.features
+    : typeof property.features === 'string'
+      ? (() => { try { return JSON.parse(property.features) } catch { return [] } })()
+      : []
+  const propertyAmenities = Array.isArray(property.amenities)
+    ? property.amenities
+    : typeof property.amenities === 'string'
+      ? (() => { try { return JSON.parse(property.amenities) } catch { return [] } })()
+      : []
+
+  // Badge mapping for various statuses
+  const statusLower = (property.status || '').toLowerCase()
+  let badgeText = 'For Sale'
+  let badgeClass = 'bg-green-500'
+  if (statusLower.includes('ready') || statusLower === 'for sale') {
+    badgeText = 'Ready for Sale'
+    badgeClass = 'bg-green-500'
+  } else if (statusLower.includes('off')) {
+    badgeText = 'Off-plan'
+    badgeClass = 'bg-blue-500'
+  } else if (statusLower.includes('rent')) {
+    badgeText = 'For Rent'
+    badgeClass = 'bg-indigo-500'
+  } else if (statusLower.includes('sold')) {
+    badgeText = 'Sold'
+    badgeClass = 'bg-gray-500'
+  } else if (property.status) {
+    badgeText = property.status
+    badgeClass = 'bg-blue-500'
+  }
 
   const nextImage = () => {
     setShowVideo(false)
@@ -196,6 +254,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                 alt={`${property.title} - Image ${currentImageIndex + 1}`}
                 fill
                 className="object-cover"
+                unoptimized
               />
             )}
           </div>
@@ -256,6 +315,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                   alt={`Thumbnail ${index + 1}`}
                   fill
                   className="object-cover"
+                  unoptimized
                 />
               </div>
             ))}
@@ -364,15 +424,12 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
           <CardContent className="p-6">
      <div className="flex items-start justify-between mb-4">
   <h1 className="text-2xl font-bold text-vl-yellow dark:text-white items-center sm:items-start">{property.title}</h1>
-  <Badge className={`
-      ${property.status === "Ready" ? "bg-green-500" : "bg-blue-500"} 
-      text-white 
-      whitespace-nowrap /* Add this class */
-      flex-shrink-0 /* Optional: prevents the badge from shrinking if space is tight */
-  `}>
-    {property.status === "Ready"
-      ? t("properties.status.ready") || "Ready"
-      : t("properties.status.offplan") || "Off-plan"}
+  <Badge className={`${badgeClass} text-white whitespace-nowrap flex-shrink-0`}>
+    {statusLower.includes('ready') || statusLower === 'for sale'
+      ? (t("properties.status.ready") || "Ready for Sale")
+      : statusLower.includes('off')
+        ? (t("properties.status.offplan") || "Off-plan")
+        : badgeText}
   </Badge>
 </div>
 
@@ -459,6 +516,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                           alt={similarProperty.title}
                           fill
                           className="object-cover"
+                          unoptimized
                         />
                       </div>
                       <div className="flex-1">
