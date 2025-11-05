@@ -537,7 +537,8 @@ export default function BlogPage() {
                       type="file"
                       accept="image/*"
                       onChange={async (e) => {
-                        const file = e.target.files?.[0]
+                        const inputEl = e.target as HTMLInputElement
+                        const file = inputEl.files?.[0]
                         if (!file) return
                         setIsUploadingFeatured(true)
                         try {
@@ -547,7 +548,7 @@ export default function BlogPage() {
                           console.error(err)
                         } finally {
                           setIsUploadingFeatured(false)
-                          e.currentTarget.value = ''
+                          if (inputEl) inputEl.value = ''
                         }
                       }}
                     />

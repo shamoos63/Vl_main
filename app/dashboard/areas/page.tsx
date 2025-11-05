@@ -377,13 +377,16 @@ export default function AreasDashboardPage() {
                 <div className="space-y-4 md:col-span-2">
                   <div>
                     <Label htmlFor="featuredImageUrl">Featured Image URL</Label>
+                    {/* Hidden field to ensure the uploaded URL is submitted */}
+                    <input type="hidden" name="featuredImageUrl" value={featuredImageUrl} />
                    
                     <div className="mt-2 flex items-center gap-3">
                       <input
                         type="file"
                         accept="image/*"
                         onChange={async (e) => {
-                          const file = e.target.files?.[0]
+                          const inputEl = e.target as HTMLInputElement
+                          const file = inputEl.files?.[0]
                           if (!file) return
                           setIsUploadingFeatured(true)
                           try {
@@ -393,7 +396,7 @@ export default function AreasDashboardPage() {
                             console.error(err)
                           } finally {
                             setIsUploadingFeatured(false)
-                            e.currentTarget.value = ''
+                            if (inputEl) inputEl.value = ''
                           }
                         }}
                       />

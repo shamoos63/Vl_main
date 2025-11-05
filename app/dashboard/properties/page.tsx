@@ -103,7 +103,8 @@ export default function PropertiesPage() {
   }, [currentProperty])
 
   const onCoverFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const inputEl = e.target as HTMLInputElement
+    const file = inputEl.files?.[0]
     if (!file) return
     setIsUploadingCover(true)
     try {
@@ -115,12 +116,13 @@ export default function PropertiesPage() {
       toast({ title: 'Upload failed', description: 'Could not upload cover image.', variant: 'destructive' })
     } finally {
       setIsUploadingCover(false)
-      e.currentTarget.value = ''
+      if (inputEl) inputEl.value = ''
     }
   }
 
   const onGalleryFilesChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
+    const inputEl = e.target as HTMLInputElement
+    const files = inputEl.files
     if (!files || files.length === 0) return
     setIsUploadingGallery(true)
     try {
@@ -136,7 +138,7 @@ export default function PropertiesPage() {
       toast({ title: 'Upload failed', description: 'One or more gallery images failed to upload.', variant: 'destructive' })
     } finally {
       setIsUploadingGallery(false)
-      e.currentTarget.value = ''
+      if (inputEl) inputEl.value = ''
     }
   }
 
@@ -372,7 +374,7 @@ export default function PropertiesPage() {
   }
 
   const handleSaveProperty = async (formData: FormData) => {
-    const propertyData = {
+    const propertyData: any = {
       title: formData.get("title") as string,
       location: formData.get("location") as string,
       price: formData.get("price") as string,
@@ -398,6 +400,14 @@ export default function PropertiesPage() {
               .filter((s) => s.length > 0),
           }
         : {}),
+    }
+
+    // Ensure uploaded state wins over raw form values
+    if (coverImageUrl && typeof coverImageUrl === 'string') {
+      propertyData.image = coverImageUrl
+    }
+    if (Array.isArray(galleryUrls) && galleryUrls.length > 0) {
+      propertyData.images = galleryUrls
     }
 
     try {
@@ -439,7 +449,8 @@ export default function PropertiesPage() {
               })
               
               if (!translationsResponse.ok) {
-                console.error('Failed to save translations')
+                const t = await translationsResponse.text().catch(() => '')
+                console.error('Failed to save translations', t)
               }
             } catch (error) {
               console.error('Error saving translations:', error)
