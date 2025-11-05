@@ -68,6 +68,82 @@ export default function PropertiesPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
+  // Image upload states (cover + gallery)
+  const [coverImageUrl, setCoverImageUrl] = useState<string>("")
+  const [galleryUrls, setGalleryUrls] = useState<string[]>([])
+  const [isUploadingCover, setIsUploadingCover] = useState(false)
+  const [isUploadingGallery, setIsUploadingGallery] = useState(false)
+
+  const uploadImageToServer = async (file: File): Promise<string> => {
+    const fd = new FormData()
+    fd.append('image', file)
+    // Optional: pass a name for readability in imgbb dashboard
+    fd.append('name', file.name.replace(/\.[^.]+$/, ''))
+    const res = await fetch('/api/upload', { method: 'POST', body: fd })
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      throw new Error(text || 'Upload failed')
+    }
+    const data = await res.json()
+    if (!data?.url) {
+      throw new Error('Upload did not return a URL')
+    }
+    return data.url as string
+  }
+
+  useEffect(() => {
+    // Initialize image states when opening dialog/editing
+    if (currentProperty) {
+      setCoverImageUrl(currentProperty.image || "")
+      setGalleryUrls(Array.isArray(currentProperty.images) ? currentProperty.images : [])
+    } else {
+      setCoverImageUrl("")
+      setGalleryUrls([])
+    }
+  }, [currentProperty])
+
+  const onCoverFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setIsUploadingCover(true)
+    try {
+      const url = await uploadImageToServer(file)
+      setCoverImageUrl(url)
+      toast({ title: 'Image uploaded', description: 'Cover image is set.' })
+    } catch (err) {
+      console.error(err)
+      toast({ title: 'Upload failed', description: 'Could not upload cover image.', variant: 'destructive' })
+    } finally {
+      setIsUploadingCover(false)
+      e.currentTarget.value = ''
+    }
+  }
+
+  const onGalleryFilesChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+    setIsUploadingGallery(true)
+    try {
+      const uploaded: string[] = []
+      for (const file of Array.from(files)) {
+        const url = await uploadImageToServer(file)
+        uploaded.push(url)
+      }
+      setGalleryUrls(prev => [...prev, ...uploaded])
+      toast({ title: 'Images uploaded', description: `${uploaded.length} image(s) added to gallery.` })
+    } catch (err) {
+      console.error(err)
+      toast({ title: 'Upload failed', description: 'One or more gallery images failed to upload.', variant: 'destructive' })
+    } finally {
+      setIsUploadingGallery(false)
+      e.currentTarget.value = ''
+    }
+  }
+
+  const removeGalleryAt = (index: number) => {
+    setGalleryUrls(prev => prev.filter((_, i) => i !== index))
+  }
+
   // Load properties from database
   useEffect(() => {
     const fetchProperties = async () => {
@@ -471,7 +547,7 @@ export default function PropertiesPage() {
                       </TableCell>
                       <TableCell className="font-medium">{property.title}</TableCell>
                       <TableCell>
-                        <span className="px-2 py-1 bg-transparent text-blue-800 rounded-full text-xs">
+                        <span className="px-2 py-1 bg-transparent text-white rounded-full text-xs">
                           {property.type}
                         </span>
                       </TableCell>
@@ -483,7 +559,7 @@ export default function PropertiesPage() {
                             property.status === "For Sale" 
                               ? "bg-green text-green-800" 
                               : property.status === "For Rent"
-                              ? "bg-blue text-blue-800"
+                              ? "bg-blue text-vl-blue-400"
                               : "bg-gray text-gray-800"
                           }`}
                         >
@@ -722,28 +798,61 @@ export default function PropertiesPage() {
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="image" className="text-sm font-medium text-gray-700">
-                              Main Image URL
+                        Main Image
                       </Label>
-                      <Input
-                        id="image"
-                        name="image"
-                        defaultValue={currentProperty?.image}
-                        placeholder="Enter image URL or leave blank for placeholder"
-                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
+                     
+                      <div className="mt-2 flex items-center gap-3">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={onCoverFileChange}
+                        />
+                        {isUploadingCover && (
+                          <span className="text-sm text-gray-500">Uploading...</span>
+                        )}
+                      </div>
+                      {coverImageUrl && (
+                        <div className="mt-2 border rounded-md overflow-hidden h-28 bg-white flex items-center justify-center">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={coverImageUrl} alt="cover preview" className="h-full w-full object-cover" />
+                        </div>
+                      )}
                     </div>
 
                     <div>
                       <Label htmlFor="images" className="text-sm font-medium text-gray-700">
-                        Gallery Image URLs (comma-separated)
+                        Gallery Images (Upload multiple)
                       </Label>
-                      <Input
-                        id="images"
-                        name="images"
-                        defaultValue={(currentProperty?.images || []).join(", ")}
-                        placeholder="https://.../1.jpg, https://.../2.jpg"
-                        className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
+                    
+                      <div className="mt-2 flex items-center gap-3">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          onChange={onGalleryFilesChange}
+                        />
+                        {isUploadingGallery && (
+                          <span className="text-sm text-gray-500">Uploading...</span>
+                        )}
+                      </div>
+                      {galleryUrls.length > 0 && (
+                        <div className="mt-3 grid grid-cols-3 gap-2">
+                          {galleryUrls.map((url, idx) => (
+                            <div key={`${url}-${idx}`} className="relative group border rounded-md overflow-hidden h-24 bg-white">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img src={url} alt={`gallery-${idx}`} className="h-full w-full object-cover" />
+                              <button
+                                type="button"
+                                onClick={() => removeGalleryAt(idx)}
+                                className="absolute top-1 right-1 bg-white/90 text-red-600 rounded-full w-6 h-6 flex items-center justify-center opacity-90 group-hover:opacity-100"
+                                aria-label="Remove image"
+                              >
+                                ×
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     <div>

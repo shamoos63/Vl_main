@@ -17,21 +17,40 @@ export default function AuthGuard({ children }: AuthGuardProps) {
       try {
         const authState = localStorage.getItem("vl-auth-state")
         if (!authState) {
-          router.push("/dashboard/login")
+          setIsAuthenticated(false)
+          router.replace("/dashboard/login")
+          // Fallback in case client navigation fails
+          setTimeout(() => {
+            if (window.location.pathname !== "/dashboard/login") {
+              window.location.href = "/dashboard/login"
+            }
+          }, 200)
           return
         }
 
         const auth = JSON.parse(authState)
         if (!auth.isAuthenticated || !auth.user || !auth.token) {
           localStorage.removeItem("vl-auth-state")
-          router.push("/dashboard/login")
+          setIsAuthenticated(false)
+          router.replace("/dashboard/login")
+          setTimeout(() => {
+            if (window.location.pathname !== "/dashboard/login") {
+              window.location.href = "/dashboard/login"
+            }
+          }, 200)
           return
         }
 
         // Verify token format (basic check)
         if (!auth.token.startsWith("vl_")) {
           localStorage.removeItem("vl-auth-state")
-          router.push("/dashboard/login")
+          setIsAuthenticated(false)
+          router.replace("/dashboard/login")
+          setTimeout(() => {
+            if (window.location.pathname !== "/dashboard/login") {
+              window.location.href = "/dashboard/login"
+            }
+          }, 200)
           return
         }
 
@@ -39,7 +58,13 @@ export default function AuthGuard({ children }: AuthGuardProps) {
       } catch (error) {
         console.error("Auth check error:", error)
         localStorage.removeItem("vl-auth-state")
-        router.push("/dashboard/login")
+        setIsAuthenticated(false)
+        router.replace("/dashboard/login")
+        setTimeout(() => {
+          if (window.location.pathname !== "/dashboard/login") {
+            window.location.href = "/dashboard/login"
+          }
+        }, 200)
       } finally {
         setIsLoading(false)
       }

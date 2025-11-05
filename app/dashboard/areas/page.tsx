@@ -15,6 +15,7 @@ import { Plus, Pencil, Trash2, Search, Calendar, Eye, EyeOff, Loader2 } from "lu
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n"
 import type { BlogPost, BlogPostSummary } from "@/lib/blog-service"
+import RichTextEditor from "@/components/rich-text-editor"
 
 export default function AreasDashboardPage() {
   const { t, language } = useI18n()
@@ -36,6 +37,26 @@ export default function AreasDashboardPage() {
     ar: { title: '', excerpt: '', content: '', metaTitle: '', metaDescription: '' },
     ru: { title: '', excerpt: '', content: '', metaTitle: '', metaDescription: '' }
   })
+  const [featuredImageUrl, setFeaturedImageUrl] = useState<string>("")
+  const [isUploadingFeatured, setIsUploadingFeatured] = useState<boolean>(false)
+
+  useEffect(() => {
+    setFeaturedImageUrl(((currentPost as any)?.featuredImageUrl as string) || "")
+  }, [currentPost, isDialogOpen])
+
+  const uploadFeaturedToServer = async (file: File): Promise<string> => {
+    const fd = new FormData()
+    fd.append('image', file)
+    fd.append('name', file.name.replace(/\.[^.]+$/, ''))
+    const res = await fetch('/api/upload', { method: 'POST', body: fd })
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      throw new Error(text || 'Upload failed')
+    }
+    const data = await res.json()
+    if (!data?.url) throw new Error('No URL returned')
+    return data.url as string
+  }
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -337,7 +358,7 @@ export default function AreasDashboardPage() {
       {/* Add/Edit Area Article Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-transparent border-0 shadow-2xl">
-          <div className="bg-transparent p-6 rounded-lg">
+          <div className="bg-vl-blue p-6 rounded-lg">
             <DialogHeader className="mb-6">
               <DialogTitle className="text-xl font-bold text-gray-900">
                 {(currentPost as any)?.id ? "Edit Area Article" : "Add Area Article"}
@@ -356,7 +377,30 @@ export default function AreasDashboardPage() {
                 <div className="space-y-4 md:col-span-2">
                   <div>
                     <Label htmlFor="featuredImageUrl">Featured Image URL</Label>
-                    <Input id="featuredImageUrl" name="featuredImageUrl" defaultValue={(currentPost as any)?.featuredImageUrl || ''} placeholder="https://..." />
+                   
+                    <div className="mt-2 flex items-center gap-3">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0]
+                          if (!file) return
+                          setIsUploadingFeatured(true)
+                          try {
+                            const url = await uploadFeaturedToServer(file)
+                            setFeaturedImageUrl(url)
+                          } catch (err) {
+                            console.error(err)
+                          } finally {
+                            setIsUploadingFeatured(false)
+                            e.currentTarget.value = ''
+                          }
+                        }}
+                      />
+                      {isUploadingFeatured && (
+                        <span className="text-sm text-gray-500">Uploading...</span>
+                      )}
+                    </div>
                   </div>
                   <div>
                     <Label htmlFor="readingMinutes">Reading Minutes</Label>
@@ -370,9 +414,9 @@ export default function AreasDashboardPage() {
                 <div className="space-y-2">
                   <Label>Preview</Label>
                   <div className="border rounded-md overflow-hidden h-32 bg-white flex items-center justify-center text-sm text-gray-500">
-                    {(currentPost as any)?.featuredImageUrl ? (
+                    {featuredImageUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={(currentPost as any)?.featuredImageUrl} alt="preview" className="h-full w-full object-cover" />
+                      <img src={featuredImageUrl} alt="preview" className="h-full w-full object-cover" />
                     ) : (
                       <span>No image</span>
                     )}
@@ -398,10 +442,6 @@ export default function AreasDashboardPage() {
                         <Label>Excerpt ({code.toUpperCase()})</Label>
                         <Input value={translations[code].excerpt} onChange={(e) => updateTranslation(code, 'excerpt', e.target.value)} />
                       </div>
-                      <div>
-                        <Label>Content ({code.toUpperCase()})</Label>
-                        <Textarea rows={8} value={translations[code].content} onChange={(e) => updateTranslation(code, 'content', e.target.value)} />
-                      </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <Label>Meta Title ({code.toUpperCase()})</Label>
@@ -411,6 +451,15 @@ export default function AreasDashboardPage() {
                           <Label>Meta Description ({code.toUpperCase()})</Label>
                           <Input value={translations[code].metaDescription} onChange={(e) => updateTranslation(code, 'metaDescription', e.target.value)} />
                         </div>
+                      </div>
+                      <div>
+                        <Label>Content ({code.toUpperCase()})</Label>
+                        <RichTextEditor
+                          value={translations[code].content}
+                          onChange={(html) => updateTranslation(code, 'content', html)}
+                          dir={code === 'ar' ? 'rtl' : 'ltr'}
+                          className="mt-1"
+                        />
                       </div>
                     </TabsContent>
                   ))}

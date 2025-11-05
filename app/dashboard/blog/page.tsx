@@ -16,6 +16,7 @@ import Image from "next/image"
 import { useI18n } from "@/lib/i18n"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import type { BlogPost, BlogPostSummary } from "@/lib/blog-service"
+import RichTextEditor from "@/components/rich-text-editor"
 
 export default function BlogPage() {
   const { t, language } = useI18n()
@@ -37,6 +38,26 @@ export default function BlogPage() {
     ar: { title: '', excerpt: '', content: '', metaTitle: '', metaDescription: '' },
     ru: { title: '', excerpt: '', content: '', metaTitle: '', metaDescription: '' }
   })
+  const [featuredImageUrl, setFeaturedImageUrl] = useState<string>("")
+  const [isUploadingFeatured, setIsUploadingFeatured] = useState<boolean>(false)
+
+  useEffect(() => {
+    setFeaturedImageUrl(currentPost?.featuredImageUrl || "")
+  }, [currentPost, isDialogOpen])
+
+  const uploadFeaturedToServer = async (file: File): Promise<string> => {
+    const fd = new FormData()
+    fd.append('image', file)
+    fd.append('name', file.name.replace(/\.[^.]+$/, ''))
+    const res = await fetch('/api/upload', { method: 'POST', body: fd })
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      throw new Error(text || 'Upload failed')
+    }
+    const data = await res.json()
+    if (!data?.url) throw new Error('No URL returned')
+    return data.url as string
+  }
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -445,7 +466,7 @@ export default function BlogPage() {
       {/* Add/Edit Blog Post Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-4xl max-h-[95vh] overflow-y-auto bg-transparent border-0 shadow-2xl">
-          <div className="bg-transparent p-6 rounded-lg">
+          <div className="bg-vl-blue p-6 rounded-lg">
             <DialogHeader className="mb-6">
               <DialogTitle className="text-xl font-bold text-gray-900">
                 {currentPost?.id ? "Edit Blog Post" : "Add New Blog Post"}
@@ -506,10 +527,34 @@ export default function BlogPage() {
                   <Input
                     id="featuredImageUrl"
                     name="featuredImageUrl"
-                    defaultValue={currentPost?.featuredImageUrl || ""}
-                    placeholder="Enter image URL or leave blank for placeholder"
+                    value={featuredImageUrl}
+                    onChange={(e) => setFeaturedImageUrl(e.target.value)}
+                    placeholder="Enter image URL or upload below"
                     className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
                   />
+                  <div className="mt-2 flex items-center gap-3">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0]
+                        if (!file) return
+                        setIsUploadingFeatured(true)
+                        try {
+                          const url = await uploadFeaturedToServer(file)
+                          setFeaturedImageUrl(url)
+                        } catch (err) {
+                          console.error(err)
+                        } finally {
+                          setIsUploadingFeatured(false)
+                          e.currentTarget.value = ''
+                        }
+                      }}
+                    />
+                    {isUploadingFeatured && (
+                      <span className="text-sm text-gray-500">Uploading...</span>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -577,17 +622,14 @@ export default function BlogPage() {
                         <Label htmlFor={`content-${lang.code}`} className="text-sm font-medium text-gray-700">
                           Content ({lang.name}) *
                         </Label>
-                        <Textarea
-                          id={`content-${lang.code}`}
+                        <RichTextEditor
                           value={translations[lang.code as 'en' | 'ar' | 'ru'].content}
-                          onChange={(e) => updateTranslation(lang.code as 'en' | 'ar' | 'ru', 'content', e.target.value)}
-                          required={lang.code === 'en'}
+                          onChange={(html) => updateTranslation(lang.code as 'en' | 'ar' | 'ru', 'content', html)}
                           placeholder={`${lang.code === 'ar' ? 'اكتب محتوى مقالك هنا...' : 
                                         lang.code === 'ru' ? 'Напишите содержание вашей статьи...' : 
-                                        'Write your blog post content...'}`}
-                          rows={15}
-                          className="mt-1 bg-transparent border-gray-300 focus:border-vl-blue focus:ring-vl-blue"
+                                         'Write your blog post content...'}`}
                           dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
+                          className="mt-1"
                         />
                       </div>
 
@@ -631,7 +673,7 @@ export default function BlogPage() {
                 <div className="mt-2 border rounded-md p-4 bg-transparent">
                   <div className="relative h-40 w-full rounded-md overflow-hidden mb-2">
                     <Image
-                      src={currentPost?.featuredImageUrl || "/placeholder.svg?height=160&width=400&text=Blog+Post"}
+                      src={featuredImageUrl || "/placeholder.svg?height=160&width=400&text=Blog+Post"}
                       alt="Blog Post Preview"
                       fill
                       className="object-cover"
