@@ -83,7 +83,7 @@ export default function Header() {
   if (!mounted) {
     return (
       <header className="fixed top-0 left-0 right-0 z-[100] bg-white/95 shadow-lg">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 relative">
           <div className="flex items-center justify-between h-24">
             <Link href="/" className="flex items-center space-x-2">
               <Image
@@ -329,7 +329,7 @@ export default function Header() {
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden text-vl-blue"
+              className="lg:hidden text-vl-blue absolute right-2 top-1/2 -translate-y-1/2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
