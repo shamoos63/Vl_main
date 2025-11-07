@@ -273,10 +273,21 @@ export default function BlogModal({ blog, isOpen, onClose }: BlogModalProps) {
                 <span className="ml-3 text-gray-300">{t('blog.modal.loading')}</span>
               </div>
             ) : (
-              <div 
-                className="text-gray-200 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-              />
+              <>
+                <div 
+                  className="text-gray-200 leading-relaxed content-html"
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+                <style jsx>{`
+                  .content-html img {
+                    max-width: 100%;
+                    height: auto;
+                    display: block;
+                    margin: 1rem auto;
+                  }
+                  .content-html p { margin: 0.75rem 0; }
+                `}</style>
+              </>
             )}
           </div>
 

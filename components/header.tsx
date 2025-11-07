@@ -16,14 +16,13 @@ const languages = [
   { code: "ru" as Language, name: "Русский", flag: "🇷🇺", nativeName: "Русский" },
 ]
 
-// Navigation items in the specified order
-const navItems = [
+// Base navigation items
+const baseNavItems = [
   { key: "home", path: "/" },
   { key: "properties", path: "/properties" },
-  { key: "areas", path: "/areas" },
   { key: "evaluation", path: "/evaluation" },
   { key: "about", path: "/about" },
-  { key: "blog", path: "/blog" },
+  // Note: blog and areas are combined into one dropdown in the UI
   { key: "contact", path: "/contact" },
 ]
 
@@ -149,119 +148,181 @@ export default function Header() {
         dir={isRTL ? "rtl" : "ltr"}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-24">
-            {/* Updated Logo */}
-            <Link href="/" className="flex items-center space-x-2 flex-shrink-0 text-white">
-              <Image
-                src="/VL1_w.svg"
-                alt="Victoria Lancaster Real Estate"
-                width={240}
-                height={90}
-                className="h-20 w-auto transition-all duration-300 hover:scale-105"
-                priority
-              />
-            </Link>
+          <div className="grid grid-cols-3 items-center h-24">
+            {/* Left: About, Properties, Property Evaluation */}
+            <div className="hidden lg:flex items-center gap-4 justify-end">
+              <Link
+                href="/about"
+                className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
+                  isActiveNavItem("/about") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
+                }`}
+              >
+                {t("nav.about")}
+              </Link>
+              <Link
+                href="/properties"
+                className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
+                  isActiveNavItem("/properties") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
+                }`}
+              >
+                {t("nav.properties")}
+              </Link>
+              <Link
+                href="/evaluation"
+                className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
+                  isActiveNavItem("/evaluation") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
+                }`}
+              >
+                {t("nav.evaluation")}
+              </Link>
+            </div>
 
-            {/* Desktop Navigation */}
-            <nav className={`hidden lg:flex items-center ${isRTL ? "space-x-reverse space-x-6" : "space-x-8"}`}>
-              {navItems.map((item) => (
+            {/* Center: Logo */}
+            <div className="flex justify-center">
+              <Link href="/" className="flex items-center space-x-2 flex-shrink-0 text-white">
+                <Image
+                  src="/VL1_w.svg"
+                  alt="Victoria Lancaster Real Estate"
+                  width={200}
+                  height={80}
+                  className="h-16 w-auto transition-all duration-300 hover:scale-105"
+                  priority
+                />
+              </Link>
+            </div>
+
+            {/* Right: About, Contact, Articles + Actions */}
+            <div className="hidden lg:flex items-center justify-start gap-1">
+              <nav className="flex items-center gap-4">
                 <Link
-                  key={item.key}
-                  href={item.path}
+                  href="/about"
                   className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                    isActiveNavItem(item.path) ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
+                    isActiveNavItem("/about") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
                   }`}
                 >
-                  {t(`nav.${item.key}`)}
+                  {t("nav.about")}
                 </Link>
-              ))}
-            </nav>
-
-            {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center space-x-4 flex-shrink-0">
-              {/* Expandable Search */}
-              <div className="relative">
-                {isSearchOpen ? (
-                  <form onSubmit={handleSearch} className="flex text-vl-blue items-center bg-gray-100 rounded-full px-4 py-2">
-                    <Input
-                      type="text"
-                      placeholder={t("nav.search.placeholder") || "Search properties..."}
-                      className="border-0 bg-transparent focus:ring-0 w-48"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      onKeyDown={handleSearchKeyPress}
-                      autoFocus
-                    />
-                    <Button
-                      type="submit"
-                      variant="ghost"
-                      size="sm"
-                      className="text-vl-blue ml-1"
-                      disabled={!searchQuery.trim()}
-                    >
-                      <Search className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => {
-                        setIsSearchOpen(false)
-                        setSearchQuery("")
-                      }}
-                      className="text-vl-blue ml-1"
-                    >
-                      <X className="h-4 w-4 text-black!" />
-                    </Button>
-                  </form>
-                ) : (
-                  <Button variant="ghost" size="sm" onClick={() => setIsSearchOpen(true)} className="text-vl-blue">
-                    <Search className="h-4 w-4" />
-                  </Button>
-                )}
-              </div>
-
-              {/* Enhanced Language Selector */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="language-trigger text-vl-blue hover:text-vl-yellow transition-all duration-300 px-3 py-2 rounded-xl border border-transparent hover:border-vl-yellow/30 hover:bg-vl-yellow/10 backdrop-blur-sm"
-                  >
-                    <Globe className="h-4 w-4 mr-2" />
-                    <span className="text-lg mr-1">{currentLanguage?.flag}</span>
-                    <span className="font-medium text-sm">{currentLanguage?.code.toUpperCase()}</span>
-                    <ChevronDown className="h-3 w-3 ml-1 transition-transform duration-200" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  className="language-dropdown-content z-[150] min-w-[200px] p-2"
-                  align="end"
-                  sideOffset={8}
+                <Link
+                  href="/contact"
+                  className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
+                    isActiveNavItem("/contact") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
+                  }`}
                 >
-                  {languages.map((lang) => (
-                    <DropdownMenuItem
-                      key={lang.code}
-                      onClick={() => setLanguage(lang.code)}
-                      className={`language-dropdown-item cursor-pointer px-4 py-3 rounded-lg transition-all duration-200 ${
-                        language === lang.code ? "language-dropdown-item-active" : "language-dropdown-item-inactive"
+                  {t("nav.contact")}
+                </Link>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className={`px-0 h-auto text-sm xl:text-base font-medium ${
+                        pathname?.startsWith("/blog") || pathname?.startsWith("/areas")
+                          ? "text-vl-yellow"
+                          : "text-vl-blue hover:text-vl-yellow"
                       }`}
                     >
-                      <div className="flex items-center justify-between w-full">
-                        <div className="flex items-center space-x-3">
-                          <span className="text-xl">{lang.flag}</span>
-                          <div className="flex flex-col">
-                            <span className="font-medium text-sm">{lang.nativeName}</span>
-                            <span className="text-xs opacity-70">{lang.name}</span>
-                          </div>
-                        </div>
-                        {language === lang.code && <Check className="h-4 w-4 text-vl-yellow" />}
-                      </div>
+                      <span className="mr-1">{t("nav.articles") || "Articles"}</span>
+                      <ChevronDown className="h-3 w-3" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" sideOffset={8} className="min-w-[160px]">
+                    <DropdownMenuItem asChild>
+                      <Link href="/blog" className="w-full">
+                        {t("nav.blog")}
+                      </Link>
                     </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+                    <DropdownMenuItem asChild>
+                      <Link href="/areas" className="w-full">
+                        {t("nav.areas")}
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </nav>
+
+              {/* Actions: Search + Language */}
+              <div className="flex items-center space-x-4">
+                <div className="relative">
+                  {isSearchOpen ? (
+                    <form onSubmit={handleSearch} className="flex text-vl-blue items-center bg-gray-100 rounded-full px-4 py-2">
+                      <Input
+                        type="text"
+                        placeholder={t("nav.search.placeholder") || "Search properties..."}
+                        className="border-0 bg-transparent focus:ring-0 w-48"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={handleSearchKeyPress}
+                        autoFocus
+                      />
+                      <Button
+                        type="submit"
+                        variant="ghost"
+                        size="sm"
+                        className="text-vl-blue ml-1"
+                        disabled={!searchQuery.trim()}
+                      >
+                        <Search className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => {
+                          setIsSearchOpen(false)
+                          setSearchQuery("")
+                        }}
+                        className="text-vl-blue ml-1"
+                      >
+                        <X className="h-4 w-4 text-black!" />
+                      </Button>
+                    </form>
+                  ) : (
+                    <Button variant="ghost" size="sm" onClick={() => setIsSearchOpen(true)} className="text-vl-blue">
+                      <Search className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="language-trigger text-vl-blue hover:text-vl-yellow transition-all duration-300 px-3 py-2 rounded-xl border border-transparent hover:border-vl-yellow/30 hover:bg-vl-yellow/10 backdrop-blur-sm"
+                    >
+                      <Globe className="h-4 w-4 mr-2" />
+                      <span className="text-lg mr-1">{currentLanguage?.flag}</span>
+                      <span className="font-medium text-sm">{currentLanguage?.code.toUpperCase()}</span>
+                      <ChevronDown className="h-3 w-3 ml-1 transition-transform duration-200" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    className="language-dropdown-content z-[150] min-w-[200px] p-2"
+                    align="end"
+                    sideOffset={8}
+                  >
+                    {languages.map((lang) => (
+                      <DropdownMenuItem
+                        key={lang.code}
+                        onClick={() => setLanguage(lang.code)}
+                        className={`language-dropdown-item cursor-pointer px-4 py-3 rounded-lg transition-all duration-200 ${
+                          language === lang.code ? "language-dropdown-item-active" : "language-dropdown-item-inactive"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between w-full">
+                          <div className="flex items-center space-x-3">
+                            <span className="text-xl">{lang.flag}</span>
+                            <div className="flex flex-col">
+                              <span className="font-medium text-sm">{lang.nativeName}</span>
+                              <span className="text-xs opacity-70">{lang.name}</span>
+                            </div>
+                          </div>
+                          {language === lang.code && <Check className="h-4 w-4 text-vl-yellow" />}
+                        </div>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -279,7 +340,15 @@ export default function Header() {
           {isMenuOpen && (
             <div className="lg:hidden absolute top-24 left-0 right-0 mobile-menu-container shadow-lg border-t rounded-b-2xl z-[110] transform translate-y-0">
               <nav className="flex flex-col p-4 space-y-4">
-                {navItems.map((item) => (
+                {[
+                  { key: "home", path: "/" },
+                  { key: "properties", path: "/properties" },
+                  { key: "evaluation", path: "/evaluation" },
+                  { key: "about", path: "/about" },
+                  { key: "blog", path: "/blog" },
+                  { key: "areas", path: "/areas" },
+                  { key: "contact", path: "/contact" },
+                ].map((item) => (
                   <Link
                     key={item.key}
                     href={item.path}
@@ -288,7 +357,7 @@ export default function Header() {
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {t(`nav.${item.key}`)}
+                    {t(`nav.${item.key}`) || (item.key === "blog" ? "Blog" : item.key === "areas" ? "Areas" : item.key)}
                   </Link>
                 ))}
 
