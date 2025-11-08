@@ -152,12 +152,12 @@ export default function Header() {
             {/* Left: About, Properties, Property Evaluation */}
             <div className="hidden lg:flex items-center gap-4 justify-end">
               <Link
-                href="/about"
+                href="/"
                 className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                  isActiveNavItem("/about") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
+                  isActiveNavItem("/") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
                 }`}
               >
-                {t("nav.about")}
+                {t("nav.home")}
               </Link>
               <Link
                 href="/properties"

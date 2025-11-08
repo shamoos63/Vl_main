@@ -860,6 +860,7 @@ const translations = {
     "nav.blog": "الأخبار",
     "nav.about": "عن فيكتوريا",
     "nav.contact": "تواصل معي",
+    "nav.articles": "المقالات",
 
     // AI Chat Assistant
     "ai.chat.assistant.title": "مساعد الدردشة الذكي",
@@ -1276,6 +1277,7 @@ const translations = {
     "nav.blog": "Блог",
     "nav.about": "О Виктории",
     "nav.contact": "Связаться со мной",
+    "nav.articles": "Статьи",
     "about.expertise.quote2": "Давайте начнём диалог, основанный на доверии и фактах, с учётом ваших целей. Введите свои данные, и Виктория лично свяжется с вами, чтобы помочь с следующим шагом.",
 
     //ai chat assistant
