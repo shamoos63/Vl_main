@@ -45,9 +45,9 @@ interface EnhancedPropertyCardProps {
 // Helper function to format price
 const formatPrice = (price: string | number): string => {
   if (typeof price === "string") return price
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("En-US", {
     style: "currency",
-    currency: "USD",
+    currency: "AED",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(price)
@@ -354,7 +354,7 @@ export default function EnhancedPropertyCard({
               <div className="text-2xl font-heading text-vl-yellow mb-1 font-bold">
                 {formatPrice(property.price)}
               </div>
-              {pricePerSqFt && <div className="text-xs text-gray-500">${pricePerSqFt}/{t("property.sqft")}</div>}
+              {pricePerSqFt && <div className="text-xs text-gray-500">AED{pricePerSqFt}/{t("property.sqft")}</div>}
             </div>
           </div>
 

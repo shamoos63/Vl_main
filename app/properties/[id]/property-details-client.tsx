@@ -334,9 +334,8 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
 
         {/* Property Details Tabs - Already has 'glass' on Tabs and TabsContent */}
         <Tabs defaultValue="overview" className="mb-8"> {/* Glass applied to outer Tabs container */}
-          <TabsList className="w-full grid grid-cols-3 glass bg-transparent">
+          <TabsList className="w-full grid grid-cols-2 glass bg-transparent">
             <TabsTrigger value="overview">{t("properties.tab.overview") || "Overview"}</TabsTrigger>
-            <TabsTrigger value="features">{t("properties.tab.features") || "Features"}</TabsTrigger>
             <TabsTrigger value="amenities">{t("properties.tab.amenities") || "Amenities"}</TabsTrigger>
           </TabsList>
 
@@ -434,7 +433,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
 </div>
 
             <div className="text-3xl font-bold text-vl-yellow mb-4">
-              {typeof property.price === "number" ? `$${property.price.toLocaleString()}` : property.price}
+              {typeof property.price === "number" ? `AED ${property.price.toLocaleString()}` : property.price}
             </div>
 
             <div className="flex items-center text-gray-600 dark:text-gray-300 mb-6">
@@ -523,7 +522,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                         <h4 className="font-medium text-vl-yellow dark:text-white text-sm line-clamp-2">{similarProperty.title}</h4>
                         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                           {typeof similarProperty.price === "number"
-                            ? `$${similarProperty.price.toLocaleString()}`
+                            ? `AED ${similarProperty.price.toLocaleString()}`
                             : similarProperty.price}
                         </p>
                         <div className="flex items-center text-xs text-gray-500 mt-1">

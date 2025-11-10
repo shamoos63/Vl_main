@@ -300,7 +300,7 @@ export function convertToCurrentPropertyFormat(dbProperty: PropertyWithTranslati
     amenities: dbProperty.amenities ? JSON.parse(dbProperty.amenities) : [],
     highlights: dbProperty.highlights ? JSON.parse(dbProperty.highlights) : [],
     images: images,
-    videoId: 'dQw4w9WgXcQ', // Default video ID
+    videoId: dbProperty.videoId || "",
     yearBuilt: dbProperty.yearBuilt || 2020,
     parkingSpaces: dbProperty.parkingSpaces || 0,
     furnished: dbProperty.furnished || false,
@@ -399,7 +399,7 @@ export async function getSimilarProperties(currentProperty: {
     const minPrice = currentPrice - priceRange;
     const maxPrice = currentPrice + priceRange;
     
-    console.log(`🔍 Finding similar properties for price range: $${minPrice.toLocaleString()} - $${maxPrice.toLocaleString()}`);
+  console.log(`🔍 Finding similar properties for price range: AED ${minPrice.toLocaleString()} - AED ${maxPrice.toLocaleString()}`);
     
     // First, try to find properties with similar location and price range
     let results = await db

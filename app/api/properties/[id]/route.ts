@@ -46,8 +46,25 @@ export async function GET(
       )
       .limit(1);
 
+    // Prefer translated amenities if provided
+    let overriddenAmenities = undefined as string | undefined;
+    try {
+      const tr = translation[0];
+      if (tr?.amenitiesTranslated) {
+        const arr = typeof tr.amenitiesTranslated === 'string'
+          ? JSON.parse(tr.amenitiesTranslated)
+          : tr.amenitiesTranslated;
+        if (Array.isArray(arr) && arr.length > 0) {
+          overriddenAmenities = JSON.stringify(arr);
+        }
+      }
+    } catch {
+      // ignore JSON parse errors, fallback to base amenities
+    }
+
     const propertyWithTranslation = {
       ...result[0],
+      ...(overriddenAmenities ? { amenities: overriddenAmenities } : {}),
       title: translation[0]?.title,
       description: translation[0]?.description,
       locationDisplayName: translation[0]?.locationDisplayName,

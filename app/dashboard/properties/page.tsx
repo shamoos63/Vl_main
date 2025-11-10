@@ -64,7 +64,7 @@ export default function PropertiesPage() {
     ru: { title: "", description: "", locationDisplayName: "", featuresTranslated: [], amenitiesTranslated: [], highlightsTranslated: [] }
   })
   const [baseFeatures, setBaseFeatures] = useState<string[]>([])
-  const [baseAmenities, setBaseAmenities] = useState<string[]>([])
+  // Removed base amenities; use translated amenities per language in the Translations tab
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -219,7 +219,7 @@ export default function PropertiesPage() {
       type: "Villa",
     })
     setBaseFeatures([])
-    setBaseAmenities([])
+    // amenities handled per language in translations
     
     // Reset translations
     setTranslations({
@@ -238,7 +238,7 @@ export default function PropertiesPage() {
     setActiveTab("basic")
     setActiveLanguage("en")
     setBaseFeatures(Array.isArray(property.features) ? property.features : [])
-    setBaseAmenities(Array.isArray(property.amenities) ? property.amenities : [])
+    // amenities handled per language in translations
     
     // Fetch translations for existing property
     if (property.id) {
@@ -388,9 +388,8 @@ export default function PropertiesPage() {
       description: formData.get("description") as string,
       videoId: formData.get("videoId") as string,
       type: formData.get("type") as string,
-      // base features/amenities edited in chips input
+      // base features edited in chips input (amenities managed per-language in translations)
       features: baseFeatures,
-      amenities: baseAmenities,
       // Parse optional comma-separated gallery images to array for API
       ...(formData.get("images")
         ? {
@@ -894,53 +893,7 @@ export default function PropertiesPage() {
                             />
                           </div>
 
-                          {/* Base Amenities (English/default) */}
-                          <div>
-                            <Label className="text-sm font-medium text-gray-700">
-                              Amenities (base)
-                            </Label>
-                            <div className="mt-1 flex flex-wrap gap-2 p-2 border rounded-md bg-transparent">
-                              {baseAmenities.map((amenity, idx) => (
-                                <span key={`${amenity}-${idx}`} className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
-                                  {amenity}
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      setBaseAmenities(prev => {
-                                        const next = prev.slice()
-                                        next.splice(idx, 1)
-                                        return next
-                                      })
-                                    }}
-                                    className="ml-1 text-blue-700 hover:text-blue-900"
-                                    aria-label="Remove amenity"
-                                  >
-                                    ×
-                                  </button>
-                                </span>
-                              ))}
-                              <input
-                                type="text"
-                                onKeyDown={(e) => {
-                                  if (e.key === 'Enter' || e.key === ',') {
-                                    e.preventDefault()
-                                    const target = e.target as HTMLInputElement
-                                    const raw = target.value
-                                    const candidates = raw
-                                      .split(',')
-                                      .map(s => s.trim())
-                                      .filter(Boolean)
-                                    if (candidates.length > 0) {
-                                      setBaseAmenities(prev => [...prev, ...candidates])
-                                      target.value = ''
-                                    }
-                                  }
-                                }}
-                                placeholder={`Type an amenity and press Enter`}
-                                className="flex-1 min-w-[150px] bg-transparent outline-none"
-                              />
-                            </div>
-                          </div>
+                          {/* Amenities managed per language in the Translations tab */}
 
                           <div className="flex items-center space-x-3 p-3 bg-transparent border border-yellow-200 rounded-lg">
                             <Checkbox id="featured" name="featured" defaultChecked={currentProperty?.featured} onCheckedChange={(checked) => setCurrentProperty(prev => prev ? { ...prev, featured: !!checked } : prev)} />
