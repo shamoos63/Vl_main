@@ -204,7 +204,7 @@ export async function PUT(
           featuresTranslated: JSON.stringify(tr.featuresTranslated || []),
           amenitiesTranslated: JSON.stringify(tr.amenitiesTranslated || []),
           highlightsTranslated: JSON.stringify(tr.highlightsTranslated || []),
-          updatedAt: Math.floor(Date.now() / 1000),
+          updatedAt: new Date(),
         };
         // Remove undefined scalar keys so we don't overwrite with null values
         Object.keys(payload).forEach((k) => {

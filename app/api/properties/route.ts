@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
           featuresTranslated: JSON.stringify(tr.featuresTranslated || []),
           amenitiesTranslated: JSON.stringify(tr.amenitiesTranslated || []),
           highlightsTranslated: JSON.stringify(tr.highlightsTranslated || []),
-          updatedAt: Math.floor(Date.now() / 1000),
+          updatedAt: new Date(),
         };
 
         const existing = await db

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import ModernDashboardLayout from "@/components/dashboard/modern-layout"
 import { Button } from "@/components/ui/button"
@@ -54,6 +54,7 @@ export default function PropertiesPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
   const [currentProperty, setCurrentProperty] = useState<Property | null>(null)
+  const [isSaving, setIsSaving] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const [activeTab, setActiveTab] = useState("basic")
@@ -73,6 +74,7 @@ export default function PropertiesPage() {
   const [galleryUrls, setGalleryUrls] = useState<string[]>([])
   const [isUploadingCover, setIsUploadingCover] = useState(false)
   const [isUploadingGallery, setIsUploadingGallery] = useState(false)
+  const coverFileInputRef = useRef<HTMLInputElement | null>(null)
 
   const uploadImageToServer = async (file: File): Promise<string> => {
     const fd = new FormData()
@@ -374,6 +376,7 @@ export default function PropertiesPage() {
   }
 
   const handleSaveProperty = async (formData: FormData) => {
+    setIsSaving(true)
     const propertyData: any = {
       title: formData.get("title") as string,
       location: formData.get("location") as string,
@@ -441,32 +444,35 @@ export default function PropertiesPage() {
             setProperties([...properties, result.data])
           }
 
-          // Save translations
+          // Close the dialog ASAP for faster UX
+          setIsDialogOpen(false)
+
+          // Save translations in the background (do not block dialog closing)
           if (result.data.id) {
-            try {
-              const translationsResponse = await fetch(`/api/properties/${result.data.id}/translations`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ translations }),
-              })
-              
-              if (!translationsResponse.ok) {
-                const t = await translationsResponse.text().catch(() => '')
-                console.error('Failed to save translations', t)
+            ;(async () => {
+              try {
+                const translationsResponse = await fetch(`/api/properties/${result.data.id}/translations`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ translations }),
+                })
+                if (!translationsResponse.ok) {
+                  const t = await translationsResponse.text().catch(() => '')
+                  console.error('Failed to save translations', t)
+                }
+              } catch (error) {
+                console.error('Error saving translations:', error)
               }
-            } catch (error) {
-              console.error('Error saving translations:', error)
-            }
+            })()
           }
 
           toast({
             title: "Success",
-            description: `Property ${isEditing ? 'updated' : 'created'} successfully`,
+            description: isEditing ? "Property is updating..." : "Property is being created...",
           })
 
-    setIsDialogOpen(false)
     setCurrentProperty(null)
         } else {
           toast({
@@ -489,6 +495,8 @@ export default function PropertiesPage() {
         description: "Network error while saving property",
         variant: "destructive",
       })
+    } finally {
+      setIsSaving(false)
     }
   }
 
@@ -819,10 +827,15 @@ export default function PropertiesPage() {
                      
                       <div className="mt-2 flex items-center gap-3">
                         <input
+                          ref={coverFileInputRef}
                           type="file"
                           accept="image/*"
                           onChange={onCoverFileChange}
+                          className="hidden"
                         />
+                        <Button type="button" variant="outline" onClick={() => coverFileInputRef.current?.click()}>
+                          {coverImageUrl ? "Change cover" : "Upload cover"}
+                        </Button>
                         {isUploadingCover && (
                           <span className="text-sm text-gray-500">Uploading...</span>
                         )}
@@ -919,6 +932,11 @@ export default function PropertiesPage() {
 
                   {/* Translations Tab */}
                   <TabsContent value="translations" forceMount className="space-y-6">
+                    {isSaving && (
+                      <div className="p-3 rounded-md bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm mb-2">
+                        Property is updating... This may take a few seconds.
+                      </div>
+                    )}
                     <div className="bg-transparent rounded-lg p-6 shadow-sm border">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
@@ -1078,9 +1096,10 @@ export default function PropertiesPage() {
                   </Button>
                       <Button 
                         type="submit" 
-                        className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-lg"
+                        disabled={isSaving}
+                        className={`text-white shadow-lg ${isSaving ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700'}`}
                       >
-                        {currentProperty?.id ? "Update Property" : "Create Property"}
+                        {isSaving ? "Updating..." : currentProperty?.id ? "Update Property" : "Create Property"}
                   </Button>
                     </div>
                 </div>
