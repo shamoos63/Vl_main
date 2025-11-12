@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     result = await db.insert(properties).values(propertyData).returning();
     const newProperty = result[0];
 
-    // Insert English translation
+    // Insert English translation (basic)
     await db.insert(propertyTranslations).values({
       propertyId: newProperty.id,
       language: 'en',
@@ -129,6 +129,47 @@ export async function POST(request: NextRequest) {
       description: body.description,
       locationDisplayName: body.location
     });
+
+    // If translations are provided in the create payload, persist them (including amenities/features/highlights)
+    if (body.translations && typeof body.translations === 'object') {
+      for (const [language, tr] of Object.entries<any>(body.translations)) {
+        if (!tr || typeof tr !== 'object') continue;
+        const payload: any = {
+          title: tr.title || body.title || '',
+          description: tr.description || body.description || '',
+          locationDisplayName: tr.locationDisplayName || body.location || '',
+          featuresTranslated: JSON.stringify(tr.featuresTranslated || []),
+          amenitiesTranslated: JSON.stringify(tr.amenitiesTranslated || []),
+          highlightsTranslated: JSON.stringify(tr.highlightsTranslated || []),
+          updatedAt: Math.floor(Date.now() / 1000),
+        };
+
+        const existing = await db
+          .select()
+          .from(propertyTranslations)
+          .where(and(
+            eq(propertyTranslations.propertyId, newProperty.id),
+            eq(propertyTranslations.language, language)
+          ))
+          .limit(1);
+
+        if (existing.length > 0) {
+          await db
+            .update(propertyTranslations)
+            .set(payload)
+            .where(and(
+              eq(propertyTranslations.propertyId, newProperty.id),
+              eq(propertyTranslations.language, language)
+            ));
+        } else {
+          await db.insert(propertyTranslations).values({
+            propertyId: newProperty.id,
+            language,
+            ...payload,
+          });
+        }
+      }
+    }
 
     // Return formatted property
     const formattedProperty = convertToCurrentPropertyFormat({

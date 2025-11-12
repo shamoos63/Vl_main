@@ -10,6 +10,8 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { searchParams } = new URL(request.url);
+    const languageParam = (searchParams.get('language') || 'en') as 'en' | 'ar' | 'ru';
     const { id } = await params;
     const propertyId = parseInt(id);
     
@@ -41,7 +43,7 @@ export async function GET(
       .where(
         and(
           eq(propertyTranslations.propertyId, propertyId),
-          eq(propertyTranslations.language, 'en')
+          eq(propertyTranslations.language, languageParam)
         )
       )
       .limit(1);
@@ -189,6 +191,53 @@ export async function PUT(
           description: body.description || '',
           locationDisplayName: body.location || ''
         });
+      }
+    }
+    // If translations payload included in update, upsert per-language translations including amenities/features/highlights
+    if (body.translations && typeof body.translations === 'object') {
+      for (const [language, tr] of Object.entries<any>(body.translations)) {
+        if (!tr || typeof tr !== 'object') continue;
+        const payload: any = {
+          title: tr.title ?? undefined,
+          description: tr.description ?? undefined,
+          locationDisplayName: tr.locationDisplayName ?? undefined,
+          featuresTranslated: JSON.stringify(tr.featuresTranslated || []),
+          amenitiesTranslated: JSON.stringify(tr.amenitiesTranslated || []),
+          highlightsTranslated: JSON.stringify(tr.highlightsTranslated || []),
+          updatedAt: Math.floor(Date.now() / 1000),
+        };
+        // Remove undefined scalar keys so we don't overwrite with null values
+        Object.keys(payload).forEach((k) => {
+          if (payload[k] === undefined) delete payload[k];
+        });
+        const exists = await db
+          .select()
+          .from(propertyTranslations)
+          .where(and(
+            eq(propertyTranslations.propertyId, propertyId),
+            eq(propertyTranslations.language, language as any)
+          ))
+          .limit(1);
+        if (exists.length > 0) {
+          await db
+            .update(propertyTranslations)
+            .set(payload)
+            .where(and(
+              eq(propertyTranslations.propertyId, propertyId),
+              eq(propertyTranslations.language, language as any)
+            ));
+        } else {
+          await db.insert(propertyTranslations).values({
+            propertyId,
+            language: language as any,
+            title: tr.title || '',
+            description: tr.description || '',
+            locationDisplayName: tr.locationDisplayName || '',
+            featuresTranslated: JSON.stringify(tr.featuresTranslated || []),
+            amenitiesTranslated: JSON.stringify(tr.amenitiesTranslated || []),
+            highlightsTranslated: JSON.stringify(tr.highlightsTranslated || []),
+          });
+        }
       }
     }
 

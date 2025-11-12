@@ -390,6 +390,8 @@ export default function PropertiesPage() {
       type: formData.get("type") as string,
       // base features edited in chips input (amenities managed per-language in translations)
       features: baseFeatures,
+      // store raw amenities on properties table using English translation list
+      amenities: (translations?.en?.amenitiesTranslated || []),
       // Parse optional comma-separated gallery images to array for API
       ...(formData.get("images")
         ? {
@@ -414,12 +416,15 @@ export default function PropertiesPage() {
       const url = isEditing ? `/api/properties/${currentProperty.id}` : '/api/properties'
       const method = isEditing ? 'PUT' : 'POST'
 
+      // Include translations in initial create so backend can persist translated amenities/features
+      const initialPayload = isEditing ? propertyData : { ...propertyData, translations }
+
       const response = await fetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(propertyData),
+        body: JSON.stringify(initialPayload),
       })
 
       if (response.ok) {
@@ -721,6 +726,7 @@ export default function PropertiesPage() {
                                   <SelectItem value="Apartment">Apartment</SelectItem>
                                   <SelectItem value="Townhouse">Townhouse</SelectItem>
                                   <SelectItem value="Penthouse">Penthouse</SelectItem>
+                                  <SelectItem value="Studio">Studio</SelectItem>
                                 </SelectContent>
                               </Select>
                               {/* Ensure type is submitted with the form */}

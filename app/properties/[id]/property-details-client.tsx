@@ -55,7 +55,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
       const fetchProperty = async () => {
         setLoading(true)
         try {
-          const res = await fetch(`/api/properties/${propertyId}`, { cache: 'no-store' })
+        const res = await fetch(`/api/properties/${propertyId}?language=${language}`, { cache: 'no-store' })
           const json = await res.json()
           if (json?.success) {
             setProperty(json.data)
@@ -76,7 +76,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
       const fetchSimilarProperties = async () => {
         setLoadingSimilar(true)
         try {
-          const response = await fetch(`/api/properties/${property.id}/similar`)
+      const response = await fetch(`/api/properties/${property.id}/similar?language=${language}`)
           const result = await response.json()
           if (result.success) {
             setSimilarProperties(result.data || [])
