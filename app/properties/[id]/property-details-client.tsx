@@ -350,7 +350,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
               {t("properties.overview") || "Property Overview"}
             </h3>
             <p
-  className={`text-gray-600 dark:text-gray-300 leading-relaxed mb-6 ${
+  className={`text-gray-600 dark:text-gray-300 leading-relaxed mb-6 whitespace-pre-line ${
     language === "ar" ? "text-right" : "text-left"
   }`}
 >
