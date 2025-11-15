@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     await ensurePropertyDldUrlColumn();
     
     // Validate required fields (no top-level title/description; use translations.en)
-    const requiredFields = ['location', 'price', 'bedrooms', 'bathrooms', 'area', 'type'];
+    const requiredFields = ['price', 'bedrooms', 'bathrooms', 'area', 'type'];
     for (const field of requiredFields) {
       if (body[field] === undefined || body[field] === null || body[field] === '') {
         return NextResponse.json(
@@ -72,6 +72,14 @@ export async function POST(request: NextRequest) {
     if (!enTranslation || !enTranslation.title || !enTranslation.description) {
       return NextResponse.json(
         { success: false, error: 'Missing required English translation (title and description)' },
+        { status: 400 }
+      );
+    }
+    // Need a base location to satisfy DB constraint: use EN locationDisplayName or fallback to legacy location
+    const baseLocation: string | undefined = enTranslation.locationDisplayName || body.location;
+    if (!baseLocation || String(baseLocation).trim() === '') {
+      return NextResponse.json(
+        { success: false, error: 'Missing required English location (locationDisplayName)' },
         { status: 400 }
       );
     }
@@ -107,7 +115,7 @@ export async function POST(request: NextRequest) {
       bedrooms: parseInt(body.bedrooms),
       bathrooms: parseInt(body.bathrooms),
       squareArea,
-      location: enTranslation.locationDisplayName || '',
+      location: baseLocation,
       price: parseFloat(body.price.replace(/[^0-9.]/g, '')),
       currency: 'AED',
       pricePerSqFt: Math.round(parseFloat(body.price.replace(/[^0-9.]/g, '')) / squareArea),
