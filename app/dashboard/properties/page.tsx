@@ -37,6 +37,9 @@ interface Property {
   type: string
   features?: string[]
   amenities?: string[]
+  yearBuilt?: number
+  parkingSpaces?: number
+  dldUrl?: string
 }
 
 // Translation interface
@@ -75,6 +78,7 @@ export default function PropertiesPage() {
   const [isUploadingCover, setIsUploadingCover] = useState(false)
   const [isUploadingGallery, setIsUploadingGallery] = useState(false)
   const coverFileInputRef = useRef<HTMLInputElement | null>(null)
+  const [isStudio, setIsStudio] = useState(false)
 
   const uploadImageToServer = async (file: File): Promise<string> => {
     const fd = new FormData()
@@ -148,16 +152,23 @@ export default function PropertiesPage() {
     setGalleryUrls(prev => prev.filter((_, i) => i !== index))
   }
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [totalCount, setTotalCount] = useState(0)
+
   // Load properties from database
   useEffect(() => {
-    const fetchProperties = async () => {
+    const fetchProperties = async (page = 1) => {
     setIsLoading(true)
     try {
-        const response = await fetch('/api/properties')
+        const response = await fetch(`/api/properties?page=${page}&limit=10`)
         if (response.ok) {
           const result = await response.json()
           if (result.success) {
             setProperties(result.data)
+            setTotalPages(result.pagination?.totalPages || 1)
+            setTotalCount(result.pagination?.total || result.data?.length || 0)
           } else {
             console.error('Failed to fetch properties:', result.error)
             toast({
@@ -185,7 +196,7 @@ export default function PropertiesPage() {
     setIsLoading(false)
     }
 
-    fetchProperties()
+    fetchProperties(currentPage)
 
     // Check if we should open the add dialog
     const action = searchParams.get("action")
@@ -194,7 +205,7 @@ export default function PropertiesPage() {
       // Clear the URL parameter
       router.replace("/dashboard/properties")
     }
-  }, [searchParams, router])
+  }, [searchParams, router, currentPage])
 
   const filteredProperties = properties.filter(
     (property) =>
@@ -220,6 +231,7 @@ export default function PropertiesPage() {
       images: [],
       type: "Villa",
     })
+    setIsStudio(false)
     setBaseFeatures([])
     // amenities handled per language in translations
     
@@ -240,6 +252,7 @@ export default function PropertiesPage() {
     setActiveTab("basic")
     setActiveLanguage("en")
     setBaseFeatures(Array.isArray(property.features) ? property.features : [])
+    setIsStudio((property.bedrooms ?? 0) === 0)
     // amenities handled per language in translations
     
     // Fetch translations for existing property
@@ -377,8 +390,20 @@ export default function PropertiesPage() {
 
   const handleSaveProperty = async (formData: FormData) => {
     setIsSaving(true)
+    // Enforce English translation required
+    const en = translations['en'] || {}
+    if (!en.title || !en.description) {
+      setIsSaving(false)
+      setActiveTab("translations")
+      setActiveLanguage("en")
+      toast({
+        title: "Missing English content",
+        description: "English title and description are required.",
+        variant: "destructive",
+      })
+      return
+    }
     const propertyData: any = {
-      title: formData.get("title") as string,
       location: formData.get("location") as string,
       price: formData.get("price") as string,
       bedrooms: formData.get("bedrooms") as string,
@@ -388,9 +413,10 @@ export default function PropertiesPage() {
       status: formData.get("status") as string,
       featured: formData.get("featured") === "on",
       homeDisplay: formData.get("homeDisplay") === "on",
-      description: formData.get("description") as string,
       videoId: formData.get("videoId") as string,
       type: formData.get("type") as string,
+      parkingSpaces: formData.get("parkingSpaces") as string,
+      dldUrl: formData.get("dldUrl") as string,
       // base features edited in chips input (amenities managed per-language in translations)
       features: baseFeatures,
       // store raw amenities on properties table using English translation list
@@ -404,6 +430,29 @@ export default function PropertiesPage() {
               .filter((s) => s.length > 0),
           }
         : {}),
+    }
+
+    // Apply Studio logic (no bedrooms when studio)
+    if (isStudio) {
+      propertyData.bedrooms = '0'
+    }
+
+    // Year of completion -> yearBuilt (preferred if provided)
+    const yearBuiltInput = (formData.get("yearBuilt") as string) || ""
+    if (yearBuiltInput) {
+      const y = parseInt(yearBuiltInput, 10)
+      if (!isNaN(y)) {
+        propertyData.yearBuilt = String(y)
+      }
+    } else {
+      // Building finished date -> yearBuilt (fallback)
+      const buildingFinishedDate = (formData.get("buildingFinishedDate") as string) || ""
+      if (buildingFinishedDate) {
+        const year = new Date(buildingFinishedDate).getFullYear()
+        if (!isNaN(year)) {
+          propertyData.yearBuilt = String(year)
+        }
+      }
     }
 
     // Ensure uploaded state wins over raw form values
@@ -646,6 +695,27 @@ export default function PropertiesPage() {
               </TableBody>
             </Table>
           </div>
+          <div className="flex items-center justify-between p-4">
+            <div className="text-sm text-gray-600">
+              Page {currentPage} of {totalPages} {totalCount ? `(${totalCount} total)` : ''}
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                disabled={currentPage <= 1}
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              >
+                Previous
+              </Button>
+              <Button
+                variant="outline"
+                disabled={currentPage >= totalPages}
+                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              >
+                Next
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Modern Add/Edit Property Modal */}
@@ -692,33 +762,7 @@ export default function PropertiesPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="title" className="text-sm font-medium text-gray-700">
-                        Property Title *
-                      </Label>
-                      <Input
-                        id="title"
-                        name="title"
-                        defaultValue={currentProperty?.title}
-                        required
-                        placeholder="e.g. Luxury Villa in Dubai Marina"
-                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="location" className="text-sm font-medium text-gray-700">
-                        Location *
-                      </Label>
-                      <Input
-                        id="location"
-                        name="location"
-                        defaultValue={currentProperty?.location}
-                        required
-                        placeholder="e.g. Dubai Marina"
-                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
+                    <div></div>
 
                           <div className="grid grid-cols-2 gap-4">
                             <div>
@@ -734,7 +778,7 @@ export default function PropertiesPage() {
                                   <SelectItem value="Apartment">Apartment</SelectItem>
                                   <SelectItem value="Townhouse">Townhouse</SelectItem>
                                   <SelectItem value="Penthouse">Penthouse</SelectItem>
-                                  <SelectItem value="Studio">Studio</SelectItem>
+                                  
                                 </SelectContent>
                               </Select>
                               {/* Ensure type is submitted with the form */}
@@ -775,21 +819,47 @@ export default function PropertiesPage() {
                     </div>
 
                           <div className="grid grid-cols-3 gap-4">
-                      <div>
-                        <Label htmlFor="bedrooms" className="text-sm font-medium text-gray-700">
-                          Bedrooms *
-                        </Label>
-                        <Input
-                          id="bedrooms"
-                          name="bedrooms"
-                          type="number"
-                          defaultValue={currentProperty?.bedrooms}
-                          required
-                          min="0"
-                                className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        />
-                      </div>
-                      <div>
+  <div>
+    {/* Bedrooms + Studio toggle */}
+    <div className="flex items-center justify-between">
+      <Label htmlFor="bedrooms" className="text-sm font-medium text-gray-700">
+        Bedrooms *
+      </Label>
+      <div className="flex items-center space-x-2">
+        <Checkbox
+          id="studio"
+          checked={isStudio}
+          onCheckedChange={(checked) => {
+            const val = !!checked
+            setIsStudio(val)
+            setCurrentProperty(prev =>
+              prev ? { ...prev, bedrooms: val ? 0 : (prev.bedrooms || 1) } : prev
+            )
+          }}
+        />
+        <Label htmlFor="studio" className="text-sm text-gray-700 cursor-pointer">
+          Studio
+        </Label>
+      </div>
+    </div>
+    {!isStudio ? (
+      <Input
+        id="bedrooms"
+        name="bedrooms"
+        type="number"
+        defaultValue={currentProperty?.bedrooms}
+        required
+        min="0"
+        className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+      />
+    ) : (
+      <>
+        <input type="hidden" name="bedrooms" value="0" />
+        <div className="mt-1 text-sm text-gray-600">Studio selected (no bedrooms)</div>
+      </>
+    )}
+  </div>
+  <div>
                         <Label htmlFor="bathrooms" className="text-sm font-medium text-gray-700">
                           Bathrooms *
                         </Label>
@@ -816,7 +886,69 @@ export default function PropertiesPage() {
                                 className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>
+
+  {/* Year + Parking — span full width */}
+  <div className="col-span-3">
+    <div className="grid grid-cols-2 gap-4 mt-4">
+      <div>
+        <Label htmlFor="yearBuilt" className="text-sm font-medium text-gray-700">
+          Year of Completion
+        </Label>
+        <Input
+          id="yearBuilt"
+          name="yearBuilt"
+          type="number"
+          defaultValue={currentProperty?.yearBuilt}
+          placeholder="e.g. 2021"
+          className="mt-1 w-full bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <div>
+        <Label htmlFor="parkingSpaces" className="text-sm font-medium text-gray-700">
+          Parking Slots
+        </Label>
+        <Input
+          id="parkingSpaces"
+          name="parkingSpaces"
+          type="number"
+          defaultValue={currentProperty?.parkingSpaces ?? 0}
+          min="0"
+          className="mt-1 w-full bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+    </div>
+  </div>
+               
+                    </div>                    
+                     {/* DLD URL */}
+  <div>
+                      <Label htmlFor="dldUrl" className="text-sm font-medium text-gray-700">
+                        DLD URL
+                      </Label>
+                      <Input
+                        id="dldUrl"
+                        name="dldUrl"
+                        type="url"
+                        defaultValue={currentProperty?.dldUrl}
+                        placeholder="https://example.com/dld"
+                        className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">Will be shown as a QR code on the property page.</p>
                     </div>
+
+  {/* Video ID */}
+  <div>
+                      <Label htmlFor="videoId" className="text-sm font-medium text-gray-700">
+                        YouTube Video ID
+                      </Label>
+                      <Input
+                        id="videoId"
+                        name="videoId"
+                        defaultValue={currentProperty?.videoId}
+                        placeholder="e.g. dQw4w9WgXcQ"
+                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>    
                   </div>
 
                   <div className="space-y-4">
@@ -884,33 +1016,11 @@ export default function PropertiesPage() {
                       )}
                     </div>
 
-                    <div>
-                      <Label htmlFor="videoId" className="text-sm font-medium text-gray-700">
-                        YouTube Video ID
-                      </Label>
-                      <Input
-                        id="videoId"
-                        name="videoId"
-                        defaultValue={currentProperty?.videoId}
-                        placeholder="e.g. dQw4w9WgXcQ"
-                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                      />
-                    </div>
+                   
 
-                    <div>
-                      <Label htmlFor="description" className="text-sm font-medium text-gray-700">
-                        Description *
-                      </Label>
-                      <Textarea
-                        id="description"
-                        name="description"
-                        defaultValue={currentProperty?.description}
-                        required
-                        placeholder="Describe the property..."
-                              rows={4}
-                              className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                            />
-                          </div>
+                   
+
+                    <div></div>
 
                           {/* Amenities managed per language in the Translations tab */}
 
@@ -964,7 +1074,7 @@ export default function PropertiesPage() {
                       <div className="space-y-4">
                         <div>
                           <Label className="text-sm font-medium text-gray-700">
-                            Title ({activeLanguage.toUpperCase()})
+                            * Title ({activeLanguage.toUpperCase()})
                           </Label>
                           <Input
                             value={translations[activeLanguage]?.title || ""}
@@ -1005,7 +1115,7 @@ export default function PropertiesPage() {
 
                         <div>
                           <Label className="text-sm font-medium text-gray-700">
-                            Description ({activeLanguage.toUpperCase()})
+                         *   Description ({activeLanguage.toUpperCase()})
                           </Label>
                           <Textarea
                             value={translations[activeLanguage]?.description || ""}

@@ -17,7 +17,7 @@ export async function GET(
       );
     }
 
-    console.log('🔍 Getting similar properties for property:', propertyId);
+    
 
     // Check if database is available
     if (!PropertyService.isDatabaseAvailable()) {
@@ -46,7 +46,7 @@ export async function GET(
       type: currentProperty.type
     }, 3);
 
-    console.log(`✅ Found ${similarProperties.length} similar properties`);
+    
 
     return NextResponse.json({
       success: true,

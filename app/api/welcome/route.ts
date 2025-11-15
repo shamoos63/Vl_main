@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       userAgent,
     }).returning()
 
-    console.log("Welcome inquiry saved:", result[0])
+    
 
     return NextResponse.json({ 
       message: "Thank you for your inquiry! Victoria will contact you soon.",

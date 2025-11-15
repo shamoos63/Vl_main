@@ -55,7 +55,7 @@ const faqData = {
     {
       question: "What makes working with you different from others?",
       answer:
-        "I don't just sell , I strategize. With over 15 years of experience, deep market knowledge, and strong connections with top-tier developers, I secure high-value deals for my clients. I build long-term relationships , not one-off sales , and treat every portfolio as if it were my own. My impressive track record includes 585+ successful deals worth over AED 1.7 billion, all registered with the Dubai Land Department.",
+        "I don't just sell , I strategize. With over 15 years of experience, deep market knowledge, and strong connections with top-tier developers, I secure high-value deals for my clients. I build long-term relationships , not one-off sales , and treat every portfolio as if it were my own. My impressive track record includes 600+ successful deals worth over AED 1.9 billion, all registered with the Dubai Land Department.",
     },
     {
       question: "How do you choose which properties to recommend?",

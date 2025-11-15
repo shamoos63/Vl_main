@@ -241,7 +241,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                       {welcomeExperience}
                     </div>
                       <AnimatedCounter
-                                      end={585}
+                                      end={600}
                                       suffix="+"
                                       decimals={0}
                                       delay={400}
@@ -257,7 +257,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                     <div className="text-white font-semibold font-medium mb-1">{welcomeStrategic}</div>
                      <AnimatedCounter
   prefix={isRTL ? '+' : 'AED '}
-  end={1.7}
+  end={1.9}
   suffix={isRTL ? 'مليار' : 'B+'}
   something={isRTL ? 'درهم إماراتي' : ''}
   decimals={1}
@@ -312,7 +312,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                     
                     </div>
                       <AnimatedCounter
-                                      end={585}
+                                      end={600}
                                       suffix="+"
                                       decimals={0}
                                       delay={400}
@@ -328,7 +328,7 @@ export default function WelcomePopup({ onClose }: WelcomePopupProps) {
                     <div className="text-white font-semibold text-lg mb-1">{welcomeStrategic}</div>
                       <AnimatedCounter
   prefix={isRTL ? '+' : 'AED '}
-  end={1.7}
+  end={1.9}
   suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
   decimals={1}
   delay={400}

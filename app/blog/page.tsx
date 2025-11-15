@@ -320,10 +320,12 @@ export default function BlogPage() {
                       <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{post.excerpt}</p>
 
                       <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        {/* Author Name
                         <div className="flex items-center">
                           <User className="h-4 w-4 mr-1 text-vl-yellow" />
                           <span>{post.authorName}</span>
-                        </div>
+                        </div> */}
+
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 mr-1 text-vl-yellow" />
                           <span>{formatDate(post.publishedAt)}</span>

@@ -30,6 +30,7 @@ export interface Property {
     | "Chalet"
   yearBuilt?: number
   parkingSpaces?: number
+  dldUrl?: string
   furnished?: boolean
   petFriendly?: boolean
   pricePerSqFt?: number

@@ -364,8 +364,12 @@ export default function EnhancedPropertyCard({
               <div className="flex items-center justify-center mb-1">
                 <Bed className="h-4 w-4 text-vl-yellow" />
               </div>
-              <div className="text-sm font-medium">{property.bedrooms || 0}</div>
-              <div className="text-xs text-gray-500">{t("property.bedrooms") || "Bedrooms"}</div>
+              <div className="text-sm font-medium">
+                {property.bedrooms === 0 ? (t("filters.studio") || "Studio") : (property.bedrooms || 0)}
+              </div>
+              {property.bedrooms !== 0 && (
+                <div className="text-xs text-gray-500">{t("property.bedrooms") || "Bedrooms"}</div>
+              )}
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center mb-1">

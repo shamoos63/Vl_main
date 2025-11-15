@@ -73,9 +73,9 @@ export default function EvaluationPage() {
     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
       {[
         { value: "15+", label: t("evaluation.stats.3") },
-        { value: "585+", label: t("evaluation.stats.1") },
+        { value: "600+", label: t("evaluation.stats.1") },
         {
-    value: language === "ru" ? "1.7+ млрд AED" : "AED 1.7B+",
+    value: language === "ru" ? "1.9+ млрд AED" : "AED 1.9B+",
     label: t("evaluation.stats.2"),
   },
 

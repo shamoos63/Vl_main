@@ -564,7 +564,7 @@ export default function HeroSection() {
             <div className="text-center group">
               <div className="relative">
                 <AnimatedCounter
-                  end={585}
+                  end={600}
                   suffix="+"
                   delay={600}
                     className={`text-2xl md:text-4xl font-poppins font-bold text-vl-yellow mb-2 transition-all duration-300 group-hover:scale-110 ${
@@ -585,7 +585,7 @@ export default function HeroSection() {
   <div className="relative">
     <AnimatedCounter
       prefix={isRTL ? '+' : 'AED '}
-      end={1.7}
+      end={1.9}
       suffix={isRTL ? 'مليار درهم إماراتي' : 'B+'}
       decimals={1}
       delay={400}

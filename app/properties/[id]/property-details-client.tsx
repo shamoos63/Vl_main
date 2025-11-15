@@ -49,26 +49,22 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
     }
   }, [initialProperty, error])
 
-  // Ensure we have fresh data from the API when initialProperty isn't provided
+  // Always fetch property for the current language (initialProperty shows immediately then updates)
   useEffect(() => {
-    if (!initialProperty && !error) {
-      const fetchProperty = async () => {
-        setLoading(true)
-        try {
+    if (error) return
+    const fetchProperty = async () => {
+      try {
         const res = await fetch(`/api/properties/${propertyId}?language=${language}`, { cache: 'no-store' })
-          const json = await res.json()
-          if (json?.success) {
-            setProperty(json.data)
-          }
-        } catch (e) {
-          console.error('Error fetching property details:', e)
-        } finally {
-          setLoading(false)
+        const json = await res.json()
+        if (json?.success) {
+          setProperty(json.data)
         }
+      } catch (e) {
+        console.error('Error fetching property details:', e)
       }
-      fetchProperty()
     }
-  }, [initialProperty, error, propertyId])
+    fetchProperty()
+  }, [propertyId, language, error])
 
   // Fetch similar properties when property is available
   useEffect(() => {
@@ -90,7 +86,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
       
       fetchSimilarProperties()
     }
-  }, [property?.id])
+  }, [property?.id, language])
 
   if (loading) {
     return (
@@ -173,12 +169,12 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
   }
 
   // Normalize features/amenities in case of string payloads
-  const propertyFeatures = Array.isArray(property.features)
+  const propertyFeatures: string[] = Array.isArray(property.features)
     ? property.features
     : typeof property.features === 'string'
       ? (() => { try { return JSON.parse(property.features) } catch { return [] } })()
       : []
-  const propertyAmenities = Array.isArray(property.amenities)
+  const propertyAmenities: string[] = Array.isArray(property.amenities)
     ? property.amenities
     : typeof property.amenities === 'string'
       ? (() => { try { return JSON.parse(property.amenities) } catch { return [] } })()
@@ -332,20 +328,34 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
           </div>
         )}
 
-        {/* Property Details Tabs - Already has 'glass' on Tabs and TabsContent */}
-        <Tabs defaultValue="overview" className="mb-8"> {/* Glass applied to outer Tabs container */}
-          <TabsList className="w-full grid grid-cols-2 glass bg-transparent">
-            <TabsTrigger value="overview">{t("properties.tab.overview") || "Overview"}</TabsTrigger>
-            <TabsTrigger value="amenities">{t("properties.tab.amenities") || "Amenities"}</TabsTrigger>
+        {/* Property Details Tabs */}
+        <Tabs defaultValue="overview" className="mb-8" dir={isRTL ? "rtl" : "ltr"}>
+          <TabsList
+            className={`w-full grid grid-cols-3 glass bg-transparent ${isRTL ? "text-right" : "text-left"}`}
+            style={{ direction: isRTL ? "rtl" : "ltr" }}
+          >
+            <TabsTrigger value="overview" className={`${isRTL ? "justify-end" : "justify-start"}`}>
+              {t("properties.tab.overview") || "Overview"}
+            </TabsTrigger>
+            <TabsTrigger value="amenities" className={`${isRTL ? "justify-end" : "justify-start"}`}>
+              {t("properties.tab.amenities") || "Amenities"}
+            </TabsTrigger>
+            {property.dldUrl && (
+              <TabsTrigger value="dld" className={`${isRTL ? "justify-end" : "justify-start"}`}>Permit</TabsTrigger>
+            )}
           </TabsList>
 
-          <TabsContent value="overview" className="p-6 glass rounded-b-lg"> {/* Glass applied to each TabsContent */}
+          <TabsContent value="overview" className="p-6 glass rounded-b-lg" style={{ direction: isRTL ? "rtl" : "ltr" }}>
             <h3 className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${ language === "ar" ? "text-right " : "text-left" }`}>
               {t("properties.overview") || "Property Overview"}
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-              {property.description || t("properties.no.description")}
-            </p>
+            <p
+  className={`text-gray-600 dark:text-gray-300 leading-relaxed mb-6 ${
+    language === "ar" ? "text-right" : "text-left"
+  }`}
+>
+  {property.description || t("properties.no.description")}
+</p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-transparent p-4 rounded-lg text-center"> {/* Keep these transparent or give a very light glass background if desired */}
@@ -353,7 +363,9 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   {t("properties.bedrooms") || "Bedrooms"}
                 </div>
-                <div className="font-semibold text-vl-yellow dark:text-white">{property.bedrooms || 0}</div>
+                <div className="font-semibold text-vl-yellow dark:text-white">
+                  {property.bedrooms === 0 ? (t("filters.studio") || "Studio") : (property.bedrooms || 0)}
+                </div>
               </div>
               <div className="bg-transparent p-4 rounded-lg text-center">
                 <Bath className="h-5 w-5 mx-auto mb-2 text-vl-yellow" />
@@ -377,15 +389,16 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                 <div className="font-semibold text-vl-yellow dark:text-white">{property.location || "N/A"}</div>
               </div>
             </div>
+
           </TabsContent>
 
-          <TabsContent value="features" className="p-6 glass rounded-b-lg">
+          <TabsContent value="features" className="p-6 glass rounded-b-lg" style={{ direction: isRTL ? "rtl" : "ltr" }}>
             <h3 className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${ language === "ar" ? "text-right " : "text-left" }`}>
               {t("properties.features") || "Property Features"}
             </h3>
             {propertyFeatures.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 item-start">
-                {propertyFeatures.map((feature, index) => (
+                {propertyFeatures.map((feature: string, index: number) => (
                   <div key={index} className={`flex items-center ${language === "ar" ? "flex-row-reverse" : ""}`}>
 <Check className={`h-4 w-4 text-vl-yellow flex-shrink-0 ${language === "ar" ? "ml-2" : "mr-2"}`} />
   <span className="text-gray-600 dark:text-gray-300">{feature}</span>
@@ -397,23 +410,80 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
             )}
           </TabsContent>
 
-          <TabsContent value="amenities" className="p-6 glass rounded-b-lg">
-          <h3 className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${ language === "ar" ? "text-right " : "text-left" }`}>
-              {t("properties.amenities") || "Building Amenities"}
-            </h3>
-            {propertyAmenities.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {propertyAmenities.map((amenity, index) => (
-                  <div key={index} className={`flex items-center ${language === "ar" ? "flex-row-reverse" : ""}`}>
-  <Check className={`h-4 w-4 text-vl-yellow flex-shrink-0 ${language === "ar" ? "ml-2" : "mr-2"}`} />
-  <span className="text-gray-600 dark:text-gray-300">{amenity}</span>
-</div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-gray-600 dark:text-gray-300">{t("properties.no.amenities")}</p>
-            )}
-          </TabsContent>
+          <TabsContent value="amenities" className="p-6 glass rounded-b-lg" style={{ direction: isRTL ? "rtl" : "ltr" }}>
+  <h3
+    className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${
+      language === "ar" ? "text-right" : "text-left"
+    }`}
+  >
+    {t("properties.amenities") || "Building Amenities"}
+  </h3>
+
+  {propertyAmenities.length > 0 ? (
+   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+   {propertyAmenities.map((amenity: string, index: number) => (
+    <div
+      key={index}
+      className="flex items-center w-full justify-start"
+      style={{ direction: isRTL ? "rtl" : "ltr" }}
+    >
+      <Check
+        className={`h-4 w-4 text-vl-yellow flex-shrink-0 ${isRTL ? "" : "mr-2"}`}
+      />
+      <span
+        className={`text-gray-600 dark:text-gray-300 ${isRTL ? "ml-2" : ""}`}
+      >
+        {amenity}
+      </span>
+    </div>
+   ))}
+ </div>
+  ) : (
+    <p className="text-gray-600 dark:text-gray-300">
+      {t("properties.no.amenities")}
+    </p>
+  )}
+</TabsContent>
+          
+          {property.dldUrl && (
+           <TabsContent
+             value="dld"
+             className="p-6 glass rounded-b-lg flex flex-col items-center"
+             style={{ direction: isRTL ? "rtl" : "ltr" }}
+           >
+           <h3
+             className={`text-xl font-semibold text-vl-yellow dark:text-white mb-4 ${
+               language === "ar" ? "text-right w-full" : "text-left w-full"
+             }`}
+           >
+             Permit
+           </h3>
+           <div
+             className={`flex items-center ${isRTL ? "justify-start" : "justify-start"} gap-4 mb-4 ${
+               language === "ar" ? "flex-row-reverse" : ""
+             }`}
+           >
+             <img
+               src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(
+                 property.dldUrl
+               )}`}
+               alt="DLD QR Code"
+               className="rounded-md border"
+             />
+           </div>
+           <div className="text-sm">
+             <a
+               href={property.dldUrl}
+               target="_blank"
+               rel="noopener noreferrer"
+               className="text-blue-600 underline"
+             >
+               {t("property.open.link") || "Open DLD Link"}
+             </a>
+             <div className="text-gray-500 dark:text-gray-400 mt-1 break-all">{property.dldUrl}</div>
+           </div>
+         </TabsContent>
+          )}
         </Tabs>
       </div>
 

@@ -308,6 +308,7 @@ export function convertToCurrentPropertyFormat(dbProperty: PropertyWithTranslati
     pricePerSqFt: dbProperty.pricePerSqFt || Math.round(dbProperty.price / dbProperty.squareArea),
     lastUpdated: dbProperty.lastUpdated || new Date().toISOString().split('T')[0],
     viewCount: dbProperty.viewCount || 0,
+    dldUrl: (dbProperty as any).dldUrl || undefined,
     agent: {
       name: dbProperty.agentName || 'Victoria Lancaster',
       phone: dbProperty.agentPhone || '+971 4 2794 800 50 123 4567',
@@ -399,7 +400,7 @@ export async function getSimilarProperties(currentProperty: {
     const minPrice = currentPrice - priceRange;
     const maxPrice = currentPrice + priceRange;
     
-  console.log(`🔍 Finding similar properties for price range: AED ${minPrice.toLocaleString()} - AED ${maxPrice.toLocaleString()}`);
+  
     
     // First, try to find properties with similar location and price range
     let results = await db
@@ -461,7 +462,7 @@ export async function getSimilarProperties(currentProperty: {
     
     // If we don't have enough results, expand search to just price range
     if (results.length < limit) {
-      console.log(`🔍 Expanding search to price range only...`);
+      
       const additionalResults = await db
         .select({
           id: properties.id,
@@ -523,7 +524,7 @@ export async function getSimilarProperties(currentProperty: {
     
     // If still not enough, get properties from same location regardless of price
     if (results.length < limit) {
-      console.log(`🔍 Adding properties from same location...`);
+     
       const locationResults = await db
         .select({
           id: properties.id,

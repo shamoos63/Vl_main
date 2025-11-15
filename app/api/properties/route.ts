@@ -3,7 +3,7 @@ import { getDb } from '@/lib/db/index';
 import { properties, propertyTranslations } from '@/lib/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
 import { type PropertyWithTranslation, convertToCurrentPropertyFormat } from '@/lib/db/utils';
-import { ensurePropertyHomeDisplayColumn } from '@/lib/db/migrations';
+import { ensurePropertyHomeDisplayColumn, ensurePropertyDldUrlColumn } from '@/lib/db/migrations';
 
 // GET - Fetch all properties
 export async function GET(request: NextRequest) {
@@ -55,22 +55,31 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     // Ensure schema is compatible before attempting insert
     await ensurePropertyHomeDisplayColumn();
+    await ensurePropertyDldUrlColumn();
     
-    // Validate required fields
-    const requiredFields = ['title', 'location', 'price', 'bedrooms', 'bathrooms', 'area', 'type', 'description'];
+    // Validate required fields (no top-level title/description; use translations.en)
+    const requiredFields = ['location', 'price', 'bedrooms', 'bathrooms', 'area', 'type'];
     for (const field of requiredFields) {
-      if (!body[field]) {
+      if (body[field] === undefined || body[field] === null || body[field] === '') {
         return NextResponse.json(
           { success: false, error: `Missing required field: ${field}` },
           { status: 400 }
         );
       }
     }
+    // Require English translation
+    const enTranslation = body?.translations?.en;
+    if (!enTranslation || !enTranslation.title || !enTranslation.description) {
+      return NextResponse.json(
+        { success: false, error: 'Missing required English translation (title and description)' },
+        { status: 400 }
+      );
+    }
 
     const db = getDb();
 
-    // Generate a slug from title
-    const slug = body.title
+    // Generate a slug from English title
+    const slug = enTranslation.title
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
@@ -98,7 +107,7 @@ export async function POST(request: NextRequest) {
       bedrooms: parseInt(body.bedrooms),
       bathrooms: parseInt(body.bathrooms),
       squareArea,
-      location: body.location,
+      location: enTranslation.locationDisplayName || '',
       price: parseFloat(body.price.replace(/[^0-9.]/g, '')),
       currency: 'AED',
       pricePerSqFt: Math.round(parseFloat(body.price.replace(/[^0-9.]/g, '')) / squareArea),
@@ -115,28 +124,31 @@ export async function POST(request: NextRequest) {
       agentPhone: '+971 4 2794 800 50 123 4567',
       agentEmail: 'victoria.lancaster@selectproperty.ae'
     };
+    // Optional year built
+    if (body.yearBuilt !== undefined && body.yearBuilt !== null && body.yearBuilt !== '') {
+      (propertyData as any).yearBuilt = parseInt(body.yearBuilt);
+    }
+    // Optional parking spaces
+    if (body.parkingSpaces !== undefined && body.parkingSpaces !== null && body.parkingSpaces !== '') {
+      (propertyData as any).parkingSpaces = parseInt(body.parkingSpaces);
+    }
+    // Optional DLD URL
+    if (body.dldUrl) {
+      (propertyData as any).dldUrl = body.dldUrl;
+    }
 
     // Insert property (with auto-migration fallback for missing column)
     let result;
     result = await db.insert(properties).values(propertyData).returning();
     const newProperty = result[0];
 
-    // Insert English translation (basic)
-    await db.insert(propertyTranslations).values({
-      propertyId: newProperty.id,
-      language: 'en',
-      title: body.title,
-      description: body.description,
-      locationDisplayName: body.location
-    });
-
-    // If translations are provided in the create payload, persist them (including amenities/features/highlights)
+    // Persist provided translations (including amenities/features/highlights)
     if (body.translations && typeof body.translations === 'object') {
       for (const [language, tr] of Object.entries<any>(body.translations)) {
         if (!tr || typeof tr !== 'object') continue;
         const payload: any = {
-          title: tr.title || body.title || '',
-          description: tr.description || body.description || '',
+          title: tr.title || enTranslation.title || '',
+          description: tr.description || enTranslation.description || '',
           locationDisplayName: tr.locationDisplayName || body.location || '',
           featuresTranslated: JSON.stringify(tr.featuresTranslated || []),
           amenitiesTranslated: JSON.stringify(tr.amenitiesTranslated || []),
@@ -174,8 +186,8 @@ export async function POST(request: NextRequest) {
     // Return formatted property
     const formattedProperty = convertToCurrentPropertyFormat({
       ...newProperty,
-      title: body.title,
-      description: body.description,
+      title: enTranslation.title,
+      description: enTranslation.description,
       locationDisplayName: body.location
     } as PropertyWithTranslation);
 

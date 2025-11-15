@@ -6,9 +6,9 @@ import { createPropertyEvaluation } from '@/lib/db/utils';
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔍 Evaluation API endpoint called');
+    
     const body = await request.json();
-    console.log('📝 Received form data:', { ...body, email: '[REDACTED]' });
+    
     
     // Extract and validate form data
     const {
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
     // Create property evaluation in dedicated table
-    console.log('💾 Attempting to save property evaluation to database...');
+    
     const created = await createPropertyEvaluation({
       contactName: name,
       contactEmail: email,
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
       ipAddress,
       userAgent
     });
-    console.log('✅ Successfully saved to database:', created.id);
+    
 
     return NextResponse.json({
       success: true,

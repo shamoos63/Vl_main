@@ -14,7 +14,8 @@
     "db:studio": "drizzle-kit studio",
     "db:setup": "node scripts/setup-database.js",
     "db:test": "node scripts/test-db.js",
-    "db:seed": "node scripts/seed-database.js"
+    "db:seed": "node scripts/seed-database.js",
+    "db:ensure:dld": "node scripts/ensure-dld-url.js"
   },
   "dependencies": {
     "@api/reelly": "file:.api/apis/reelly",

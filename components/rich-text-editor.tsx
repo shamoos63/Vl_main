@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Bold, Italic, Underline, Link2, List, ListOrdered, Image as ImageIcon, Trash2 } from "lucide-react"
+import { Bold, Italic, Underline, Link2, List, ListOrdered, Image as ImageIcon, Trash2, Minus } from "lucide-react"
 
 interface RichTextEditorProps {
   value: string
@@ -108,6 +108,51 @@ export default function RichTextEditor({ value, onChange, placeholder, dir = "lt
     }
   }
 
+  // Font size utilities
+  const applyFontSize = useCallback((px: number) => {
+    const sel = window.getSelection()
+    if (!sel || sel.rangeCount === 0) {
+      // no selection -> insert a sized spacer the user can type after
+      insertHtmlAtCursor(`<span style="font-size:${px}px;"></span>`)
+      return
+    }
+    const range = sel.getRangeAt(0)
+    if (range.collapsed) {
+      // collapsed caret: insert a thin span to continue typing
+      const span = document.createElement("span")
+      span.setAttribute("style", `font-size:${px}px;`)
+      span.appendChild(document.createTextNode("\u200B")) // zero-width space
+      range.insertNode(span)
+      // place caret after span
+      range.setStartAfter(span)
+      range.collapse(true)
+      sel.removeAllRanges()
+      sel.addRange(range)
+      onChange(editorRef.current?.innerHTML || "")
+      return
+    }
+    try {
+      const wrapper = document.createElement("span")
+      wrapper.setAttribute("style", `font-size:${px}px;`)
+      range.surroundContents(wrapper)
+    } catch {
+      // Fallback for non-uniform ranges
+      const fragment = range.extractContents()
+      const wrapper = document.createElement("span")
+      wrapper.setAttribute("style", `font-size:${px}px;`)
+      wrapper.appendChild(fragment)
+      range.insertNode(wrapper)
+      range.selectNode(wrapper)
+      sel.removeAllRanges()
+      sel.addRange(range)
+    }
+    onChange(editorRef.current?.innerHTML || "")
+  }, [onChange, insertHtmlAtCursor])
+
+  const insertDivider = useCallback(() => {
+    insertHtmlAtCursor(`<hr style="border:none;border-top:1px solid rgba(255,205,41,0.4);margin:1.25rem 0;" />`)
+  }, [insertHtmlAtCursor])
+
   // Image selection + toolbar positioning
   const updateToolbarPosition = useCallback((img: HTMLImageElement | null) => {
     if (!img || !containerRef.current) return
@@ -197,6 +242,26 @@ export default function RichTextEditor({ value, onChange, placeholder, dir = "lt
           }}
         >
           <Link2 className="h-4 w-4" />
+        </Button>
+
+        {/* Font size selector */}
+        <div className="ml-1 flex items-center gap-1 ">
+          <label className="text-xs text-gray-600">Font</label>
+          <select
+            className="h-8 rounded-md border bg-transparent text-gray-900 px-2 text-sm focus:outline-none dark:bg-white dark:text-gray-900"
+            onChange={(e) => applyFontSize(parseInt(e.target.value, 10))}
+            defaultValue="16"
+            aria-label="Font size"
+          >
+            {[12, 14, 16, 18, 20, 24, 28, 32].map((s) => (
+              <option value={s} className="!importantbg-transparent text-black" key={s}>{s}px</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Divider insertion */}
+        <Button type="button" variant="outline" onClick={insertDivider} title="Insert divider">
+          <Minus className="h-4 w-4" />
         </Button>
 
         <div className="ml-auto flex items-center gap-2">

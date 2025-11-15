@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '12');
 
-    console.log('🔍 Property search request:', {
+    console.log(' Property search request:', {
       query,
       propertyType,
       location,
@@ -140,7 +140,7 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    console.log(`✅ Found ${total} properties matching search criteria`);
+    
 
     return NextResponse.json({
       success: true,

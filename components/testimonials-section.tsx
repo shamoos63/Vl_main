@@ -310,7 +310,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                   {language === "en" ? "More than" : language === "ar" ? "أكثر من " : "Более"}
                 </div>
                 <div className="text-3xl font-bold text-vl-yellow">
-                    {language === "en" ? "585 Proprties Sold" : language === "ar" ? "585 صفقة عقارية " : "585 сделок с недвижимостью"}
+                    {language === "en" ? "600 Proprties Sold" : language === "ar" ? "600 صفقة عقارية " : "600 сделок с недвижимостью"}
                 </div>
                <div className="text-white/80 pt-4">
                   {language === "en"

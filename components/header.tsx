@@ -96,34 +96,34 @@ export default function Header() {
               />
             </Link>
             <div className="hidden lg:flex items-center space-x-8">
-                  <Link href="/about" className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium">
+                  <Link href="/about" className="text-white !important hover:text-white transition-colors font-medium">
                 About
               </Link>
-              <Link href="/" className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium">
+              <Link href="/" className="text-white !important hover:text-white transition-colors font-medium">
                 Home
               </Link>
               <Link
                 href="/properties"
-                className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium"
+                className="text-white !important hover:text-white transition-colors font-medium"
               >
                 Properties
               </Link>
-              <Link href="/areas" className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium">
+              <Link href="/areas" className="text-white !important hover:text-white transition-colors font-medium">
                 Areas
               </Link>
               <Link
                 href="/evaluation"
-                className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium"
+                className="text-white !important hover:text-white transition-colors font-medium"
               >
                 Property Evaluation
               </Link>
         
-              <Link href="/blog" className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium">
+              <Link href="/blog" className="text-white !important hover:text-white transition-colors font-medium">
                 Blog
               </Link>
               <Link
                 href="/contact"
-                className="text-vl-blue !important hover:text-vl-blue transition-colors font-medium"
+                className="text-white !important hover:text-white transition-colors font-medium"
               >
                 Contact
               </Link>
@@ -147,33 +147,39 @@ export default function Header() {
         }`}
         dir={isRTL ? "rtl" : "ltr"}
       >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-3 items-center h-24">
-            {/* Left: About, Properties, Property Evaluation */}
-            <div className="hidden lg:flex items-center gap-4 justify-end">
-              <Link
-                href="/"
-                className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                  isActiveNavItem("/") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
-                }`}
-              >
-                {t("nav.home")}
+        <div className="container mx-auto px-3">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center h-20">
+            {/* Left: Home, Properties, Evaluation */}
+            <div className="hidden lg:flex items-center gap-3 justify-end">
+              <Link href="/" className="group">
+                <span
+                  className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm xl:text-base transition-colors ${
+                    isActiveNavItem("/") ? " text-vl-yellow" : "text-white group-hover:bg-vl-yellow/10 group-hover:text-vl-yellow"
+                  }`}
+                >
+                  {t("nav.home")}
+                </span>
+                {isActiveNavItem("/") && <span className="block h-0.5 bg-vl-yellow rounded-full mt-1" />}
               </Link>
-              <Link
-                href="/properties"
-                className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                  isActiveNavItem("/properties") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
-                }`}
-              >
-                {t("nav.properties")}
+              <Link href="/properties" className="group">
+                <span
+                  className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm xl:text-base transition-colors ${
+                    isActiveNavItem("/properties") ? " text-vl-yellow" : "text-white group-hover:bg-vl-yellow/10 group-hover:text-vl-yellow"
+                  }`}
+                >
+                  {t("nav.properties")}
+                </span>
+                {isActiveNavItem("/properties") && <span className="block h-0.5 bg-vl-yellow rounded-full mt-1" />}
               </Link>
-              <Link
-                href="/evaluation"
-                className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                  isActiveNavItem("/evaluation") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
-                }`}
-              >
-                {t("nav.evaluation")}
+              <Link href="/evaluation" className="group">
+                <span
+                  className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm xl:text-base transition-colors ${
+                    isActiveNavItem("/evaluation") ? " text-vl-yellow" : "text-white group-hover:bg-vl-yellow/10 group-hover:text-vl-yellow"
+                  }`}
+                >
+                  {t("nav.evaluation")}
+                </span>
+                {isActiveNavItem("/evaluation") && <span className="block h-0.5 bg-vl-yellow rounded-full mt-1" />}
               </Link>
             </div>
 
@@ -183,111 +189,125 @@ export default function Header() {
                 <Image
                   src="/VL1_w.svg"
                   alt="Victoria Lancaster Real Estate"
-                  width={200}
-                  height={80}
-                  className="h-16 w-auto transition-all duration-300 hover:scale-105"
+                  width={170}
+                  height={68}
+                  className="h-14 w-auto transition-all duration-300 hover:scale-105"
                   priority
                 />
               </Link>
             </div>
 
-            {/* Right: About, Contact, Articles + Actions */}
-            <div className="hidden lg:flex items-center justify-start gap-1">
-              <nav className="flex items-center gap-4">
-                <Link
-                  href="/about"
-                  className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                    isActiveNavItem("/about") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
-                  }`}
-                >
-                  {t("nav.about")}
+            {/* Right: About, Articles, Contact + Actions */}
+            <div className="hidden lg:flex items-center gap-1 w-full pl-3  md:pl-6">
+              <nav className="flex items-center gap-3 flex-1">
+                <Link href="/about" className="group">
+                  <span
+                    className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm xl:text-base transition-colors ${
+                      isActiveNavItem("/about") ? " text-vl-yellow" : "text-white group-hover:bg-vl-yellow/10 group-hover:text-vl-yellow"
+                    }`}
+                  >
+                    {t("nav.about")}
+                  </span>
+                  {isActiveNavItem("/about") && <span className="block h-0.5 bg-vl-yellow rounded-full mt-1" />}
                 </Link>
-                <Link
-                  href="/contact"
-                  className={`nav-item text-sm xl:text-base font-medium transition-colors text-vl-blue ${
-                    isActiveNavItem("/contact") ? "nav-active" : "text-vl-blue hover:text-vl-yellow"
-                  }`}
-                >
-                  {t("nav.contact")}
-                </Link>
+              
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className={`px-0 h-auto text-sm xl:text-base font-medium ${
+                      className={`px-0 h-auto text-sm xl:text-base font-medium relative group ${
                         pathname?.startsWith("/blog") || pathname?.startsWith("/areas")
                           ? "text-vl-yellow"
-                          : "text-vl-blue hover:text-vl-yellow"
+                          : "text-white hover:text-vl-yellow"
                       }`}
                     >
-                      <span className="mr-1">{t("nav.articles") || "Articles"}</span>
+                      <span
+                        className={`mr-1 inline-flex items-center px-3 py-1.5 rounded-full transition-colors ${
+                          pathname?.startsWith("/blog") || pathname?.startsWith("/areas")
+                            ? " text-vl-yellow"
+                            : "group-hover:bg-vl-yellow/10"
+                        }`}
+                      >
+                        {t("nav.articles") || "Articles"}
+                      </span>
                       <ChevronDown className="h-3 w-3" />
+                      {(pathname?.startsWith("/blog") || pathname?.startsWith("/areas")) && (
+                        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-vl-yellow rounded-full" />
+                      )}
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" sideOffset={8} className="min-w-[160px]">
-                    <DropdownMenuItem asChild>
-                      <Link href="/blog" className="w-full">
-                        {t("nav.blog")}
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/areas" className="w-full">
-                        {t("nav.areas")}
-                      </Link>
-                    </DropdownMenuItem>
+                  <DropdownMenuContent
+                    align="end"
+                    sideOffset={10}
+                    className="min-w-[220px] p-2 rounded-xl border border-vl-yellow/30  bg-white/80 backdrop-blur-md shadow-2xl"
+                  >
+                    
+                    <DropdownMenuItem asChild className="rounded-lg group">
+  <Link
+    href="/blog"
+    className={`w-full flex items-center px-2 py-2 rounded-lg transition-colors group-hover:bg-vl-yellow/10 ${
+      language === "ar" ? "flex-row-reverse gap-2" : "gap-2"
+    }`}
+  >
+    <span
+      className={`h-2 w-2 rounded-full ${
+        pathname?.startsWith("/blog") ? "bg-vl-yellow" : "bg-gray-300"
+      }`}
+    />
+    <span
+      className={`flex-1  group-hover:bg-vl-yellow/10 group-hover:rounded-full group-hover:text-vl-yellow ${language === "ar" ? "text-right" : "text-left"}`}
+    >
+      {t("nav.blog")}
+    </span>
+    {pathname?.startsWith("/blog") && (
+      <Check className="h-4 w-4 text-vl-yellow" />
+    )}
+  </Link>
+</DropdownMenuItem>
+<DropdownMenuItem asChild className="rounded-lg group">
+  <Link
+    href="/areas"
+    className={`w-full flex items-center px-2 py-2 rounded-lg transition-colors group-hover:bg-vl-yellow/10 ${
+      language === "ar" ? "flex-row-reverse gap-2" : "gap-2"
+    }`}
+  >
+    <span
+      className={`h-2 w-2 rounded-full ${
+        pathname?.startsWith("/areas") ? "bg-vl-yellow" : "bg-gray-300"
+      }`}
+    />
+    <span
+      className={`flex-1  group-hover:bg-vl-yellow/10 group-hover:rounded-full group-hover:text-vl-yellow ${language === "ar" ? "text-right" : "text-left"}`}
+    >
+      {t("nav.areas")}
+    </span>
+    {pathname?.startsWith("/areas") && (
+      <Check className="h-4 w-4 text-vl-yellow" />
+    )}
+  </Link>
+</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
+                 <Link href="/contact" className="group">
+                   <span
+                     className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm xl:text-base transition-colors ${
+                       isActiveNavItem("/contact") ? " text-vl-yellow" : "text-white group-hover:bg-vl-yellow/10 group-hover:text-vl-yellow"
+                     }`}
+                   >
+                     {t("nav.contact")}
+                   </span>
+                   {isActiveNavItem("/contact") && <span className="block h-0.5 bg-vl-yellow rounded-full mt-1" />}
+                 </Link>
               </nav>
 
               {/* Actions: Search + Language */}
-              <div className="flex items-center space-x-4">
-                <div className="relative">
-                  {isSearchOpen ? (
-                    <form onSubmit={handleSearch} className="flex text-vl-blue items-center bg-gray-100 rounded-full px-4 py-2">
-                      <Input
-                        type="text"
-                        placeholder={t("nav.search.placeholder") || "Search properties..."}
-                        className="border-0 bg-transparent focus:ring-0 w-48"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyDown={handleSearchKeyPress}
-                        autoFocus
-                      />
-                      <Button
-                        type="submit"
-                        variant="ghost"
-                        size="sm"
-                        className="text-vl-blue ml-1"
-                        disabled={!searchQuery.trim()}
-                      >
-                        <Search className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => {
-                          setIsSearchOpen(false)
-                          setSearchQuery("")
-                        }}
-                        className="text-vl-blue ml-1"
-                      >
-                        <X className="h-4 w-4 text-black!" />
-                      </Button>
-                    </form>
-                  ) : (
-                    <Button variant="ghost" size="sm" onClick={() => setIsSearchOpen(true)} className="text-vl-blue">
-                      <Search className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-
+              <div className="flex items-center space-x-4 ml-auto">       
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="language-trigger text-vl-blue hover:text-vl-yellow transition-all duration-300 px-3 py-2 rounded-xl border border-transparent hover:border-vl-yellow/30 hover:bg-vl-yellow/10 backdrop-blur-sm"
+                      className="language-trigger text-white hover:text-vl-yellow transition-all duration-300 px-3 py-2 rounded-xl border border-transparent hover:border-vl-yellow/30 hover:bg-vl-yellow/10 backdrop-blur-sm"
                     >
                       <Globe className="h-4 w-4 mr-2" />
                       <span className="text-lg mr-1">{currentLanguage?.flag}</span>
@@ -329,7 +349,7 @@ export default function Header() {
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden text-vl-blue absolute right-2 top-1/2 -translate-y-1/2"
+              className="lg:hidden text-white absolute right-2 top-1/2 -translate-y-1/2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -353,7 +373,7 @@ export default function Header() {
                     key={item.key}
                     href={item.path}
                     className={`font-medium py-2 transition-colors ${
-                      isActiveNavItem(item.path) ? "nav-mobile-active" : "text-vl-blue hover:text-vl-yellow"
+                      isActiveNavItem(item.path) ? "nav-mobile-active" : "text-white hover:text-vl-yellow"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -368,7 +388,7 @@ export default function Header() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="mobile-language-trigger text-vl-blue hover:text-vl-yellow transition-all duration-300 px-4 py-3 rounded-xl border border-vl-yellow/30 hover:border-vl-yellow hover:bg-vl-yellow/10 backdrop-blur-sm"
+                        className="mobile-language-trigger text-white hover:text-vl-yellow transition-all duration-300 px-4 py-3 rounded-xl border border-vl-yellow/30 hover:border-vl-yellow hover:bg-vl-yellow/10 backdrop-blur-sm"
                       >
                         <Globe className="h-4 w-4 mr-2" />
                         <span className="text-lg mr-2">{currentLanguage?.flag}</span>

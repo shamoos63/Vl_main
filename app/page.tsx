@@ -15,9 +15,9 @@ export default async function HomePage() {
   try {
     // Check if database is available first
     if (PropertyService.isDatabaseAvailable()) {
-      console.log('📊 Fetching featured properties from database...')
+     
       featuredProperties = await PropertyService.getFeaturedProperties(6)
-      console.log(`✅ Successfully loaded ${featuredProperties.length} featured properties`)
+     
     } else {
       console.warn('⚠️  Database not configured, showing empty state for properties')
     }

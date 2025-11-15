@@ -132,8 +132,8 @@ export async function PUT(
 
     if (body.type) updateData.type = body.type;
     if (body.image) updateData.photoUrl = body.image;
-    if (body.bedrooms) updateData.bedrooms = parseInt(body.bedrooms);
-    if (body.bathrooms) updateData.bathrooms = parseInt(body.bathrooms);
+    if (body.bedrooms !== undefined) updateData.bedrooms = parseInt(body.bedrooms);
+    if (body.bathrooms !== undefined) updateData.bathrooms = parseInt(body.bathrooms);
     if (squareArea) updateData.squareArea = squareArea;
     if (body.location) updateData.location = body.location;
     if (body.price) {
@@ -147,6 +147,15 @@ export async function PUT(
     if (body.amenities) updateData.amenities = JSON.stringify(body.amenities);
     if (body.highlights) updateData.highlights = JSON.stringify(body.highlights);
     if (body.images) updateData.images = JSON.stringify(body.images);
+    if (body.yearBuilt !== undefined && body.yearBuilt !== null && body.yearBuilt !== '') {
+      updateData.yearBuilt = parseInt(body.yearBuilt);
+    }
+    if (body.parkingSpaces !== undefined && body.parkingSpaces !== null && body.parkingSpaces !== '') {
+      updateData.parkingSpaces = parseInt(body.parkingSpaces);
+    }
+    if (body.dldUrl !== undefined) {
+      updateData.dldUrl = body.dldUrl;
+    }
 
     // Update property
     await db

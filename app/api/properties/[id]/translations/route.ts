@@ -104,7 +104,7 @@ export async function POST(
         featuresTranslated: JSON.stringify(data.featuresTranslated || []),
         amenitiesTranslated: JSON.stringify(data.amenitiesTranslated || []),
         highlightsTranslated: JSON.stringify(data.highlightsTranslated || []),
-        updatedAt: Math.floor(Date.now() / 1000) // Unix timestamp in seconds
+        updatedAt: new Date()
       };
 
       if (existingTranslation.length > 0) {

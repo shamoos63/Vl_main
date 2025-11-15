@@ -67,6 +67,7 @@ export const properties = sqliteTable('properties', {
   pricePerSqFt: real('price_per_sq_ft'),
   yearBuilt: integer('year_built'),
   parkingSpaces: integer('parking_spaces').default(0),
+  dldUrl: text('dld_url'),
   furnished: integer('furnished', { mode: 'boolean' }).default(false),
   petFriendly: integer('pet_friendly', { mode: 'boolean' }).default(false),
   
