@@ -471,17 +471,6 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                className="rounded-md border"
              />
            </div>
-           <div className="text-sm">
-             <a
-               href={property.dldUrl}
-               target="_blank"
-               rel="noopener noreferrer"
-               className="text-blue-600 underline"
-             >
-               {t("property.open.link") || "Open DLD Link"}
-             </a>
-             <div className="text-gray-500 dark:text-gray-400 mt-1 break-all">{property.dldUrl}</div>
-           </div>
          </TabsContent>
           )}
         </Tabs>
