@@ -158,7 +158,7 @@ export default function BlogModal({ blog, isOpen, onClose }: BlogModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl max-h-[90vh] bg-vl-blue overflow-y-auto animate-in zoom-in-95 duration-300" dir={isRTL ? "rtl" : "ltr"}>
+      <DialogContent className="max-w-5xl max-h-[90vh] bg-vl-blue overflow-y-auto animate-in zoom-in-95 duration-300 z-[9999]"  dir={isRTL ? "rtl" : "ltr"}>
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle className="text-2xl font-bold text-vl-yellow">
@@ -226,11 +226,11 @@ export default function BlogModal({ blog, isOpen, onClose }: BlogModalProps) {
         <div className="space-y-6">
           {/* Featured Image */}
           {blog.featuredImageUrl && (
-            <div className="relative h-64 w-full overflow-hidden rounded-lg">
+            <div className="w-full rounded-lg">
               <img
                 src={blog.featuredImageUrl}
                 alt={blog.title}
-                className="h-full w-full object-cover"
+                className="max-w-full h-auto mx-auto"
               />
             </div>
           )}

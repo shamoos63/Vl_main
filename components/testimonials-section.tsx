@@ -269,7 +269,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                   "{testimonial.text}"
                 </p>
 
-                <div className="bg-vl-yellow/10 p-3 rounded-lg group-hover:bg-vl-yellow/20 transition-all duration-300 border border-transparent group-hover:border-vl-yellow/30">
+              {/*/*}  <div className="bg-vl-yellow/10 p-3 rounded-lg group-hover:bg-vl-yellow/20 transition-all duration-300 border border-transparent group-hover:border-vl-yellow/30">
                   <p className="text-sm font-medium text-vl-yellow group-hover:text-vl-yellow/90 transition-colors duration-300">
                     {t("testimonials.property")}: {testimonial.property}
                   </p>
@@ -320,10 +320,10 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                       : "Общей стоимостью"}
                 </div>
                 <div className="text-3xl font-bold text-vl-yellow"> {language === "en"
-                    ? "AED 1.7B+"
+                    ? "AED 1.+9B+"
                     : language === "ar"
-                      ? "1.7 مليار درهم إماراتي"
-                      : "1,7 млрд дирхамов ОАЭ"}</div>
+                      ? "1.9 مليار درهم إماراتي"
+                      : "1,9 млрд дирхамов ОАЭ"}</div>
                 
               </div>
               
