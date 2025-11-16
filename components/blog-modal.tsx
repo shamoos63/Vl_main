@@ -237,10 +237,6 @@ export default function BlogModal({ blog, isOpen, onClose }: BlogModalProps) {
 
           {/* Blog Meta Information */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300">
-            <div className="flex items-center gap-2">
-              <User className="h-4 w-4 text-vl-yellow" />
-              <span>{t('blog.modal.author')} {blog.authorName}</span>
-            </div>
             
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-vl-yellow" />
