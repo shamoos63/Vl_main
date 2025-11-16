@@ -250,7 +250,8 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                 alt={`${property.title} - Image ${currentImageIndex + 1}`}
                 fill
                 className="object-cover"
-                unoptimized
+                priority
+                sizes="(min-width: 1024px) 66vw, 100vw"
               />
             )}
           </div>
@@ -311,7 +312,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                   alt={`Thumbnail ${index + 1}`}
                   fill
                   className="object-cover"
-                  unoptimized
+                  sizes="(min-width: 1024px) 20vw, 33vw"
                 />
               </div>
             ))}
@@ -574,7 +575,7 @@ export default function PropertyDetailsClient({ propertyId, initialProperty, err
                           alt={similarProperty.title}
                           fill
                           className="object-cover"
-                          unoptimized
+                          sizes="80px"
                         />
                       </div>
                       <div className="flex-1">

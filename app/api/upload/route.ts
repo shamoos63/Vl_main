@@ -15,11 +15,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'IMG_BB key is not configured' }, { status: 500 })
     }
 
-    const arrayBuffer = await file.arrayBuffer()
-    const base64 = Buffer.from(arrayBuffer).toString('base64')
-
     const upstream = new FormData()
-    upstream.append('image', base64)
+    // Prefer sending the binary file directly to avoid base64 overhead
+    // imgbb accepts multipart file data in the "image" field
+    upstream.append('image', file)
 
     // Optional name for better management on imgbb
     if (formData.get('name')) {

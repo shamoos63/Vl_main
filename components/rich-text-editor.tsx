@@ -75,10 +75,34 @@ export default function RichTextEditor({ value, onChange, placeholder, dir = "lt
     fileInputRef.current?.click()
   }, [])
 
+  // Compress image client-side before upload
+  const compressImage = async (file: File, maxDimension = 1600, quality = 0.85): Promise<File> => {
+    if (!file.type.startsWith("image/")) return file
+    const bitmap = await createImageBitmap(file).catch(() => null)
+    if (!bitmap) return file
+    const { width, height } = bitmap
+    const scale = Math.min(1, maxDimension / Math.max(width, height))
+    const targetW = Math.round(width * Math.min(1, scale))
+    const targetH = Math.round(height * Math.min(1, scale))
+    const canvas = document.createElement("canvas")
+    canvas.width = targetW
+    canvas.height = targetH
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return file
+    ctx.drawImage(bitmap, 0, 0, targetW, targetH)
+    const preferredType = file.type === "image/png" ? "image/jpeg" : "image/jpeg"
+    const blob: Blob | null = await new Promise((resolve) => {
+      canvas.toBlob((b) => resolve(b), preferredType, quality)
+    })
+    if (!blob) return file
+    return new File([blob], file.name.replace(/\.[^.]+$/, "") + ".jpg", { type: preferredType, lastModified: Date.now() })
+  }
+
   const uploadImageToServer = async (file: File): Promise<string> => {
+    const toUpload = await compressImage(file).catch(() => file)
     const fd = new FormData()
-    fd.append("image", file)
-    fd.append("name", file.name.replace(/\.[^.]+$/, ""))
+    fd.append("image", toUpload)
+    fd.append("name", toUpload.name.replace(/\.[^.]+$/, ""))
     const res = await fetch("/api/upload", { method: "POST", body: fd })
     if (!res.ok) {
       const text = await res.text().catch(() => "")
@@ -93,11 +117,22 @@ export default function RichTextEditor({ value, onChange, placeholder, dir = "lt
     if (!files || files.length === 0) return
     setIsUploading(true)
     try {
+      const queue = Array.from(files)
+      const maxConcurrency = 3
+      let index = 0
       const urls: string[] = []
-      for (const f of Array.from(files)) {
+      const runNext = async (): Promise<void> => {
+        const i = index++
+        const f = queue[i]
+        if (!f) return
         const url = await uploadImageToServer(f)
         urls.push(url)
+        if (index < queue.length) {
+          await runNext()
+        }
       }
+      const workers = Array.from({ length: Math.min(maxConcurrency, queue.length) }).map(() => runNext())
+      await Promise.all(workers)
       const html = urls.map((u) => `<p><img src="${u}" alt="" style="max-width:100%;height:auto;" /></p>`).join("")
       insertHtmlAtCursor(html)
     } catch (e) {

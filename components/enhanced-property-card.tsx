@@ -186,6 +186,7 @@ export default function EnhancedPropertyCard({
               className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
               onError={() => setImageError(true)}
               priority={false}
+              sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
             />
 
             {/* Image Count Badge - Updated styling */}
@@ -222,6 +223,7 @@ export default function EnhancedPropertyCard({
                                 const target = e.target as HTMLImageElement
                                 target.src = `/placeholder.svg?height=600&width=800&text=${encodeURIComponent(property.title)}`
                               }}
+                              sizes="(min-width: 1024px) 60vw, 100vw"
                             />
                             <div className="absolute bottom-4 right-4 bg-transparent text-black text-sm px-3 py-1 rounded backdrop-blur-sm border border-white/20">
                               {index + 1} / {propertyImages.length}

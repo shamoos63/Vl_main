@@ -80,11 +80,39 @@ export default function PropertiesPage() {
   const coverFileInputRef = useRef<HTMLInputElement | null>(null)
   const [isStudio, setIsStudio] = useState(false)
 
+  // Compress image client-side to speed uploads (resize to maxDimension and JPEG/WebP quality)
+  const compressImage = async (file: File, maxDimension = 1600, quality = 0.85): Promise<File> => {
+    if (!file.type.startsWith('image/')) return file
+    const bitmap = await createImageBitmap(file).catch(() => null)
+    if (!bitmap) return file
+    const { width, height } = bitmap
+    const scale = Math.min(1, maxDimension / Math.max(width, height))
+    if (scale >= 1) {
+      // no resize needed; still optionally recompress if very large
+      // fall through to encode step below for consistent output type
+    }
+    const targetW = Math.round(width * Math.min(1, scale))
+    const targetH = Math.round(height * Math.min(1, scale))
+    const canvas = document.createElement('canvas')
+    canvas.width = targetW
+    canvas.height = targetH
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return file
+    ctx.drawImage(bitmap, 0, 0, targetW, targetH)
+    const preferredType = file.type === 'image/png' ? 'image/jpeg' : 'image/jpeg'
+    const blob: Blob | null = await new Promise((resolve) => {
+      canvas.toBlob((b) => resolve(b), preferredType, quality)
+    })
+    if (!blob) return file
+    return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: preferredType, lastModified: Date.now() })
+  }
+
   const uploadImageToServer = async (file: File): Promise<string> => {
+    // compress before upload
+    const toUpload = await compressImage(file).catch(() => file)
     const fd = new FormData()
-    fd.append('image', file)
-    // Optional: pass a name for readability in imgbb dashboard
-    fd.append('name', file.name.replace(/\.[^.]+$/, ''))
+    fd.append('image', toUpload)
+    fd.append('name', toUpload.name.replace(/\.[^.]+$/, ''))
     const res = await fetch('/api/upload', { method: 'POST', body: fd })
     if (!res.ok) {
       const text = await res.text().catch(() => '')
@@ -132,11 +160,23 @@ export default function PropertiesPage() {
     if (!files || files.length === 0) return
     setIsUploadingGallery(true)
     try {
+      // Limit concurrency to avoid saturating network/CPU
+      const maxConcurrency = 3
+      const queue = Array.from(files)
       const uploaded: string[] = []
-      for (const file of Array.from(files)) {
-        const url = await uploadImageToServer(file)
+      let index = 0
+      const runNext = async (): Promise<void> => {
+        const i = index++
+        const f = queue[i]
+        if (!f) return
+        const url = await uploadImageToServer(f)
         uploaded.push(url)
+        if (index < queue.length) {
+          await runNext()
+        }
       }
+      const workers = Array.from({ length: Math.min(maxConcurrency, queue.length) }).map(() => runNext())
+      await Promise.all(workers)
       setGalleryUrls(prev => [...prev, ...uploaded])
       toast({ title: 'Images uploaded', description: `${uploaded.length} image(s) added to gallery.` })
     } catch (err) {

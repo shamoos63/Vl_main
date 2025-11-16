@@ -4,12 +4,13 @@ import PropertiesPageServer from "@/components/properties-page-server"
 import PropertiesPageHero from "@/components/properties-page-hero"
 import PropertiesPageWrapper from "@/components/properties-page-wrapper"
 
-export default function PropertiesPage() {
+export default function PropertiesPage({ searchParams }: { searchParams?: { page?: string } }) {
+  const page = Number(searchParams?.page || 1) || 1
   return (
     <PropertiesPageWrapper>
       <Header />
       <PropertiesPageHero />
-      <PropertiesPageServer />
+      <PropertiesPageServer page={page} />
       <Footer />
     </PropertiesPageWrapper>
   )

@@ -8,9 +8,12 @@ import { Button } from "@/components/ui/button"
 import { Map, Grid } from "lucide-react"
 import { useFilters } from "@/contexts/filter-context"
 import type { Property } from "@/lib/properties-data"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface PropertiesPageClientProps {
   properties: Property[]
+  page?: number
+  hasNext?: boolean
 }
 
 function PropertiesContent() {
@@ -71,7 +74,9 @@ function PropertiesContent() {
   )
 }
 
-export default function PropertiesPageClient({ properties }: PropertiesPageClientProps) {
+import Link from "next/link"
+
+export default function PropertiesPageClient({ properties, page = 1, hasNext = false }: PropertiesPageClientProps) {
   if (!properties || properties.length === 0) {
     return (
       <div className="text-center py-12">
@@ -89,6 +94,41 @@ export default function PropertiesPageClient({ properties }: PropertiesPageClien
   return (
     <FilterProvider initialProperties={properties}>
       <PropertiesContent />
+      <div className="container mx-auto px-4 pb-12">
+        <div className="mt-6 flex items-center justify-center gap-4">
+          {page > 1 ? (
+            <Button asChild variant="outline" className="glass border-vl-yellow/40 text-white hover:text-vl-yellow rounded-full px-5">
+              <Link href={`/properties?page=${page - 1}`} prefetch={false}>
+                <ChevronLeft className="h-4 w-4 mr-2" />
+                Back
+              </Link>
+            </Button>
+          ) : (
+            <Button variant="outline" disabled className="glass border-white/20 text-gray-400 rounded-full px-5">
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              Back
+            </Button>
+          )}
+
+          <span className="text-sm text-gray-300 px-3 py-2 rounded-full border border-white/10 glass">
+            Page {page}
+          </span>
+
+          {hasNext ? (
+            <Button asChild className="bg-transparent border-2 border-vl-yellow text-white hover:text-vl-yellow rounded-full px-5">
+              <Link href={`/properties?page=${page + 1}`} prefetch={false}>
+                Next
+                <ChevronRight className="h-4 w-4 ml-2" />
+              </Link>
+            </Button>
+          ) : (
+            <Button disabled className="bg-transparent border-2 border-white/20 text-gray-400 rounded-full px-5">
+              Next
+              <ChevronRight className="h-4 w-4 ml-2" />
+            </Button>
+          )}
+        </div>
+      </div>
     </FilterProvider>
   )
 }
