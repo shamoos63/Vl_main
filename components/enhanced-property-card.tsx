@@ -334,7 +334,7 @@ export default function EnhancedPropertyCard({
   </h3>
               <div className="flex items-center text-gray-600 mb-2">
                 <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-                <span className={`text-sm ${language === "ar" ? "ml-[-3rem] mr-2" : "mr-[-3rem]"}`}>
+                <span className={`text-sm whitespace-nowrap ${language === "ar" ? "ml-[-3rem] mr-2" : "mr-[-3rem]"}`}>
                   {property.location}
                 </span>
               </div>

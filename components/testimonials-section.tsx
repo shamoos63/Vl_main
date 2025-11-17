@@ -117,90 +117,180 @@ const SpainFlag = () => (
   </svg>
 )
 
-const UKFlag = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-    <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#071b65"></rect>
-    <path
-      d="M5.101,4h-.101c-1.981,0-3.615,1.444-3.933,3.334L26.899,28h.101c1.981,0,3.615-1.444,3.933-3.334L5.101,4Z"
-      fill="#fff"
-    ></path>
-    <path d="M22.25,19h-2.5l9.934,7.947c.387-.353,.704-.777,.929-1.257l-8.363-6.691Z" fill="#b92932"></path>
-    <path d="M1.387,6.309l8.363,6.691h2.5L2.316,5.053c-.387,.353-.704,.777-.929,1.257Z" fill="#b92932"></path>
-    <path
-      d="M5,28h.101L30.933,7.334c-.318-1.891-1.952-3.334-3.933-3.334h-.101L1.067,24.666c.318,1.891,1.952,3.334,3.933,3.334Z"
-      fill="#fff"
-    ></path>
-    <rect x="13" y="4" width="6" height="24" fill="#fff"></rect>
-    <rect x="1" y="13" width="30" height="6" fill="#fff"></rect>
-    <rect x="14" y="4" width="4" height="24" fill="#b92932"></rect>
-    <rect x="14" y="1" width="4" height="30" transform="translate(32) rotate(90)" fill="#b92932"></rect>
-    <path d="M28.222,4.21l-9.222,7.376v1.414h.75l9.943-7.94c-.419-.384-.918-.671-1.471-.85Z" fill="#b92932"></path>
-    <path d="M2.328,26.957c.414,.374,.904,.656,1.447,.832l9.225-7.38v-1.408h-.75L2.328,26.957Z" fill="#b92932"></path>
-    <path
-      d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
-      opacity=".15"
-    ></path>
-    <path
-      d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z"
-      fill="#fff"
-      opacity=".2"
-    ></path>
+export const GrenadaFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 640 480">
+    <rect width="640" height="480" fill="#ce1126" />
+    <path fill="#fcd116" d="M0 0h640v480H0z" />
+    <path fill="#007a5e" d="M96 96h448v288H96z" />
+    <path fill="#fcd116" d="M320 96L96 240l224 144 224-144L320 96z" />
+    <circle cx="320" cy="240" r="40" fill="#ce1126" />
+    <path fill="#fcd116" d="M320 200l12 36h38l-30 22 12 36-32-24-32 24 12-36-30-22h38z" />
+    <circle cx="64" cy="32" r="24" fill="#fcd116" />
+    <circle cx="320" cy="32" r="24" fill="#fcd116" />
+    <circle cx="576" cy="32" r="24" fill="#fcd116" />
+    <circle cx="64" cy="448" r="24" fill="#fcd116" />
+    <circle cx="320" cy="448" r="24" fill="#fcd116" />
+    <circle cx="576" cy="448" r="24" fill="#fcd116" />
+    <path fill="#ce1126" d="M160 240a40 40 0 0 1-40-40c0-22 18-40 40-40v80z" />
   </svg>
-)
+);
 
-const testimonials = [
-  {
-    name: "Ahmed",
-    location: "UAE",
-    flag: <UAEFlag />,
-    property: "Downtown Dubai Apartment",
-    rating: 5,
-    text: "Victoria's expertise in the Dubai market is unmatched. She helped me secure a prime property in Downtown Dubai with excellent ROI potential. Her strategic approach and market insights made all the difference.",
-  },
-  {
-    name: "Sarah",
-    location: "UK",
-    flag: <UKFlag />,
-    property: "Palm Jumeirah Villa",
-    rating: 5,
-    text: "Working with Victoria was exceptional. She understood my investment goals perfectly and found me a stunning villa on Palm Jumeirah. The entire process was smooth, professional, and transparent.",
-  },
-  {
-    name: "Dmitri",
-    location: "Russia",
-    flag: <RussiaFlag />,
-    property: "Business Bay Penthouse",
-    rating: 5,
-    text: "Victoria's multilingual service and deep market knowledge made my property investment journey seamless. She secured an off-plan penthouse with incredible growth potential. Highly recommended!",
-  },
-  {
-    name: "Fatima",
-    location: "UAE",
-    flag: <UAEFlag />,
-    property: "Dubai Marina Apartment",
-    rating: 5,
-    text: "Victoria doesn't just sell properties - she builds relationships. Her honest advice and strategic thinking helped me make the right investment decision. The returns have exceeded my expectations.",
-  },
-  {
-    name: "Michael",
-    location: "Singapore",
-    flag: <SingaporeFlag />,
-    property: "JVC Townhouse",
-    rating: 5,
-    text: "As a first-time investor in Dubai, Victoria guided me through every step. Her expertise in emerging areas like JVC proved invaluable. The property has already appreciated significantly.",
-  },
-  {
-    name: "Elena",
-    location: "Spain",
-    flag: <SpainFlag />,
-    property: "Dubai Maritime City",
-    rating: 5,
-    text: "Victoria's ability to identify high-potential properties is remarkable. She recommended Dubai Maritime City when it was still emerging. Now it's one of the hottest investment areas.",
-  },
-]
+export const KyrgyzstanFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 640 480">
+    <rect width="640" height="480" fill="#ed2939" />
+    <circle cx="320" cy="240" r="80" fill="#ffcd00" />
+    <circle cx="320" cy="240" r="40" fill="#ed2939" />
+    <path
+      fill="#ffcd00"
+      d="M320 160v160m-80-80h160m-113-57l113 113m-113 0l113-113m-57 113V160m-56 113L207 160m0 113l113-113"
+    />
+  </svg>
+);
+
+export const FinlandFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="22" viewBox="0 0 640 480">
+    <rect width="640" height="480" fill="#fff" />
+    <rect x="180" width="80" height="480" fill="#003580" />
+    <rect y="200" width="640" height="80" fill="#003580" />
+  </svg>
+);
+
+const CanadaFlag = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="22"
+    viewBox="0 0 64 32"
+    style={{ display: 'block' }}
+  >
+    <rect width="64" height="32" fill="#fff" />
+    <rect width="13" height="32" x="0" fill="#d52b1e" />
+    <rect width="13" height="32" x="51" fill="#d52b1e" />
+    <path
+      fill="#d52b1e"
+      d="M32 6l1.5 4.5h3l-2.25 3 2.25 1.5-2.25 1.5 2.25 3h-3L32 26l-1.5-6h-3l2.25-3-2.25-1.5 2.25-1.5-2.25-3h3L32 6z"
+    />
+  </svg>
+);
 
 export default function TestimonialsSection() {
   const { t, isRTL, language } = useI18n()
+
+  const testimonials = [
+    {
+      name: language === "en" ? "Irinia Z" : language === "ar" ? "ايرينا - ز" : "Ирина З",
+      location: language === "en" ? "Spain" : language === "ar" ? "إسبانيا" : "Испания",
+      flag: <SpainFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
+          ? `I have been working with Victoria Lancaster for several years, and I am truly happy with our cooperation! We were introduced by our friends who have been working with her for more than 10 years
+
+Victoria is a true professional in the real estate market, she always selects the most suitable and profitable options to ensure they bring returns in the future. On top of that, she is also a wonderful person with a beautiful soul!`
+          : language === "ar"
+            ? `عرفتها من خلال أصدقاء لنا يعملون معها منذ أكثر من عشر سنوات
+
+فيكتوريا محترفة حقيقية في سوق العقارات،
+دائمًا ما تختار أنسب وأفضل الخيارات الاستثمارية التي تضمن تحقيق عوائد مجزية في المستقبل.
+وفوق كل ذلك، هي شخصية رائعة وصاحبة روح جميلة`
+            : `Я работаю с Викторией Ланкастер уже несколько лет и действительно очень довольна нашим сотрудничеством!
+
+Мы познакомились через друзей, которые сотрудничают с ней уже более десяти лет.
+Виктория, настоящий профессионал на рынке недвижимости.
+Она всегда подбирает самые подходящие и выгодные варианты, чтобы обеспечить прибыль в будущем.
+А ещё она замечательный человек с доброй и красивой душой!`,
+    },
+    {
+      name: language === "en" ? "Nadia N." : language === "ar" ? "Nadia N." : "Nadia N.",
+      location: language === "en" ? "Grenada" : language === "ar" ? "غرينادا" : "Гренада",
+      flag: <GrenadaFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
+          ? `Amazing experience, Victoria Lancaster has been helping me for than 8 years now, and I can’t say how thankful I am.
+Top notch!`
+          : language === "ar"
+            ? `تجربة مذهلة. فيكتوريا لانكستر تساعدني منذ أكثر من 8 سنوات، ولا أستطيع أن أصف مدى امتناني لها.
+ ممتازة بكل معنى الكلمة!`
+            : `Потрясающий опыт. Виктория Ланкастер помогает мне уже более 8 лет, и я не могу выразить, насколько я ей благодарен.
+Высший уровень!`,
+    },
+    {
+      name: language === "en" ? "Lola Ortikova" : language === "ar" ? "لولا أورتيكوفا" : "Лола Ортикова",
+      location: language === "en" ? "Russia" : language === "ar" ? "روسيا" : "Россия",
+      flag: <RussiaFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
+          ? `It’s a pleasure working with Viktoria. She is very knowledgeable, professional and ethical person. Knows her job very well.`
+          : language === "ar"
+            ? `سعيدة بالعمل مع فيكتوريا.
+هي شخص ذو معرفة واسعة، محترفة، وذات أخلاق عالية.
+وتتقن عملها بشكل ممتاز `
+            : `Работать с Викторией, одно удовольствие.
+Она очень грамотный, профессиональный и этичный специалист.
+Отлично знает свою работу`,
+    },
+    {
+      name: language === "en" ? "Nick Kulik" : language === "ar" ? "نِك كوليك" : "Ник Кул",
+      location: language === "en" ? "Canada" : language === "ar" ? "كندا" : "Канада",
+      flag: <CanadaFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
+          ? `I had an excellent experience from start to finish; everything was handled professionally and efficiently. I’d like to give special recognition to Victoria, who assisted me throughout the process. She was exceptionally knowledgeable, attentive, and always quick to respond to my questions. Her professionalism and friendly attitude made the entire experience smooth and enjoyable. Overall, I’m very satisfied with the service and would highly recommend working with Victoria.`
+          : language === "ar"
+            ? `كانت تجربتي ممتازة من البداية إلى النهاية؛ كل شيء تم التعامل معه باحتراف وكفاءة.
+وأود أن أخصّ فيكتوريا بالشكر، فهي رافقتني خلال كامل العملية وكانت على درجة عالية من المعرفة، والانتباه، وسرعة الرد على استفساراتي.
+احترافيتها وتعاملها الودود جعلا التجربة كلها سلسة وممتعة.`
+            : `Мой опыт был отличным от начала и до конца, всё было организовано профессионально и оперативно.
+ Отдельно хочу отметить Викторию, которая сопровождала меня на каждом этапе. Она оказалась чрезвычайно грамотной, внимательной и всегда быстро отвечала на мои вопросы.
+ Её профессионализм и дружелюбный подход сделали весь процесс лёгким и приятным.
+В целом я очень доволен сервисом и искренне рекомендую работать с Викторией.`,
+    },
+    {
+      name: language === "en" ? "Alex" : language === "ar" ? "أليكس" : "Алекс",
+      location: language === "en" ? "Finland" : language === "ar" ? "فنلندا" : "Финляндия",
+      flag: <FinlandFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
+          ? `Working with Victoria Lancaster on our recent deal was an absolute pleasure. Her professionalism, deep market knowledge, and proactive communication made the entire process seamless and efficient. Victoria demonstrated exceptional attention to detail and consistently went above and beyond to ensure every aspect of the transaction ran smoothly.
+
+What truly stands out is her integrity and genuine commitment to achieving the best outcome for her clients. She’s responsive, reliable, and incredibly knowledgeable about both the Dubai and UK real estate markets. I would highly recommend Victoria to anyone looking for a trustworthy and experienced real estate professional`
+          : language === "ar"
+            ? `كان العمل مع فيكتوريا لانكستر في صفقتنا الأخيرة تجربة ممتعة بكل معنى الكلمة. احترافيتها، ومعرفتها العميقة بالسوق، وتواصلها المستمر جعلوا العملية سلسة وفعّالة. أظهرت فيكتوريا اهتمامًا استثنائيًا بالتفاصيل، وكانت دائمًا تبذل جهدًا إضافيًا لضمان أن كل خطوة في المعاملة تسير بسلاسة.
+ما يميزها فعلًا هو نزاهتها وحرصها الحقيقي على تحقيق أفضل نتيجة لعملائها. فهي سريعة في الرد، يمكن الاعتماد عليها، وتمتلك معرفة واسعة بسوق العقارات في دبي والمملكة المتحدة.
+أوصي بشدة بالتعامل مع فيكتوريا لمن يبحث عن خبيرة عقارية موثوقة وذات خبرة عالية`
+            : `Работа с Викторией Ланкастер над нашей недавней сделкой была настоящим удовольствием. Её профессионализм, глубокие знания рынка и проактивная коммуникация сделали весь процесс максимально плавным и эффективным. Виктория проявила исключительное внимание к деталям и постоянно делала больше, чем ожидалось, чтобы каждая часть сделки проходила безупречно.
+Особенно хочется отметить её честность и искреннюю вовлечённость в достижение наилучшего результата для своих клиентов. Она оперативна, надёжна и прекрасно разбирается в рынках недвижимости как Дубая, так и Великобритании.
+Я с уверенностью рекомендую Викторию всем, кто ищет опытного и достойного доверия специалиста по недвижимости.`,
+    },
+    {
+      name: language === "en" ? "Ekaterina Rybachenko" : language === "ar" ? "يكاترينا ريباشينكو" : "Екатерина Рыбаченко",
+      location: language === "en" ? "Russia" : language === "ar" ? "روسيا" : "Россия",
+      flag: <RussiaFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
+          ? `Working with Victoria has been an exceptional experience. She is highly trustworthy and demonstrates true loyalty to her clients. Victoria's professionalism, honesty, and sincere commitment to helping me found her to be incredibly reliable. Her attentive approach and dedication made the entire process smooth and enjoyable. I highly recommend Victoria to anyone seeking an honest and dependable property expert.`
+          : language === "ar"
+            ? `كان العمل مع فيكتوريا تجربة استثنائية. فهي شخصية شديدة الموثوقية وتُظهر ولاءً حقيقيًا لعملائها.
+ احترافيتها وصدقها والتزامها الصادق بالمساعدة جعلوها شخصًا يعتمد عليه فعلًا. أسلوبها المتفاني واهتمامها بالتفاصيل جعلا العملية كلها سلسة وممتعة.
+ أوصي بشدة بالتعامل مع فيكتوريا لكل من يبحث عن خبيرة عقارية صادقة وموثوقة.`
+            : `Работа с Викторией стала исключительным опытом.
+ Она очень надёжный специалист, который проявляет настоящую лояльность своим клиентам.
+ Профессионализм, честность и искреннее стремление помочь делают Викторию невероятно надёжной.
+ Её внимательный подход и преданность делу сделали весь процесс лёгким и приятным.
+ Я искренне рекомендую Викторию всем, кто ищет честного и действительно надёжного эксперта по недвижимости.`,
+    },
+  ]
 
   return (
     <section className="py-2 bg-transparent" dir={isRTL ? "rtl" : "ltr"}>
