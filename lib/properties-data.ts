@@ -4,6 +4,7 @@ export interface Property {
   title: string
   location: string
   price: string | number
+  uniteNumber?: string
   bedrooms: number
   bathrooms: number
   area?: string

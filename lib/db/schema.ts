@@ -56,6 +56,8 @@ export const properties = sqliteTable('properties', {
   slug: text('slug').notNull().unique(), // URL-friendly identifier
   type: text('type').notNull(), // Villa, Apartment, Townhouse, Penthouse
   photoUrl: text('photo_url').notNull(),
+  // Optional: Unit/Unite number for distinguishing similar project names
+  uniteNumber: text('unite_number'),
   bedrooms: integer('bedrooms').notNull(),
   bathrooms: integer('bathrooms').notNull(),
   squareArea: real('square_area').notNull(), // in square feet to match current data

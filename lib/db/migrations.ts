@@ -52,4 +52,29 @@ export async function ensurePropertyDldUrlColumn() {
   }
 }
 
+export async function ensurePropertyUniteNumberColumn() {
+  if (typeof window !== 'undefined') return; // server-only safeguard
+
+  if (!process.env.TURSO_DATABASE_URL) {
+    throw new Error('Missing Turso database environment variables');
+  }
+
+  const client = createClient({
+    url: process.env.TURSO_DATABASE_URL,
+    authToken: process.env.TURSO_AUTH_TOKEN,
+  });
+
+  const info = await client.execute('PRAGMA table_info(properties);');
+  const rows: any[] = (info as any).rows || [];
+  const hasUniteNumber = rows.some((r: any) => {
+    if (r && typeof r === 'object' && 'name' in r) return (r as any).name === 'unite_number';
+    if (Array.isArray(r) && r.length > 1) return r[1] === 'unite_number';
+    return false;
+  });
+
+  if (!hasUniteNumber) {
+    await client.execute('ALTER TABLE properties ADD COLUMN unite_number text;');
+  }
+}
+
 

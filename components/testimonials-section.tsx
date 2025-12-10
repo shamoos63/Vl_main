@@ -189,11 +189,12 @@ export default function TestimonialsSection() {
 
 Victoria is a true professional in the real estate market, she always selects the most suitable and profitable options to ensure they bring returns in the future. On top of that, she is also a wonderful person with a beautiful soul!`
           : language === "ar"
-            ? `عرفتها من خلال أصدقاء لنا يعملون معها منذ أكثر من عشر سنوات
+            ? `لقد عملت مع فيكتوريا لانكستر لعدة سنوات، وأنا حقًا سعيدة بتعاوننا المثمر!
+عرفتها من خلال أصدقاء لنا يعملون معها منذ أكثر من عشر سنوات
 
 فيكتوريا محترفة حقيقية في سوق العقارات،
 دائمًا ما تختار أنسب وأفضل الخيارات الاستثمارية التي تضمن تحقيق عوائد مجزية في المستقبل.
-وفوق كل ذلك، هي شخصية رائعة وصاحبة روح جميلة`
+وفوق كل ذلك، هي شخصية رائعة وصاحبة روح جميلة!`
             : `Я работаю с Викторией Ланкастер уже несколько лет и действительно очень довольна нашим сотрудничеством!
 
 Мы познакомились через друзей, которые сотрудничают с ней уже более десяти лет.
@@ -209,23 +210,43 @@ Victoria is a true professional in the real estate market, she always selects th
       rating: 5,
       text:
         language === "en"
+          ? `Victoria was amazing, professional, patient, and supportive through every step of my real estate journey in Dubai. I’m truly grateful for her effort and care, thrilled with the results, and already looking forward to working with her again on my next investment`
+          : language === "ar"
+            ? `كانت فيكتوريا مذهلة بكل معنى الكلمة، محترفة، صبورة، وداعمة في كل خطوة من رحلتي العقارية في دبي.
+
+أنا ممتنة حقًا لجهودها واهتمامها، وسعيدة جدًا بالنتائج التي حققناها،
+
+وأتطلع منذ الآن للعمل معها مجددًا في استثماري القادم`
+            : `Виктория была просто невероятной, профессиональной, терпеливой и поддерживающей на каждом этапе моего пути в сфере недвижимости в Дубае.
+Я искренне благодарна за её усилия и заботу, очень довольна достигнутыми результатами
+и уже с нетерпением жду возможности поработать с ней снова над своим следующим инвестиционным проектом.`,
+    },
+    {
+      name: language === "en" ? "Elmar Sultanov" : language === "ar" ? "إلمار سلطانوف" : "Элмар Султанов",
+      location: language === "en" ? "Kyrgyzstan" : language === "ar" ? "قيرغيزستان" : "Кыргызстан",
+      flag: <KyrgyzstanFlag />,
+      property: "Downtown Dubai Apartment",
+      rating: 5,
+      text:
+        language === "en"
           ? `Amazing experience, Victoria Lancaster has been helping me for than 8 years now, and I can’t say how thankful I am.
 Top notch!`
           : language === "ar"
             ? `تجربة مذهلة. فيكتوريا لانكستر تساعدني منذ أكثر من 8 سنوات، ولا أستطيع أن أصف مدى امتناني لها.
- ممتازة بكل معنى الكلمة!`
+ممتازة بكل معنى الكلمة!`
             : `Потрясающий опыт. Виктория Ланкастер помогает мне уже более 8 лет, и я не могу выразить, насколько я ей благодарен.
+
 Высший уровень!`,
     },
     {
-      name: language === "en" ? "Lola Ortikova" : language === "ar" ? "لولا أورتيكوفا" : "Лола Ортикова",
+      name: language === "en" ? " Lola Ortikova" : language === "ar" ? "لولا أورتيكوفا" : "Лола Ортикова",
       location: language === "en" ? "Russia" : language === "ar" ? "روسيا" : "Россия",
       flag: <RussiaFlag />,
       property: "Downtown Dubai Apartment",
       rating: 5,
       text:
         language === "en"
-          ? `It’s a pleasure working with Viktoria. She is very knowledgeable, professional and ethical person. Knows her job very well.`
+          ? `It’s a pleasure working with Victoria. She is very knowledgeable, professional and ethical person. Knows her job very well`
           : language === "ar"
             ? `سعيدة بالعمل مع فيكتوريا.
 هي شخص ذو معرفة واسعة، محترفة، وذات أخلاق عالية.
@@ -233,24 +254,6 @@ Top notch!`
             : `Работать с Викторией, одно удовольствие.
 Она очень грамотный, профессиональный и этичный специалист.
 Отлично знает свою работу`,
-    },
-    {
-      name: language === "en" ? "Nick Kulik" : language === "ar" ? "نِك كوليك" : "Ник Кул",
-      location: language === "en" ? "Canada" : language === "ar" ? "كندا" : "Канада",
-      flag: <CanadaFlag />,
-      property: "Downtown Dubai Apartment",
-      rating: 5,
-      text:
-        language === "en"
-          ? `I had an excellent experience from start to finish; everything was handled professionally and efficiently. I’d like to give special recognition to Victoria, who assisted me throughout the process. She was exceptionally knowledgeable, attentive, and always quick to respond to my questions. Her professionalism and friendly attitude made the entire experience smooth and enjoyable. Overall, I’m very satisfied with the service and would highly recommend working with Victoria.`
-          : language === "ar"
-            ? `كانت تجربتي ممتازة من البداية إلى النهاية؛ كل شيء تم التعامل معه باحتراف وكفاءة.
-وأود أن أخصّ فيكتوريا بالشكر، فهي رافقتني خلال كامل العملية وكانت على درجة عالية من المعرفة، والانتباه، وسرعة الرد على استفساراتي.
-احترافيتها وتعاملها الودود جعلا التجربة كلها سلسة وممتعة.`
-            : `Мой опыт был отличным от начала и до конца, всё было организовано профессионально и оперативно.
- Отдельно хочу отметить Викторию, которая сопровождала меня на каждом этапе. Она оказалась чрезвычайно грамотной, внимательной и всегда быстро отвечала на мои вопросы.
- Её профессионализм и дружелюбный подход сделали весь процесс лёгким и приятным.
-В целом я очень доволен сервисом и искренне рекомендую работать с Викторией.`,
     },
     {
       name: language === "en" ? "Alex" : language === "ar" ? "أليكس" : "Алекс",

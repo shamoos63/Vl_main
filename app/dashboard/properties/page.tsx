@@ -24,6 +24,7 @@ interface Property {
   title: string
   location: string
   price: string | number
+  uniteNumber?: string
   bedrooms: number
   bathrooms: number
   area: string
@@ -446,6 +447,7 @@ export default function PropertiesPage() {
     const propertyData: any = {
       location: formData.get("location") as string,
       price: formData.get("price") as string,
+      uniteNumber: (formData.get("uniteNumber") as string) || "",
       bedrooms: formData.get("bedrooms") as string,
       bathrooms: formData.get("bathrooms") as string,
       area: formData.get("area") as string,
@@ -858,6 +860,19 @@ export default function PropertiesPage() {
                       />
                     </div>
 
+                    <div>
+                      <Label htmlFor="uniteNumber" className="text-sm font-medium text-gray-700">
+                        Unite number
+                      </Label>
+                      <Input
+                        id="uniteNumber"
+                        name="uniteNumber"
+                        defaultValue={currentProperty?.uniteNumber || ""}
+                        placeholder="e.g. A-1203"
+                        className="mt-1 bg-transparent border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      />
+                    </div>
+
                           <div className="grid grid-cols-3 gap-4">
   <div>
     {/* Bedrooms + Studio toggle */}
@@ -1261,8 +1276,8 @@ export default function PropertiesPage() {
 
         {/* Delete Confirmation Dialog - Fixed Styling */}
         <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-          <DialogContent className="bg-transparent border-0 shadow-2xl">
-            <div className="bg-transparent p-6 rounded-lg">
+          <DialogContent className="bg-vl-blue border-0 shadow-2xl">
+            <div className=" p-6 rounded-lg">
               <DialogHeader className="mb-4">
                 <DialogTitle className="text-lg font-bold text-gray-900">Confirm Deletion</DialogTitle>
                 <DialogDescription className="text-gray-600">

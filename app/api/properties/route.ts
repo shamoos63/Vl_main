@@ -3,7 +3,7 @@ import { getDb } from '@/lib/db/index';
 import { properties, propertyTranslations } from '@/lib/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
 import { type PropertyWithTranslation, convertToCurrentPropertyFormat } from '@/lib/db/utils';
-import { ensurePropertyHomeDisplayColumn, ensurePropertyDldUrlColumn } from '@/lib/db/migrations';
+import { ensurePropertyHomeDisplayColumn, ensurePropertyDldUrlColumn, ensurePropertyUniteNumberColumn } from '@/lib/db/migrations';
 
 // GET - Fetch all properties
 export async function GET(request: NextRequest) {
@@ -56,6 +56,7 @@ export async function POST(request: NextRequest) {
     // Ensure schema is compatible before attempting insert
     await ensurePropertyHomeDisplayColumn();
     await ensurePropertyDldUrlColumn();
+    await ensurePropertyUniteNumberColumn();
     
     // Validate required fields (no top-level title/description; use translations.en)
     const requiredFields = ['price', 'bedrooms', 'bathrooms', 'area', 'type'];
@@ -143,6 +144,11 @@ export async function POST(request: NextRequest) {
     // Optional DLD URL
     if (body.dldUrl) {
       (propertyData as any).dldUrl = body.dldUrl;
+    }
+    // Optional unite number
+    const rawUnite = body.uniteNumber ?? body.unite_number;
+    if (rawUnite !== undefined && rawUnite !== null && String(rawUnite).trim() !== '') {
+      (propertyData as any).uniteNumber = String(rawUnite).trim();
     }
 
     // Insert property (with auto-migration fallback for missing column)

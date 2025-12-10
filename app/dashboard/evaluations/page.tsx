@@ -435,7 +435,7 @@ export default function EvaluationsPage() {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-transparent border-0 shadow-2xl">
+        <DialogContent className="bg-vl-blue border-0 shadow-2xl">
           <DialogHeader>
             <DialogTitle>Confirm Deletion</DialogTitle>
             <DialogDescription>

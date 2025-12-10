@@ -482,8 +482,8 @@ export default function AreasDashboardPage() {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-transparent border-0 shadow-2xl">
-          <div className="bg-transparent p-6 rounded-lg">
+        <DialogContent className="bg-vl-blue border-0 shadow-2xl">
+          <div className=" p-6 rounded-lg">
             <DialogHeader className="mb-4">
               <DialogTitle className="text-lg font-bold text-gray-900">Confirm Deletion</DialogTitle>
               <DialogDescription className="text-gray-600">

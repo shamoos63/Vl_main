@@ -156,6 +156,14 @@ export async function PUT(
     if (body.dldUrl !== undefined) {
       updateData.dldUrl = body.dldUrl;
     }
+    if (body.uniteNumber !== undefined || body.unite_number !== undefined) {
+      const raw = body.uniteNumber ?? body.unite_number;
+      if (raw === null || String(raw).trim() === '') {
+        updateData.uniteNumber = null as any;
+      } else {
+        updateData.uniteNumber = String(raw).trim();
+      }
+    }
 
     // Update property
     await db

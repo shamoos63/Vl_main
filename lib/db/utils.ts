@@ -284,6 +284,7 @@ export function convertToCurrentPropertyFormat(dbProperty: PropertyWithTranslati
   
   return {
     id: dbProperty.id,
+    uniteNumber: (dbProperty as any).uniteNumber || (dbProperty as any).unite_number,
     title: dbProperty.title || `${dbProperty.type} in ${dbProperty.location}`,
     description: dbProperty.description || '',
     location: dbProperty.locationDisplayName || dbProperty.location,
