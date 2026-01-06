@@ -579,9 +579,9 @@ const translations = {
     // Welcome Popup
     "welcome.title": "Victoria Lancaster",
     "welcome.title2": "Investment Director",
-    "welcome.subtitle": " For over 15 years, I’ve been entrusted with guiding capital into",
+    "welcome.subtitle": " For over 15 years, I’ve been trusted with guiding capital into",
     "welcome.subtitle2": "Real Estate, turning ambition into lasting value",
-    "welcome.subtitle1": "For over 15 years, I’ve been untrusted",
+    "welcome.subtitle1": "For over 15 years, I’ve been trusted",
     "welcome.subtitle2+": "With guiding capital into Real Estate",
     "welcome.subtitle3": "turning ambition into lasting value",
     
