@@ -25,7 +25,7 @@ const defaultSettings: ContactSettings = {
   phone: "+971 4 2794 800-XX-XXX-XXXX",
   email: "victoria.lancaster@selectproperty.ae",
   address: "Dubai, United Arab Emirates",
-  facebook: "https://facebook.com/vlrealestate",
+  facebook: "https://www.facebook.com/share/1DCCCndqs9/?mibextid=wwXIfr",
   instagram: "https://instagram.com/vlrealestate",
   twitter: "https://twitter.com/vlrealestate",
   linkedin: "https://linkedin.com/company/vlrealestate",

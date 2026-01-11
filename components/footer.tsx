@@ -30,7 +30,7 @@ export default function Footer() {
     {t("footer.description")}
   </p>
   <div className="flex space-x-4 mr-5">
-    <Button variant="ghost" size="sm" onClick={() => window.open("https://www.facebook.com/share/1EcLgYgQE7/?mibextid=wwXIfr", "_blank")}  className="text-white hover:text-vl-yellow">
+    <Button variant="ghost" size="sm" onClick={() => window.open("https://www.facebook.com/share/1DCCCndqs9/?mibextid=wwXIfr", "_blank")}  className="text-white hover:text-vl-yellow">
       <Facebook className="h-5 w-5" />
     </Button>
     <Button variant="ghost" size="sm" onClick={() => window.open("https://www.instagram.com/victoria.lancaster.realestate?igsh=NmNid3F5cXZjbXV0", "_blank")}  className="text-white hover:text-vl-yellow">
