@@ -580,10 +580,10 @@ const translations = {
     "welcome.title": "Victoria Lancaster",
     "welcome.title2": "Investment Director",
     "welcome.subtitle": " For over 15 years, I’ve been trusted with guiding capital into",
-    "welcome.subtitle2": "Real Estate, turning ambition into lasting value",
+    "welcome.subtitle2": "real estate, turning ambition into lasting value",
     "welcome.subtitle1": "For over 15 years, I’ve been trusted",
-    "welcome.subtitle2+": "With guiding capital into Real Estate",
-    "welcome.subtitle3": "turning ambition into lasting value",
+    "welcome.subtitle2+": "with guiding capital into real estate",
+    "welcome.subtitle3": "with guiding capital into real estate",
     
     "welcome.experience": "Properties Sold ",
     "welcome.experience2": "+",

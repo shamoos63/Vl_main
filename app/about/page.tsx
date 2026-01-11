@@ -5,9 +5,10 @@ import Header from "@/components/header"
 import ServerPageHero from "@/components/server-page-hero"
 import TimelineSection from "@/components/timeline-section"
 import { Button } from "@/components/ui/button"
-import { Award, Users, TrendingUp, Globe, MapPin, Mail, Briefcase, GraduationCap, Check } from "lucide-react"
+import { Award, Users, TrendingUp, Globe, MapPin, Mail, Briefcase, GraduationCap, Check, Link } from "lucide-react"
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n"
+import NextLink from "next/link"
 
 
 
@@ -356,14 +357,20 @@ export default function AboutPage() {
               {t("about.cta.text2")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
+          
+            
+            <NextLink href="/contact">
               <Button
-                size="lg"
-                variant="outline"
-                className="border-vl-yellow text-vl-yellow hover:bg-vl-yellow hover:text-black px-8 py-4 bg-transparent"
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                {t("about.cta.button")}
-              </Button>
+                  size="lg"
+                  variant="outline" 
+                  className="border-vl-yellow text-vl-yellow hover:bg-vl-yellow hover:text-black px-8 py-4 bg-transparent"
+                >
+                    <Mail className="mr-2 h-5 w-5" />
+                    {t("about.cta.button")}
+                </Button>
+            </NextLink>  
+          
+
             </div>
           </div>
         </div>

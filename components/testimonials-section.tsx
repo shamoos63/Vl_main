@@ -229,7 +229,7 @@ Victoria is a true professional in the real estate market, she always selects th
       rating: 5,
       text:
         language === "en"
-          ? `Amazing experience, Victoria Lancaster has been helping me for than 8 years now, and I can’t say how thankful I am.
+          ? `Amazing experience, Victoria Lancaster has been helping me for more than 8 years now, and I can’t say how thankful I am.
 Top notch!`
           : language === "ar"
             ? `تجربة مذهلة. فيكتوريا لانكستر تساعدني منذ أكثر من 8 سنوات، ولا أستطيع أن أصف مدى امتناني لها.
@@ -413,7 +413,7 @@ language === "ar" ? "left-4 scale-x-[-1]" : "right-4"
                       : "Общей стоимостью"}
                 </div>
                 <div className="text-3xl font-bold text-vl-yellow"> {language === "en"
-                    ? "AED 1.+9B+"
+                    ? "AED 1.9B+"
                     : language === "ar"
                       ? "1.9 مليار درهم إماراتي"
                       : "1,9 млрд дирхамов ОАЭ"}</div>

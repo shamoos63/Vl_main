@@ -106,6 +106,7 @@ export default function EnhancedPropertyCard({
   "Ready": "property.status.ready",
   "Off-plan": "property.status.OffPlan",
   "For Rent": "property.status.ForRent",
+  "For Sale": "property.status.ForSale",
   "Sold": "property.status.Sold",
 };
 
@@ -190,6 +191,13 @@ export default function EnhancedPropertyCard({
             />
 
             {/* Image Count Badge - Updated styling */}
+            {/* View Count - moved above camera button and repositioned */}
+            {viewCount > 0 && (
+              <div className="absolute bottom-16 left-4 bg-transparent text-white text-xs px-2 py-1 rounded backdrop-blur-sm border border-white/20">
+                <Eye className="h-3 w-3 inline mr-1 text-white" />
+                {viewCount.toLocaleString()}
+              </div>
+            )}
             {propertyImages.length > 1 && (
               <Dialog open={showImageGallery} onOpenChange={setShowImageGallery}>
                 <DialogTrigger asChild>
@@ -253,6 +261,16 @@ export default function EnhancedPropertyCard({
             )}
           </div>
 
+          {/* Price overlay on image */}
+          <div className="absolute bottom-4 right-4 bg-black/60 px-3 py-2 rounded shadow-lg">
+            <div className="text-vl-yellow text-lg font-bold">
+              {formatPrice(property.price)}
+            </div>
+            {pricePerSqFt && (
+              <div className="text-xs text-white/90">AED{pricePerSqFt}/{t("property.sqft")}</div>
+            )}
+          </div>
+
           {/* Status and Featured Badges */}
           <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
             <Badge
@@ -311,13 +329,7 @@ export default function EnhancedPropertyCard({
             </Tooltip>
           </div>
 
-          {/* View Count - Updated styling */}
-          {viewCount > 0 && (
-            <div className="absolute bottom-4 right-4 bg-transparent text-white text-xs px-2 py-1 rounded backdrop-blur-sm border border-white/20">
-              <Eye className="h-3 w-3 inline mr-1 text-white" />
-              {viewCount.toLocaleString()}
-            </div>
-          )}
+          {/* View Count moved above camera button */}
         </div>
 
         <CardContent className="p-6 flex-1 flex flex-col">
@@ -326,7 +338,7 @@ export default function EnhancedPropertyCard({
     <div className="flex-1">
   <h3
     className={cn(
-      "text-xl font-bold text-vl-yellow mb-1 line-clamp-2",
+      "text-xl font-bold text-vl-yellow mb-1 line-clamp-2 break-words w-full",
       language === "ar" ? "text-right ml-2" : "text-left"
     )}
   >
@@ -351,12 +363,6 @@ export default function EnhancedPropertyCard({
                   </span>
                 )}
               </div>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-heading text-vl-yellow mb-1 font-bold">
-                {formatPrice(property.price)}
-              </div>
-              {pricePerSqFt && <div className="text-xs text-gray-500">AED{pricePerSqFt}/{t("property.sqft")}</div>}
             </div>
           </div>
 

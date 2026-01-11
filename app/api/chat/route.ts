@@ -3,7 +3,9 @@ import { type NextRequest, NextResponse } from "next/server"
 import { getProperties, convertToCurrentPropertyFormat, type PropertyFilters } from "@/lib/db/utils"
 
 // Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
+const genAI: GoogleGenerativeAI | null = process.env.GEMINI_API_KEY
+  ? new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+  : null
 
 function getLanguageSpecificInstructions(language: string) {
   const instructions = {
@@ -15,7 +17,7 @@ function getLanguageSpecificInstructions(language: string) {
         "Be warm, enthusiastic, use friendly language, and include helpful emojis. Make the conversation feel personal and engaging.",
       propertyEvaluation: {
         intro:
-          "I'd be thrilled to help you evaluate your property! 🏠✨ Our Property Evaluation Tool is perfect for this! [PROPERTY_EVALUATION_TOOL]",
+          "I'd be thrilled to help you evaluate your property! 🏠✨ Our Property Evaluation Tool is perfect for this! Property Evaluation Tool",
         benefits:
           "It provides professional assessment from our expert team, detailed market analysis, and personalized recommendations.",
         action:
@@ -29,7 +31,7 @@ function getLanguageSpecificInstructions(language: string) {
       style: "كن ودوداً ومتحمساً، استخدم لغة صديقة، وأضف رموز تعبيرية مفيدة. اجعل المحادثة تبدو شخصية وجذابة.",
       propertyEvaluation: {
         intro:
-          "يسعدني مساعدتك في تقييم عقارك! 🏠✨ أداة تقييم العقارات لدينا مثالية لهذا الغرض! [PROPERTY_EVALUATION_TOOL]",
+          "يسعدني مساعدتك في تقييم عقارك! 🏠✨ أداة تقييم العقارات لدينا مثالية لهذا الغرض! أداة تقييم العقارات",
         benefits: "توفر تقييماً احترافياً من فريق الخبراء لدينا، وتحليلاً مفصلاً للسوق، وتوصيات مخصصة.",
         action:
           "سأنقلك إلى أداة التقييم لدينا على الفور حيث يمكنك إدخال تفاصيل عقارك. إنها مجانية وسريعة وتمنحك رؤى قيمة حول قيمة عقارك!",
@@ -57,15 +59,6 @@ function getLanguageSpecificInstructions(language: string) {
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if API key exists
-    if (!process.env.GEMINI_API_KEY) {
-      console.error("GEMINI_API_KEY is not set")
-      return NextResponse.json(
-        { message: "I'm having some technical difficulties right now. Please try again in a moment! 😊" },
-        { status: 500 },
-      )
-    }
-
     // Log the incoming request for debugging
     console.log("Chat API called with method:", request.method)
 
@@ -108,7 +101,12 @@ export async function POST(request: NextRequest) {
     const text = (lastUserMessage?.content || "").toLowerCase()
     const isEvaluationIntent =
       isPropEvalRequest ||
-      /(evaluate|valuation|price my (home|house|property)|what's my home worth|tqeem|taqeem|taqeem|تقييم|قيم|سعر)/i.test(text)
+      // English: evaluation, valuation, appraisal, price my home/house/property, how much is my home worth, property value, market value
+      /(evaluate|evaluation|valuation|apprais(e|al)|price\s+(my|of)\s+(home|house|property|apartment|flat)|how\s+much\s+is\s+(my\s+)?(home|house|property|apartment|flat)|home\s+worth|property\s+value|market\s+value)/i.test(text) ||
+      // Arabic: تقييم، قيم، سعر، قيمة، كم سعر/تساوي/قيمة، تسعير، تقييم عقار/منزل/بيت/شقة
+      /(تقييم|قيم|سعر|قيمة|كم|اديش|بيسوى\s+(سعر|تساوي|قيمة)|تسعير|تقييم\s+(عقار|منزل|بيت|شقة))/i.test(text) ||
+      // Russian: оценка, оценить, стоимость, сколько стоит, цена, оценить квартиру/дом/недвижимость
+      /(оцен(ка|ить)|стоимост(ь|и)|сколько\s+стоит|цена|оценить\s+(квартиру|дом|недвижимость)|сколько\s+стоит\s+(моя\s+)?(квартира|дом|недвижимость))/i.test(text)
     const isAboutVictoriaIntent = /(victoria|vectoria|about you|about victoria|من هي فيكتوريا|فيكتوريا|о виктории|виктория)/i.test(text)
     const isPropertySearchIntent = /(available|list|show|find|properties|search|apartment|villa|townhouse|penthouse|bedroom|budget|price|كم|عقار|شقة|فيلا|بحث|квартира|вилла|поиск|недвижимость)/i.test(
       text,
@@ -119,6 +117,13 @@ export async function POST(request: NextRequest) {
       const instructions = getLanguageSpecificInstructions(detectedLanguage)
       const evalResponse = `${instructions.propertyEvaluation.intro}\n\n${instructions.propertyEvaluation.benefits}\n\n${instructions.propertyEvaluation.action}`
 
+      return NextResponse.json({ message: evalResponse, redirectUrl: "/evaluation" })
+    }
+
+    // If user asks about pricing/evaluation in any supported language, guide to evaluation tool and redirect
+    if (isEvaluationIntent) {
+      const instructions = getLanguageSpecificInstructions(detectedLanguage)
+      const evalResponse = `${instructions.propertyEvaluation.intro}\n\n${instructions.propertyEvaluation.benefits}\n\n${instructions.propertyEvaluation.action}`
       return NextResponse.json({ message: evalResponse, redirectUrl: "/evaluation" })
     }
 
@@ -148,7 +153,7 @@ export async function POST(request: NextRequest) {
       if (bedroomsMatch) filters.bedrooms = Number(bedroomsMatch[1])
 
       // Budget (simple min/max extraction from numbers with k/m or AED/USD)
-      const priceMatches = Array.from(text.matchAll(/(\d+[\.,]?\d*)\s*(k|m|ألف|مليون)?/gi))
+      const priceMatches = Array.from(text.matchAll(/(\d+[\.,]?\d*)\s*(k|m|ألف|مليون)?/gi)) as RegExpMatchArray[]
       const toNumber = (val: string, unit?: string) => {
         let n = parseFloat(val.replace(/,/g, "."))
         if (unit) {
@@ -159,8 +164,8 @@ export async function POST(request: NextRequest) {
         return Math.round(n)
       }
       if (priceMatches.length >= 1) {
-        const n1 = toNumber(priceMatches[0][1], priceMatches[0][2])
-        const n2 = priceMatches[1] ? toNumber(priceMatches[1][1], priceMatches[1][2]) : undefined
+        const n1 = toNumber(priceMatches[0][1] as string, priceMatches[0][2] as string | undefined)
+        const n2 = priceMatches[1] ? toNumber(priceMatches[1][1] as string, priceMatches[1][2] as string | undefined) : undefined
         if (n1 && n2) {
           filters.minPrice = Math.min(n1, n2)
           filters.maxPrice = Math.max(n1, n2)
@@ -205,15 +210,33 @@ export async function POST(request: NextRequest) {
     // Create language-specific instructions
     const instructions = getLanguageSpecificInstructions(detectedLanguage)
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      generationConfig: {
-        temperature: 0.9,
-        topK: 1,
-        topP: 1,
-        maxOutputTokens: 1000,
-      },
-    })
+    // If no API key, provide a graceful fallback without failing the whole chat.
+    if (!genAI) {
+      const fallbackByLang: Record<string, string> = {
+        en: "I'm here to help! While my AI brain is warming up, I can still search our live database for properties. Ask me for areas, budgets, bedrooms, or property types and I'll find options for you.",
+        ar: "أنا هنا لمساعدتك! بينما يتم تفعيل نظام الذكاء الاصطناعي، ما زلت أستطيع البحث في قاعدة البيانات المباشرة لدينا عن العقارات. أخبرني بالمناطق أو الميزانية أو عدد الغرف أو نوع العقار وسأعرض لك النتائج.",
+        ru: "Я здесь, чтобы помочь! Пока мой ИИ недоступен, я могу искать объекты в нашей живой базе. Скажите район, бюджет, комнаты или тип недвижимости — подберу варианты.",
+      }
+      return NextResponse.json({ message: fallbackByLang[detectedLanguage] || fallbackByLang.en })
+    }
+
+    // Helper: timeout wrapper
+    const withTimeout = <T,>(p: Promise<T>, ms: number, label: string) =>
+      new Promise<T>((resolve, reject) => {
+        const id = setTimeout(() => reject(new Error(`TIMEOUT: ${label}`)), ms)
+        p.then((v) => {
+          clearTimeout(id)
+          resolve(v)
+        }).catch((e) => {
+          clearTimeout(id)
+          reject(e)
+        })
+      })
+
+    // We'll try multiple model IDs to avoid 404s for unsupported versions
+    const candidateModels = [
+      "gemini-3-flash-preview"
+    ]
 
     // Enhanced system prompt with strict language requirements
     const enhancedSystemPrompt = `${systemPrompt}
@@ -268,10 +291,84 @@ REMEMBER: Respond ONLY in ${detectedLanguage === "ar" ? "Arabic (العربية)
 
 Please provide a helpful, friendly, and engaging response as Victoria Lancaster's AI assistant in the user's language.`
 
-    console.log("Sending request to Gemini API...")
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const responseText = response.text()
+    console.log("Trying Gemini models:", candidateModels.join(", "))
+    let responseText = ""
+    let lastError: unknown = null
+
+    for (const modelId of candidateModels) {
+      try {
+        const model = genAI.getGenerativeModel({
+          model: modelId,
+          generationConfig: {
+            temperature: 0.9,
+            topK: 1,
+            topP: 1,
+            maxOutputTokens: 1000,
+          },
+        })
+
+        console.log(`Sending request to Gemini API using model: ${modelId}`)
+        const result = await withTimeout(model.generateContent(prompt), 15000, `generateContent(${modelId})`)
+        const response = await (result as any).response
+        responseText = response.text()
+        console.log(`Received response from Gemini model: ${modelId}`)
+        break
+      } catch (err) {
+        lastError = err
+        console.error(`Model ${modelId} failed:`, err)
+        // Try next candidate
+      }
+    }
+
+    if (!responseText) {
+      // All attempts failed — provide graceful fallback response
+      const fallbackByLang: Record<string, string> = {
+        en: "I'm having trouble connecting to my AI service right now, but I can still help search our live database for properties. Tell me an area, budget, bedrooms, or type and I’ll find options for you.",
+        ar: "أواجه مشكلة مؤقتة في الاتصال بخدمة الذكاء الاصطناعي، لكن ما زلت أستطيع مساعدتك بالبحث في قاعدة بياناتنا المباشرة. أخبرني بالمنطقة أو الميزانية أو عدد الغرف أو نوع العقار وسأعرض لك الخيارات.",
+        ru: "У меня временные проблемы с подключением к ИИ, но я могу искать объекты в нашей базе. Назовите район, бюджет, комнаты или тип недвижимости — подберу варианты.",
+      }
+      return NextResponse.json({
+        message: fallbackByLang[detectedLanguage] || fallbackByLang.en,
+        error: (lastError as Error)?.message || "All model attempts failed",
+      })
+    }
+
+    // Language correction fallback: if target is Arabic/Russian but response isn't in that script, translate it.
+    const containsArabic = (s: string) => /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(s)
+    const containsCyrillic = (s: string) => /[\u0400-\u04FF\u0500-\u052F\u2DE0-\u2DFF\uA640-\uA69F]/.test(s)
+
+    async function translateIfNeeded(text: string, targetLang: "ar" | "ru"): Promise<string> {
+      try {
+        if (!genAI) return text
+        // Reuse first candidate model id for translation
+        const modelId = candidateModels[0]
+        const model = genAI.getGenerativeModel({
+          model: modelId,
+          generationConfig: {
+            temperature: 0.2,
+            topK: 1,
+            topP: 1,
+            maxOutputTokens: 800,
+          },
+        })
+        const instruction =
+          targetLang === "ar"
+            ? "Translate the following into Arabic. Output only the translation with no extra text:"
+            : "Translate the following into Russian. Output only the translation with no extra text:"
+        const tRes = await withTimeout(model.generateContent(`${instruction}\n\n${text}`), 12000, `translate(${targetLang})`)
+        const tOut = await (tRes as any).response
+        const tText = tOut.text()
+        return tText || text
+      } catch {
+        return text
+      }
+    }
+
+    if (detectedLanguage === "ar" && !containsArabic(responseText)) {
+      responseText = await translateIfNeeded(responseText, "ar")
+    } else if (detectedLanguage === "ru" && !containsCyrillic(responseText)) {
+      responseText = await translateIfNeeded(responseText, "ru")
+    }
 
     console.log("Successfully received response from Gemini API")
     return NextResponse.json({ message: responseText })

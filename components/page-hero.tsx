@@ -13,7 +13,7 @@ export default function PageHero({ title, subtitle, backgroundImage, className =
 
   return (
     <section
-      className={`relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden ${className}`}
+      className={`relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden -mt-24 ${className}`}
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Background with gradient overlay */}
@@ -30,7 +30,7 @@ export default function PageHero({ title, subtitle, backgroundImage, className =
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 pt-24 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-heading">{title}</h1>
           {subtitle && (

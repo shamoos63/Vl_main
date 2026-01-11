@@ -301,7 +301,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-visible"
+      className="relative min-h-screen flex items-center justify-center overflow-visible -mt-24"
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="flex items-center text-black "></div>
@@ -317,7 +317,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 pt-24 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl pt-3 mt-3 lg:text-7xl font-bold text-white mb-2 font-sansumi">
             {t("hero.title")} 
